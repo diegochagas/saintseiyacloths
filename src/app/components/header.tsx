@@ -9,7 +9,7 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   
   return (
-    <header className={`${isMenuOpen ? 'fixed h-full' : 'absolute h-16'} transition-all duration-300 ease-linear w-full flex items-center text-neutral-300 bg-black uppercase font-bold`}>
+    <header className={`${isMenuOpen ? 'fixed h-full' : 'absolute h-16'} z-20 transition-all duration-300 ease-linear w-full flex items-center text-neutral-300 bg-black uppercase font-bold`}>
       <div className="pl-2">
         <Link href="/">
           <Image src="/logo.png" alt="" width={100} height={28} />
