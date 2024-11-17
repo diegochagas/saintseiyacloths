@@ -15,7 +15,9 @@ export default async function Home() {
 	const artists: ArtistProps[] = await artistsResponse.json()
   const historyResponse = await fetch('http://localhost:3000/api/history')
   const history: HistoryProps[] = await historyResponse.json()
-
+  const responseGeolocation = await fetch('http://ip-api.com/json')
+  const geoLocation = await responseGeolocation.json()
+  
   return (
     <main className="pt-16">
 			<section className="bg-black relative pb-40">
@@ -61,7 +63,7 @@ export default async function Home() {
       {history?.length > 0 && (
         <section className="bg-black">
           {/* IF COUNTRY EQUALS TO BRAZIL */}
-          {true && (
+          {geoLocation?.country === 'Brazil' && (
             <div className="text-white flex flex-col items-center justify-center bg-[url('../../public/cover.jpg')] bg-[center_center] bg-cover min-h-[700px]">
               <h3>Loja online</h3>
               <h2>Ajude o nosso site comprando os nossos produtos</h2>

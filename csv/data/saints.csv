@@ -1,4 +1,4 @@
-﻿id,character,cloth,group,rank,affiliation,artistSaint,artistCloth,image,history
+﻿id,character,cloth,group,rank,god,artistSaint,artistCloth,image,history
 1,1,148,athena-saints-38,7,582,16,10,/cloth-schemes/athena-saints/gemini-abel.jpg,4
 2,2,371,abel-gods,9,28,6,6,/cloth-schemes/abel-corona-saints/phoebus-abel.jpg,23
 3,496,,hakuryu-gods,9,496,3,,/cloth-schemes/hakuryu-taonias/hakuryu.jpg,7
