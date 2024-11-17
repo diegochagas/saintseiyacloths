@@ -3,12 +3,12 @@ import Link from "next/link";
 export default function Footer() {
   return (
     <footer className="bg-black text-white relative bottom-0">
-      <div>
+      <div className="grid grid-cols-2">
         <section>
           <h2>Saint Seiya Cloths</h2>
         </section>
 
-        <section>
+        <section className="grid grid-cols-2">
           <div>
             <h6>Socials</h6>
             <ul>

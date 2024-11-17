@@ -43,11 +43,11 @@ export default async function Home() {
         </ul>
       </section>
 
-      <section>
+      <section className="p-8">
         <h3 className="uppercase text-center font-bold text-lg">Recent posts</h3>
         <h2 className="uppercase text-center font-bold text-4xl">Latest schemes</h2>
         
-        <ul className="flex">
+        <ul className="grid grid-cols-4 gap-7">
           {saints.map(saint => (
             <li key={saint.id}>
               <a href="">
@@ -74,7 +74,7 @@ export default async function Home() {
           <div>
             <h3 className="uppercase text-center font-bold text-lg text-white">Schemes by</h3>
             <h2 className="uppercase text-center font-bold text-4xl text-white">History</h2>
-            <ul className="flex">
+            <ul className="grid grid-cols-4">
               {history.map((item: any) => (
                 <li className="flex" key={`${item.id}${item.name}`}>
                   <div className="">
@@ -93,13 +93,13 @@ export default async function Home() {
       <section className="bg-gray-100 px-5 py-12">
         <h3 className="uppercase text-center font-bold text-lg">Schemes by</h3>
         <h2 className="uppercase text-center font-bold text-4xl">Artist</h2>
-        <ul className="flex items-center gap-2 overflow-auto m-5">
-          {artists.map((item, i) => (
-            <li className="text-zinc-800 text-sm" key={item.name}>
-              <a className="" href={item.site}>
-                {item.image && <Image src={item.image} alt={item.name} width={229} height={217} />}
+        <ul className="grid grid-cols-4">
+          {artists.map(artist => (
+            <li className="text-zinc-800 text-sm" key={artist.name}>
+              <a className="flex artists-center gap-2" href={`/artists/${artist.id}`}>
+                {artist.image && <Image className="w-10" src={artist.image} alt={artist.name} width={229} height={217} />}
 
-                {item.name}
+                <b>{artist.name}</b>
               </a>
             </li>
           ))}
