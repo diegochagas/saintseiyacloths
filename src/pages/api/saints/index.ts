@@ -49,27 +49,23 @@ export const loadHistoryData = (historyId: string) => {
   return { ...history, midia }
 }
 
-export const loadSaintData = (saint: any) => {
+const getCharacterAndGod = (saint: any) => {
   let character
   let god
-  let artistSaint
-  let artistCloth
   for (let i = 1; i < characters.length; i++) {
     if (saint.character === characters[i].id) character = characters[i]
     if (saint.god === characters[i].id) god = characters[i]
     if (!!god?.id && !!character?.id) break
   }
-  for (let i = 1; i < artists.length; i++) {
-    if (saint.artistSaint === artists[i].id) artistSaint = artists[i]
-    if (saint.artistCloth === artists[i].id) artistCloth = artists[i]
-    if (!!artistSaint?.id && !!artistCloth?.id) break
-  }
+  return { character, god }
+}
+
+export const loadSaintData = (saint: any) => {
   return {
     ...saint,
-    character,
-    god,
-    artistSaint,
-    artistCloth,
+    ...getCharacterAndGod(saint),
+    artistSaint: artists.find(artist => artist.id === saint.artistSaint),
+    artistCloth: artists.find(artist => artist.id === saint.artistCloth),
     cloth: cloths.find(cloth => cloth.id === saint.cloth)?.name,
     group: groups.find(group => group.id === saint.group),
     rank: ranks.find(rank => rank.id === saint.rank)?.name,

@@ -1,4 +1,6 @@
 ﻿id,class,name
+apollo-angels,angels,Angels
+apollo-fallen-angels,Fallen Angels,Fallen Angels
 apsu-anunnakis,anunnakis,Anunnakis
 apsu-weapons,anunnakis,Weapons
 ares-gods,berserkers,Gods
@@ -417,6 +419,7 @@ hades-skeleton,specters,Soldiers
 hakuryu-gods,taonias,Gods
 hakuryu-taonias,taonias,Taonias
 hakuryu-taonias-low,taonias,Low Rank
+,,
 lamech-gods,lamech-servants,Gods
 lamech-servants,lamech-servants,Lamech Servants
 nemesis-gods,spirits,Gods
@@ -495,6 +498,4 @@ typhon-gods,gigas,Unknown
 typhon-sons-1,gigas,Star Sapphire
 typhon-sons-2,gigas,Star Ruby
 typhon-sons-3,gigas,Opal
-zeus-celestial-angels,Celestials,Celestials
-zeus-fallen-angels,Fallen Angels,Fallen Angels
 zeus-gods,Olympians,Olympians
