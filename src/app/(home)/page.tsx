@@ -51,8 +51,8 @@ export default async function Home() {
           {saints.map(saint => (
             <li key={saint.id}>
               <a href="">
-                <Image src={saint.image} alt="te" width={270} height={200} />
                 <b>{saint?.group?.name}</b>
+                <Image src={saint.image} alt="te" width={270} height={200} />
                 <h4>{saint?.character?.name}</h4>
               </a>
             </li>

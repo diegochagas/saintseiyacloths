@@ -8,9 +8,9 @@ export default function HomeLayout({ children }: { children: ReactNode }) {
     <MenuProvider>
       <Header />
 
-      {children}
+      {/* {children}
 
-      <Footer />
+      <Footer /> */}
     </MenuProvider>
   )
 }
