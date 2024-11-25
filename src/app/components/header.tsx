@@ -27,11 +27,11 @@ export default function Header() {
     <>
       <header className="fixed bg-white z-20 w-full flex px-3.5 py-1.5 justify-between border-b-8 border-b-black items-center text-neutral-300 uppercase font-bold transition-all duration-300 ease-linear">
         <a href="https://x.com/saintseiyacloths" target="_blank" rel="noopener noreferrer">
-          <Image className="w-5 h-auto" src="/icon_x.png" alt="" width={138} height={140} />
+          <Image className="w-5 lg:w-6 h-auto" src="/icon_x.png" alt="" width={138} height={140} />
         </a>
         
         <Link href="/">
-          <Image className="w-auto h-12" src="/saint-seiya-cloths-logo.png" alt="" width={400} height={153} />
+          <Image className="w-auto h-12 lg:h-20" src="/saint-seiya-cloths-logo.png" alt="" width={400} height={153} />
         </Link>
 
         <button
@@ -47,7 +47,7 @@ export default function Header() {
         <span className="hidden md:block" />
       </header>
       
-      <nav className={`${(isMenuOpen && isMobile) ? 'bg-[url("/bg_menu.jpg")] bg-center bg-cover h-screen' : 'bg-black mt-[60px] flex justify-center'} w-full fixed uppercase md:z-30`}>
+      <nav className={`${(isMenuOpen && isMobile) ? 'bg-[url("/bg_menu.jpg")] bg-center bg-cover h-screen' : 'bg-black mt-[60px] lg:mt-[92px] flex justify-center'} w-full fixed uppercase md:z-30`}>
         <ul className={`${isMenuOpen ? 'flex-col justify-center h-full' : 'justify-between'} ${(!isMenuOpen && isMobile) ? 'hidden' : 'flex'} gap-4 w-full max-w-6xl py-2.5 px-6 transition-opacity duration-200`}>
           {links.map(link => (
             <li key={link.name} className="hover:text-yellow-500 text-white group">
