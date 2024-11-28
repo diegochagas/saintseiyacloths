@@ -1,7 +1,7 @@
 import { NewsProps } from '@/pages/api/news'
 import Image from 'next/image'
 import Link from 'next/link'
-import Title from './title'
+import Title from '../../components/title'
 
 interface NewsComponentProps {
   news: NewsProps[]

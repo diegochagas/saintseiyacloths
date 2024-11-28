@@ -1,6 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { ArtistProps } from '../artists'
-import { CharacterProps } from '../characters'
 import { ClassProps } from '../classes'
 import { HistoryProps } from '../history'
 import artists from '../data/artists.json'
@@ -15,7 +14,7 @@ import saintsJson from '../data/saints.json'
 interface ClothProps {
   id: string
   name: string
-  debut: string
+  history: string
   image: string
 }
 
@@ -26,6 +25,11 @@ interface GroupProps {
 }
 
 interface RankProps {
+  id: string
+  name: string
+}
+
+interface CharacterProps {
   id: string
   name: string
 }
@@ -73,11 +77,23 @@ export const loadSaintData = (saint: any) => {
     history: loadHistoryData(saint.history),
   }
 }
+
+export function getItemsByPage(data: any[], page: number) {
+  if (page) {
+    const startPage = (page * 10 - 10)
+    const endPage = (page * 10)
+    return data.slice(startPage, endPage)
+  } else {
+    return data.slice(-10)
+  }
+}
  
 export default function handler(
-  _: NextApiRequest,
+  req: NextApiRequest,
   res: NextApiResponse<any>
 ) {
-  const saints: SaintProps[] = saintsJson.map(saint => loadSaintData(saint))
-  res.status(200).json(saints)
+  const page: number = parseInt(req.query.page as string) 
+  const saints: SaintProps[] = getItemsByPage(saintsJson, page)
+    .map(saint => loadSaintData(saint))
+  res.status(200).json({ data: saints, totalPages: Math.round(saintsJson.length / 10) })
 }
