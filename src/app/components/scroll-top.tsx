@@ -34,10 +34,14 @@ export default function ScrollTop() {
   return (
     <a
       href="#"
-      className={`${isMenuOpen ? 'hidden' : 'block'} fixed right-4 ${opacity} transition-all duration-300 bg-zinc-800 hover:bg-emerald-300 w-10 h-10 bottom-1 z-50 p-3 border-0 border-none`}
+      className={`${isMenuOpen ? 'hidden' : 'block'} fixed right-4 lg:right-8 bottom-1 z-50 ${opacity} transition-all duration-300`}
       onClick={onScrollTo}
     >
-      <Icon name="arrow-up" size={16} />
+      <p className="uppercase absolute right-0 bottom-0 flex flex-col items-end text-xl lg:text-2xl font-black text-stroke-white">
+        <span className="-mb-2.5 lg:-mb-3">Page</span>
+        <span>Top</span>
+      </p>
+      <Icon className="w-20 lg:w-28 h-auto" name="nike-stroke" />
     </a>
   )
 }

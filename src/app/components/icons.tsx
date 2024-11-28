@@ -1,4 +1,7 @@
-export type iconName = 'arrow-up' | 'arrow-right' | 'menu' | 'close' | 'contact' | 'about' | 'artists' | 'classes' | 'history' | 'home' | 'news'
+import Image from 'next/image'
+
+export type iconName = 'arrow-up' | 'arrow-right' | 'menu' | 'close' | 'contact' | 'about' | 'artists' | 'classes' | 'history' | 'home' | 'news' | 'nike' 
+| 'nike-stroke' | 'zodiac-wheel'
 
 interface IconProps {
   name: iconName
@@ -42,11 +45,11 @@ export default function Icon({ name, className, size = 25, color = 'black' }: Ic
       return (
         <>
           <i
-            className="top-[-1px] left-0.5 rotate-45 origin-[0_100%] absolute block w-9 h-1.5 transition-all duration-200 ease-linear"
+            className="top-0 left-1 rotate-45 origin-[0_100%] absolute block w-9 h-1.5 transition-all duration-200 ease-linear"
             style={{ backgroundColor: color }}
           />
           <i
-            className="bottom-1 left-0.5 -rotate-45 origin-[0_0] absolute block w-9 h-1.5 transition-all duration-200 ease-linear"
+            className="bottom-0.5 left-1 -rotate-45 origin-[0_0] absolute block w-9 h-1.5 transition-all duration-200 ease-linear"
             style={{ backgroundColor: color }}
           />
         </>
@@ -226,6 +229,25 @@ export default function Icon({ name, className, size = 25, color = 'black' }: Ic
               C258.834,243.681,255.477,240.323,251.334,240.323z"/>
           </g>
         </svg>
+      )
+    case 'nike':
+      return (
+        <Image className={className} src="/logos/athena-nike-logo.png" width={222} height={220} alt="Athena Nike logo" />
+      )
+    case 'nike-stroke':
+      return (
+        <Image className={className} src="/logos/athena-nike-logo-stroke.png" width={222} height={220} alt="Athena Nike logo" />
+      )
+    case 'zodiac-wheel':
+      return (
+        <Image
+          className={className}
+          src={`/logos/zodiac-wheel/zodiac-wheel-spinner-${color}.gif`}
+          width={150}
+          height={150}
+          alt="Zodiac wheel"
+          unoptimized
+        />
       )
     default:
       return <span />

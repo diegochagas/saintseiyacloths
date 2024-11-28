@@ -1,112 +1,76 @@
-import Image from "next/image"
-import ScrollTop from "../components/scroll-top"
-import { HistoryProps } from "@/pages/api/history"
-import { ClassProps } from "@/pages/api/classes"
-import { ArtistProps } from "@/pages/api/artists"
-import { SaintProps } from "@/pages/api/saints"
+'use client'
 
-export default async function Home() {
-  const classesResponse = await fetch('http://localhost:3000/api/classes')
-  const classes: ClassProps[] = await classesResponse.json()
-  const saintsResponse = await fetch('http://localhost:3000/api/saints')
-	const saintsFull: SaintProps[] = await saintsResponse.json()
-  const saints = saintsFull.slice(0, 10)
-	const artistsResponse = await fetch('http://localhost:3000/api/artists')
-	const artists: ArtistProps[] = await artistsResponse.json()
-  const historyResponse = await fetch('http://localhost:3000/api/history')
-  const history: HistoryProps[] = await historyResponse.json()
-  const responseGeolocation = await fetch('http://ip-api.com/json')
-  const geoLocation = await responseGeolocation.json()
-  
+import { useEffect, useState } from 'react'
+import { SaintProps } from '@/pages/api/saints'
+import { NewsProps } from '@/pages/api/news'
+import Banner from './components/banner'
+import News from './components/news'
+import Store from './components/store'
+import Classes from './components/classes'
+import { useLoading } from '../context/loading-content'
+
+export default function Home() {
+  const { setIsLoading } = useLoading()
+  const [saints, setSaints] = useState<SaintProps[]>([])
+  const [news, setNews] = useState<NewsProps[]>([])
+  const [geoLocation, setGeoLocation] = useState({ country: '' })
+
+  useEffect(() => {
+    async function getSaints() {
+      try {
+        const response = await fetch('http://localhost:3000/api/saints')
+        const data = await response.json()
+        setSaints(data)
+        return response
+      } catch(err) {
+        return { status: 500, message: `Error: Saints not found! ${err}` }
+      }
+    }
+
+    async function getNews() {
+      try {
+        const response = await fetch('http://localhost:3000/api/news')
+        const data = await response.json()
+        setNews(data)
+        return response
+      } catch(err) {
+        return { status: 500, message: `Error: News not found! ${err}` }
+      }
+    }
+
+    async function getGeoLocation() {
+      try {
+        const response = await fetch('http://ip-api.com/json')
+        const data = await response.json()
+        setGeoLocation(data)
+        return response
+      } catch(err) {
+        return { status: 500, message: `Error: Country not found! ${err}` }
+      }
+    }
+
+    async function checkIfIsLoading() {
+      const responseSaints = await getSaints()
+      const responseNews = await getNews()
+      const responseGeoLocation = await getGeoLocation()
+
+      if (!!responseSaints.status && !!responseNews.status && !!responseGeoLocation.status) {
+        setIsLoading(false)
+      }
+    }
+
+    checkIfIsLoading()
+  }, [setIsLoading])
+
   return (
-    <main className="pt-16">
-			<section className="bg-black relative pb-40">
-        <div className="absolute bottom-5 w-full px-6 pb-5 z-10">
-          <h5 className="text-white uppercase font-bold text-sm pb-1">Join the community of cloth scheme fans</h5>
-          <hr className="opacity-30" />
-          <h1 className="text-orange-400 text-4xl text-center uppercase font-black py-2">Saint Seiya</h1>
-          <hr className="opacity-30" />
-          <b className="text-white text-xs">聖闘士星矢</b>
-        </div>
-        <Image className="relative w-full h-full" src="/banner.jpg" width={1920} height={493} alt="manga banner" />
-      </section>
+    <>
+			<Banner />
 
-      <section className="bg-gray-100 px-5 py-12">
-        <ul className="flex flex-wrap items-center justify-center">
-          {classes.map((item, i) => (
-            <li className="text-zinc-800 text-sm" key={item.id}>
-              <a className="hover:font-bold" href={item.id}>
-                {i > 0 && "/"}&nbsp;{item.name}&nbsp;
-              </a>
-            </li>
-          ))}
-        </ul>
-      </section>
+      <News news={news.slice(-4)} />
 
-      <section className="p-8">
-        <h3 className="uppercase text-center font-bold text-lg">Recent posts</h3>
-        <h2 className="uppercase text-center font-bold text-4xl">Latest schemes</h2>
-        
-        <ul className="grid grid-cols-4 gap-7">
-          {saints.map(saint => (
-            <li key={saint.id}>
-              <a href="">
-                <b>{saint?.group?.name}</b>
-                <Image src={saint.image} alt="te" width={270} height={200} />
-                <h4>{saint?.character?.name}</h4>
-              </a>
-            </li>
-          ))}
-        </ul>
-      </section>
+      <Store geoLocation={geoLocation} />
 
-      {history?.length > 0 && (
-        <section className="bg-black">
-          {/* IF COUNTRY EQUALS TO BRAZIL */}
-          {geoLocation?.country === 'Brazil' && (
-            <div className="text-white flex flex-col items-center justify-center bg-[url('../../public/cover.jpg')] bg-[center_center] bg-cover min-h-[700px]">
-              <h3>Loja online</h3>
-              <h2>Ajude o nosso site comprando os nossos produtos</h2>
-              <a className="bg-white text-black uppercase p-4" href="https://lista.mercadolivre.com.br/_CustId_26475573_PrCategId_AD" target="_blank" rel="noopener noreferrer">Veja mais detalhes</a>
-            </div>
-          )}
-
-          <div>
-            <h3 className="uppercase text-center font-bold text-lg text-white">Schemes by</h3>
-            <h2 className="uppercase text-center font-bold text-4xl text-white">History</h2>
-            <ul className="grid grid-cols-4">
-              {history.map((item: any) => (
-                <li className="flex" key={`${item.id}${item.name}`}>
-                  <div className="">
-                    {item.logo && <Image src={item.logo} width={236} height={103} alt="" />}
-                    <span className="text-white">{item.midia.name}: {item.name}</span>
-                    <span className="text-white">{item.release}</span>
-                  </div>
-                  {item.image && <Image src={item.image} width={212} height={300} alt="" />}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </section>
-      )}
-
-      <section className="bg-gray-100 px-5 py-12">
-        <h3 className="uppercase text-center font-bold text-lg">Schemes by</h3>
-        <h2 className="uppercase text-center font-bold text-4xl">Artist</h2>
-        <ul className="grid grid-cols-4">
-          {artists.map(artist => (
-            <li className="text-zinc-800 text-sm" key={artist.name}>
-              <a className="flex artists-center gap-2" href={`/artists/${artist.id}`}>
-                {artist.image && <Image className="w-10" src={artist.image} alt={artist.name} width={229} height={217} />}
-
-                <b>{artist.name}</b>
-              </a>
-            </li>
-          ))}
-        </ul>
-      </section>
-
-      <ScrollTop />
-    </main>
+      <Classes saints={saints.slice(-8)} />
+    </>
   )
 }

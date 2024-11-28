@@ -1,0 +1,11 @@
+{
+  "title": "Menu",
+  "items": [
+    { "href": "/", "text": "Home" },
+    { "href": "/news", "text": "News" },
+    { "href": "/classes", "text": "Classes" },
+    { "href": "/artists", "text": "Artists" },
+    { "href": "/history", "text": "History" },
+    { "href": "/about", "text": "About" }
+  ]
+}

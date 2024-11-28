@@ -6,10 +6,10 @@ const files = [
   'characters',
   'classes',
   'cloths',
-  'curiosities',
-  'history',
   'groups',
+  'history',
   'midias',
+  'news',
   'ranks',
   'saints'
 ];

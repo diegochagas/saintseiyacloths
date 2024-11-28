@@ -66,7 +66,7 @@ export const loadSaintData = (saint: any) => {
     ...getCharacterAndGod(saint),
     artistSaint: artists.find(artist => artist.id === saint.artistSaint),
     artistCloth: artists.find(artist => artist.id === saint.artistCloth),
-    cloth: cloths.find(cloth => cloth.id === saint.cloth)?.name,
+    cloth: cloths.find(cloth => cloth.id === saint.cloth),
     group: groups.find(group => group.id === saint.group),
     rank: ranks.find(rank => rank.id === saint.rank)?.name,
     image: saint.image ?? 'cloth-schemes/others/no-scheme.png',

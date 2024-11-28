@@ -1,21 +1,25 @@
+import { HistoryProps } from '@/pages/api/history'
 import Image from 'next/image'
-import { history } from '../data/history'
 
-export default function History() {
+export default async function History() {
+  const historyResponse = await fetch('http://localhost:3000/api/history')
+  const history: HistoryProps[] = await historyResponse.json()
+
   return (
-    <main>
-      <h2 className="text-center py-8 uppercase text-3xl font-bold">History</h2>
-      {history.map(item => (
-        <div key={item.id}>
-          <div>
-            <Image src={item.logo} alt="logo" width={236} height={193} />
-            <span>{item.name}</span>
-            <span>{item.midia}</span>
-            <span>{item.release}</span>
-          </div>
-          <Image src={item.image} alt="poster" width={208} height={300} />
-        </div>
-      ))}
-    </main>
+    <section className="bg-black">
+      <h2 className="uppercase text-center font-bold text-4xl text-white">History</h2>
+      <ul className="grid grid-cols-4">
+        {history?.map((item: any) => (
+          <li className="flex" key={`${item.id}${item.name}`}>
+            <div className="">
+              {item.logo && <Image src={item.logo} width={236} height={103} alt="" />}
+              <span className="text-white">{item.midia.name}: {item.name}</span>
+              <span className="text-white">{item.release}</span>
+            </div>
+            {item.image && <Image src={item.image} width={212} height={300} alt="" />}
+          </li>
+        ))}
+      </ul>
+    </section>
   )
 }

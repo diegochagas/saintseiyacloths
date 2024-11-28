@@ -1,23 +1,37 @@
-import Image from "next/image"
+import { SaintProps } from '@/pages/api/saints'
+import Image from 'next/image'
+import Link from 'next/link'
+import Title from './title'
 
-export function Classes() {
-  const items = Array.from({ length: 10 }, (_, i) => ({ name: "Saints", image: "/classes/saints-logo.png", url: "", color: "bg-yellow-400", link: "saints" }))
+interface ClassesProps {
+  saints: SaintProps[]
+}
 
+export default function Classes({ saints }: ClassesProps) {
   return (
-    <section className="bg-gray-100 px-5 py-12">
-      <ul className="flex items-center gap-2 overflow-auto m-5">
-        {items.map((item, i) => (
-          <li key={item.name + i}>
-            <a className="flex flex-col items-center" href={item.link}>
-              <div className={`${item.color} w-16 h-w-16 flex items-center justify-center mb-4 p-2`}>
-                <Image src={item.image} alt={item.name} width={200} height={192} />
-              </div>
-              
-              <b className="text-zinc-800 uppercase">{item.name}</b>
-            </a>
+    <section className="max-w-7xl mt-20">
+      <Title text="Latest schemes" />
+      
+      <ul className="grid md:grid-cols-2 xl:grid-cols-4 gap-7">
+        {saints.map(saint => (
+          <li className="group" key={saint.id}>
+            <Link className="w-full h-full flex flex-col items-center" href={`/saints/${saint.id}`}>
+              <b className="capitalize">{saint?.cloth?.name || 'Unknown cloth'}</b>
+              <figure className="w-56 h-56 border-2 border-black overflow-hidden">
+                <Image className="w-full h-full object-contain group-hover:scale-110 duration-300" src={saint.image} alt="Saint image" width={542} height={400} />
+              </figure>
+              <h4 className="font-semibold text-sm">{saint?.character?.name}</h4>
+            </Link>
           </li>
         ))}
       </ul>
+
+      <Link
+        className="block text-center w-56 font-bold text-yellow-500 hover:text-black uppercase bg-black hover:bg-yellow-500 py-3 mt-9 mb-20 mx-auto"
+        href="/classes"
+      >
+        More
+      </Link>
     </section>
   )
 }
