@@ -18,12 +18,6 @@ interface ClothProps {
   image: string
 }
 
-interface GroupProps {
-  id: string
-  class: ClassProps
-  name: string
-}
-
 interface RankProps {
   id: string
   name: string
@@ -38,7 +32,8 @@ export interface SaintProps {
   id: string
   character: CharacterProps
   cloth: ClothProps
-  group: GroupProps
+  // group: GroupProps
+  group: string
   rank: RankProps
   god: CharacterProps
   image: string
@@ -71,18 +66,18 @@ export const loadSaintData = (saint: any) => {
     artistSaint: artists.find(artist => artist.id === saint.artistSaint),
     artistCloth: artists.find(artist => artist.id === saint.artistCloth),
     cloth: cloths.find(cloth => cloth.id === saint.cloth),
-    group: groups.find(group => group.id === saint.group),
+    // group: groups.find(group => group.id === saint.group),
     rank: ranks.find(rank => rank.id === saint.rank)?.name,
-    image: saint.image ?? 'cloth-schemes/others/no-scheme.png',
+    image: !saint.image ? '/cloth-schemes/others/no-scheme.jpg' : saint.image,
     history: loadHistoryData(saint.history),
   }
 }
 
 export function getItemsByPage(data: any[], page: number) {
   if (page) {
-    const startPage = (page * 10 - 10)
-    const endPage = (page * 10)
-    return data.slice(startPage, endPage)
+    const currentIndex = (page * 12 - 12)
+    const lastIndex = (page * 12)
+    return data.slice(currentIndex, lastIndex)
   } else {
     return data.slice(-10)
   }
@@ -95,5 +90,5 @@ export default function handler(
   const page: number = parseInt(req.query.page as string) 
   const saints: SaintProps[] = getItemsByPage(saintsJson, page)
     .map(saint => loadSaintData(saint))
-  res.status(200).json({ data: saints, totalPages: Math.round(saintsJson.length / 10) })
+  res.status(200).json({ data: saints, totalPages: Math.ceil(saintsJson.length / 12) })
 }

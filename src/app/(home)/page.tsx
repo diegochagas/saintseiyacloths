@@ -20,7 +20,7 @@ export default function Home() {
       try {
         const response = await fetch('http://localhost:3000/api/saints')
         const data = await response.json()
-        setSaints(data)
+        setSaints(data.data)
         return response
       } catch(err) {
         return { status: 500, message: `Error: Saints not found! ${err}` }

@@ -44,7 +44,7 @@ export default function Header() {
       <nav className={`${(isMenuOpen && isMobile) ? 'bg-[url("/banners/bg_menu.jpg")] bg-center bg-cover h-screen' : 'bg-black mt-[60px] lg:mt-[92px] flex justify-center'} w-full fixed uppercase z-30`}>
         <ul className={`${isMenuOpen ? 'flex-col gap-4 justify-center h-full' : 'justify-between'} ${(!isMenuOpen && isMobile) ? 'hidden' : 'flex'} w-full max-w-7xl py-2.5 px-6 transition-opacity duration-200`}>
           {menu.items.map(item => (
-            <li key={item.text} className="hover:text-yellow-500 text-white group">
+            <li key={item.text} className="hover:text-yellow-500 text-white group" onClick={() => setIsMenuOpen(false)}>
               <Link className="flex items-center gap-4 md:gap-2 lg:gap-4" href={item.href}>
                 <Icon className="group-hover:fill-yellow-500" name={item.text.toLocaleLowerCase() as iconName} color="white" />
                 <span className="text-2xl md:text-lg lg:text-xl font-bold">{item.text}</span>

@@ -1,44 +1,52 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
+import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { ClassProps } from '@/pages/api/classes'
-import Image from 'next/image'
-import Title from '../components/title'
-import Tabs from './components/tabs';
-import Loading from '../components/loading';
-import Table from './components/table';
-import Pagination from './components/pagination';
+import Tabs from './components/tabs'
+import Pagination from './components/pagination'
 import { useLoading } from '../context/loading-content'
+import { SaintProps } from '@/pages/api/saints'
+import Saints from '../components/saints'
+import Icon from '../components/icons'
 
 export default function Classes() {
+  const router = useRouter()
+  const searchParams = useSearchParams()
+  const pathname = usePathname()
   const [tabs, setTabs] = useState<ClassProps[]>([])
-  const [activeTab, setActiveTab] = useState<string>('saints');
-  const [currentPage, setCurrentPage] = useState<number>(1);
-  const [data, setData] = useState<any[]>([]);
-  const [totalPages, setTotalPages] = useState<number>(1);
-  const { isLoading, setIsLoading } = useLoading() 
-
+  const [activeTab, setActiveTab] = useState<string>(searchParams?.get('cls') ?? 'saints')
+  const [currentPage, setCurrentPage] = useState<number>(1)
+  const [data, setData] = useState<any[]>([])
+  const [totalPages, setTotalPages] = useState<number>(1)
+  const [totalResults, setTotalResults] = useState(1)
+  const [firstResult, setFirstResult] = useState(1)
+  const [lastResult, setLastResult] = useState(1)
+  const [isLoadingTable, setIsLoadingTable] = useState(false)
+  const { setIsLoading } = useLoading()
 
   useEffect(() => {
     const fetchData = async () => {
-      setIsLoading(true);
+      setIsLoadingTable(true)
       try {
         const response = await fetch(
           `http://localhost:3000/api/saints/${encodeURIComponent(activeTab)}?page=${currentPage}`
         )
-        const result = await response.json();
-        setData(result.data);
-        setTotalPages(result.totalPages);
+        const result = await response.json()
+        setData(result.data)
+        setTotalPages(result.totalPages)
+        setTotalResults(result.totalResults)
+        setIsLoadingTable(false)
         setIsLoading(false)
       } catch (error) {
-        console.error('Error fetching data:', error);
+        console.error('Error fetching data:', error)
       } finally {
-        setIsLoading(false);
+        setIsLoadingTable(false)
       }
-    };
+    }
 
-    fetchData();
-  }, [activeTab, currentPage, setIsLoading]);
+    fetchData()
+  }, [activeTab, currentPage, setIsLoading, setIsLoadingTable])
 
   useEffect(() => {
     async function getClasses() {
@@ -46,49 +54,68 @@ export default function Classes() {
         const classesResponse = await fetch('http://localhost:3000/api/classes')
         const classes: ClassProps[] = await classesResponse.json()
         setTabs(classes)
-        setIsLoading(false)
+        setIsLoadingTable(false)
       } catch (error) {
-        console.error('Error fetching data:', error);
+        console.error('Error fetching data:', error)
       } finally {
-        setIsLoading(false);
+        setIsLoadingTable(false)
       }
     }
 
     getClasses()
-  }, [setIsLoading])
+  }, [setIsLoadingTable])
+
+  useEffect(() => {
+    const currentIndex = currentPage * 12 - 11
+    setFirstResult(currentIndex)
+    const lastIndex = currentPage * 12
+    setLastResult(lastIndex >= totalResults ? lastIndex : totalResults)
+  }, [currentPage])
+
+  const createQueryString = useCallback(
+    (name: string, value: string) => {
+      const params = new URLSearchParams(searchParams?.toString())
+      params.set(name, value)
+ 
+      return params.toString()
+    },
+    [searchParams]
+  )
 
   const handleTabChange = (tab: string) => {
-    setActiveTab(tab);
-    setCurrentPage(1); // Reset to first page when tab changes
-  };
+    setActiveTab(tab)
+    router.push(pathname + '?' + createQueryString('cls', tab))
+    setCurrentPage(1)
+  }
 
   const handlePageChange = (page: number) => {
-    setCurrentPage(page);
-  };
-
+    setCurrentPage(page)
+  }
+  
   return (
-    <div className="bg-gray-100 px-5 py-12 mt-16">
-      <Title text="Classes" />
-      {/* <ul className="flex items-center gap-2 overflow-auto m-5"> */}
-        {/*classes.map((cls, i) => ( */}
-          {/* <li key={cls.name + i}> */}
-            {/* <div className="flex flex-col clss-center"> */}
-              {/* <div className="w-16 h-w-16 flex clss-center justify-center mb-4 p-2"> */}
-                {/* <Image src={cls.image} alt={cls.name} width={200} height={192} /> */}
-              {/* </div> */}
-              
-              {/* <b className="text-zinc-800 uppercase">{cls.name}</b> */}
-            {/* </div> */}
-          {/* </li> */}
-        {/* ))} */}
-      {/* </ul> */}
-
-      <div style={{ position: 'relative', padding: '2rem' }}>
+    <div className="my-28 md:my-48">
+      <div className="flex w-full">
+        <div className="max-w-7xl">
+          <h1 className="uppercase font-extrabold text-6xl md:text-8xl">Classes</h1>
+        </div>
+      </div>
       {tabs?.length > 0 && <Tabs tabs={tabs} activeTab={activeTab} onTabChange={handleTabChange} />}
-      {isLoading && <Loading />}
-      {data?.length > 0 && <Table data={data} />}
+      {data?.length > 0 && (
+        <div className="flex justify-center relative">
+          {isLoadingTable && (
+            <div className="fixed w-full h-full bg-white/75 flex justify-center items-center z-50 top-0">
+              <Icon name="zodiac-wheel" color="black" />
+            </div>
+          )}
+          <div className="bg-white p-5">
+            <div className="border-2 border-black p-5 max-w-7xl">
+              <small className="mb-2 md:my-4 block">{totalResults} Results {firstResult} - {lastResult}</small>
+              <Saints data={data} />
+            </div>
+          </div>
+        </div>
+      )}
       <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={handlePageChange} />
-    </div>
     </div>
   )
 }

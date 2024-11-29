@@ -21,7 +21,7 @@
 20,16,67,athena-saints-21,4,582,6,6,/cloth-schemes/athena-saints/cetus-allegre.jpg,7
 21,17,165,athena-saints-40,6,582,1,1,/cloth-schemes/athena-saints/heracles-algethi.jpg,1
 22,18,273,athena-saints-63,6,582,1,1,/cloth-schemes/athena-saints/perseus-algol.jpg,1
-23,19,360,arthur-gladiators,,582,7,7,/cloth-schemes/arthur-gladiators/vorpal-alice.jpg,10
+23,19,360,arthur-gladiators,,488,7,7,/cloth-schemes/arthur-gladiators/vorpal-alice.jpg,10
 24,20,105,athena-saints-32,5,582,4,4,/cloth-schemes/athena-saints/delphinus-mii.jpg,5
 25,21,32,athena-saints-8,6,582,6,6,/cloth-schemes/athena-saints/auriga-almaaz.png,16
 26,22,159,hades-gods,9,168,10,10,/cloth-schemes/hades-specters/hades-alone-anime.jpg,15
@@ -101,7 +101,7 @@
 100,97,55,athena-saints-12,7,582,1,1,/cloth-schemes/athena-saints/cancer-deathmask.jpg,1
 101,97,56,athena-saints-12,9,582,5,5,/cloth-schemes/athena-saints/cancer-deathmask-god.jpg,14
 102,97,289,eris-ghost-saints-2,,308,6,6,/cloth-schemes/eris-dryads/punishment-deathmask.jpg,5
-103,98,55,athena-saints-12,7,582,16,10,/cloth-schemes/athena-saints/cancer-deathtoll.png,4
+103,98,55,athena-saints-12,7,582,16,10,/cloth-schemes/athena-saints/cancer-deathtoll.jpg,4
 104,99,148,athena-saints-38,7,582,16,16,/cloth-schemes/athena-saints/gemini-defteros.png,6
 105,100,18,athena-saints-4,7,582,20,20,/cloth-schemes/athena-saints/aquarius-degel.jpg,6
 106,395,11,athena-saints-1,5,582,5,31,/cloth-schemes/athena-saints/andromeda-shun-3-omega.jpg,16
@@ -268,7 +268,7 @@
 267,240,170,typhon-sons-3,,444,5,6,/cloth-schemes/typhon-gigas/hundred-dragons-ladon.jpg,27
 268,241,365,hades-terrestrial-star-85,14,168,1,1,/cloth-schemes/hades-specters/worm-laimi.jpg,1
 269,242,397,lamech-gods,9,242,6,6,/cloth-schemes/lamech-servants/lamech.jpg,29
-270,243,28,arthur-gladiators,,582,7,7,/cloth-schemes/arthur-gladiators/arondight-lancelot.jpg,10
+270,243,28,arthur-gladiators,,488,7,7,/cloth-schemes/arthur-gladiators/arondight-lancelot.jpg,10
 271,424,261,athena-saints-62,5,582,,,/cloth-schemes/athena-saints/pegasus-tenma-1.jpg,15
 272,243,56,athena-saints-12,9,582,,,/cloth-schemes/athena-saints/cancer-lancelot-god.jpg,10
 273,245,,hades-other-specters-3,13,168,6,6,/cloth-schemes/hades-specters/larry.jpg,29
@@ -348,7 +348,7 @@
 347,322,327,typhon-brothers-3,,444,5,6,/cloth-schemes/typhon-gigas/stupidity-pallas.jpg,27
 348,323,256,pallas-gods,9,323,5,5,/cloth-schemes/pallas-pallasites/pallas.png,16
 349,325,,hades-representative,31,168,10,10,/cloth-schemes/hades-specters/pandora-heinstein.png,1
-350,326,33,arthur-gladiators,,582,,,/cloth-schemes/arthur-gladiators/azoth-paracelsus.png,10
+350,326,33,arthur-gladiators,,488,,,/cloth-schemes/arthur-gladiators/azoth-paracelsus.png,10
 351,327,17,athena-saints-3,5,582,30,,/cloth-schemes/athena-saints/apus-paradise.png,29
 352,328,148,athena-saints-38,7,582,5,5,/cloth-schemes/athena-saints/gemini-paradox.png,16
 353,328,326,pallas-weapon-secondclass-4,33,323,31,8,/cloth-schemes/pallas-pallasites/staff-scarlet-janus-paradox.png,16
@@ -385,7 +385,7 @@
 384,360,278,athena-saints-64,4,582,6,6,/cloth-schemes/athena-saints/phoenix-ritahoa.jpg,32
 385,361,152,hades-other-specters-9,13,168,1,1,/cloth-schemes/hades-specters/golem-rock.jpg,1
 386,362,264,athena-saints-62,5,582,,,/cloth-schemes/athena-saints/pegasus-rodorio.jpg,29
-387,363,125,arthur-gladiators,,582,7,7,/cloth-schemes/arthur-gladiators/durandal-roland.jpg,10
+387,363,125,arthur-gladiators,,488,7,7,/cloth-schemes/arthur-gladiators/durandal-roland.jpg,10
 388,364,298,mars-heavenly-kings,44,33,5,5,/cloth-schemes/ares-martians/romulus.png,16
 389,365,295,athena-former-saints-66,5,582,6,6,/cloth-schemes/athena-saints/rangifer-rudolph.png,16
 390,366,300,odin-god-warriors,,495,5,5,/cloth-schemes/odin-god-warriors/rung.png,22
@@ -414,7 +414,7 @@
 413,379,302,athena-saints-72,7,582,5,5,/cloth-schemes/athena-saints/sagittarius-seiya-1.png,16
 414,379,370,athena-saints-72,7,582,5,5,/cloth-schemes/athena-saints/sagittarius-seiya-2.png,16
 415,379,246,odin-gods,9,495,5,5,/cloth-schemes/odin-god-warriors/odin-seiya.jpg,12
-416,379,368,arthur-gladiators,,582,7,7,/cloth-schemes/arthur-gladiators/kusanagi-seiya.jpg,10
+416,379,368,arthur-gladiators,,488,7,7,/cloth-schemes/arthur-gladiators/kusanagi-seiya.jpg,10
 417,380,288,poseidon-gods,9,494,12,1,/cloth-schemes/poseidon-mariners/poseidon-seraphina.jpg,6
 418,381,356,athena-saints-86,7,582,1,1,/cloth-schemes/athena-saints/virgo-shaka.jpg,1
 419,381,357,athena-saints-86,9,582,5,5,/cloth-schemes/athena-saints/virgo-shaka-god.jpg,14
@@ -438,7 +438,7 @@
 437,393,,athena-soldiers,1,582,,,/cloth-schemes/athena-saints/soldier-sho.jpg,6
 438,394,134,athena-saints-35,5,582,4,4,/cloth-schemes/athena-saints/equuleus-shoko-2.jpg,5
 439,395,8,athena-saints-1,5,582,1,1,/cloth-schemes/athena-saints/andromeda-shun-1.jpg,1
-440,489,401,arthur-gladiators,,582,7,7,/cloth-schemes/arthur-gladiators/clarent-mordred.jpg,10
+440,489,401,arthur-gladiators,,488,7,7,/cloth-schemes/arthur-gladiators/clarent-mordred.jpg,10
 441,395,10,athena-saints-1,5,582,1,1,/cloth-schemes/athena-saints/andromeda-shun-2.jpg,1
 442,395,11,athena-saints-1,5,582,1,1,/cloth-schemes/athena-saints/andromeda-shun-3.jpg,1
 443,395,12,athena-saints-1,9,582,1,1,/cloth-schemes/athena-saints/andromeda-shun-god.jpg,1
@@ -448,7 +448,7 @@
 447,396,60,athena-saints-16,9,582,5,5,/cloth-schemes/athena-saints/capricornus-shura-god.jpg,14
 448,397,122,odin-ursa-major-star-1,,495,33,32,/cloth-schemes/odin-god-warriors/dubhe-siegfried.jpg,12
 449,398,155,odin-chamber-6,,495,5,5,/cloth-schemes/odin-god-warriors/grani-sigmund.png,14
-450,399,154,arthur-gladiators,,582,7,7,/cloth-schemes/arthur-gladiators/gram-sigurd.jpg,10
+450,399,154,arthur-gladiators,,488,7,7,/cloth-schemes/arthur-gladiators/gram-sigurd.jpg,10
 451,400,,lamech-servants,,242,6,6,/cloth-schemes/lamech-servants/sillas.jpg,29
 452,401,58,athena-saints-14,6,582,1,1,/cloth-schemes/athena-saints/canis-major-sirius.jpg,1
 453,402,302,athena-saints-72,7,582,21,21,/cloth-schemes/athena-saints/sagittarius-sisyphus-lost-canvas-anime.jpg,15
@@ -500,7 +500,7 @@
 499,439,320,apollo-angels,,28,1,1,/cloth-schemes/zeus-angels/sleep-angel-toma.jpg,4
 500,440,30,athena-gods,9,582,,,/cloth-schemes/athena-saints/athena-tomoe.png,10
 501,441,129,garnet-jewels,,149,6,6,/cloth-schemes/garnet-jewels/electricity-tourmasline.jpg,7
-502,442,16,arthur-gladiators,,582,7,7,/cloth-schemes/arthur-gladiators/aparajita-trivikramasena.jpg,10
+502,442,16,arthur-gladiators,,488,7,7,/cloth-schemes/arthur-gladiators/aparajita-trivikramasena.jpg,10
 503,443,355,athena-saints-85,6,582,5,5,/cloth-schemes/athena-saints/vela-tsubaki.png,6
 504,444,348,typhon-gods,9,444,5,6,/cloth-schemes/typhon-gigas/typhon.jpg,27
 505,445,349,odin-god-warriors,,495,5,5,/cloth-schemes/odin-god-warriors/ullr.png,22
@@ -570,7 +570,7 @@
 569,485,,astraea-golden-tribe,,484,5,5,/cloth-schemes/astraea-golden-tribe/ex.png,28
 570,486,,astraea-golden-tribe,,484,5,5,/cloth-schemes/astraea-golden-tribe/machina.png,28
 571,487,1,hades-celestial-star-4,13,168,6,6,/cloth-schemes/hades-specters/acheron-nyan.png,4
-572,488,400,arthur-gladiators-king,,582,,,/cloth-schemes/arthur-gladiators/excalibur-arthur-pendragon.png,10
+572,488,400,arthur-gladiators-king,,488,,,/cloth-schemes/arthur-gladiators/excalibur-arthur-pendragon.png,10
 573,,402,hades-celestial-star-8,,168,6,6,/cloth-schemes/hades-specters/wyrm-1.jpg,29
 574,490,403,eris-dryads,,308,6,6,/cloth-schemes/eris-dryads/oath-edward.jpg,5
 575,101,408,eris-phantoms,9,308,6,6,/cloth-schemes/eris-dryads/terror-deimos.jpg,5
@@ -701,11 +701,11 @@
 700,255,,other-characters,,0,,,/cloth-schemes/others/natassia-daughter.png,10
 701,603,,hades-faceless,,168,,,/cloth-schemes/hades-faceless/fear-demon.png,10
 702,604,,hades-faceless,,168,,,/cloth-schemes/hades-faceless/fire-demon.png,10
-703,,,arthur-gladiators-low,25,582,7,7,/cloth-schemes/arthur-gladiators/unknown-gladiator.jpg,10
-704,,,arthur-gladiators-low,25,582,7,7,/cloth-schemes/arthur-gladiators/unknown-gladiator-2.jpg,10
+703,,,arthur-gladiators-low,25,488,7,7,/cloth-schemes/arthur-gladiators/unknown-gladiator.jpg,10
+704,,,arthur-gladiators-low,25,488,7,7,/cloth-schemes/arthur-gladiators/unknown-gladiator-2.jpg,10
 705,605,,hades-faceless,,168,,,/cloth-schemes/hades-faceless/thunder-clouds.png,10
 706,,,hades-faceless,,168,,,/cloth-schemes/hades-faceless/unnamed-faceless.png,10
-707,,,arthur-gladiators-low,25,582,7,7,/cloth-schemes/arthur-gladiators/unknown-gladiator-3.jpg,10
+707,,,arthur-gladiators-low,25,488,7,7,/cloth-schemes/arthur-gladiators/unknown-gladiator-3.jpg,10
 708,606,,other-characters,40,84,,,/cloth-schemes/others/euryale-gorgon.png,8
 709,607,,hades-other-specters-5,13,168,6,6,/cloth-schemes/hades-specters/stone.jpg,29
 710,,,hades-other-specters-2,,168,6,6,/cloth-schemes/hades-specters/star-matter.jpg,29
