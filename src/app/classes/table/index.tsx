@@ -2,6 +2,7 @@ import Icon from '@/app/components/icons'
 import Pagination from './pagination'
 import Saints from '@/app/components/saints'
 import Tabs from './tabs'
+import { ReactNode } from 'react'
 
 interface TableProps {
   title: string
@@ -16,6 +17,7 @@ interface TableProps {
   totalResults: number
   currentPage: number
   totalPages: number
+  description?: string
 }
 
 export default function Table({
@@ -31,6 +33,7 @@ export default function Table({
   totalResults,
   currentPage,
   totalPages,
+  description
 }: TableProps) {
   return (
     <div className="my-28 md:my-48">
@@ -50,9 +53,12 @@ export default function Table({
           
           <div className="bg-white p-5">
             <div className="border-2 border-black p-5 max-w-7xl">
-              {((firstResult === 1 && totalResults > lastResult) || firstResult > 1) && (
-                <small className="mb-2 md:my-4 block">{totalResults} Results {firstResult} - {lastResult}</small>
-              )}
+              <p className="flex justify-between">
+                {((firstResult === 1 && totalResults > lastResult) || firstResult > 1) && (
+                  <small className="mb-2 md:my-4 block text-2xs sm:text-xs">{totalResults} Results {firstResult} - {lastResult}</small>
+                )}
+                {description && <small className="mb-2 md:my-4 block capitalize text-2xs sm:text-xs">{description}</small>}
+              </p>
               <Saints data={data} />
             </div>
           </div>

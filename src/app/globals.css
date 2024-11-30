@@ -5,3 +5,8 @@
 .text-stroke-white {
   text-shadow: -2px -2px 0 white, 2px -2px 0 white, -2px 2px 0 white, 2px 2px 0 white;
 }
+
+.text-2xs {
+  font-size: 0.625rem /* 10px */;
+  line-height: 0.875rem /* 14px */;
+}

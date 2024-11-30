@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { ClassProps } from '@/pages/api/classes'
 import { useLoading } from '../context/loading-content'
@@ -19,8 +19,17 @@ export default function Classes() {
   const [totalResults, setTotalResults] = useState(1)
   const [firstResult, setFirstResult] = useState(1)
   const [lastResult, setLastResult] = useState(1)
+  const [totalRevealed, setTotalRevealed] = useState()
+  const [totalSaints, setTotalSaints] = useState()
   const [isLoadingTable, setIsLoadingTable] = useState(false)
   const { setIsLoading } = useLoading()
+  const isSaints = activeTab === 'saints'
+  const isSpecters = activeTab === 'specters'
+
+  const handlePageChange = useCallback((page: number) => {
+    router.push(`${pathname}?cls=${activeTab}&page=${page}`)
+    setCurrentPage(page)
+  }, [activeTab, pathname, router])
 
   useEffect(() => {
     const fetchData = async () => {
@@ -30,11 +39,15 @@ export default function Classes() {
           `http://localhost:3000/api/saints/${activeTab}?page=${currentPage}`
         )
         const result = await response.json()
+
+        if (!result.data?.length) handlePageChange(1)
         setData(result.data)
         setFirstResult(result.resultInitial)
         setLastResult(result.resultLast)
         setTotalPages(result.totalPages)
         setTotalResults(result.totalResults)
+        setTotalRevealed(result.totalRevealed)
+        setTotalSaints(result.totalSaints)
         setIsLoadingTable(false)
         setIsLoading(false)
       } catch (error) {
@@ -45,7 +58,7 @@ export default function Classes() {
     }
 
     fetchData()
-  }, [activeTab, currentPage, setIsLoading, setIsLoadingTable])
+  }, [activeTab, currentPage, handlePageChange, setIsLoading, setIsLoadingTable])
 
   useEffect(() => {
     async function getClasses() {
@@ -69,12 +82,6 @@ export default function Classes() {
     router.push(`${pathname}?cls=${tab}&page=${currentPage}`)
     setCurrentPage(1)
   }
-
-  const handlePageChange = (page: number) => {
-    router.push(`${pathname}?cls=${activeTab}&page=${page}`)
-    setCurrentPage(page)
-  }
-  
   return (
     <Table
       title="Classes"
@@ -89,6 +96,7 @@ export default function Classes() {
       totalResults={totalResults}
       currentPage={currentPage}
       totalPages={totalPages}
+      description={(isSaints || isSpecters) ? `${activeTab} ${totalRevealed} of ${totalSaints} revealed` : undefined}
     />
   )
 }
