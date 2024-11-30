@@ -1,13 +1,13 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { SaintProps } from '@/pages/api/saints'
 import { NewsProps } from '@/pages/api/news'
 import Banner from './components/banner'
 import News from './components/news'
 import Store from './components/store'
 import Classes from './components/classes'
 import { useLoading } from '../context/loading-content'
+import { SaintProps } from '@/pages/api/classes'
 
 export default function Home() {
   const { setIsLoading } = useLoading()
@@ -18,7 +18,7 @@ export default function Home() {
   useEffect(() => {
     async function getSaints() {
       try {
-        const response = await fetch('http://localhost:3000/api/saints/latest')
+        const response = await fetch('/api/classes?q=latest')
         const result = await response.json()
         setSaints(result.data)
         return response
@@ -29,7 +29,7 @@ export default function Home() {
 
     async function getNews() {
       try {
-        const response = await fetch('http://localhost:3000/api/news')
+        const response = await fetch('/api/news?q=latest')
         const result = await response.json()
         setNews(result.data)
         return response
@@ -66,7 +66,7 @@ export default function Home() {
     <>
 			<Banner />
 
-      {news && <News news={news.slice(-4)} />}
+      {news && <News news={news.slice(0, 4)} />}
 
       {geoLocation.country === 'Brazil' && <Store />}
 

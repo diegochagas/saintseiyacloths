@@ -1,8 +1,7 @@
-import { SaintProps } from '@/pages/api/saints'
 import Image from 'next/image'
 import Link from 'next/link'
 import Title from '../../components/title'
-import Saints from '@/app/components/saints'
+import { SaintProps } from '@/pages/api/classes'
 
 interface ClassesProps {
   saints: SaintProps[]

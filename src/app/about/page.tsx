@@ -1,14 +1,28 @@
-export default async function About() {
-  const response = await fetch('http://localhost:3000/api/about')
-  const about = await response.json()
+'use client'
 
-  return (
-    <div>
-      <h1>{about.title}</h1>
+import { useEffect, useState } from 'react'
+import { useLoading } from '../context/loading-content'
+import Content from './content'
 
-      {about.paragraphs.map((text: string) => (
-        <p key={text}>{text}</p>
-      ))}
-    </div>
-  )
+export interface ContentProps {
+  title: String,
+  paragraphs: string[]
+}
+
+export default function About() {
+  const [about, setAbout] = useState<ContentProps>()
+  const { setIsLoading } = useLoading()
+  
+  useEffect(() => {
+    async function getData() {
+      const response = await fetch('/api/about')
+      const about = await response.json()
+      setAbout(about)
+      setIsLoading(false)
+    }
+
+    getData()
+  }, [])
+
+  return about && <Content title={about.title} paragraphs={about.paragraphs} />
 }

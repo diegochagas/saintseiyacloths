@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import saintsJson from './data/saints.json'
 import newsJson from './data/news.json'
-import { getItemsByPage, loadSaintData, SaintProps } from './saints'
+import { getContentByPage, loadSaintData, SaintProps } from './classes'
 
 export interface NewsProps {
   character: string
@@ -11,24 +11,27 @@ export interface NewsProps {
   saints: SaintProps[]
 }
 
-function getNewsWithSaints(news: NewsProps[]) {
-  return news.map((item: any) => {
-    const saints = saintsJson.filter((saint: any ) => saint.character === item.character)
-    return {
-      ...item,
-      saints: saints.map(saint => loadSaintData(saint) as SaintProps)
-    }
-  })
-}
- 
 export default function handler(
   req: NextApiRequest,
   res: NextApiResponse<any>
 ) {
-  const page: number = parseInt(req.query.page as string) 
-  const news: NewsProps[] = getItemsByPage(newsJson, page)
-    .map(item => ({ ...item, saints: item.saints?.map((saint: any) => loadSaintData(saint)) }))
-  const data: NewsProps[] = getNewsWithSaints(news)
+  const { q, p } = req.query
+  const newsData = newsJson.find(item => item.character === q)
   
-  res.status(200).json({ data, totalPages: Math.ceil(newsJson.length / 12) })
+  if (newsData) {
+    res.status(200).json({
+      ...newsData,
+      data: saintsJson.filter(saint => saint.character === newsData.character).map(saint => loadSaintData(saint))
+    })
+  } else if (q === 'latest') {
+    const data = newsJson.slice(0, 10).map(item => {
+      const saints = saintsJson.filter(saint => saint.character === item.character).map(saint => loadSaintData(saint))
+      return { ...item, saints }
+    })
+    res.status(200).json({ data })
+  } else if (!q && p) {
+    res.status(200).json({ ...getContentByPage(newsJson, p) })
+  } else {
+    res.status(400).json({ message: `Error: news not found!` })
+  }
 }

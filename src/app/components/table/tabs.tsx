@@ -14,12 +14,14 @@ export default function Tabs({ tabs, activeTab, onTabChange }: TabsProps) {
       <div className="bg-neutral-400 pt-2 md:pt-10 md:pb-5 w-full">
         <ul className="flex flex-wrap justify-center items-center gap-1 md:gap-2 m-5">
           {tabs.map(tab => (
-            <li
-              key={tab.id}
-              className={`${activeTab === tab.id ? 'bg-black text-white' : 'bg-white text-black'} hover:bg-black hover:text-white border-2 md:border-4 border-black px-1 md:px-10 rounded-3xl cursor-pointer font-black whitespace-nowrap text-xs md:text-base`}
-              onClick={() => onTabChange(tab.id)}
-            >
-              {tab.name}
+            <li key={tab.id}>
+              <button
+                className={`${activeTab === tab.id ? 'bg-black text-white' : 'bg-white text-black'} hover:bg-black hover:text-white border-2 md:border-4 border-black px-1 md:px-10 rounded-3xl font-black text-xs md:text-base`}
+                onClick={() => onTabChange(tab.id)}
+                disabled={activeTab === tab.id}
+              >
+                {tab.name}
+              </button>
             </li>
           ))}
         </ul>
