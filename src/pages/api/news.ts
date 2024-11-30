@@ -1,26 +1,34 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import saints from './data/saints.json'
-import news from './data/news.json'
-import { loadSaintData, SaintProps } from './saints'
+import saintsJson from './data/saints.json'
+import newsJson from './data/news.json'
+import { getItemsByPage, loadSaintData, SaintProps } from './saints'
 
 export interface NewsProps {
-  saint: SaintProps
+  character: string
   title: string
   date: Date
   description: string
+  saints: SaintProps[]
+}
+
+function getNewsWithSaints(news: NewsProps[]) {
+  return news.map((item: any) => {
+    const saints = saintsJson.filter((saint: any ) => saint.character === item.character)
+    return {
+      ...item,
+      saints: saints.map(saint => loadSaintData(saint) as SaintProps)
+    }
+  })
 }
  
 export default function handler(
-  _: NextApiRequest,
+  req: NextApiRequest,
   res: NextApiResponse<any>
 ) {
-  const data: NewsProps[] = news.map((item: any) => {
-    const saint = saints.find((saint: any ) => saint.id === item.saint)
-    return {
-      ...item,
-      saint: loadSaintData(saint) as SaintProps
-    }
-  })
-
-  res.status(200).json(data)
+  const page: number = parseInt(req.query.page as string) 
+  const news: NewsProps[] = getItemsByPage(newsJson, page)
+    .map(item => ({ ...item, saints: item.saints?.map((saint: any) => loadSaintData(saint)) }))
+  const data: NewsProps[] = getNewsWithSaints(news)
+  
+  res.status(200).json({ data, totalPages: Math.ceil(newsJson.length / 12) })
 }

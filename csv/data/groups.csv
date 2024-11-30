@@ -1,163 +1,46 @@
 ﻿id,class,name
+apollo-gods,angels,Gods
 apollo-angels,angels,Angels
-apollo-fallen-angels,Fallen Angels,Fallen Angels
+apollo-fallen-angels,fallen-angels,Fallen Angels
+apollo-abel-saints-17,corona-saints,Carina constellation
+apollo-abel-saints-25,corona-saints,Coma Berenices constellation
+apollo-abel-saints-51,corona-saints,Lynx constellation
+apollo-abel-revived-saints-4,corona-saints,Aquarius constellation
+apollo-abel-revived-saints-12,corona-saints,Cancer constellation
+apollo-abel-revived-saints-16,corona-saints,Capricornus constellation
+apollo-abel-revived-saints-38,corona-saints,Gemini constellation
+apollo-abel-revived-saints-66,corona-saints,Pisces constellation
 apsu-anunnakis,anunnakis,Anunnakis
 apsu-weapons,anunnakis,Weapons
 ares-gods,berserkers,Gods
+ares-legion-flame,berserkers,Legion Of Flame
 ares-legion-disaster,berserkers,Legion Of Disaster
 ares-legion-fear,berserkers,Legion Of Fear
 ares-legion-fire,berserkers,Legion Of Fire
-ares-legion-flame,berserkers,Legion Of Flame
+ares-mars-representatives,martians,Representative
 ares-mars-heavenly-kings,martians,Four Heavenly Kings of Mars
 ares-mars-martians,martians,Martians
-ares-mars-representatives,martians,Representative
 ares-mars-soldiers,martians,Soldiers
 artemis-gods,satellites,Gods
-artemis-satellite-captain,satellites,Captain
 artemis-satellite-representative,satellites,Representative
-artemis-satellites,satellites,Satellites
+artemis-satellite-captain,satellites,Captain
 artemis-witch,satellites,Witch of the Moon
-arthur-gladiators,gladiators,Gladiators
+artemis-satellites,satellites,Satellites
 arthur-gladiators-king,gladiators,King
+arthur-gladiators,gladiators,Gladiators
 arthur-gladiators-low,gladiators,Low Rank
 astraea-gods,golden-tribe,Gods
 astraea-golden-tribe,golden-tribe,Golden tribe
-athena-chinese-saints-1,saints,Jue/Jiao chinese constellation
-athena-chinese-saints-10,saints,Nu chinese constellation
-athena-chinese-saints-11,saints,Xu chinese constellation
-athena-chinese-saints-12,saints,Wei chinese constellation
-athena-chinese-saints-13,saints,Shi chinese constellation
-athena-chinese-saints-14,saints,Bi chinese constellation
-athena-chinese-saints-15,saints,Kui chinese constellation
-athena-chinese-saints-16,saints,Lou chinese constellation
-athena-chinese-saints-17,saints,Wei chinese constellation
-athena-chinese-saints-18,saints,Mao chinese constellation
-athena-chinese-saints-19,saints,Bi chinese constellation
-athena-chinese-saints-2,saints,Kang chinese constellation
-athena-chinese-saints-20,saints,Zi chinese constellation
-athena-chinese-saints-21,saints,Shen chinese constellation
-athena-chinese-saints-22,saints,Jing chinese constellation
-athena-chinese-saints-23,saints,Gui chinese constellation
-athena-chinese-saints-24,saints,Liu chinese constellation
-athena-chinese-saints-25,saints,Xing chinese constellation
-athena-chinese-saints-26,saints,Zhang chinese constellation
-athena-chinese-saints-27,saints,Yi chinese constellation
-athena-chinese-saints-28,saints,Zhen chinese constellation
-athena-chinese-saints-3,saints,Di chinese constellation
-athena-chinese-saints-4,saints,Fang chinese constellation
-athena-chinese-saints-5,saints,Xin chinese constellation
-athena-chinese-saints-6,saints,Wei chinese constellation
-athena-chinese-saints-7,saints,Ji chinese constellation
-athena-chinese-saints-8,saints,Dou chinese constellation
-athena-chinese-saints-9,saints,Niu chinese constellation
-athena-former-saints-1,saints,Anguilla former constellation
-athena-former-saints-10,saints,Bufo former constellation
-athena-former-saints-11,saints,Cancer Minor former constellation
-athena-former-saints-12,saints,Capra and Haedi former constellation
-athena-former-saints-13,saints,Cerberus former constellation
-athena-former-saints-14,saints,Cor Caroli Regis Martyris former constellation
-athena-former-saints-15,saints,Corona Firmiana former constellation
-athena-former-saints-16,saints,Custos Messium former constellation
-athena-former-saints-17,saints,Deltoton former constellation
-athena-former-saints-18,saints,Dentalium former constellation
-athena-former-saints-19,saints,Felis former constellation
-athena-former-saints-2,saints,Antinous former constellation
-athena-former-saints-20,saints,Frederici Honores former constellation
-athena-former-saints-21,saints,Gallus former constellation
-athena-former-saints-22,saints,Gladii Electorales Saxonici former constellation
-athena-former-saints-23,saints,Globus Aerostaticus former constellation
-athena-former-saints-24,saints,Gryphites former constellation
-athena-former-saints-25,saints,Hippocampus former constellation
-athena-former-saints-26,saints,Hirudo former constellation
-athena-former-saints-27,saints,Jordanus former constellation
-athena-former-saints-28,saints,Leo Palatinus former constellation
-athena-former-saints-29,saints,Lochium Funis former constellation
-athena-former-saints-3,saints,Apes former constellation
-athena-former-saints-30,saints,Lilium former constellation
-athena-former-saints-31,saints,Limax former constellation
-athena-former-saints-32,saints,Linum Piscium former constellation
-athena-former-saints-33,saints,Lumbricus former constellation
-athena-former-saints-34,saints,Machina Electrica former constellation
-athena-former-saints-35,saints,Malus former constellation
-athena-former-saints-36,saints,Manis former constellation
-athena-former-saints-37,saints,Marmor Sculptile former constellation
-athena-former-saints-38,saints,Mons Maenalus former constellation
-athena-former-saints-39,saints,Musca Borealis former constellation
-athena-former-saints-4,saints,Apis former constellation
-athena-former-saints-40,saints,Noctua former constellation
-athena-former-saints-41,saints,Nubecula Major and Nubecula Minor[citation needed] former constellation
-athena-former-saints-42,saints,Officina Typographica former constellation
-athena-former-saints-43,saints,Patella former constellation
-athena-former-saints-44,saints,Phoenicopterus former constellation
-athena-former-saints-45,saints,Pinna Marina former constellation
-athena-former-saints-46,saints,Piscis Notus former constellation
-athena-former-saints-47,saints,Polophylax former constellation
-athena-former-saints-48,saints,Pomum Imperiale former constellation
-athena-former-saints-49,saints,Phaethon former constellation
-athena-former-saints-5,saints,Aranea former constellation
-athena-former-saints-50,saints,Pluteum former constellation
-athena-former-saints-51,saints,Psalterium Georgii former constellation
-athena-former-saints-52,saints,Quadrans Muralis former constellation
-athena-former-saints-53,saints,Quadratum former constellation
-athena-former-saints-54,saints,Ramus Pomifer former constellation
-athena-former-saints-55,saints,Robur Carolinum former constellation
-athena-former-saints-56,saints,Rosa former constellation
-athena-former-saints-57,saints,Sagitta Australis former constellation
-athena-former-saints-58,saints,Scarabaeus former constellation
-athena-former-saints-59,saints,Sceptrum Brandenburgicum former constellation
-athena-former-saints-6,saints,Argo Navis former constellation
-athena-former-saints-60,saints,Sceptrum et Manus Iustitiae former constellation
-athena-former-saints-61,saints,Sciurus Volans former constellation
-athena-former-saints-62,saints,Sextants Uraniae former constellation
-athena-former-saints-63,saints,"Siren, Ceneus and Lang former constellation"
-athena-former-saints-64,saints,Solarium former constellation
-athena-former-saints-65,saints,Sudarium Veronicae former constellation
-athena-former-saints-66,saints,Rangifer or Tarandus former constellation
-athena-former-saints-67,saints,Taurus Poniatovii former constellation
-athena-former-saints-68,saints,Tarabellum and Vexillum former constellation
-athena-former-saints-69,saints,Telescopium Herschelii former constellation
-athena-former-saints-7,saints,Asselli and Praesepe former constellation
-athena-former-saints-70,saints,Tubus Herschelii Minor former constellation
-athena-former-saints-71,saints,Testudo former constellation
-athena-former-saints-72,saints,Tigris former constellation
-athena-former-saints-73,saints,Triangulus Antarcticus former constellation
-athena-former-saints-74,saints,Triangulum Majus former constellation
-athena-former-saints-75,saints,Triangulum Minus former constellation
-athena-former-saints-76,saints,Turdus Solitarius former constellation
-athena-former-saints-77,saints,Uranoscopus former constellation
-athena-former-saints-78,saints,Urna former constellation
-athena-former-saints-79,saints,Vespa former constellation
-athena-former-saints-8,saints,Asterion and Chara former constellation
-athena-former-saints-9,saints,Battery of Volta former constellation
 athena-gods,saints,Gods
-athena-hindu-saints-1,saints,Ashwini hindu constellation
-athena-hindu-saints-10,saints,Magha hindu constellation
-athena-hindu-saints-11,saints,Purva or Purva Phalguni hindu constellation
-athena-hindu-saints-12,saints,Uttara or Uttara Phalguni hindu constellation
-athena-hindu-saints-13,saints,Hasta hindu constellation
-athena-hindu-saints-14,saints,Chitra hindu constellation
-athena-hindu-saints-15,saints,Svati hindu constellation
-athena-hindu-saints-16,saints,Visakha hindu constellation
-athena-hindu-saints-17,saints,Anuradha hindu constellation
-athena-hindu-saints-18,saints,Jyeshtha hindu constellation
-athena-hindu-saints-19,saints,Mula hindu constellation
-athena-hindu-saints-2,saints,Bharani hindu constellation
-athena-hindu-saints-20,saints,Purva Ashadha hindu constellation
-athena-hindu-saints-21,saints,Uttara Asadha hindu constellation
-athena-hindu-saints-22,saints,Sravana hindu constellation
-athena-hindu-saints-23,saints,Sravistha or Dhanishta hindu constellation
-athena-hindu-saints-24,saints,Shatabhisha or Satataraka hindu constellation
-athena-hindu-saints-25,saints,Purva Bhadrapada hindu constellation
-athena-hindu-saints-26,saints,Uttara Bhadrapada hindu constellation
-athena-hindu-saints-27,saints,Revati hindu constellation
-athena-hindu-saints-3,saints,Krittika hindu constellation
-athena-hindu-saints-4,saints,Rohini hindu constellation
-athena-hindu-saints-5,saints,Mrigashirsha hindu constellation
-athena-hindu-saints-6,saints,Ardra hindu constellation
-athena-hindu-saints-7,saints,Punarvasu hindu constellation
-athena-hindu-saints-8,saints,Pushya hindu constellation
-athena-hindu-saints-9,saints,Ashlesha hindu constellation
 athena-saints-1,saints,Andromeda constellation
+athena-saints-2,saints,Antlia constellation
+athena-saints-3,saints,Apus constellation
+athena-saints-4,saints,Aquarius constellation
+athena-saints-5,saints,Aquila constellation
+athena-saints-6,saints,Ara constellation
+athena-saints-7,saints,Aries constellation
+athena-saints-8,saints,Auriga constellation
+athena-saints-9,saints,Bootes constellation
 athena-saints-10,saints,Caelum constellation
 athena-saints-11,saints,Camelopardalis constellation
 athena-saints-12,saints,Cancer constellation
@@ -168,7 +51,6 @@ athena-saints-16,saints,Capricornus constellation
 athena-saints-17,saints,Carina constellation
 athena-saints-18,saints,Cassiopeia constellation
 athena-saints-19,saints,Centaurus constellation
-athena-saints-2,saints,Antlia constellation
 athena-saints-20,saints,Cepheus constellation
 athena-saints-21,saints,Cetus constellation
 athena-saints-22,saints,Chamaeleon constellation
@@ -179,7 +61,6 @@ athena-saints-26,saints,Corona Australis constellation
 athena-saints-27,saints,Corona Borealis constellation
 athena-saints-28,saints,Corvus constellation
 athena-saints-29,saints,Crater constellation
-athena-saints-3,saints,Apus constellation
 athena-saints-30,saints,Crux constellation
 athena-saints-31,saints,Cygnus constellation
 athena-saints-32,saints,Delphinus constellation
@@ -190,7 +71,6 @@ athena-saints-36,saints,Eridanus constellation
 athena-saints-37,saints,Fornax constellation
 athena-saints-38,saints,Gemini constellation
 athena-saints-39,saints,Grus constellation
-athena-saints-4,saints,Aquarius constellation
 athena-saints-40,saints,Heracles constellation
 athena-saints-41,saints,Horologium constellation
 athena-saints-42,saints,Hydra constellation
@@ -201,7 +81,6 @@ athena-saints-46,saints,Leo constellation
 athena-saints-47,saints,Leo Minor constellation
 athena-saints-48,saints,Lepus constellation
 athena-saints-49,saints,Libra constellation
-athena-saints-5,saints,Aquila constellation
 athena-saints-50,saints,Lupus constellation
 athena-saints-51,saints,Lynx constellation
 athena-saints-52,saints,Lyra constellation
@@ -212,7 +91,6 @@ athena-saints-56,saints,Musca constellation
 athena-saints-57,saints,Norma constellation
 athena-saints-58,saints,Octans constellation
 athena-saints-59,saints,Ophiuchus constellation
-athena-saints-6,saints,Ara constellation
 athena-saints-60,saints,Orion constellation
 athena-saints-61,saints,Pavo constellation
 athena-saints-62,saints,Pegasus constellation
@@ -223,7 +101,6 @@ athena-saints-66,saints,Pisces constellation
 athena-saints-67,saints,Piscis Austrinus constellation
 athena-saints-68,saints,Puppis constellation
 athena-saints-69,saints,Pyxis constellation
-athena-saints-7,saints,Aries constellation
 athena-saints-70,saints,Reticulum constellation
 athena-saints-71,saints,Sagitta constellation
 athena-saints-72,saints,Sagittarius constellation
@@ -234,7 +111,6 @@ athena-saints-76,saints,Serpens constellation
 athena-saints-77,saints,Sextans constellation
 athena-saints-78,saints,Taurus constellation
 athena-saints-79,saints,Telescopium constellation
-athena-saints-8,saints,Auriga constellation
 athena-saints-80,saints,Triangulum constellation
 athena-saints-81,saints,Triangulum Australe constellation
 athena-saints-82,saints,Tucana constellation
@@ -244,15 +120,144 @@ athena-saints-85,saints,Vela constellation
 athena-saints-86,saints,Virgo constellation
 athena-saints-87,saints,Volans constellation
 athena-saints-88,saints,Vulpecula constellation
-athena-saints-9,saints,Bootes constellation
-athena-soldiers,saints,Soldier
+athena-former-saints-1,saints,Anguilla former constellation
+athena-former-saints-2,saints,Antinous former constellation
+athena-former-saints-3,saints,Apes former constellation
+athena-former-saints-4,saints,Apis former constellation
+athena-former-saints-5,saints,Aranea former constellation
+athena-former-saints-6,saints,Argo Navis former constellation
+athena-former-saints-7,saints,Asselli and Praesepe former constellation
+athena-former-saints-8,saints,Asterion and Chara former constellation
+athena-former-saints-9,saints,Battery of Volta former constellation
+athena-former-saints-10,saints,Bufo former constellation
+athena-former-saints-11,saints,Cancer Minor former constellation
+athena-former-saints-12,saints,Capra and Haedi former constellation
+athena-former-saints-13,saints,Cerberus former constellation
+athena-former-saints-14,saints,Cor Caroli Regis Martyris former constellation
+athena-former-saints-15,saints,Corona Firmiana former constellation
+athena-former-saints-16,saints,Custos Messium former constellation
+athena-former-saints-17,saints,Deltoton former constellation
+athena-former-saints-18,saints,Dentalium former constellation
+athena-former-saints-19,saints,Felis former constellation
+athena-former-saints-20,saints,Frederici Honores former constellation
+athena-former-saints-21,saints,Gallus former constellation
+athena-former-saints-22,saints,Gladii Electorales Saxonici former constellation
+athena-former-saints-23,saints,Globus Aerostaticus former constellation
+athena-former-saints-24,saints,Gryphites former constellation
+athena-former-saints-25,saints,Hippocampus former constellation
+athena-former-saints-26,saints,Hirudo former constellation
+athena-former-saints-27,saints,Jordanus former constellation
+athena-former-saints-28,saints,Leo Palatinus former constellation
+athena-former-saints-29,saints,Lochium Funis former constellation
+athena-former-saints-30,saints,Lilium former constellation
+athena-former-saints-31,saints,Limax former constellation
+athena-former-saints-32,saints,Linum Piscium former constellation
+athena-former-saints-33,saints,Lumbricus former constellation
+athena-former-saints-34,saints,Machina Electrica former constellation
+athena-former-saints-35,saints,Malus former constellation
+athena-former-saints-36,saints,Manis former constellation
+athena-former-saints-37,saints,Marmor Sculptile former constellation
+athena-former-saints-38,saints,Mons Maenalus former constellation
+athena-former-saints-39,saints,Musca Borealis former constellation
+athena-former-saints-40,saints,Noctua former constellation
+athena-former-saints-41,saints,Nubecula Major and Nubecula Minor[citation needed] former constellation
+athena-former-saints-42,saints,Officina Typographica former constellation
+athena-former-saints-43,saints,Patella former constellation
+athena-former-saints-44,saints,Phoenicopterus former constellation
+athena-former-saints-45,saints,Pinna Marina former constellation
+athena-former-saints-46,saints,Piscis Notus former constellation
+athena-former-saints-47,saints,Polophylax former constellation
+athena-former-saints-48,saints,Pomum Imperiale former constellation
+athena-former-saints-49,saints,Phaethon former constellation
+athena-former-saints-50,saints,Pluteum former constellation
+athena-former-saints-51,saints,Psalterium Georgii former constellation
+athena-former-saints-52,saints,Quadrans Muralis former constellation
+athena-former-saints-53,saints,Quadratum former constellation
+athena-former-saints-54,saints,Ramus Pomifer former constellation
+athena-former-saints-55,saints,Robur Carolinum former constellation
+athena-former-saints-56,saints,Rosa former constellation
+athena-former-saints-57,saints,Sagitta Australis former constellation
+athena-former-saints-58,saints,Scarabaeus former constellation
+athena-former-saints-59,saints,Sceptrum Brandenburgicum former constellation
+athena-former-saints-60,saints,Sceptrum et Manus Iustitiae former constellation
+athena-former-saints-61,saints,Sciurus Volans former constellation
+athena-former-saints-62,saints,Sextants Uraniae former constellation
+athena-former-saints-63,saints,"Siren, Ceneus and Lang former constellation"
+athena-former-saints-64,saints,Solarium former constellation
+athena-former-saints-65,saints,Sudarium Veronicae former constellation
+athena-former-saints-66,saints,Rangifer or Tarandus former constellation
+athena-former-saints-67,saints,Taurus Poniatovii former constellation
+athena-former-saints-68,saints,Tarabellum and Vexillum former constellation
+athena-former-saints-69,saints,Telescopium Herschelii former constellation
+athena-former-saints-70,saints,Tubus Herschelii Minor former constellation
+athena-former-saints-71,saints,Testudo former constellation
+athena-former-saints-72,saints,Tigris former constellation
+athena-former-saints-73,saints,Triangulus Antarcticus former constellation
+athena-former-saints-74,saints,Triangulum Majus former constellation
+athena-former-saints-75,saints,Triangulum Minus former constellation
+athena-former-saints-76,saints,Turdus Solitarius former constellation
+athena-former-saints-77,saints,Uranoscopus former constellation
+athena-former-saints-78,saints,Urna former constellation
+athena-former-saints-79,saints,Vespa former constellation
+athena-hindu-saints-1,saints,Ashwini hindu constellation
+athena-hindu-saints-2,saints,Bharani hindu constellation
+athena-hindu-saints-3,saints,Krittika hindu constellation
+athena-hindu-saints-4,saints,Rohini hindu constellation
+athena-hindu-saints-5,saints,Mrigashirsha hindu constellation
+athena-hindu-saints-6,saints,Ardra hindu constellation
+athena-hindu-saints-7,saints,Punarvasu hindu constellation
+athena-hindu-saints-8,saints,Pushya hindu constellation
+athena-hindu-saints-9,saints,Ashlesha hindu constellation
+athena-hindu-saints-10,saints,Magha hindu constellation
+athena-hindu-saints-11,saints,Purva or Purva Phalguni hindu constellation
+athena-hindu-saints-12,saints,Uttara or Uttara Phalguni hindu constellation
+athena-hindu-saints-13,saints,Hasta hindu constellation
+athena-hindu-saints-14,saints,Chitra hindu constellation
+athena-hindu-saints-15,saints,Svati hindu constellation
+athena-hindu-saints-16,saints,Visakha hindu constellation
+athena-hindu-saints-17,saints,Anuradha hindu constellation
+athena-hindu-saints-18,saints,Jyeshtha hindu constellation
+athena-hindu-saints-19,saints,Mula hindu constellation
+athena-hindu-saints-20,saints,Purva Ashadha hindu constellation
+athena-hindu-saints-21,saints,Uttara Asadha hindu constellation
+athena-hindu-saints-22,saints,Sravana hindu constellation
+athena-hindu-saints-23,saints,Sravistha or Dhanishta hindu constellation
+athena-hindu-saints-24,saints,Shatabhisha or Satataraka hindu constellation
+athena-hindu-saints-25,saints,Purva Bhadrapada hindu constellation
+athena-hindu-saints-26,saints,Uttara Bhadrapada hindu constellation
+athena-hindu-saints-27,saints,Revati hindu constellation
+athena-chinese-saints-1,saints,Jue/Jiao chinese constellation
+athena-chinese-saints-2,saints,Kang chinese constellation
+athena-chinese-saints-3,saints,Di chinese constellation
+athena-chinese-saints-4,saints,Fang chinese constellation
+athena-chinese-saints-5,saints,Xin chinese constellation
+athena-chinese-saints-6,saints,Wei chinese constellation
+athena-chinese-saints-7,saints,Ji chinese constellation
+athena-chinese-saints-8,saints,Dou chinese constellation
+athena-chinese-saints-9,saints,Niu chinese constellation
+athena-chinese-saints-10,saints,Nu chinese constellation
+athena-chinese-saints-11,saints,Xu chinese constellation
+athena-chinese-saints-12,saints,Wei chinese constellation
+athena-chinese-saints-13,saints,Shi chinese constellation
+athena-chinese-saints-14,saints,Bi chinese constellation
+athena-chinese-saints-15,saints,Kui chinese constellation
+athena-chinese-saints-16,saints,Lou chinese constellation
+athena-chinese-saints-17,saints,Wei chinese constellation
+athena-chinese-saints-18,saints,Mao chinese constellation
+athena-chinese-saints-19,saints,Bi chinese constellation
+athena-chinese-saints-20,saints,Zi chinese constellation
+athena-chinese-saints-21,saints,Shen chinese constellation
+athena-chinese-saints-22,saints,Jing chinese constellation
+athena-chinese-saints-23,saints,Gui chinese constellation
+athena-chinese-saints-24,saints,Liu chinese constellation
+athena-chinese-saints-25,saints,Xing chinese constellation
+athena-chinese-saints-26,saints,Zhang chinese constellation
+athena-chinese-saints-27,saints,Yi chinese constellation
+athena-chinese-saints-28,saints,Zhen chinese constellation
 athena-unknown-saints,saints,Saints Without Constellation
-balor-fairies,fairies,Fairies
+athena-soldiers,saints,Soldiers
 balor-gods,fairies,Gods
-blue-warrior-low-ranking,blue-warriors,Low Rank
-blue-warrior-representative,blue-warriors,Representative
-blue-warriors,blue-warriors,Blue Warriors
-blue-warrior-soldiers,blue-warriors,Soldiers
+balor-fairies,fairies,Fairies
 chronos-gods,hours,Gods
 chronos-hours-1,hours,I
 chronos-hours-10,hours,X
@@ -270,11 +275,7 @@ chronos-leptas-12-5-l,hours,XII-V
 chronos-stigmas-2-36-54-s,hours,II-XXXVI-LIV
 chronos-stigmas-4-9-54-s,hours,"IV-IX-LIV	"
 chronos-stigmas-7-48-6-s,hours,"VII-XLVIII-VI	"
-cronus-other-titans,titans,Other Titans
 cronus-titans-1,titans,Megas Depranon
-cronus-titans-10,titans,Sledgehammer
-cronus-titans-11,titans,Shamshir
-cronus-titans-12,titans,Axe
 cronus-titans-2,titans,Katar
 cronus-titans-3,titans,Gurthang
 cronus-titans-4,titans,Crossbow
@@ -283,26 +284,34 @@ cronus-titans-6,titans,Flamberge
 cronus-titans-7,titans,Rapier
 cronus-titans-8,titans,Falchion
 cronus-titans-9,titans,Tanken
+cronus-titans-10,titans,Sledgehammer
+cronus-titans-11,titans,Shamshir
+cronus-titans-12,titans,Axe
+cronus-other-titans,titans,Other Titans
 cronus-titan-soldiers,titans,Soldiers
+eris-gods,dryads,Gods
+eris-phantoms,dryads,Phantoms
 eris-dryads,dryads,Dryads
 eris-ghost-saints-1,dryads,Ghost Five
 eris-ghost-saints-2,dryads,Ghost Saints
-eris-gods,dryads,Gods
-eris-phantoms,dryads,Phantoms
-eris-soldiers,dryads,Dryad Soldiers
+eris-soldiers,dryads,Soldiers
+garnet-vampire,jewels,Vampire
+garnet-jewels-leader,jewels,Leader
 garnet-jewels,jewels,Jewels
-garnet-leader,jewels,Leader
+hades-gods,specters,Gods
+hades-brother-gods,specters,Brother Gods
+hades-dream-gods,specters,Dream Gods
+hades-representative,specters,Representative
 hades-celestial-star-1,specters,Celestial Leader Star
+hades-celestial-star-2,specters,Celestial Strength Star
+hades-celestial-star-3,specters,Celestial Knowledge Star
+hades-celestial-star-4,specters,Celestial Leisure Star
+hades-celestial-star-5,specters,Celestial Brave Star
+hades-celestial-star-6,specters,Celestial Majestic Star
+hades-celestial-star-7,specters,Celestial Fierce Star
+hades-celestial-star-8,specters,Celestial Prestige Star
+hades-celestial-star-9,specters,Celestial Hero Star
 hades-celestial-star-10,specters,Celestial Noble Star
-hades-celestial-star-100,specters,Terrestrial Number Star
-hades-celestial-star-101,specters,Terrestrial Shadowy Star
-hades-celestial-star-102,specters,Terrestrial Execute Star
-hades-celestial-star-103,specters,Terrestrial Strong Star
-hades-celestial-star-104,specters,Terrestrial Inferior Star
-hades-celestial-star-105,specters,Terrestrial Healthy Star
-hades-celestial-star-106,specters,Terrestrial Rat Star
-hades-celestial-star-107,specters,Terrestrial Thief Star
-hades-celestial-star-108,specters,Terrestrial Hound Star
 hades-celestial-star-11,specters,Celestial Wealth Star
 hades-celestial-star-12,specters,Celestial Fulfillment Star
 hades-celestial-star-13,specters,Celestial Solitary Star
@@ -312,7 +321,6 @@ hades-celestial-star-16,specters,Celestial Agile Star
 hades-celestial-star-17,specters,Celestial Dark Star
 hades-celestial-star-18,specters,Celestial Guardian Star
 hades-celestial-star-19,specters,Celestial Flight Star
-hades-celestial-star-2,specters,Celestial Strength Star
 hades-celestial-star-20,specters,Celestial Speed Star
 hades-celestial-star-21,specters,Celestial Deviance Star
 hades-celestial-star-22,specters,Celestial Killer Star
@@ -323,7 +331,6 @@ hades-celestial-star-26,specters,Celestial Longevity Star
 hades-celestial-star-27,specters,Celestial Sword Star
 hades-celestial-star-28,specters,Celestial Balance Star
 hades-celestial-star-29,specters,Celestial Guilt Star
-hades-celestial-star-3,specters,Celestial Knowledge Star
 hades-celestial-star-30,specters,Celestial Damage Star
 hades-celestial-star-31,specters,Celestial Defeat Star
 hades-celestial-star-32,specters,Celestial Secure Star
@@ -331,78 +338,79 @@ hades-celestial-star-33,specters,Celestial Wisdom Star
 hades-celestial-star-34,specters,Celestial Savage Star
 hades-celestial-star-35,specters,Celestial Crying Star
 hades-celestial-star-36,specters,Celestial Skilful Star
-hades-celestial-star-37,specters,Terrestrial Leader Star
-hades-celestial-star-38,specters,Terrestrial Malignant Star
-hades-celestial-star-39,specters,Terrestrial Brave Star
-hades-celestial-star-4,specters,Celestial Leisure Star
-hades-celestial-star-40,specters,Terrestrial Prominence Star
-hades-celestial-star-41,specters,Terrestrial Magnificent Star
-hades-celestial-star-42,specters,Terrestrial Majestic Star
-hades-celestial-star-43,specters,Terrestrial Hero Star
-hades-celestial-star-44,specters,Terrestrial Unique Star
-hades-celestial-star-45,specters,Terrestrial Fierce Star
-hades-celestial-star-46,specters,Terrestrial Literature Star
-hades-celestial-star-47,specters,Terrestrial Upright Star
-hades-celestial-star-48,specters,Terrestrial Wide Star
-hades-celestial-star-49,specters,Terrestrial Whole Star
-hades-celestial-star-5,specters,Celestial Brave Star
-hades-celestial-star-50,specters,Terrestrial Strong Star
-hades-celestial-star-51,specters,Terrestrial Dark Star
-hades-celestial-star-52,specters,Terrestrial Assist Star
-hades-celestial-star-53,specters,Terrestrial Meet Star
-hades-celestial-star-54,specters,Terrestrial Aid Star
-hades-celestial-star-55,specters,Terrestrial Help Star
-hades-celestial-star-56,specters,Terrestrial Spirit Star
-hades-celestial-star-57,specters,Terrestrial Beast Star
-hades-celestial-star-58,specters,Terrestrial Minute Star
-hades-celestial-star-59,specters,Terrestrial Intelligent Star
-hades-celestial-star-6,specters,Celestial Majestic Star
-hades-celestial-star-60,specters,Terrestrial Savage Star
-hades-celestial-star-61,specters,Terrestrial Correct Star
-hades-celestial-star-62,specters,Terrestrial Wild Star
-hades-celestial-star-63,specters,Terrestrial Crazy Star
-hades-celestial-star-64,specters,Terrestrial Flying Star
-hades-celestial-star-65,specters,Terrestrial Walking Star
-hades-celestial-star-66,specters,Terrestrial Skilful Star
-hades-celestial-star-67,specters,Terrestrial Bright Star
-hades-celestial-star-68,specters,Terrestrial Forward Star
-hades-celestial-star-69,specters,Terrestrial Retreating Star
-hades-celestial-star-7,specters,Celestial Fierce Star
-hades-celestial-star-70,specters,Terrestrial Full Star
-hades-celestial-star-71,specters,Terrestrial Succeed Star
-hades-celestial-star-72,specters,Terrestrial Complete Star
-hades-celestial-star-73,specters,Terrestrial Latent Star
-hades-celestial-star-74,specters,Terrestrial Different Star
-hades-celestial-star-75,specters,Terrestrial Manage Star
-hades-celestial-star-76,specters,Terrestrial Handsome Star
-hades-celestial-star-77,specters,Terrestrial Music Star
-hades-celestial-star-78,specters,Terrestrial Victorious Star
-hades-celestial-star-79,specters,Terrestrial Speed Star
-hades-celestial-star-8,specters,Celestial Prestige Star
-hades-celestial-star-80,specters,Terrestrial Guardian Star
-hades-celestial-star-81,specters,Terrestrial Ji Star
-hades-celestial-star-82,specters,Terrestrial Sorcery Star
-hades-celestial-star-83,specters,Terrestrial Demon Star
-hades-celestial-star-84,specters,Terrestrial Tranquil Star
-hades-celestial-star-85,specters,Terrestrial Concealment Star
-hades-celestial-star-86,specters,Terrestrial Remote Star
-hades-celestial-star-87,specters,Terrestrial Empty Star
-hades-celestial-star-88,specters,Terrestrial Solitary Star
-hades-celestial-star-89,specters,Terrestrial Complete Star
-hades-celestial-star-9,specters,Celestial Hero Star
-hades-celestial-star-90,specters,Terrestrial Short Star
-hades-celestial-star-91,specters,Terrestrial Horn Star
-hades-celestial-star-92,specters,Terrestrial Prisoner Star
-hades-celestial-star-93,specters,Terrestrial Hidden Star
-hades-celestial-star-94,specters,Terrestrial Level Star
-hades-celestial-star-95,specters,Terrestrial Harm Star
-hades-celestial-star-96,specters,Terrestrial Slave Star
-hades-celestial-star-97,specters,Terrestrial Detective Star
-hades-celestial-star-98,specters,Terrestrial Evil Star
-hades-celestial-star-99,specters,Terrestrial Ugly Star
-hades-gods,specters,Gods
+hades-terrestrial-star-37,specters,Terrestrial Leader Star
+hades-terrestrial-star-38,specters,Terrestrial Malignant Star
+hades-terrestrial-star-39,specters,Terrestrial Brave Star
+hades-terrestrial-star-40,specters,Terrestrial Prominence Star
+hades-terrestrial-star-41,specters,Terrestrial Magnificent Star
+hades-terrestrial-star-42,specters,Terrestrial Majestic Star
+hades-terrestrial-star-43,specters,Terrestrial Hero Star
+hades-terrestrial-star-44,specters,Terrestrial Unique Star
+hades-terrestrial-star-45,specters,Terrestrial Fierce Star
+hades-terrestrial-star-46,specters,Terrestrial Literature Star
+hades-terrestrial-star-47,specters,Terrestrial Upright Star
+hades-terrestrial-star-48,specters,Terrestrial Wide Star
+hades-terrestrial-star-49,specters,Terrestrial Whole Star
+hades-terrestrial-star-50,specters,Terrestrial Strong Star
+hades-terrestrial-star-51,specters,Terrestrial Dark Star
+hades-terrestrial-star-52,specters,Terrestrial Assist Star
+hades-terrestrial-star-53,specters,Terrestrial Meet Star
+hades-terrestrial-star-54,specters,Terrestrial Aid Star
+hades-terrestrial-star-55,specters,Terrestrial Help Star
+hades-terrestrial-star-56,specters,Terrestrial Spirit Star
+hades-terrestrial-star-57,specters,Terrestrial Beast Star
+hades-terrestrial-star-58,specters,Terrestrial Minute Star
+hades-terrestrial-star-59,specters,Terrestrial Intelligent Star
+hades-terrestrial-star-60,specters,Terrestrial Savage Star
+hades-terrestrial-star-61,specters,Terrestrial Correct Star
+hades-terrestrial-star-62,specters,Terrestrial Wild Star
+hades-terrestrial-star-63,specters,Terrestrial Crazy Star
+hades-terrestrial-star-64,specters,Terrestrial Flying Star
+hades-terrestrial-star-65,specters,Terrestrial Walking Star
+hades-terrestrial-star-66,specters,Terrestrial Skilful Star
+hades-terrestrial-star-67,specters,Terrestrial Bright Star
+hades-terrestrial-star-68,specters,Terrestrial Forward Star
+hades-terrestrial-star-69,specters,Terrestrial Retreating Star
+hades-terrestrial-star-70,specters,Terrestrial Full Star
+hades-terrestrial-star-71,specters,Terrestrial Succeed Star
+hades-terrestrial-star-72,specters,Terrestrial Complete Star
+hades-terrestrial-star-73,specters,Terrestrial Latent Star
+hades-terrestrial-star-74,specters,Terrestrial Different Star
+hades-terrestrial-star-75,specters,Terrestrial Manage Star
+hades-terrestrial-star-76,specters,Terrestrial Handsome Star
+hades-terrestrial-star-77,specters,Terrestrial Music Star
+hades-terrestrial-star-78,specters,Terrestrial Victorious Star
+hades-terrestrial-star-79,specters,Terrestrial Speed Star
+hades-terrestrial-star-80,specters,Terrestrial Guardian Star
+hades-terrestrial-star-81,specters,Terrestrial Ji Star
+hades-terrestrial-star-82,specters,Terrestrial Sorcery Star
+hades-terrestrial-star-83,specters,Terrestrial Demon Star
+hades-terrestrial-star-84,specters,Terrestrial Tranquil Star
+hades-terrestrial-star-85,specters,Terrestrial Concealment Star
+hades-terrestrial-star-86,specters,Terrestrial Remote Star
+hades-terrestrial-star-87,specters,Terrestrial Empty Star
+hades-terrestrial-star-88,specters,Terrestrial Solitary Star
+hades-terrestrial-star-89,specters,Terrestrial Complete Star
+hades-terrestrial-star-90,specters,Terrestrial Short Star
+hades-terrestrial-star-91,specters,Terrestrial Horn Star
+hades-terrestrial-star-92,specters,Terrestrial Prisoner Star
+hades-terrestrial-star-93,specters,Terrestrial Hidden Star
+hades-terrestrial-star-94,specters,Terrestrial Level Star
+hades-terrestrial-star-95,specters,Terrestrial Harm Star
+hades-terrestrial-star-96,specters,Terrestrial Slave Star
+hades-terrestrial-star-97,specters,Terrestrial Detective Star
+hades-terrestrial-star-98,specters,Terrestrial Evil Star
+hades-terrestrial-star-99,specters,Terrestrial Ugly Star
+hades-terrestrial-star-100,specters,Terrestrial Number Star
+hades-terrestrial-star-101,specters,Terrestrial Shadowy Star
+hades-terrestrial-star-102,specters,Terrestrial Execute Star
+hades-terrestrial-star-103,specters,Terrestrial Strong Star
+hades-terrestrial-star-104,specters,Terrestrial Inferior Star
+hades-terrestrial-star-105,specters,Terrestrial Healthy Star
+hades-terrestrial-star-106,specters,Terrestrial Rat Star
+hades-terrestrial-star-107,specters,Terrestrial Thief Star
+hades-terrestrial-star-108,specters,Terrestrial Hound Star
 hades-other-specters-1,specters,Unknown Evil Stars
-hades-other-specters-10,specters,Celestial Ugly Star
 hades-other-specters-2,specters,Evil Star of Matter
 hades-other-specters-3,specters,Celestial Shadowy Star
 hades-other-specters-4,specters,Evil Star of Strength
@@ -411,31 +419,25 @@ hades-other-specters-6,specters,Celestial Spirit Star
 hades-other-specters-7,specters,Celestial Beast Star
 hades-other-specters-8,specters,Celestial Sorcery Star
 hades-other-specters-9,specters,Celestial Horn Star
-hades-pluton-faceless,faceless,Faceless
-hades-representative,specters,Represetative
-hades-ressurected-mariners,specters,Ressurected Mariners
-hades-ressurected-saints,specters,Ressurected Saints
+hades-other-specters-10,specters,Celestial Ugly Star
 hades-skeleton,specters,Soldiers
+hades-ressurected-saints,specters,Ressurected Saints
+hades-ressurected-mariners,specters,Ressurected Mariners
+hades-pluton-faceless,faceless,Faceless
 hakuryu-gods,taonias,Gods
 hakuryu-taonias,taonias,Taonias
 hakuryu-taonias-low,taonias,Low Rank
-,,
-lamech-gods,lamech-servants,Gods
-lamech-servants,lamech-servants,Lamech Servants
+lamech-gods,servants,Gods
+lamech-servants,servants,Servants
 nemesis-gods,spirits,Gods
 nemesis-spirits,spirits,Spirits
-odin-asgard-soldiers,god-warriors,Soldiers
-odin-chamber-1,god-warriors,Jotunheim (Chamber of Giant)
-odin-chamber-2,god-warriors,Svartalfheim (Chamber of Wisdom)
-odin-chamber-3,god-warriors,Alfheim (Chamber of Light)
-odin-chamber-4,god-warriors,Helheim (Chamber of Dead)
-odin-chamber-5,god-warriors,Vanaheim (Chamber of Heroes)
-odin-chamber-6,god-warriors,Niflheim (Chamber of Mist)
-odin-chamber-7,god-warriors,Jaheim (Chamber of Ice)
-odin-chamber-representative,god-warriors,Representative
+odin-blue-warrior-representative,blue-warriors,Representative
+odin-blue-warriors,blue-warriors,Blue Warriors
+odin-blue-warrior-low-ranking,blue-warriors,Low Rank
+odin-blue-warrior-soldiers,blue-warriors,Soldiers
 odin-gods,god-warriors,Gods
-odin-god-warriors,god-warriors,God Warriors
 odin-god-warriors-representative,god-warriors,Representative
+odin-god-warriors,god-warriors,God Warriors
 odin-ursa-major-representative,god-warriors,Representative
 odin-ursa-major-star-1,god-warriors,Alpha Star
 odin-ursa-major-star-2,god-warriors,Beta Star
@@ -444,43 +446,54 @@ odin-ursa-major-star-4,god-warriors,Epsilon Star
 odin-ursa-major-star-5,god-warriors,Eta Star
 odin-ursa-major-star-6,god-warriors,Gamma Star
 odin-ursa-major-star-7,god-warriors,Zeta Star
+odin-chamber-1,god-warriors,Jotunheim (Chamber of Giant)
+odin-chamber-2,god-warriors,Svartalfheim (Chamber of Wisdom)
+odin-chamber-3,god-warriors,Alfheim (Chamber of Light)
+odin-chamber-4,god-warriors,Helheim (Chamber of Dead)
+odin-chamber-5,god-warriors,Vanaheim (Chamber of Heroes)
+odin-chamber-6,god-warriors,Niflheim (Chamber of Mist)
+odin-chamber-7,god-warriors,Jaheim (Chamber of Ice)
+odin-asgard-soldiers,god-warriors,Soldiers
 other-characters,others,Other Characters
 pallas-gods,pallasites,Gods
-pallas-pallasite-soldiers,pallasites,Pallasite Soldiers
-pallas-unknown-secondclass,pallasites,Unknown Weapon
-pallas-unknown-unknownclass,pallasites,Unknown Weapon Unknown Class
 pallas-weapon-firstclass-1,pallasites,Sword of Creation
 pallas-weapon-firstclass-2,pallasites,Sword of Destruction
 pallas-weapon-firstclass-3,pallasites,Sword of Thunder
 pallas-weapon-firstclass-4,pallasites,Sword of War
+pallas-unknown-unknownclass,pallasites,Unknown Weapon Unknown Class
 pallas-weapon-secondclass-1,pallasites,Chakram
-pallas-weapon-secondclass-2,pallasites,Daggers
-pallas-weapon-secondclass-3,pallasites,Gauntlet
-pallas-weapon-secondclass-4,pallasites,Staff
-pallas-weapon-secondclass-5,pallasites,Whip
+pallas-weapon-secondclass-2,pallasites,Gauntlet
+pallas-weapon-secondclass-3,pallasites,Staff
+pallas-weapon-secondclass-4,pallasites,Whip
+pallas-unknown-secondclass,pallasites,Unknown Weapon
 pallas-weapon-thirdclass-1,pallasites,Claw
 pallas-weapon-thirdclass-2,pallasites,Club
-pallas-weapon-thirdclass-3,pallasites,Deadly Scythe
-pallas-weapon-thirdclass-4,pallasites,Hammer
-pallas-weapon-thirdclass-5,pallasites,Morning Star
-pallas-weapon-thirdclass-6,pallasites,Servant
+pallas-weapon-thirdclass-3,pallasites,Daggers
+pallas-weapon-thirdclass-4,pallasites,Deadly Scythe
+pallas-weapon-thirdclass-5,pallasites,Hammer
+pallas-weapon-thirdclass-6,pallasites,Morgenstern 
 pallas-weapon-thirdclass-7,pallasites,Spear
 pallas-weapon-thirdclass-8,pallasites,Triple Rod
+pallas-pallasite-soldiers,pallasites,Soldiers
+pontos-primordial-gods,primordial-gods,Primordial Gods
 pontos-cyclops,primordial-gods,Cyclops
-pontos-cyclops-soldiers,primordial-gods,Cyclops Soldiers
+pontos-cyclops-soldiers,primordial-gods,Soldiers
 pontos-grigoris,primordial-gods,Grigoris
 pontos-hecatonchires,primordial-gods,Hecatonchires
-pontos-primordial,primordial-gods,Primordial Gods
 poseidon-gods,mariners,Gods
-poseidon-mariners,mariners,Mariners
-poseidon-mariners-archetypes,mariners,Archetypes
 poseidon-mariners-generals,mariners,Generals
-poseidon-mariner-soldiers,mariners,Mariner Soldiers
+poseidon-mariners-archetypes,mariners,Archetypes
+poseidon-mariners,mariners,Mariners
+poseidon-mariner-soldiers,mariners,Soldiers
 ra-egyptian-gods,legionaries,Gods
 ra-legionaries,legionaries,Ra Legionaries
 tezcatlipoca-gods,jaguars,Gods
 tezcatlipoca-jaguars,jaguars,Jaguars
 tezcatlipoca-jaguar-soldiers,jaguars,Soldiers
+typhon-gods,gigas,Unknown
+typhon-sons-1,gigas,Star Sapphire
+typhon-sons-2,gigas,Star Ruby
+typhon-sons-3,gigas,Opal
 typhon-brothers-1,gigas,Lapis Lazuli
 typhon-brothers-2,gigas,Malachite
 typhon-brothers-3,gigas,Unknown
@@ -494,8 +507,4 @@ typhon-gigas-6,gigas,Ruby Iron
 typhon-gigas-7,gigas,Pearl Dragon
 typhon-gigas-8,gigas,Amber Beast
 typhon-gigas-9,gigas,Jade Armor
-typhon-gods,gigas,Unknown
-typhon-sons-1,gigas,Star Sapphire
-typhon-sons-2,gigas,Star Ruby
-typhon-sons-3,gigas,Opal
-zeus-gods,Olympians,Olympians
+zeus-gods,olympians,Olympians

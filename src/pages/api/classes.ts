@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { CharacterProps } from './characters'
 import classes from './data/classes.json'
+import { CharacterProps } from './saints'
 
 export interface ClassProps {
   id: string

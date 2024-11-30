@@ -18,9 +18,9 @@ export default function Home() {
   useEffect(() => {
     async function getSaints() {
       try {
-        const response = await fetch('http://localhost:3000/api/saints')
-        const data = await response.json()
-        setSaints(data.data)
+        const response = await fetch('http://localhost:3000/api/saints/latest')
+        const result = await response.json()
+        setSaints(result.data)
         return response
       } catch(err) {
         return { status: 500, message: `Error: Saints not found! ${err}` }
@@ -30,8 +30,8 @@ export default function Home() {
     async function getNews() {
       try {
         const response = await fetch('http://localhost:3000/api/news')
-        const data = await response.json()
-        setNews(data)
+        const result = await response.json()
+        setNews(result.data)
         return response
       } catch(err) {
         return { status: 500, message: `Error: News not found! ${err}` }
@@ -41,8 +41,8 @@ export default function Home() {
     async function getGeoLocation() {
       try {
         const response = await fetch('http://ip-api.com/json')
-        const data = await response.json()
-        setGeoLocation(data)
+        const result = await response.json()
+        setGeoLocation(result)
         return response
       } catch(err) {
         return { status: 500, message: `Error: Country not found! ${err}` }
@@ -66,11 +66,11 @@ export default function Home() {
     <>
 			<Banner />
 
-      <News news={news.slice(-4)} />
+      {news && <News news={news.slice(-4)} />}
 
-      <Store geoLocation={geoLocation} />
+      {geoLocation.country === 'Brazil' && <Store />}
 
-      <Classes saints={saints.slice(-8)} />
+      {saints && <Classes saints={saints.slice(-8)} />}
     </>
   )
 }

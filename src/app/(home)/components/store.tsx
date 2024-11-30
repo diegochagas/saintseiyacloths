@@ -1,13 +1,7 @@
 import Image from 'next/image'
 
-interface StoreProps {
-  geoLocation: {
-    country: string
-  }
-}
-
-export default function Store({ geoLocation }: StoreProps) {
-  return geoLocation.country === 'Brazil' ? (
+export default function Store() {
+  return (
     <a
       className="bg-yellow-400 w-full p-4 flex justify-center max-w-5xl flex-col md:flex-row items-center gap-9 md:gap-14"
       href="https://lista.mercadolivre.com.br/_CustId_26475573_PrCategId_AD"
@@ -24,5 +18,5 @@ export default function Store({ geoLocation }: StoreProps) {
         Visite nossa loja
       </button>
     </a>
-  ) : null
+  )
 }

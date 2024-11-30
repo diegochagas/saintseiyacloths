@@ -23,7 +23,7 @@ interface RankProps {
   name: string
 }
 
-interface CharacterProps {
+export interface CharacterProps {
   id: string
   name: string
 }
