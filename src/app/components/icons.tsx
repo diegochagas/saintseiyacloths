@@ -1,7 +1,7 @@
 import Image from 'next/image'
 
 export type iconName = 'arrow-up' | 'arrow-right' | 'menu' | 'close' | 'contact' | 'about' | 'artists' | 'classes' | 'history' | 'home' | 'news' | 'nike' 
-| 'nike-stroke' | 'zodiac-wheel'
+| 'nike-stroke' | 'zodiac-wheel' | 'search'
 
 interface IconProps {
   name: iconName
@@ -248,6 +248,18 @@ export default function Icon({ name, className, size = 25, color = 'black' }: Ic
           alt="Zodiac wheel"
           unoptimized
         />
+      )
+    case 'search': 
+      return (
+        <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
+          <path
+            d="M15.7955 15.8111L21 21M18 10.5C18 14.6421 14.6421 18 10.5 18C6.35786 18 3 14.6421 3 10.5C3 6.35786 6.35786 3 10.5 3C14.6421 3 18 6.35786 18 10.5Z" 
+            stroke={color}
+            strokeWidth="2"
+            strokeLinecap="round" 
+            strokeLinejoin="round"
+          />
+        </svg>
       )
     default:
       return <span />

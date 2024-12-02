@@ -92,7 +92,7 @@ function getTotalOnlyBy(name: string) {
   else if (name === 'Specters' || name === 'Faceless') return 108
 }
 
-function getItemsByPage(data: any[], page: number) {
+export function getItemsByPage(data: any[], page: number) {
   if (page) {
     const currentIndex = (page * 12 - 12)
     const lastIndex = (page * 12)
@@ -136,7 +136,7 @@ export const loadSaintData = (saint: any) => {
 export function getContentByPage(items: any[], p: any) {
   const page = parseInt(`${p || 1}`)
   const itemsPerPage = 12
-  const data = getItemsByPage(items, page).map(saint => loadSaintData(saint))
+  const data = getItemsByPage(items, page)
   const startIndex = (page - 1) * itemsPerPage
   const endIndex = startIndex + itemsPerPage
   return {

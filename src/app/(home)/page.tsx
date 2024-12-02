@@ -2,12 +2,12 @@
 
 import { useEffect, useState } from 'react'
 import { NewsProps } from '@/pages/api/news'
+import { SaintProps } from '@/pages/api/classes'
 import Banner from './components/banner'
 import News from './components/news'
 import Store from './components/store'
 import Classes from './components/classes'
 import { useLoading } from '../context/loading-content'
-import { SaintProps } from '@/pages/api/classes'
 
 export default function Home() {
   const { setIsLoading } = useLoading()
@@ -29,7 +29,7 @@ export default function Home() {
 
     async function getNews() {
       try {
-        const response = await fetch('/api/news?q=latest')
+        const response = await fetch('/api/news')
         const result = await response.json()
         setNews(result.data)
         return response
@@ -66,7 +66,7 @@ export default function Home() {
     <>
 			<Banner />
 
-      {news && <News news={news.slice(0, 4)} />}
+      {news && <News news={news.slice(-4)} />}
 
       {geoLocation.country === 'Brazil' && <Store />}
 

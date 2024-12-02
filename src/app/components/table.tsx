@@ -3,11 +3,11 @@
 import Icon from '@/app/components/icons'
 import Pagination from './pagination'
 import Saints from '@/app/components/saints'
-import Tabs from './tabs'
+import Tabs, { TabProps } from './tabs'
 import { useCallback, useEffect, useState } from 'react'
 import { useLoading } from '@/app/context/loading-content'
-import { ClassProps } from '@/pages/api/classes'
 import { useRouter, useSearchParams } from 'next/navigation'
+import Error from './error'
 
 interface TableProps {
   pathname: string
@@ -16,7 +16,7 @@ interface TableProps {
 export default function Table({ pathname }: TableProps) {
   const router = useRouter()
   const searchParams = useSearchParams()
-  const [tabs, setTabs] = useState<ClassProps[]>([])
+  const [tabs, setTabs] = useState<TabProps[]>([])
   const initialTab = pathname === 'classes' ? 'saints' : '1'
   const [activeTab, setActiveTab] = useState<string>(searchParams?.get('q') || initialTab)
   const initialPage = parseInt(searchParams?.get('p') || '1')
@@ -25,25 +25,27 @@ export default function Table({ pathname }: TableProps) {
   const [totalPages, setTotalPages] = useState<number>(1)
   const [leftDescription, setLeftDescription] = useState('')
   const [rightDescription, setRightDescription] = useState('')
-  const [isLoadingTable, setIsLoadingTable] = useState(false)
-  const { setIsLoading } = useLoading()
+  const { setIsLoading, setLoadingBg } = useLoading()
+  let tabsTitle = 'Class'
+  if (pathname === 'artists') tabsTitle = 'artist'
+  if (pathname === 'history') tabsTitle = 'history'
   
   useEffect(() => {
     async function getTabs() {
       try {
-        const classesResponse = await fetch(`/api/${pathname}`)
-        const classes: ClassProps[] = await classesResponse.json()
-        setTabs(classes)
-        setIsLoadingTable(false)
+        const response = await fetch(`/api/${pathname}`)
+        const items = await response.json()
+        setTabs(items)
+        setIsLoading(false)
       } catch (error) {
         console.error('Error fetching data:', error)
       } finally {
-        setIsLoadingTable(false)
+        setIsLoading(false)
       }
     }
 
     getTabs()
-  }, [pathname, setIsLoadingTable])
+  }, [pathname, setIsLoading])
 
   const handlePageChange = useCallback((page: number) => {
     router.push(`${pathname}?q=${activeTab}&p=${page}`)
@@ -67,7 +69,8 @@ export default function Table({ pathname }: TableProps) {
 
   useEffect(() => {
     const fetchData = async () => {
-      setIsLoadingTable(true)
+      setLoadingBg('bg-white/75')
+      setIsLoading(true)
       try {
         const response = await fetch(`/api/${pathname}/?q=${activeTab}&p=${currentPage}`)
         const result = await response.json()
@@ -75,41 +78,35 @@ export default function Table({ pathname }: TableProps) {
         setData(result.data)
         setTotalPages(result.totalPages)
         setTableDescription(result.resultInitial, result.resultLast, result.totalResults, result.totalRevealed, result.totalSaints)
-        setIsLoadingTable(false)
         setIsLoading(false)
       } catch (error) {
         console.error('Error fetching data:', error)
       } finally {
-        setIsLoadingTable(false)
+        setIsLoading(false)
       }
     }
 
     fetchData()
-  }, [activeTab, currentPage, handlePageChange, setIsLoading, setTableDescription])
+  }, [activeTab, currentPage, handlePageChange, pathname, setIsLoading, setLoadingBg, setTableDescription])
 
   const handleTabChange = (tab: string) => {
     setActiveTab(tab)
-    router.push(`${pathname}?q=${tab}&p=${currentPage}`)
+    router.push(`${pathname}?q=${tab}&p=${1}`)
     setCurrentPage(1)
   }
 
   return (
-    <div className="my-28 md:my-48">
-      <div className="flex w-full">
-        <div className="max-w-7xl">
-          <h1 className="uppercase font-extrabold text-6xl md:text-8xl">{pathname}</h1>
-        </div>
+    <div className="my-28 md:my-48 w-full flex justify-center flex-col items-center">
+      <div className="flex w-full max-w-7xl">
+        <h1 className="uppercase font-extrabold text-6xl md:text-8xl">{pathname}</h1>
       </div>
-      {tabs?.length > 0 && <Tabs tabs={tabs} activeTab={activeTab} onTabChange={handleTabChange} />}
+      
+      {tabs?.length > 0 && (
+        <Tabs tabs={tabs} activeTab={activeTab} onTabChange={handleTabChange} title={tabsTitle} isAlwaysActive />
+      )}
 
-      {data?.length > 0 && (
-        <div className="flex justify-center relative">
-          {isLoadingTable && (
-            <div className="fixed w-full h-full bg-white/75 flex justify-center items-center z-50 top-0">
-              <Icon name="zodiac-wheel" color="black" />
-            </div>
-          )}
-          
+      {data?.length > 0 ? (
+        <div className="flex justify-center relative">          
           <div className="bg-white p-5">
             <div className="border-2 border-black p-5 max-w-7xl">
               <p className="flex justify-between">
@@ -120,6 +117,10 @@ export default function Table({ pathname }: TableProps) {
             </div>
           </div>
         </div>
+      ) : (
+        <Error title={pathname}>
+          Saints not found
+        </Error>
       )}
 
       <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={handlePageChange} />

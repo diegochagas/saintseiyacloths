@@ -38,7 +38,11 @@ export default function handler(
     const groups: GroupProps[] = groupSaints(filteredSaints, filteredGroups)
     res.status(200).json({ ...historyData, ...getContentByPage(groups, p) })
   } else if (!q) {
-    res.status(200).json(historyJson)
+    const filteredHistory = historyJson.filter(item => {
+      const saint = saintsJson.find(saint => saint.history === item.id)
+      return !!saint
+    })
+    res.status(200).json(filteredHistory)
   } else {
     res.status(400).json({ message: `Error: History with id ${q} not found!` })
   }
