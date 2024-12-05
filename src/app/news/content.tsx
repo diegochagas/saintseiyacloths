@@ -5,6 +5,7 @@ import NewsList from '../components/news-list'
 import Tabs, { TabProps } from '../components/tabs'
 import Icon from '../components/icons'
 import Error from '../components/error'
+import { useTranslations } from 'next-intl'
 
 interface ContentProps {
   news: NewsProps[]
@@ -33,6 +34,8 @@ export default function Content({
   onSearchSubmit,
   onSearchClear
 }: ContentProps) {
+  const t = useTranslations('title')
+
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     onSearchSubmit()
@@ -41,7 +44,7 @@ export default function Content({
   return (
     <div className="my-28 md:my-48 w-full flex justify-center flex-col items-center">
       <div className="flex w-full max-w-7xl">
-        <h1 className="uppercase font-extrabold text-6xl md:text-8xl">News</h1>
+        <h1 className="uppercase font-extrabold text-6xl md:text-8xl">{t('news')}</h1>
       </div>
       
       {tabs?.length > 0 && <Tabs tabs={tabs} activeTab={activeTab} onTabChange={onTabChange} title="Midia" />}

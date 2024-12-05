@@ -1,11 +1,8 @@
-{
-  "title": "Menu",
-  "items": [
-    { "href": "/", "text": "Home" },
-    { "href": "/news", "text": "News" },
-    { "href": "/classes", "text": "Classes" },
-    { "href": "/artists", "text": "Artists" },
-    { "href": "/history", "text": "History" },
-    { "href": "/about", "text": "About" }
-  ]
-}
+[
+  { "href": "/", "text": "home" },
+  { "href": "/news", "text": "news" },
+  { "href": "/classes", "text": "classes" },
+  { "href": "/artists", "text": "artists" },
+  { "href": "/history", "text": "history" },
+  { "href": "/about", "text": "about" }
+]

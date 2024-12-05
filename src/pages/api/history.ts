@@ -4,11 +4,7 @@ import historyJson from './data/history.json'
 import midias from './data/midias.json'
 import saintsJson from './data/saints.json'
 import { getContentByPage, GroupProps, groupSaints } from './classes'
-
-export interface MidiaProps {
-  id: string
-  name: string
-}
+import { MidiaProps } from './midias'
  
 export interface HistoryProps {
   id: string

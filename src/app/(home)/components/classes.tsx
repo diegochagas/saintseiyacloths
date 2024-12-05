@@ -1,24 +1,28 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import Title from '../../components/title'
 import { SaintProps } from '@/pages/api/classes'
+import { useTranslations } from 'next-intl'
 
 interface ClassesProps {
   saints: SaintProps[]
 }
 
 export default function Classes({ saints }: ClassesProps) {
+  const t = useTranslations()
+
   return (
     <section className="max-w-7xl mt-20">
-      <Title text="Latest schemes" />
+       <h2 className="uppercase text-3xl sm:text-6xl lg:text-8xl xl:text-9xl font-extrabold">
+        {t('subTitle.latestSchemes')}
+      </h2>
     
         <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {saints.map(saint => (
-            <li className="group w-full h-full flex flex-col items-center border-2 border-black" key={saint.id}>
+            <li className="w-full h-full flex flex-col items-center border-2 border-black" key={saint.id}>
               <b className="capitalize text-xs md:text-base">{saint?.cloth?.name || 'Unknown cloth'}</b>
-              <figure className="w-28 h-28 md:w-56 md:h-56 overflow-hidden">
+              <figure className="w-28 h-28 md:w-56 md:h-56">
                 <Image
-                  className="w-full h-full object-contain group-hover:scale-110 duration-300"
+                  className="w-full h-full object-contain"
                   src={saint.image}
                   alt="Saint image"
                   width={542}
@@ -34,7 +38,7 @@ export default function Classes({ saints }: ClassesProps) {
         className="block text-center w-56 font-bold text-yellow-500 hover:text-black uppercase bg-black hover:bg-yellow-500 py-3 mt-9 mb-20 mx-auto"
         href="/classes"
       >
-        More
+        {t('button.more')}
       </Link>
     </section>
   )

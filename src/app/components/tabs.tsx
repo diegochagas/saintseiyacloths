@@ -1,19 +1,34 @@
-import React from 'react'
+import React, { ChangeEvent } from 'react'
 
 export interface TabProps {
   id: string
   name: string
 }
 
+export interface ItemProps extends TabProps {
+  options?: TabProps[]
+}
+
 interface TabsProps {
   tabs: TabProps[]
+  subTabs?: any[]
   activeTab: string
   onTabChange: (tab: string) => void
+  subTabId?: string
   title?: string
   isAlwaysActive?: boolean
 }
 
-export default function Tabs({ tabs, activeTab, onTabChange, title, isAlwaysActive }: TabsProps) {
+export default function Tabs({ tabs, subTabs, activeTab, onTabChange, subTabId, title, isAlwaysActive }: TabsProps) {
+  const items: ItemProps[] = tabs.map(tab => ({
+    ...tab,
+    options: subTabs?.filter(option => option[`${subTabId}`] === tab.id)
+  }))
+
+  function tabClassName(isSelected: boolean) {
+    return `${isSelected ? 'bg-black text-white' : 'bg-white text-black'} hover:bg-black hover:text-white border-2 md:border-4 border-black px-1 md:px-8 rounded-3xl font-black text-xs md:text-sm capitalize`
+  }
+
   function handleTabChange(tabId: string) {
     if (isAlwaysActive) {
       onTabChange(tabId)
@@ -35,15 +50,30 @@ export default function Tabs({ tabs, activeTab, onTabChange, title, isAlwaysActi
       )}
       <div className="bg-neutral-400 pt-2 md:pt-10 md:pb-5 w-full flex justify-center">
         <ul className="flex flex-wrap justify-center items-center gap-1 m-5 max-w-7xl">
-          {tabs.map(tab => (
-            <li key={tab.id}>
-              <button
-                className={`${activeTab === tab.id ? 'bg-black text-white' : 'bg-white text-black'} hover:bg-black hover:text-white border-2 md:border-4 border-black px-1 md:px-5 rounded-3xl font-black text-xs capitalize`}
-                onClick={() => handleTabChange(tab.id)}
-                disabled={isAlwaysActive && activeTab === tab.id}
-              >
-                {tab.name}
-              </button>
+          {items.map(item => (
+            <li key={item.id}>
+              {item.options?.length && item.options?.length > 1 ? (
+                <select
+                  className={`text-center ${tabClassName(item.options.some(option => option.id === activeTab))}`}
+                  onChange={(event: ChangeEvent<HTMLSelectElement>) => handleTabChange(event.target.value)}
+                >
+                  <option value="">{item.name}</option>
+                  {item.options.map(option => (
+                    <option key={option.id} value={option.id}>
+                      {subTabId === 'midia' ? item.name : ''}
+                      {(option.name && subTabId === 'midia') ? `: ${option.name}` : option.name}
+                    </option>
+                  ))}
+                </select>
+              ) : (
+                <button
+                  className={tabClassName(activeTab === item.id)}
+                  onClick={() => handleTabChange(item.id)}
+                  disabled={isAlwaysActive && activeTab === item.id}
+                >
+                  {item.name}
+                </button>
+              )}
             </li>
           ))}
         </ul>

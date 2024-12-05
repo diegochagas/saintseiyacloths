@@ -4,8 +4,10 @@ import { MouseEvent, useEffect, useState } from 'react'
 import { animateScroll } from 'react-scroll'
 import Icon from './icons'
 import { useMenu } from '../context/menu-context'
+import { useTranslations } from 'next-intl'
 
 export default function ScrollTop() {
+  const t = useTranslations('button')
   const { isMenuOpen } = useMenu()
   const [showArrow, setShowArrow] = useState(false)
   const opacity = showArrow ? 'opacity-100' : 'opacity-0'
@@ -37,9 +39,8 @@ export default function ScrollTop() {
       className={`${isMenuOpen ? 'hidden' : 'block'} fixed right-4 lg:right-8 bottom-1 z-50 ${opacity} transition-all duration-300`}
       onClick={onScrollTo}
     >
-      <p className="uppercase absolute right-0 bottom-0 flex flex-col items-end text-xl lg:text-2xl font-black text-stroke-white">
-        <span className="-mb-2.5 lg:-mb-3">Page</span>
-        <span>Top</span>
+      <p className="uppercase absolute right-0 bottom-0 text-xl leading-5 lg:text-2xl lg:leading-6 font-black text-stroke-white text-end">
+        {t('pageTop')}
       </p>
       <Icon className="w-20 lg:w-28 h-auto" name="nike-stroke" />
     </a>
