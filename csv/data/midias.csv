@@ -1,10 +1,10 @@
 ﻿id,name
-0,Never released
-1,Manga
-2,Anime
-3,Book
-4,Outside story
-5,Game
-6,Audio
-7,Movie
-8,Streaming
+0,neverReleased
+1,manga
+2,anime
+3,book
+4,outsideStory
+5,game
+6,audio
+7,movie
+8,streaming

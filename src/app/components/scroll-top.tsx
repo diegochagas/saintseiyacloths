@@ -7,7 +7,7 @@ import { useMenu } from '../context/menu-context'
 import { useTranslations } from 'next-intl'
 
 export default function ScrollTop() {
-  const t = useTranslations('button')
+  const t = useTranslations()
   const { isMenuOpen } = useMenu()
   const [showArrow, setShowArrow] = useState(false)
   const opacity = showArrow ? 'opacity-100' : 'opacity-0'

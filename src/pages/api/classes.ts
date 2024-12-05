@@ -78,7 +78,7 @@ function filterIfSaints(groups: GroupProps[], className: string) {
 }
 
 function getTotalRevealedOnlyBy(className: string, groups: GroupProps[]) {
-  if (className === 'Saints' || className === 'Specters') {
+  if (className === 'saints' || className === 'specters') {
     return groups.reduce((accumulator, currentGroup) => {
       const currentValue = (isOfficialConstellation(currentGroup.name) || isOfficialEvilStar(currentGroup.id)) &&
         currentGroup.saints.length ? 1 : 0
@@ -88,8 +88,8 @@ function getTotalRevealedOnlyBy(className: string, groups: GroupProps[]) {
 }
 
 function getTotalOnlyBy(name: string) {
-  if (name === 'Saints') return 88
-  else if (name === 'Specters' || name === 'Faceless') return 108
+  if (name === 'saints') return 88
+  else if (name === 'specters' || name === 'faceless') return 108
 }
 
 export function getItemsByPage(data: any[], page: number) {

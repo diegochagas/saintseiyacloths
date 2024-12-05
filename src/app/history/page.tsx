@@ -6,8 +6,10 @@ import { TabProps } from '../components/tabs'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useLoading } from '../context/loading-content'
 import { MidiaProps } from '@/pages/api/midias'
+import { useTranslations } from 'next-intl'
 
 export default function History() {
+  const t = useTranslations()
   const router = useRouter()
   const searchParams = useSearchParams()
   const [tabs, setTabs] = useState<TabProps[]>([])
@@ -32,14 +34,14 @@ export default function History() {
         setSubTabs(items)
         setIsLoading(false)
       } catch (error) {
-        setErrorMessage(`Error fetching data: ${error}`)
+        setErrorMessage(`${t('errorFetchingData')} ${error}`)
       } finally {
         setIsLoading(false)
       }
     }
 
     getTabs()
-  }, [setIsLoading])
+  }, [setIsLoading, t])
 
   const handlePageChange = useCallback((page: number) => {
     router.push(`history?q=${activeTab}&p=${page}`)
@@ -56,17 +58,17 @@ export default function History() {
         if (!result.data?.length) handlePageChange(1)
         setData(result.data)
         setTotalPages(result.totalPages)
-        setLeftDescription(`${result.totalResults} Results ${result.resultInitial} - ${result.resultLast}`)
+        setLeftDescription(`${result.totalResults} ${t('results')} ${result.resultInitial} - ${result.resultLast}`)
         setIsLoading(false)
       } catch (error) {
-        setErrorMessage(`Error fetching data: ${error}`)
+        setErrorMessage(`${t('errorFetchingData')} ${error}`)
       } finally {
         setIsLoading(false)
       }
     }
 
     fetchData()
-  }, [activeTab, currentPage, handlePageChange, setIsLoading, setLoadingBg])
+  }, [activeTab, currentPage, handlePageChange, setIsLoading, setLoadingBg, t])
 
   const handleTabChange = (tab: string) => {
     setActiveTab(tab)
@@ -76,8 +78,8 @@ export default function History() {
 
 	return (
     <Table
-      title="history"
-      tabsTitle="history"
+      title={t('history')}
+      tabsTitle={t('history')}
       tabs={tabs}
       subTabs={subTabs}
       subTabId="midia"

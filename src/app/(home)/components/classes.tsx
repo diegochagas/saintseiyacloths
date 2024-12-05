@@ -24,7 +24,7 @@ export default function Classes({ saints }: ClassesProps) {
                 <Image
                   className="w-full h-full object-contain"
                   src={saint.image}
-                  alt={t('saintScheme')}
+                  alt={t('saintClothScheme')}
                   width={542}
                   height={400}
                 />
@@ -38,7 +38,7 @@ export default function Classes({ saints }: ClassesProps) {
         className="block text-center w-56 font-bold text-yellow-500 hover:text-black uppercase bg-black hover:bg-yellow-500 py-3 mt-9 mb-20 mx-auto"
         href="/classes"
       >
-        {t('button.more')}
+        {t('more')}
       </Link>
     </section>
   )

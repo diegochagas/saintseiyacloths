@@ -1,4 +1,3 @@
-import { useTranslations } from 'next-intl'
 import Pagination from './pagination'
 import Saints from '@/app/components/saints'
 import Tabs, { TabProps } from './tabs'
@@ -37,12 +36,10 @@ export default function Table({
   leftDescription,
   rightDescription,
 }: TableProps) {
-  const t = useTranslations()
-
   return (
     <div className="my-28 md:my-48 w-full flex justify-center flex-col items-center">
       <div className="flex w-full max-w-7xl">
-        <h1 className="uppercase font-extrabold text-6xl md:text-8xl">{t(`title.${title}`)}</h1>
+        <h1 className="uppercase font-extrabold text-6xl md:text-8xl">{title}</h1>
       </div>
       
       {tabs?.length > 0 && (

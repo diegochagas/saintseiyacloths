@@ -18,7 +18,7 @@ function filterNewsBySearchValueAndMidia(news: NewsProps[], searchValue: string,
       item.date.includes(searchValue) ||
       item.saint?.character?.name?.toLowerCase().includes(searchValue) ||
       item.saint?.cloth?.name?.toLowerCase().includes(searchValue) ||
-      item.saint?.history?.midia?.name?.toLowerCase().includes(searchValue)
+      item.saint?.history?.midia?.name?.includes(searchValue)
     )
   })
 }

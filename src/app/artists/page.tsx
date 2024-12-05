@@ -25,13 +25,13 @@ export default function Artists() {
   useEffect(() => {
     async function getTabs() {
       try {
-        setTabs([{ id: '1', name: t('official') }, { id: '2', name: t('fanart') }])
+        setTabs([{ id: '1', name: 'official' }, { id: '2', name: 'fanart' }])
         const response = await fetch(`/api/artists`)
         const items = await response.json()
         setSubTabs(items)
         setIsLoading(false)
       } catch (error) {
-        setErrorMessage(`${t('fetchingData')} ${error}`)
+        setErrorMessage(`${t('errorFetchingData')} ${error}`)
       } finally {
         setIsLoading(false)
       }
@@ -58,7 +58,7 @@ export default function Artists() {
         setLeftDescription(`${result.totalResults} ${t('results')} ${result.resultInitial} - ${result.resultLast}`)
         setIsLoading(false)
       } catch (error) {
-        setErrorMessage(`${t('fetchingData')} ${error}`)
+        setErrorMessage(`${t('errorFetchingData')} ${error}`)
       } finally {
         setIsLoading(false)
       }

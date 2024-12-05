@@ -30,7 +30,7 @@ export default function Classes() {
         setTabs(items)
         setIsLoading(false)
       } catch (error) {
-        setErrorMessage(`${t('fetchingData')} ${error}`)
+        setErrorMessage(`${t('errorFetchingData')} ${error}`)
       } finally {
         setIsLoading(false)
       }
@@ -61,7 +61,7 @@ export default function Classes() {
           setRightDescription('')
         setIsLoading(false)
       } catch (error) {
-        setErrorMessage(`${t('fetchingData')} ${error}`)
+        setErrorMessage(`${t('errorFetchingData')} ${error}`)
       } finally {
         setIsLoading(false)
       }

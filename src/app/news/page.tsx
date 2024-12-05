@@ -5,8 +5,10 @@ import { useRouter, useSearchParams } from 'next/navigation'
 import { useLoading } from '../context/loading-content'
 import Content from './content'
 import { TabProps } from '../components/tabs'
+import { useTranslations } from 'next-intl'
 
 export default function News() {
+  const t = useTranslations()
   const router = useRouter()
   const searchParams = useSearchParams()
   const [tabs, setTabs] = useState<TabProps[]>([])
@@ -18,6 +20,7 @@ export default function News() {
   const [pageParam, setPageParam] = useState('')
   const [midiaParam, setMidiaParam] = useState('')
   const [searchParam, setSearchParam] = useState('')
+  const [errorMessage, setErrorMessage] = useState<string>('')
   const { setIsLoading } = useLoading()
   
   useEffect(() => {
@@ -28,14 +31,14 @@ export default function News() {
         setTabs(midias)
         setIsLoading(false)
       } catch (error) {
-        console.error('Error fetching data:', error)
+        setErrorMessage(`${t('errorFetchingData')} ${error}`)
       } finally {
         setIsLoading(false)
       }
     }
 
     getTabs()
-  }, [setIsLoading])
+  }, [setIsLoading, t])
 
   const handlePageChange = useCallback((page: number) => {
     setCurrentPage(page)
@@ -53,14 +56,14 @@ export default function News() {
         setIsLoading(false)
         setIsLoading(false)
       } catch (error) {
-        console.error('Error fetching data:', error)
+        setErrorMessage(`${t('errorFetchingData')} ${error}`)
       } finally {
         setIsLoading(false)
       }
     }
 
     fetchData()
-  }, [handlePageChange, midiaParam, pageParam, searchParam, setIsLoading])
+  }, [handlePageChange, midiaParam, pageParam, searchParam, setIsLoading, t])
 
   useEffect(() => {
     if (currentPage) {
@@ -102,6 +105,7 @@ export default function News() {
       onSearchValue={setSearchValue}
       onSearchSubmit={() => setSearchParam(searchValue ? `&s=${searchValue}` : '')}
       onSearchClear={handleSearchClear}
+      errorMessage={errorMessage}
     />
   )
 }

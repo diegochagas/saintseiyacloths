@@ -4,8 +4,10 @@ import { useLoading } from './context/loading-content'
 import { useEffect } from 'react'
 import Error from './components/error'
 import Image from 'next/image'
+import { useTranslations } from 'next-intl'
  
 export default function NotFound() {
+  const t = useTranslations()
   const { setIsLoading } = useLoading()
 
   useEffect(() => setIsLoading(false), [setIsLoading])
@@ -13,18 +15,18 @@ export default function NotFound() {
   return (
     <div className="w-full bg-zinc-100 mt-16 md:mt-24 pt-10 md:pt-20">
       <Error
-        title={<span>403 Forbidden/<br className="lg:hidden" />404 Not Found</span>}
-        subTitle="Could not find requested resource"
-        backButtonText="Home"
+        title={<span>403 {t('errorForbidden')}/<br className="lg:hidden" />404 {t('errorNotFound')}</span>}
+        subTitle={t('errorResource')}
+        backButtonText={t('home')}
         backButtonURL="/"
       >
-        <Image className="w-full max-w-72" src="/banners/sorry.jpg" width={532} height={984} alt="Manga scene" />
+        <Image className="w-full max-w-72" src="/banners/sorry.jpg" width={532} height={984} alt={t('errorMangaImage')} />
         <div className="my-10 text-xs sm:text-base">
-          <p>Possible reasons for the error:</p>
+          <p>{t('errorReasons')}</p>
           <ul className="list-disc">
-            <li>You may have mistyped the page URL</li>
-            <li>The page may have been moved</li>
-            <li>You don&apos;t have permission to access this page</li>
+            <li>{t('errorURL')}</li>
+            <li>{t('errorMovedPage')}</li>
+            <li>{t('errorPermission')}</li>
           </ul>
         </div>
       </Error>

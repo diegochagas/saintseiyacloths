@@ -36,7 +36,7 @@ export default function Home() {
         setNews(result.data)
         return response
       } catch(err) {
-        return { status: 500, message: `${t('newsNotFound')} ${err}` }
+        return { status: 500, message: `${t('errorNewsNotFound')} ${err}` }
       }
     }
 

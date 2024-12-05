@@ -17,7 +17,7 @@ export default function NewsList({ news }: NewsListProps) {
           <Link className="w-full group" href={`/news/${item.saint.id}`}>
             <div className="my-2.5">
               <h4 className="text-xl font-semibold text-center">
-                {item.saint.cloth?.name || t('page.classes.unknownCloth')}
+                {item.saint.cloth?.name || t('unknownCloth')}
               </h4>
             </div>
             <figure className="m-3 bg-white overflow-hidden">
@@ -26,19 +26,19 @@ export default function NewsList({ news }: NewsListProps) {
                 src={item.saint.image}
                 width={547}
                 height={400}
-                alt={t('page.classes.saintScheme')}
+                alt={t('saintClothScheme')}
               />
             </figure>
             <div className="flex justify-between">
               <span className="uppercase block bg-black text-white text-sm font-bold px-2 py-0.5">
-                {t(`midia.${item.saint.history?.midia?.name?.toLowerCase()}`)}
+                {t(item.saint.history?.midia?.name)}
               </span>
       
               <span className="font-semibold text-sm">{new Date(item.date).toLocaleDateString()}</span>
             </div>
             <div className="my-2.5">
               <h4 className="text-xl font-semibold text-center">
-                {item.saint.character?.name || t('page.classes.unknownCharacter')}
+                {item.saint.character?.name || t('unknownCharacter')}
               </h4>
             </div>
           </Link>

@@ -47,7 +47,7 @@ export default function Tabs({ tabs, subTabs, activeTab, onTabChange, subTabId, 
     <div className="relative w-full flex flex-col items-center">
       {title && (
         <h2 className="uppercase text-white bg-black text-2xl sm:text-4xl md:text-5xl font-black w-fit px-1 relative top-4 md:top-6">
-          Select {title}
+          {t('select')} {title}
         </h2>
       )}
       <div className="bg-neutral-400 pt-2 md:pt-10 md:pb-5 w-full flex justify-center">
@@ -59,7 +59,7 @@ export default function Tabs({ tabs, subTabs, activeTab, onTabChange, subTabId, 
                   className={`text-center ${tabClassName(item.options.some(option => option.id === activeTab))}`}
                   onChange={(event: ChangeEvent<HTMLSelectElement>) => handleTabChange(event.target.value)}
                 >
-                  <option value="">{t(`${item.name}`)}</option>
+                  <option value="">{t(item.name)}</option>
                   {item.options.map(option => (
                     <option key={option.id} value={option.id}>
                       {subTabId === 'midia' ? item.name : ''}
@@ -73,7 +73,7 @@ export default function Tabs({ tabs, subTabs, activeTab, onTabChange, subTabId, 
                   onClick={() => handleTabChange(item.id)}
                   disabled={isAlwaysActive && activeTab === item.id}
                 >
-                  {item.name}
+                  {t(item.name)}
                 </button>
               )}
             </li>

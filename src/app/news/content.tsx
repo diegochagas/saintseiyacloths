@@ -19,6 +19,7 @@ interface ContentProps {
   onSearchValue: (text: string) => void
   onSearchSubmit: () => void
   onSearchClear: () => void
+  errorMessage: string
 }
 
 export default function Content({
@@ -32,9 +33,10 @@ export default function Content({
   searchValue,
   onSearchValue,
   onSearchSubmit,
-  onSearchClear
+  onSearchClear,
+  errorMessage
 }: ContentProps) {
-  const t = useTranslations('title')
+  const t = useTranslations()
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -47,7 +49,7 @@ export default function Content({
         <h1 className="uppercase font-extrabold text-6xl md:text-8xl">{t('news')}</h1>
       </div>
       
-      {tabs?.length > 0 && <Tabs tabs={tabs} activeTab={activeTab} onTabChange={onTabChange} title="Midia" />}
+      {tabs?.length > 0 && <Tabs tabs={tabs} activeTab={activeTab} onTabChange={onTabChange} title={t('midia')} />}
 
       <div className="flex flex-col justify-center relative bg-zinc-100 w-full items-center">
         <div className="flex items-center w-full max-w-7xl gap-4 p-5">
@@ -55,7 +57,7 @@ export default function Content({
             <input
               className="border-2 bg-zinc-300 border-none w-full h-full p-3 text-xs focus:outline-none font-bold"
               type="text"
-              placeholder="Search"
+              placeholder={t('search')}
               value={searchValue}
               onChange={event => onSearchValue(event.target.value)}
             />
@@ -73,7 +75,7 @@ export default function Content({
             onClick={onSearchClear}
             disabled={searchValue === ''}
           >
-            Clear
+            {t('clear')}
           </button>
         </div>
     
@@ -81,7 +83,7 @@ export default function Content({
 
         {news.length === 0  && (
           <Error>
-            News not found
+            {errorMessage}
           </Error>
         )}
         

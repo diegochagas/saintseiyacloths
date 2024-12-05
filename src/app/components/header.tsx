@@ -9,7 +9,7 @@ import ScrollTop from './scroll-top'
 import menu from '../../pages/api/data/menu.json'
 
 export default function Header() {
-  const t = useTranslations('title')
+  const t = useTranslations()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
   
@@ -48,8 +48,8 @@ export default function Header() {
           {menu.map(item => (
             <li key={item.text} className="hover:text-yellow-500 text-white group" onClick={() => setIsMenuOpen(false)}>
               <Link className="flex items-center gap-4 md:gap-2 lg:gap-4" href={item.href}>
-                <Icon className="group-hover:fill-yellow-500" name={item.text.toLocaleLowerCase() as iconName} color="white" />
-                <span className="text-2xl md:text-lg lg:text-xl font-bold">{t(`${item.text}`)}</span>
+                <Icon className="group-hover:fill-yellow-500" name={item.text as iconName} color="white" />
+                <span className="text-2xl md:text-lg lg:text-xl font-bold">{t(item.text)}</span>
               </Link>
             </li>
           ))}
