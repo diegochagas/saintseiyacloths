@@ -1,3 +1,4 @@
+import { useTranslations } from 'next-intl'
 import React, { ChangeEvent } from 'react'
 
 export interface TabProps {
@@ -20,6 +21,7 @@ interface TabsProps {
 }
 
 export default function Tabs({ tabs, subTabs, activeTab, onTabChange, subTabId, title, isAlwaysActive }: TabsProps) {
+  const t = useTranslations()
   const items: ItemProps[] = tabs.map(tab => ({
     ...tab,
     options: subTabs?.filter(option => option[`${subTabId}`] === tab.id)
@@ -57,7 +59,7 @@ export default function Tabs({ tabs, subTabs, activeTab, onTabChange, subTabId, 
                   className={`text-center ${tabClassName(item.options.some(option => option.id === activeTab))}`}
                   onChange={(event: ChangeEvent<HTMLSelectElement>) => handleTabChange(event.target.value)}
                 >
-                  <option value="">{item.name}</option>
+                  <option value="">{t(`${item.name}`)}</option>
                   {item.options.map(option => (
                     <option key={option.id} value={option.id}>
                       {subTabId === 'midia' ? item.name : ''}

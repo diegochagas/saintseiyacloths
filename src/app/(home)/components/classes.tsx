@@ -13,23 +13,23 @@ export default function Classes({ saints }: ClassesProps) {
   return (
     <section className="max-w-7xl mt-20">
        <h2 className="uppercase text-3xl sm:text-6xl lg:text-8xl xl:text-9xl font-extrabold">
-        {t('subTitle.latestSchemes')}
+        {t('latestSchemes')}
       </h2>
     
         <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {saints.map(saint => (
             <li className="w-full h-full flex flex-col items-center border-2 border-black" key={saint.id}>
-              <b className="capitalize text-xs md:text-base">{saint?.cloth?.name || 'Unknown cloth'}</b>
+              <b className="capitalize text-xs md:text-base">{saint?.cloth?.name || t('unknownCloth')}</b>
               <figure className="w-28 h-28 md:w-56 md:h-56">
                 <Image
                   className="w-full h-full object-contain"
                   src={saint.image}
-                  alt="Saint image"
+                  alt={t('saintScheme')}
                   width={542}
                   height={400}
                 />
               </figure>
-              <h4 className="font-semibold text-xs md:text-sm">{saint?.character?.name ?? 'Unknown saint'}</h4>
+              <h4 className="font-semibold text-xs md:text-sm">{saint?.character?.name ?? t('unknownSaint')}</h4>
             </li>
           ))}
         </ul>

@@ -1,3 +1,4 @@
+import { useTranslations } from 'next-intl'
 import ListItem from './list-item'
 import { GroupProps, SaintProps } from '@/pages/api/classes'
 
@@ -6,6 +7,8 @@ interface SaintsProps {
 }
 
 export default function Saints({ data }: SaintsProps) {
+  const t = useTranslations()
+
   return (
     <div className="flex flex-wrap gap-4 justify-center">
       {data.map(item => (
@@ -15,7 +18,7 @@ export default function Saints({ data }: SaintsProps) {
             {item.saints.length > 0 ? item.saints.map((saint: SaintProps) => (
               <ListItem key={saint.id} image={saint.image} cloth={saint?.cloth?.name} name={saint?.character?.name} />
             )) : (
-              <ListItem image="/cloth-schemes/others/no-scheme.jpg" cloth="Unknown cloth" name="Unknown character" />
+              <ListItem image="/cloth-schemes/others/no-scheme.jpg" cloth={t('unknownCloth')} name={t('unknownCharacter')} />
             )}
           </ul>
         </div>

@@ -5,8 +5,10 @@ import Table from '../components/table'
 import { useCallback, useEffect, useState } from 'react'
 import { TabProps } from '../components/tabs'
 import { useLoading } from '../context/loading-content'
+import { useTranslations } from 'next-intl'
 
 export default function Classes() {
+  const t = useTranslations()
   const router = useRouter()
   const searchParams = useSearchParams()
   const [tabs, setTabs] = useState<TabProps[]>([])
@@ -28,14 +30,14 @@ export default function Classes() {
         setTabs(items)
         setIsLoading(false)
       } catch (error) {
-        setErrorMessage(`Error fetching data: ${error}`)
+        setErrorMessage(`${t('fetchingData')} ${error}`)
       } finally {
         setIsLoading(false)
       }
     }
 
     getTabs()
-  }, [setIsLoading])
+  }, [setIsLoading, t])
 
   const handlePageChange = useCallback((page: number) => {
     router.push(`classes?q=${activeTab}&p=${page}`)
@@ -52,21 +54,21 @@ export default function Classes() {
         if (!result.data?.length) handlePageChange(1)
         setData(result.data)
         setTotalPages(result.totalPages)
-        setLeftDescription(`${result.totalResults} Results ${result.resultInitial} - ${result.resultLast}`)
+        setLeftDescription(`${result.totalResults} ${t('results')} ${result.resultInitial} - ${result.resultLast}`)
         if (activeTab === 'saints' || activeTab === 'specters')
-          setRightDescription(`${activeTab} ${result.totalRevealed} of ${result.totalSaints} revealed`)
+          setRightDescription(`${activeTab} ${result.totalRevealed} ${t('of')} ${result.totalSaints} ${t('revealed')}`)
         else
           setRightDescription('')
         setIsLoading(false)
       } catch (error) {
-        setErrorMessage(`Error fetching data: ${error}`)
+        setErrorMessage(`${t('fetchingData')} ${error}`)
       } finally {
         setIsLoading(false)
       }
     }
 
     fetchData()
-  }, [activeTab, currentPage, handlePageChange, setIsLoading, setLoadingBg])
+  }, [activeTab, currentPage, handlePageChange, setIsLoading, setLoadingBg, t])
 
   const handleTabChange = (tab: string) => {
     setActiveTab(tab)
@@ -76,8 +78,8 @@ export default function Classes() {
 
 	return (
     <Table
-      pathname="classes"
-      tabsTitle="class"
+      title={t('classes')}
+      tabsTitle={t('class')}
       tabs={tabs}
       activeTab={activeTab}
       handleTabChange={handleTabChange}

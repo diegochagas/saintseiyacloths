@@ -8,8 +8,10 @@ import News from './components/news'
 import Store from './components/store'
 import Classes from './components/classes'
 import { useLoading } from '../context/loading-content'
+import { useTranslations } from 'next-intl'
 
 export default function Home() {
+  const t = useTranslations()
   const { setIsLoading } = useLoading()
   const [saints, setSaints] = useState<SaintProps[]>([])
   const [news, setNews] = useState<NewsProps[]>([])
@@ -23,7 +25,7 @@ export default function Home() {
         setSaints(result.data)
         return response
       } catch(err) {
-        return { status: 500, message: `Error: Saints not found! ${err}` }
+        return { status: 500, message: `${t('saintNotFound')} ${err}` }
       }
     }
 
@@ -34,7 +36,7 @@ export default function Home() {
         setNews(result.data)
         return response
       } catch(err) {
-        return { status: 500, message: `Error: News not found! ${err}` }
+        return { status: 500, message: `${t('newsNotFound')} ${err}` }
       }
     }
 
@@ -45,7 +47,7 @@ export default function Home() {
         setGeoLocation(result)
         return response
       } catch(err) {
-        return { status: 500, message: `Error: Country not found! ${err}` }
+        return { status: 500, message: `${t('countryNotFound')} ${err}` }
       }
     }
 
@@ -60,7 +62,7 @@ export default function Home() {
     }
 
     checkIfIsLoading()
-  }, [setIsLoading])
+  }, [setIsLoading, t])
 
   return (
     <>

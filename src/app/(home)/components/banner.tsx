@@ -1,6 +1,8 @@
+import { useTranslations } from 'next-intl'
 import Image from 'next/image'
 
 export default function Banner() {
+  const t = useTranslations()
   return (
     <section className="bg-black w-full flex justify-center">
       <Image
@@ -8,7 +10,7 @@ export default function Banner() {
         src="/banners/saint-seiya-cloths-banner-vertical.jpg"
         width={960}
         height={1400}
-        alt="Saint Seiya cloths banner vertical"
+        alt={t('bannerVertical')}
       />
 
       <Image
@@ -16,7 +18,7 @@ export default function Banner() {
         src="/banners/saint-seiya-cloths-banner-horizontal.jpg"
         width={1920}
         height={1080}
-        alt="Saint Seiya cloths banner horizontal"
+        alt={t('bannerHorizontal')}
       />
     </section>
   )

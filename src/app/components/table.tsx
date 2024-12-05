@@ -5,7 +5,7 @@ import Tabs, { TabProps } from './tabs'
 import Error from './error'
 
 interface TableProps {
-  pathname: string
+  title: string
   tabsTitle: string
   tabs: TabProps[]
   activeTab: string
@@ -22,7 +22,7 @@ interface TableProps {
 }
 
 export default function Table({
-  pathname,
+  title,
   tabsTitle,
   tabs,
   activeTab,
@@ -37,16 +37,24 @@ export default function Table({
   leftDescription,
   rightDescription,
 }: TableProps) {
-  const t = useTranslations('title')
+  const t = useTranslations()
 
   return (
     <div className="my-28 md:my-48 w-full flex justify-center flex-col items-center">
       <div className="flex w-full max-w-7xl">
-        <h1 className="uppercase font-extrabold text-6xl md:text-8xl">{t(`${pathname}`)}</h1>
+        <h1 className="uppercase font-extrabold text-6xl md:text-8xl">{t(`title.${title}`)}</h1>
       </div>
       
       {tabs?.length > 0 && (
-        <Tabs tabs={tabs} subTabs={subTabs} activeTab={activeTab} subTabId={subTabId} onTabChange={handleTabChange} title={tabsTitle} isAlwaysActive />
+        <Tabs
+          tabs={tabs}
+          subTabs={subTabs}
+          activeTab={activeTab}
+          subTabId={subTabId}
+          onTabChange={handleTabChange}
+          title={tabsTitle}
+          isAlwaysActive
+        />
       )}
 
       {data?.length > 0 ? (
@@ -62,7 +70,7 @@ export default function Table({
           </div>
         </div>
       ) : (
-        <Error title={pathname}>{errorMessage}</Error>
+        <Error title={title}>{errorMessage}</Error>
       )}
 
       <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={handlePageChange} />

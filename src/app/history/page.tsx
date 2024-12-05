@@ -76,7 +76,7 @@ export default function History() {
 
 	return (
     <Table
-      pathname="history"
+      title="history"
       tabsTitle="history"
       tabs={tabs}
       subTabs={subTabs}
