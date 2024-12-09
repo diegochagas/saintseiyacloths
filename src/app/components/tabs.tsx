@@ -32,13 +32,15 @@ export default function Tabs({ tabs, subTabs, activeTab, onTabChange, subTabId, 
   }
 
   function handleTabChange(tabId: string) {
-    if (isAlwaysActive) {
-      onTabChange(tabId)
-    } else {
-      if (tabId === activeTab) {
-        onTabChange('')
-      } else {
+    if (tabId) {
+      if (isAlwaysActive) {
         onTabChange(tabId)
+      } else {
+        if (tabId === activeTab) {
+          onTabChange('')
+        } else {
+          onTabChange(tabId)
+        }
       }
     }
   }
@@ -54,7 +56,7 @@ export default function Tabs({ tabs, subTabs, activeTab, onTabChange, subTabId, 
         <ul className="flex flex-wrap justify-center items-center gap-1 m-5 max-w-7xl">
           {items.map(item => (
             <li key={item.id}>
-              {item.options?.length && item.options?.length > 1 ? (
+              {item.options?.length && item.options?.length > 0 ? (
                 <select
                   className={`text-center ${tabClassName(item.options.some(option => option.id === activeTab))}`}
                   onChange={(event: ChangeEvent<HTMLSelectElement>) => handleTabChange(event.target.value)}
@@ -62,7 +64,7 @@ export default function Tabs({ tabs, subTabs, activeTab, onTabChange, subTabId, 
                   <option value="">{t(item.name)}</option>
                   {item.options.map(option => (
                     <option key={option.id} value={option.id}>
-                      {subTabId === 'midia' ? item.name : ''}
+                      {subTabId === 'midia' ? t(item.name) : ''}
                       {(option.name && subTabId === 'midia') ? `: ${option.name}` : option.name}
                     </option>
                   ))}
