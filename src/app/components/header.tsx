@@ -7,11 +7,13 @@ import { useTranslations } from 'next-intl'
 import Icon, { iconName } from './icons'
 import ScrollTop from './scroll-top'
 import menu from '../../pages/api/data/menu.json'
+import socials from '../../pages/api/data/socials.json'
 
 export default function Header() {
   const t = useTranslations()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
+  const x = socials.find(social => social.text === 'X')
   
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -22,7 +24,7 @@ export default function Header() {
   return (
     <>
       <header className="fixed bg-white z-40 w-full flex px-3.5 py-1.5 justify-between border-b-8 border-b-black items-center text-neutral-300 uppercase font-bold transition-all duration-300 ease-linear">
-        <a href="https://x.com/saintseiyacloths" target="_blank" rel="noopener noreferrer">
+        <a href={x?.href} target="_blank" rel="noopener noreferrer">
           <Image className="w-5 lg:w-6 h-auto" src="/logos/icon_x.png" alt="" width={138} height={140} />
         </a>
         
