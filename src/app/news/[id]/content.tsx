@@ -76,9 +76,9 @@ export default function Content({ data, error, url, isBrazil }: ContentProps) {
             )}
 
             <div className="relative self-end">
-              <h3 className="absolute top-6 md:top-14 -left-1 md:left-1 font-extrabold text-4xl md:text-6xl -rotate-6 uppercase">{t('share')}</h3>
+              <h3 className="absolute top-9 md:top-20 -left-1 font-extrabold text-2xl md:text-5xl -rotate-6 uppercase">{t('share')}</h3>
               
-              <Image className="w-full max-w-lg" src="/banners/bg_share.png" alt={t('shareImage')} width={1044} height={398} />
+              <Image className="w-72 md:w-[570px]" src="/banners/bg_share.png" alt={t('shareImage')} width={1044} height={398} />
               
               <a
                 className="absolute -bottom-2 left-16 md:left-32 w-12 h-12 md:w-20 md:h-20 rounded-full border-4 border-black flex items-center justify-center bg-white group"
@@ -101,7 +101,7 @@ export default function Content({ data, error, url, isBrazil }: ContentProps) {
             
             <div className="mt-20 mb-20 mx-auto flex justify-center md:justify-end">
               <Link
-                className="block text-center w-60 font-extrabold text-yellow-500 hover:text-black uppercase bg-black hover:bg-yellow-500 py-3"
+                className="block text-center w-64 font-extrabold text-yellow-500 hover:text-black uppercase bg-black hover:bg-yellow-500 py-3"
                 href="/news"
               >
                 {t('backToNewsList')}

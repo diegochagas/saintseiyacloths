@@ -12,7 +12,7 @@ export default function Classes({ saints }: ClassesProps) {
 
   return (
     <section className="max-w-7xl mt-20">
-       <h2 className="uppercase text-3xl sm:text-6xl lg:text-8xl xl:text-9xl font-extrabold">
+       <h2 className="uppercase text-3xl sm:text-6xl lg:text-8xl font-extrabold">
         {t('latestSchemes')}
       </h2>
     
