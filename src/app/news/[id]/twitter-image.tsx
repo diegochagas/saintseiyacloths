@@ -1,6 +1,5 @@
 import { NewsProps } from '@/pages/api/news'
 import { ImageResponse } from 'next/og'
-import OpenImage from './opengraph-image'
  
 export const runtime = 'edge'
  
@@ -29,5 +28,24 @@ async function getNews(id: string): Promise<NewsProps> {
 export default async function Image({ params }: { params: { id: string } }) {
   const news = await getNews(params.id)
 
-  return OpenImage
+  return new ImageResponse(
+    (
+      <div
+        style={{
+          fontSize: 128,
+          background: 'white',
+          width: '100%',
+          height: '100%',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
+      >
+        {news.saint?.image && <img src={`${baseURL}${news.saint.image}`} alt="" style={{ width: '100%' }} />}
+      </div>
+    ),
+    {
+      ...size,
+    }
+  )
 }
