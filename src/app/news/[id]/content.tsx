@@ -1,20 +1,19 @@
+import Image from 'next/image'
+import Link from 'next/link'
+import { useTranslations } from 'next-intl'
 import Error from '@/app/components/error'
 import Icon from '@/app/components/icons'
 import { NewsProps } from '@/pages/api/news'
-import { useTranslations } from 'next-intl'
-import Image from 'next/image'
-import Link from 'next/link'
-import { useRouter } from 'next/navigation'
 
 interface ContentProps {
   data: NewsProps
   error: any
   url: string
+  isBrazil?: boolean
 }
 
-export default function Content({ data, error, url }: ContentProps) {
+export default function Content({ data, error, url, isBrazil }: ContentProps) {
   const t = useTranslations()
-  const router = useRouter()
 
   return (
     <div className="my-28 md:my-48 w-full flex justify-center flex-col items-center">
@@ -52,17 +51,29 @@ export default function Content({ data, error, url }: ContentProps) {
             <ul className="flex flex-col gap-2 ml-4 mt-10">
               <li className="list-disc">
                 <h6 className="font-bold text-lg">{t('god')}</h6>
-                <p className="">{data.saint.god?.name}</p>
+                {data.saint.god?.name}
               </li>
               <li className="list-disc">
                 <h6 className="font-bold text-lg">{t('class')}</h6>
-                <p className="">{t(data.saint.group.class)}</p>
+                {t(data.saint.group.class)}
               </li>
               <li className="list-disc">
                 <h6 className="font-bold text-lg">{t('rank')}</h6>
-                <p className="">{t(data.saint.rank)}</p>
+                {t(data.saint.rank)}
               </li>
             </ul>
+
+            {isBrazil && (
+              <div className="my-16">
+                <a className="hover:font-bold cursor-pointer text-lg flex flex-col" href={data.amazon} target="_blank" rel="noopener noreferrer">
+                  <b className="inline-flex items-center gap-1">
+                    <Icon name="arrow-right" size={15} />
+                    <span className="uppercase">Clique aqui!</span>
+                  </b>
+                  <span className="">E compre a história onde esse personagem apareceu!</span>
+                </a>
+              </div>
+            )}
 
             <div className="relative self-end">
               <h3 className="absolute top-6 md:top-14 -left-1 md:left-1 font-extrabold text-4xl md:text-6xl -rotate-6 uppercase">{t('share')}</h3>
@@ -80,7 +91,7 @@ export default function Content({ data, error, url }: ContentProps) {
  
               <a
                 className="absolute -bottom-2 left-32 md:left-60 w-12 h-12 md:w-20 md:h-20 rounded-full border-4 border-black flex items-center justify-center bg-white group"
-                href={`http://twitter.com/share?text=${encodeURI(`${data.saint.character.name} - ${data.saint.history.midia.name.toLocaleUpperCase()}: ${data.saint.history.name}`)}+%23saintseiya+&url=${url}`}
+                href={`http://twitter.com/share?text=${encodeURI(`${data.saint.character.name} - ${t(data.saint.history.midia.name)}: ${data.saint.history.name}`)}+%23saintseiya+&url=${url}`}
                 target="_blank"
                 rel="noopener noreferrer"
               >

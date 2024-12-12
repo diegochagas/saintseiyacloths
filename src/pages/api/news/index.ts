@@ -7,6 +7,7 @@ import { getContentByPage, loadSaintData, SaintProps } from '../classes'
 export interface NewsProps {
   saint: SaintProps
   date: string
+  amazon?: string
 }
 
 function filterNewsBySearchValueAndMidia(news: NewsProps[], searchValue: string, midia: any) {

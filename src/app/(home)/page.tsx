@@ -15,7 +15,7 @@ export default function Home() {
   const { setIsLoading } = useLoading()
   const [saints, setSaints] = useState<SaintProps[]>([])
   const [news, setNews] = useState<NewsProps[]>([])
-  const [geoLocation, setGeoLocation] = useState({ country: '' })
+  const [country, setCountry] = useState('')
 
   useEffect(() => {
     async function getSaints() {
@@ -40,11 +40,11 @@ export default function Home() {
       }
     }
 
-    async function getGeoLocation() {
+    async function getCountry() {
       try {
         const response = await fetch('http://ip-api.com/json')
         const result = await response.json()
-        setGeoLocation(result)
+        setCountry(result?.country)
         return response
       } catch(err) {
         return { status: 500, message: `${t('countryNotFound')} ${err}` }
@@ -54,7 +54,7 @@ export default function Home() {
     async function checkIfIsLoading() {
       const responseSaints = await getSaints()
       const responseNews = await getNews()
-      const responseGeoLocation = await getGeoLocation()
+      const responseGeoLocation = await getCountry()
 
       if (!!responseSaints.status && !!responseNews.status && !!responseGeoLocation.status) {
         setIsLoading(false)
@@ -70,7 +70,7 @@ export default function Home() {
 
       {news && <News news={news.slice(-4)} />}
 
-      {geoLocation.country === 'Brazil' && <Store />}
+      {country === 'Brazil' && <Store />}
 
       {saints && <Classes saints={saints.slice(-8)} />}
     </>
