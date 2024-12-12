@@ -34,7 +34,7 @@ export default function NewsList({ news }: NewsListProps) {
                 {t(item.saint.history?.midia?.name)}
               </span>
       
-              <span className="font-semibold text-sm">{new Date(item.date).toLocaleDateString()}</span>
+              <span className="font-semibold text-sm">{item.date}</span>
             </div>
             <div className="my-2.5">
               <h4 className="text-xl font-semibold text-center">

@@ -9,10 +9,10 @@ export default function handler(
 ) {
   const { id } = req.query
   const saint = saintsJson.find(saint => saint.id === id)
+  const data = newsJson.find(item => item.saint === saint?.id)
   
-  if (saint) {
-    const data = newsJson.find(item => item.saint === saint.id)
-    res.status(200).json({ ...data, saint: loadSaintData(saint) })
+  if (data) {
+    res.status(200).json({ ...data, date: new Date(data.date).toLocaleDateString(), saint: loadSaintData(saint) })
   } else {
     res.status(400).json({ message: `Error: news not found!` })
   }

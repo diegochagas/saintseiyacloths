@@ -25,7 +25,7 @@ export default function Content({ data, error, url }: ContentProps) {
       <div className="flex flex-col justify-center relative bg-zinc-100 w-full my-5 py-10 px-6 items-center">
         <div className="flex justify-center items-center w-full max-w-4xl">
           <div className="flex flex-col w-full">
-            <span className="font-bold text-lg block my-5">{new Date(data.date).toLocaleDateString()}</span>
+            <span className="font-bold text-lg block my-5">{data.date}</span>
             
             <div>
               <span className="font-bold text-xl text-white uppercase bg-black px-10 py-0.5">

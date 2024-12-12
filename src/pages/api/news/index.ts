@@ -31,7 +31,7 @@ export default function handler(
   const newsDraft = newsJson.filter(item => !!item.date)
   const news = newsDraft.reverse().map(item => {
     const saint = saintsJson.find(saint => saint.id === item.saint)
-    return { ...item, saint: loadSaintData(saint) }
+    return { ...item, date: new Date(item.date).toLocaleDateString(), saint: loadSaintData(saint) }
   })
   if (s) {
     const searchValue = s.toString().toLowerCase()
