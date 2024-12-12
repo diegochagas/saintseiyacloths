@@ -14,6 +14,7 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Saint Seiya Cloths",
   description: "This website showcases the Cloth Schemes of all Saint Seiya characters.",
+  metadataBase: new URL('https://www.saintseiyacloths.com/'),
 };
 
 export default async function RootLayout({
