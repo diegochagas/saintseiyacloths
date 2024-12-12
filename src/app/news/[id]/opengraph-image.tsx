@@ -11,19 +11,19 @@ export const size = {
  
 export const contentType = 'image/jpg'
 
+const baseURL = 'https://www.saintseiyacloths.com'
+
 async function getNews(id: string): Promise<NewsProps> {
-  const response = await fetch(`/api/news/${id}`, {
+  const response = await fetch(`${baseURL}/api/news/${id}`, {
     next: {
       revalidate: 60 * 60, // 1 hour
     },
   })
 
-  const product = await response.json()
+  const news = await response.json()
 
-  return product
+  return news
 }
-
-
  
 export default async function Image({ params }: { params: { id: string } }) {
   const news = await getNews(params.id)
@@ -41,7 +41,7 @@ export default async function Image({ params }: { params: { id: string } }) {
           justifyContent: 'center',
         }}
       >
-        {news.saint?.image && <img src={news.saint.image} alt="" style={{ width: '100%' }} />}
+        {news.saint?.image && <img src={`${baseURL}${news.saint.image}`} alt="" style={{ width: '100%' }} />}
       </div>
     ),
     {
