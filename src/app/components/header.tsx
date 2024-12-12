@@ -25,7 +25,7 @@ export default function Header() {
     <>
       <header className="fixed bg-white z-40 w-full flex px-3.5 py-1.5 justify-between border-b-8 border-b-black items-center text-neutral-300 uppercase font-bold transition-all duration-300 ease-linear">
         <a href={x?.href} target="_blank" rel="noopener noreferrer">
-          <Image className="w-5 lg:w-6 h-auto" src="/logos/icon_x.png" alt="" width={138} height={140} />
+          <Icon className="w-5 lg:w-6 h-auto" name="x" />
         </a>
         
         <Link href="/">

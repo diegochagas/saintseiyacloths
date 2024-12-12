@@ -5,10 +5,8 @@ import newsJson from '../data/news.json'
 import { getContentByPage, loadSaintData, SaintProps } from '../classes'
 
 export interface NewsProps {
-  date: string
   saint: SaintProps
-  title: string
-  description: string
+  date: string
 }
 
 function filterNewsBySearchValueAndMidia(news: NewsProps[], searchValue: string, midia: any) {
@@ -29,7 +27,9 @@ export default function handler(
 ) {
   const { p, m, s } = req.query
   const midia = midiasJson.find(midia => midia.id === m)
-  const news = newsJson.reverse().map(item => {
+  // TODO: REMOVE THIS FILTER WHEN THE NEWS OF THE SAINT 680 IS RELEASED
+  const newsDraft = newsJson.filter(item => !!item.date)
+  const news = newsDraft.reverse().map(item => {
     const saint = saintsJson.find(saint => saint.id === item.saint)
     return { ...item, saint: loadSaintData(saint) }
   })

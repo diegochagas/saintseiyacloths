@@ -30,5 +30,5 @@ export default function Details() {
     fetchData()
   }, [id, setIsLoading])
 
-  return data ? <Content data={data} error={errorMessage} /> : null
+  return data ? <Content data={data} error={errorMessage} url={window.location.href} /> : null
 }

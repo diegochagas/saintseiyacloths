@@ -111,7 +111,7 @@ export const loadHistoryData = (historyId: string) => {
 const getCharacterAndGod = (saint: any) => {
   let character
   let god
-  for (let i = 1; i < charactersJson.length; i++) {
+  for (let i = 0; i < charactersJson.length; i++) {
     if (saint.character === charactersJson[i].id) character = charactersJson[i]
     if (saint.god === charactersJson[i].id) god = charactersJson[i]
     if (!!god?.id && !!character?.id) break
@@ -134,6 +134,15 @@ export const loadSaintData = (saint: any) => {
 }
 
 export function getContentByPage(items: any[], p: any) {
+  if (items.length === 0) {
+    return {
+      data: items,
+      resultInitial: 0,
+      resultLast: 0,
+      totalPages: 0,
+      totalResults: 0,
+    }
+  }
   const page = parseInt(`${p || 1}`)
   const itemsPerPage = 12
   const data = getItemsByPage(items, page)

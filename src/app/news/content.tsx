@@ -81,13 +81,13 @@ export default function Content({
     
         <NewsList news={news} />
 
-        {news.length === 0  && (
+        {(news.length === 0 || errorMessage) && (
           <Error>
-            {errorMessage}
+            {errorMessage || t('errorNewsNotFound')}
           </Error>
         )}
         
-        <div className="mb-20">
+        <div className="mb-20 w-full max-w-7xl">
           <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={onPageChange} />
         </div>
       </div>

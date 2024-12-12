@@ -1,47 +1,47 @@
 ﻿id,name
-1,Soldier
-2,Hours
-3,Steel
-4,Black
-5,Bronze
-6,Silver
-7,Gold
-8,Pope
-9,God
-10,Goddess
-11,Omega
-12,Captain
-13,Celestial Star
-14,Terrestrial Star
-15,Commander
+1,soldier
+2,hours
+3,steel
+4,black
+5,bronze
+6,silver
+7,gold
+8,pope
+9,god
+10,goddess
+11,omega
+12,captain
+13,celestialStar
+14,terrestrialStar
+15,commander
 16,
-17,Fallen Angel
-18,General
-19,Gladiator
-20,High Priest
-21,High Ranking
-22,Legionaries
-23,Ephodos Battalion
-24,Animal
-25,Low Ranking
-26,Priest
-27,Principal
-28,Host
-29,Reincarnation
-30,Personification
-31,Representative
-32,First Class
-33,Second Class
-34,Third Class
-35,Vice Principal
-36,High Martian
-37,Leptas
-38,Automaton
-39,Dragon
-40,Undead
-41,Pythia
-42,Witch
-43,Seventh Fuji Ninja
-44,Heavenly King
-45,Ressurected Saint
-46,Stigma
+17,fallenAngel
+18,general
+19,gladiator
+20,highPriest
+21,highRanking
+22,legionaries
+23,ephodosBattalion
+24,animal
+25,lowRanking
+26,priest
+27,principal
+28,host
+29,reincarnation
+30,personification
+31,representative
+32,firstClass
+33,secondClass
+34,thirdClass
+35,vicePrincipal
+36,highMartian
+37,leptas
+38,automaton
+39,dragon
+40,undead
+41,pythia
+42,witch
+43,
+44,heavenlyKing
+45,ressurectedSaint
+46,stigma
