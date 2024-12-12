@@ -77,10 +77,10 @@ export default function Content({ data, error, url }: ContentProps) {
               >
                 <Icon className="w-5 md:w-10 md:group-hover:w-12 h-auto" name="facebook" />
               </a>
-              
+ 
               <a
                 className="absolute -bottom-2 left-32 md:left-60 w-12 h-12 md:w-20 md:h-20 rounded-full border-4 border-black flex items-center justify-center bg-white group"
-                href={`http://twitter.com/share?url=${url}`}
+                href={`http://twitter.com/share?text=${encodeURI(`${data.saint.character.name} - ${data.saint.history.midia.name.toLocaleUpperCase()}: ${data.saint.history.name}`)}+%23saintseiya+&url=${url}`}
                 target="_blank"
                 rel="noopener noreferrer"
               >
