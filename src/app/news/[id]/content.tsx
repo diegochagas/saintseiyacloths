@@ -63,7 +63,7 @@ export default function Content({ data, error, url, isBrazil }: ContentProps) {
               </li>
             </ul>
 
-            {isBrazil && (
+            {isBrazil && data.amazon && (
               <div className="my-16">
                 <a className="hover:font-bold cursor-pointer text-lg flex flex-col" href={data.amazon} target="_blank" rel="noopener noreferrer">
                   <b className="inline-flex items-center gap-1">

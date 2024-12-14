@@ -2,14 +2,9 @@
 apollo-gods,angels,gods
 apollo-angels,angels,angels
 apollo-fallen-angels,fallen-angels,fallenAngels
-apollo-abel-saints-17,corona-saints,carinaConstellation
-apollo-abel-saints-25,corona-saints,comaBerenicesConstellation
-apollo-abel-saints-51,corona-saints,lynxConstellation
-apollo-abel-revived-saints-4,corona-saints,aquariusConstellation
-apollo-abel-revived-saints-12,corona-saints,cancerConstellation
-apollo-abel-revived-saints-16,corona-saints,capricornusConstellation
-apollo-abel-revived-saints-38,corona-saints,geminiConstellation
-apollo-abel-revived-saints-66,corona-saints,piscesConstellation
+apollo-abel-gods,corona-saints,gods
+apollo-abel-corona-saints,corona-saints,coronaSaints
+apollo-abel-revived-saints,corona-saints,ressurectedSaints
 apsu-anunnakis,anunnakis,anunnakis
 apsu-weapons,anunnakis,weapons
 ares-gods,berserkers,gods
@@ -482,7 +477,6 @@ tezcatlipoca-gods,jaguars,gods
 tezcatlipoca-jaguars,jaguars,jaguars
 tezcatlipoca-jaguar-soldiers,jaguars,soldiers
 typhon-gods,gigas,carnelianOnyx
-typhon-unknown,gigas,unknown
 typhon-sons-1,gigas,starSapphire
 typhon-sons-2,gigas,starRuby
 typhon-sons-3,gigas,opal
@@ -499,4 +493,5 @@ typhon-gigas-6,gigas,rubyIron
 typhon-gigas-7,gigas,pearlDragon
 typhon-gigas-8,gigas,amberBeast
 typhon-gigas-9,gigas,jadeArmor
+typhon-unknown,gigas,unknown
 zeus-gods,olympians,olympians

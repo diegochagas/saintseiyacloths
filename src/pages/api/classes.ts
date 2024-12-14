@@ -72,8 +72,8 @@ const isOfficialEvilStar = (id: string) => {
 }
 
 function filterIfSaints(groups: GroupProps[], className: string) {
-  if (className === 'Saints') 
-    return groups.filter(item => !(!isOfficialConstellation(item.name) && !item.saints.length))
+  if (className.toLocaleLowerCase() === 'saints') 
+    return groups.filter(item => !(!isOfficialConstellation(item.name.toLocaleLowerCase()) && !item.saints.length))
   return groups
 }
 
