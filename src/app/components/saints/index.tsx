@@ -18,7 +18,7 @@ export default function Saints({ data }: SaintsProps) {
             {item.saints.length > 0 ? item.saints.map((saint: SaintProps) => (
               <ListItem key={saint.id} image={saint.image} cloth={saint?.cloth?.name} name={saint?.character?.name} />
             )) : (
-              <ListItem image="/cloth-schemes/others/no-scheme.jpg" cloth={t('unknownCloth')} name={t('unknownCharacter')} />
+              <ListItem />
             )}
           </ul>
         </div>

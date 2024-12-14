@@ -35,7 +35,7 @@ export default function Content({ data, error, url, isBrazil }: ContentProps) {
             <h2 className="mt-5 text-3xl font-extrabold">{data.saint.character.name}</h2>
             
             <div className="bg-neutral-400 my-5 md:my-10 p-4 md:p-8">
-              <h1 className="text-2xl font-bold">{data.saint.history.name}</h1>
+              <h1 className="text-2xl font-bold">{t(data.saint.history.name)}</h1>
             </div>
             
             <p>{t(`newsDescription.${data.saint.id}`)}</p>

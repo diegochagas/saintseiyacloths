@@ -45,10 +45,22 @@ export default function Tabs({ tabs, subTabs, activeTab, onTabChange, subTabId, 
     }
   }
 
+  function renderButton(item: ItemProps) {
+    return (
+      <button
+        className={tabClassName(activeTab === item.id)}
+        onClick={() => handleTabChange(item.id)}
+        disabled={isAlwaysActive && activeTab === item.id}
+      >
+        {t(item.name)}
+      </button>
+    )
+  }
+
   return (
     <div className="relative w-full flex flex-col items-center">
       {title && (
-        <h2 className="uppercase text-white bg-black text-2xl sm:text-4xl md:text-5xl font-black w-fit px-1 relative top-4 md:top-6">
+        <h2 className="uppercase text-white bg-black text-2xl sm:text-4xl md:text-5xl font-black w-fit px-1 md:py-2 relative top-4 md:top-6">
           {t('select')} {title}
         </h2>
       )}
@@ -57,27 +69,21 @@ export default function Tabs({ tabs, subTabs, activeTab, onTabChange, subTabId, 
           {items.map(item => (
             <li key={item.id}>
               {item.options?.length && item.options?.length > 0 ? (
-                <select
-                  className={`text-center ${tabClassName(item.options.some(option => option.id === activeTab))}`}
-                  onChange={(event: ChangeEvent<HTMLSelectElement>) => handleTabChange(event.target.value)}
-                >
-                  <option value="">{t(item.name)}</option>
-                  {item.options.map(option => (
-                    <option key={option.id} value={option.id}>
-                      {subTabId === 'midia' ? t(item.name) : ''}
-                      {(option.name && subTabId === 'midia') ? `: ${option.name}` : option.name}
-                    </option>
-                  ))}
-                </select>
-              ) : (
-                <button
-                  className={tabClassName(activeTab === item.id)}
-                  onClick={() => handleTabChange(item.id)}
-                  disabled={isAlwaysActive && activeTab === item.id}
-                >
-                  {t(item.name)}
-                </button>
-              )}
+                (item.options.length > 1 ? (
+                  <select
+                    className={`text-center ${tabClassName(item.options.some(option => option.id === activeTab))}`}
+                    onChange={(event: ChangeEvent<HTMLSelectElement>) => handleTabChange(event.target.value)}
+                  >
+                    <option value="">{t(item.name)}</option>
+                    {item.options.map(option => (
+                      <option key={option.id} value={option.id}>
+                        {subTabId === 'midia' ? t(item.name) : ''}
+                        {(option.name && subTabId === 'midia') ? `: ${t(option.name)}` : option.name}
+                      </option>
+                    ))}
+                  </select>
+                ) : renderButton(item.options[0]))
+              ) : renderButton(item)}
             </li>
           ))}
         </ul>
