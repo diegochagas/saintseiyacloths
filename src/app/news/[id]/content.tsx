@@ -15,6 +15,17 @@ interface ContentProps {
 export default function Content({ data, error, url, isBrazil }: ContentProps) {
   const t = useTranslations()
 
+  const renderListItem = (title: string, description: any) => (
+    <li className="list-disc">
+      <h6 className="font-bold text-lg">{t(title)}</h6>
+      {description?.id ? (
+        description?.site ? (
+          <a className="hover:font-bold" href={description.site} target="_blank" rel="noopener noreferrer">{description.name}</a>
+        ) : description.name
+      ) : description}
+    </li>
+  )
+
   return (
     <div className="my-28 md:my-48 w-full flex justify-center flex-col items-center">
       <div className="flex w-full max-w-7xl">
@@ -44,23 +55,30 @@ export default function Content({ data, error, url, isBrazil }: ContentProps) {
               <Image className="border-2 border-black" src={data.saint.image} width={536} height={400} alt={t('saintClothScheme')} />
             
               <figcaption>
-                <small className="font-semibold capitalize">{data.saint.cloth?.name || t('unknownCloth')}</small>
+                <small className="font-semibold capitalize">{t(data.saint.cloth?.name || 'unknownCloth')}</small>
               </figcaption>
             </figure>
               
             <ul className="flex flex-col gap-2 ml-4 mt-10">
-              <li className="list-disc">
-                <h6 className="font-bold text-lg">{t('god')}</h6>
-                {data.saint.god?.name}
-              </li>
-              <li className="list-disc">
-                <h6 className="font-bold text-lg">{t('class')}</h6>
-                {t(data.saint.group.class)}
-              </li>
-              <li className="list-disc">
-                <h6 className="font-bold text-lg">{t('rank')}</h6>
-                {t(data.saint.rank)}
-              </li>
+              {renderListItem('god', data.saint.god?.name)}
+              {renderListItem('class', t(data.saint.group.class))}
+              {renderListItem('rank', t(data.saint.rank || 'unknownRank'))}
+              {data.saint.artistSaint && data.saint.artistCloth ? (
+                data.saint.artistSaint.id === data.saint.artistCloth.id ? 
+                  renderListItem('schemeBy', data.saint.artistSaint)
+                : (
+                  <>
+                    {data.saint.artistSaint && renderListItem('characterBy', data.saint.artistSaint)}
+                    {data.saint.artistCloth && renderListItem('clothBy', data.saint.artistCloth)}
+                  </>
+                )
+              ) : (
+                <>  
+                  {data.saint.artistSaint && renderListItem('characterBy', data.saint.artistSaint)}
+                  {data.saint.artistCloth && renderListItem('clothBy', data.saint.artistCloth)}
+                  {!data.saint.artistSaint && !data.saint.artistCloth && renderListItem('schemeBy', t('unknownArtist'))}
+                </>
+              )}
             </ul>
 
             {isBrazil && data.amazon && (

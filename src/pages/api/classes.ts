@@ -28,10 +28,6 @@ interface ClothProps {
   image: string
 }
 
-interface RankProps {
-  id: string
-  name: string
-}
 export interface GroupProps {
   id: string
   class: string
@@ -44,7 +40,7 @@ export interface SaintProps {
   character: CharacterProps
   cloth: ClothProps
   group: GroupProps
-  rank: RankProps
+  rank: string
   god: CharacterProps
   image: string
   artistSaint: ArtistProps

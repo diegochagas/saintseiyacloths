@@ -1,7 +1,7 @@
 ﻿id,character,cloth,group,rank,god,artistSaint,artistCloth,image,history
 1,1,148,athena-saints-38,7,582,16,10,/cloth-schemes/athena-saints/gemini-abel.jpg,4
 2,2,371,apollo-abel-gods,9,28,6,6,/cloth-schemes/apollo-corona-saints/phoebus-abel.jpg,23
-3,496,,hakuryu-gods,9,496,3,,/cloth-schemes/hakuryu-taonias/hakuryu.jpg,7
+3,496,160,hakuryu-gods,9,496,6,6,/cloth-schemes/hakuryu-taonias/hakuryu-liu-xing.jpg,7
 4,4,330,pallas-weapon-firstclass-3,32,323,5,5,/cloth-schemes/pallas-pallasites/graviton-aegaeon.png,16
 5,5,147,pallas-weapon-secondclass-2,33,323,31,8,/cloth-schemes/pallas-pallasites/gauntlet-phantom-arm-aegir.png,16
 6,6,83,athena-saints-29,6,582,6,6,/cloth-schemes/athena-saints/crater-aeson.jpg,5

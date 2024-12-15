@@ -17,7 +17,7 @@ export default function NewsList({ news }: NewsListProps) {
           <Link className="w-full group" href={`/news/${item.saint.id}`}>
             <div className="my-2.5">
               <h4 className="text-xl font-semibold text-center">
-                {item.saint.cloth?.name || t('unknownCloth')}
+                {t(item.saint.cloth?.name || 'unknownCloth')}
               </h4>
             </div>
             <figure className="m-3 bg-white overflow-hidden">
