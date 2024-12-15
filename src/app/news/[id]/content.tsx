@@ -109,7 +109,7 @@ export default function Content({ data, error, url, isBrazil }: ContentProps) {
  
               <a
                 className="absolute -bottom-2 left-32 md:left-60 w-12 h-12 md:w-20 md:h-20 rounded-full border-4 border-black flex items-center justify-center bg-white group"
-                href={`http://twitter.com/share?text=${encodeURI(`${data.saint.character.name} - ${t(data.saint.history.midia.name)}: ${data.saint.history.name}`)}+%23saintseiya+&url=${url}`}
+                href={`http://twitter.com/share?text=${encodeURI(`${data.saint.character.name} - ${t(data.saint.history.midia.name)}: ${t(data.saint.history.name)}`)}+%23saintseiya+&url=${url}`}
                 target="_blank"
                 rel="noopener noreferrer"
               >
