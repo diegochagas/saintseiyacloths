@@ -24,7 +24,6 @@ export interface ClassProps {
 interface ClothProps {
   id: string
   name: string
-  history: string
   image: string
 }
 
