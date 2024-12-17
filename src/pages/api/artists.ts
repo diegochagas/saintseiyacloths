@@ -19,7 +19,7 @@ export default function handler(
   const artistData = artistsJson.find(artist => artist.id === q)
 
   if (artistData) {
-    const filteredSaints = saintsJson.filter(saint => saint.artistSaint === artistData.id || saint.artistCloth === artistData.id)
+    const filteredSaints = saintsJson.filter(saint => (saint.artistSaint || '0') === artistData.id || (saint.artistCloth || '0') === artistData.id)
     const filteredGroups = groupsJson.filter(group => group.id === filteredSaints.find(saint => saint.group === group.id)?.group)
     const groups: GroupProps[] = groupSaints(filteredSaints, filteredGroups)
     res.status(200).json({ ...artistData, ...getContentByPage(groups, p) })

@@ -25,7 +25,7 @@ export default function Artists() {
   useEffect(() => {
     async function getTabs() {
       try {
-        setTabs([{ id: '1', name: 'official' }, { id: '2', name: 'fanart' }])
+        setTabs([{ id: '1', name: 'official' }, { id: '2', name: 'fanart' }, { id: '0', name: 'unknown' }])
         const response = await fetch(`/api/artists`)
         const items = await response.json()
         setSubTabs(items)
