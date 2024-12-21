@@ -5,11 +5,10 @@ import classesJson from './data/classes.json'
 import clothsJson from './data/cloths.json'
 import groupsJson from './data/groups.json'
 import historyJson from './data/history.json'
-import midiasJson from './data/midias.json'
 import ranksJson from './data/ranks.json'
 import saintsJson from './data/saints.json'
 import { ArtistProps } from './artists'
-import { HistoryProps } from './history'
+import { HistoryProps, loadHistoryData } from './history'
 
 interface CharacterProps {
   id: string
@@ -97,12 +96,6 @@ export function getItemsByPage(data: any[], page: number) {
   }
 }
 
-export const loadHistoryData = (historyId: string) => {
-  const history: any = historyJson.find(item => item.id === historyId)
-  const midia = midiasJson.find(midia => midia.id === history?.midia)
-  return { ...history, midia }
-}
-
 const getCharacterAndGod = (saint: any) => {
   let character
   let god
@@ -115,6 +108,7 @@ const getCharacterAndGod = (saint: any) => {
 }
 
 export const loadSaintData = (saint: any) => {
+  const history = historyJson.find(item => item.id === saint?.history)
   return {
     ...saint,
     ...getCharacterAndGod(saint),
@@ -124,7 +118,7 @@ export const loadSaintData = (saint: any) => {
     group: groupsJson.find(group => group.id === saint.group),
     rank: ranksJson.find(rank => rank.id === saint.rank)?.name,
     image: !saint.image ? '/cloth-schemes/others/no-scheme.jpg' : saint.image,
-    history: loadHistoryData(saint.history),
+    history: loadHistoryData(history),
   }
 }
 

@@ -5,7 +5,6 @@ import { useCallback, useEffect, useState } from 'react'
 import { TabProps } from '../components/tabs'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useLoading } from '../context/loading-content'
-import { MidiaProps } from '@/pages/api/midias'
 import { useTranslations } from 'next-intl'
 
 export default function History() {
@@ -28,7 +27,7 @@ export default function History() {
       try {
         const midiasResponse = await fetch('/api/midias')
         const midias = await midiasResponse.json()
-        setTabs(midias.filter((midia: MidiaProps) => !midia.isEmpty))
+        setTabs(midias)
         const response = await fetch(`/api/history`)
         const items = await response.json()
         setSubTabs(items)

@@ -24,7 +24,7 @@ export default function Tabs({ tabs, subTabs, activeTab, onTabChange, subTabId, 
   const t = useTranslations()
   const items: ItemProps[] = tabs.map(tab => ({
     ...tab,
-    options: subTabs?.filter(option => option[`${subTabId}`] === tab.id)
+    options: subTabs?.filter(option => option[`${subTabId}`]?.id === tab.id)
   }))
 
   function tabClassName(isSelected: boolean) {
@@ -45,17 +45,16 @@ export default function Tabs({ tabs, subTabs, activeTab, onTabChange, subTabId, 
     }
   }
 
-  function renderButton(item: ItemProps) {
-    return (
-      <button
-        className={tabClassName(activeTab === item.id)}
-        onClick={() => handleTabChange(item.id)}
-        disabled={isAlwaysActive && activeTab === item.id}
-      >
-        {t(item.name)}
-      </button>
-    )
-  }
+  const renderButton = (item: any) => (
+    <button
+      className={tabClassName(activeTab === item.id)}
+      onClick={() => handleTabChange(item.id)}
+      disabled={isAlwaysActive && activeTab === item.id}
+    >
+      {item.midia?.name ? `${t(item.midia?.name)}: ` : ''}
+      {t(item.name)}
+    </button>
+  )
 
   return (
     <div className="relative w-full flex flex-col items-center">
@@ -73,6 +72,7 @@ export default function Tabs({ tabs, subTabs, activeTab, onTabChange, subTabId, 
                   <select
                     className={`text-center ${tabClassName(item.options.some(option => option.id === activeTab))}`}
                     onChange={(event: ChangeEvent<HTMLSelectElement>) => handleTabChange(event.target.value)}
+                    value={item.options.find(option => option.id === activeTab) ? activeTab : ''}
                   >
                     <option value="">{t(item.name)}</option>
                     {item.options.map(option => (

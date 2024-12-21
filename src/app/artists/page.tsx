@@ -1,6 +1,6 @@
 'use client'
 
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useState, useMemo } from 'react'
 import Table from '../components/table'
 import { useLoading } from '../context/loading-content'
 import { TabProps } from '../components/tabs'
@@ -11,7 +11,6 @@ export default function Artists() {
   const t = useTranslations()
   const router = useRouter()
   const searchParams = useSearchParams()
-  const [tabs, setTabs] = useState<TabProps[]>([])
   const [subTabs, setSubTabs] = useState<TabProps[]>([])
   const [activeTab, setActiveTab] = useState<string>(searchParams?.get('q') || '1')
   const initialPage = parseInt(searchParams?.get('p') || '1')
@@ -20,15 +19,19 @@ export default function Artists() {
   const [totalPages, setTotalPages] = useState<number>(1)
   const [leftDescription, setLeftDescription] = useState('')
   const [errorMessage, setErrorMessage] = useState<string>('')
+  const tabs: TabProps[] = useMemo(() => [
+    { id: '1', name: 'official' },
+    { id: '2', name: 'fanart' },
+    { id: '0', name: 'unknown' }
+  ], [])
   const { setIsLoading, setLoadingBg } = useLoading()
 
   useEffect(() => {
-    async function getTabs() {
+    async function getSubTabs() {
       try {
-        setTabs([{ id: '1', name: 'official' }, { id: '2', name: 'fanart' }, { id: '0', name: 'unknown' }])
         const response = await fetch(`/api/artists`)
         const items = await response.json()
-        setSubTabs(items)
+        setSubTabs(items.map((item: any) => ({ ...item, official: tabs.find(tab => tab.id === item.official) })))
         setIsLoading(false)
       } catch (error) {
         setErrorMessage(`${t('errorFetchingData')} ${error}`)
@@ -37,8 +40,8 @@ export default function Artists() {
       }
     }
 
-    getTabs()
-  }, [setIsLoading, t])
+    getSubTabs()
+  }, [setIsLoading, t, tabs])
 
   const handlePageChange = useCallback((page: number) => {
     router.push(`artists?q=${activeTab}&p=${page}`)

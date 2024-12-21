@@ -15,9 +15,8 @@ export interface HistoryProps {
   image: string
 }
 
-export const loadHistoryData = (historyId: string) => {
-  const history: any = historyJson.find(item => item.id === historyId)
-  const midia = midias.find(midia => midia.id === history?.midia)
+export const loadHistoryData = (history: any) => {	
+  const midia = midias.find(midia => midia.id === history.midia)
   return { ...history, midia }
 }
  
@@ -34,11 +33,7 @@ export default function handler(
     const groups: GroupProps[] = groupSaints(filteredSaints, filteredGroups)
     res.status(200).json({ ...historyData, ...getContentByPage(groups, p) })
   } else if (!q) {
-    const filteredHistory = historyJson.filter(item => {
-      const saint = saintsJson.find(saint => saint.history === item.id)
-      return !!saint
-    })
-    res.status(200).json(filteredHistory)
+    res.status(200).json(historyJson.map(item => loadHistoryData(item)))
   } else {
     res.status(400).json({ message: `Error: History with id ${q} not found!` })
   }
