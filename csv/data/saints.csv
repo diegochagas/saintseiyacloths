@@ -196,7 +196,7 @@
 195,184,241,hakuryu-taonias,21,496,3,3,/cloth-schemes/hakuryu-taonias/nine-tailed-fox-hui.jpg,7
 196,185,18,athena-saints-4,7,582,34,10,/cloth-schemes/athena-saints/aquarius-hyoga-anime.jpg,12
 197,185,90,athena-saints-31,5,582,1,1,/cloth-schemes/athena-saints/cygnus-hyoga-1.jpg,1
-198,185,90,athena-saints-31,5,582,17,17,/cloth-schemes/athena-saints/cygnus-hyoga-1-anime.jpg,12
+198,185,90,athena-saints-31,5,582,7,7,/cloth-schemes/athena-saints/cygnus-hyoga-1-anime.jpg,12
 199,185,92,athena-saints-31,5,582,1,1,/cloth-schemes/athena-saints/cygnus-hyoga-2.jpg,1
 200,185,93,athena-saints-31,5,582,1,1,/cloth-schemes/athena-saints/cygnus-hyoga-3.jpg,1
 201,185,94,athena-saints-31,9,582,1,1,/cloth-schemes/athena-saints/cygnus-hyoga-god.jpg,1
@@ -758,7 +758,7 @@
 757,517,,cronus-other-titans,,84,,,,19
 758,518,,zeus-gods,9,306,,,,19
 759,520,,zeus-gods,9,306,,,,19
-760,521,,zeus-gods,9,306,,,,19
+760,521,259,zeus-gods,9,306,10,6,/cloth-schemes/zeus-gods/aphrodite.jpg,29
 761,455,,zeus-gods,9,306,5,5,,19
 762,525,,zeus-gods,9,306,,,,19
 763,526,,zeus-gods,9,306,,,,19
@@ -1044,7 +1044,7 @@
 1043,542,148,athena-saints-38,7,582,,,/cloth-schemes/athena-saints/gemini-sojiro-tokito.jpg,39
 1044,544,115,nemesis-gods,9,544,,,/cloth-schemes/nemesis-spirits/nemesis.jpg,2
 1045,545,62,nemesis-spirits,,544,37,37,/cloth-schemes/nemesis-spirits/arliss-bellerophon.jpg,2
-1046,546,81,nemesis-spirits,,544,,,/cloth-schemes/nemesis-spirits/dracodent-cadmus.jpg,2
+1046,546,81,nemesis-spirits,,544,37,37,/cloth-schemes/nemesis-spirits/dracodent-cadmus.jpg,2
 1047,547,85,nemesis-spirits,,544,10,10,/cloth-schemes/nemesis-spirits/musica-terpsichore.jpg,2
 1048,548,49,athena-saints-9,5,582,,,/cloth-schemes/athena-saints/bootes-arcturus.jpg,5
 1049,236,72,hades-ressurected-mariners,45,168,,,/cloth-schemes/hades-specters/chrysaor-krishna-specter.jpg,2
@@ -1070,3 +1070,7 @@
 1069,395,10,athena-saints-1,5,582,18,18,/cloth-schemes/athena-saints/andromeda-shun-2-time-odyssey.jpg,38
 1070,296,26,athena-saints-7,7,582,18,18,/cloth-schemes/athena-saints/aries-mu-time-odyssey.jpg,38
 1071,481,253,hades-celestial-star-17,13,168,,,/cloth-schemes/hades-specters/serket-youssef.jpg,45
+1072,97,55,athena-saints-12,7,582,18,18,/cloth-schemes/athena-saints/cancer-deathmask-time-odyssey.jpg,38
+1073,396,59,athena-saints-16,7,582,18,18,/cloth-schemes/athena-saints/capricornus-shura-time-odyssey.jpg,38
+1074,185,92,athena-saints-31,5,582,18,18,/cloth-schemes/athena-saints/cygnus-hyoga-2-time-odyssey.jpg,38
+1075,197,90,athena-saints-31,5,582,,,/cloth-schemes/athena-saints/cygnus-isaak-1.jpg,2
