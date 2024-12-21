@@ -75,7 +75,7 @@ function filterIfSaints(groups: GroupProps[], className: string) {
 function getTotalRevealedOnlyBy(className: string, groups: GroupProps[]) {
   if (className === 'saints' || className === 'specters') {
     return groups.reduce((accumulator, currentGroup) => {
-      const currentValue = (isOfficialConstellation(currentGroup.name) || isOfficialEvilStar(currentGroup.id)) &&
+      const currentValue = (isOfficialConstellation(currentGroup.name.toLocaleLowerCase()) || isOfficialEvilStar(currentGroup.id)) &&
         currentGroup.saints.length ? 1 : 0
       return accumulator + currentValue
     }, 0)

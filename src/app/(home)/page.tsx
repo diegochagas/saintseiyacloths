@@ -60,7 +60,7 @@ export default function Home() {
     <>
 			<Banner />
 
-      {news && <News news={news.slice(-4)} />}
+      {news && <News news={news.slice(0, 4)} />}
 
       {language.includes('pt') && <Store />}
 

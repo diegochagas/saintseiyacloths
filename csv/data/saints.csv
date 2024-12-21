@@ -173,7 +173,7 @@
 172,529,315,athena-unknown-saints,,582,1,9,/cloth-schemes/athena-saints/shadow-cloth.jpg,35
 173,164,150,hades-celestial-star-25,13,168,3,3,/cloth-schemes/hades-specters/genbu-gregor.jpg,7
 174,165,99,pallas-weapon-thirdclass-4,34,323,31,8,/cloth-schemes/pallas-pallasites/deadly-scythe-soul-killer-greip.png,16
-175,166,139,athena-saints-37,6,582,6,6,/cloth-schemes/athena-saints/fornax-jorge.jpg,1
+175,166,139,athena-saints-37,6,582,6,6,/cloth-schemes/athena-saints/fornax-jorge-online.jpg,1
 176,167,105,athena-saints-32,5,582,5,19,/cloth-schemes/athena-saints/delphinus-guney.png,16
 177,168,159,hades-gods,9,168,1,1,/cloth-schemes/hades-specters/hades.jpg,1
 178,169,223,odin-ursa-major-star-2,,495,33,32,/cloth-schemes/odin-god-warriors/merak-hagen.jpg,12
@@ -427,7 +427,7 @@
 426,388,17,athena-saints-3,5,582,6,6,/cloth-schemes/athena-saints/apus-shinato.jpg,5
 427,389,26,athena-saints-7,7,582,16,10,/cloth-schemes/athena-saints/aries-shion-next-dimension.jpg,4
 428,390,111,athena-saints-34,5,582,1,1,/cloth-schemes/athena-saints/draco-shiryu-1.jpg,42
-429,390,111,athena-saints-34,5,582,17,17,/cloth-schemes/athena-saints/draco-shiryu-1-anime.jpg,12
+429,390,111,athena-saints-34,5,582,7,7,/cloth-schemes/athena-saints/draco-shiryu-1-anime.jpg,12
 430,390,114,athena-saints-34,5,582,1,1,/cloth-schemes/athena-saints/draco-shiryu-2.jpg,1
 431,390,116,athena-saints-34,5,582,1,1,/cloth-schemes/athena-saints/draco-shiryu-3.jpg,1
 432,390,117,athena-saints-34,5,582,1,1,/cloth-schemes/athena-saints/draco-shiryu-4.jpg,1
@@ -1045,7 +1045,7 @@
 1044,544,115,nemesis-gods,9,544,,,/cloth-schemes/nemesis-spirits/nemesis.jpg,2
 1045,545,62,nemesis-spirits,,544,37,37,/cloth-schemes/nemesis-spirits/arliss-bellerophon.jpg,2
 1046,546,81,nemesis-spirits,,544,37,37,/cloth-schemes/nemesis-spirits/dracodent-cadmus.jpg,2
-1047,547,85,nemesis-spirits,,544,10,10,/cloth-schemes/nemesis-spirits/musica-terpsichore.jpg,2
+1047,547,85,nemesis-spirits,,544,37,37,/cloth-schemes/nemesis-spirits/musica-terpsichore.jpg,2
 1048,548,49,athena-saints-9,5,582,,,/cloth-schemes/athena-saints/bootes-arcturus.jpg,5
 1049,236,72,hades-ressurected-mariners,45,168,,,/cloth-schemes/hades-specters/chrysaor-krishna-specter.jpg,2
 1050,197,184,hades-ressurected-mariners,45,168,,,/cloth-schemes/hades-specters/kraken-isaak-specter.jpg,2
@@ -1074,3 +1074,5 @@
 1073,396,59,athena-saints-16,7,582,18,18,/cloth-schemes/athena-saints/capricornus-shura-time-odyssey.jpg,38
 1074,185,92,athena-saints-31,5,582,18,18,/cloth-schemes/athena-saints/cygnus-hyoga-2-time-odyssey.jpg,38
 1075,197,90,athena-saints-31,5,582,,,/cloth-schemes/athena-saints/cygnus-isaak-1.jpg,2
+1076,390,116,athena-saints-34,5,582,18,18,/cloth-schemes/athena-saints/draco-shiryu-3-time-odyssey.jpg,38
+1077,166,139,athena-saints-37,6,582,18,18,/cloth-schemes/athena-saints/fornax-jorge.jpg,38
