@@ -255,6 +255,9 @@ athena-unknown-saints,saints,saintsWithoutConstellation
 athena-soldiers,saints,soldiers
 balor-gods,fairies,gods
 balor-fairies,fairies,fairies
+bellatrix-gods,guardians,gods
+bellatrix-guardians,guardians,guardians
+bellatrix-soldiers,guardians,imperialGuards
 chronos-gods,hours,gods
 chronos-hours-1,hours,i
 chronos-hours-2,hours,ii
