@@ -41,6 +41,7 @@ export default async function Image({ params }: { params: { id: string } }) {
           justifyContent: 'center',
         }}
       >
+        {/* eslint-disable-next-line @next/next/no-img-element */}
         {news.saint?.image && <img src={`${baseURL}${news.saint.image}`} alt="" style={{ width: '100%' }} />}
       </div>
     ),

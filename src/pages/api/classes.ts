@@ -24,6 +24,8 @@ interface ClothProps {
   id: string
   name: string
   image: string
+  artist: ArtistProps
+  history: HistoryProps
 }
 
 export interface GroupProps {
@@ -40,16 +42,15 @@ export interface SaintProps {
   group: GroupProps
   rank: string
   god: CharacterProps
+  artist: ArtistProps
   image: string
-  artistSaint: ArtistProps
-  artistCloth: ArtistProps
   history: HistoryProps
 }
 
 export function groupSaints(saints: any[], groups: any[]) {
   return groups.map(group => {
     const filteredSaints = saints.filter(saint => saint.group === group.id).map(saint => loadSaintData(saint))
-    const sortedSaints = filteredSaints.sort((a, b) => a.cloth?.name == b.cloth?.name ? 0 : + (a.cloth?.name > b.cloth?.name) || -1)
+    const sortedSaints = filteredSaints.sort((a, b) => a.cloth?.name == b.cloth?.name ? 0 : + ((a.cloth?.name ?? '') > (b.cloth?.name ?? '')) || -1)
     return {
       ...group,
       saints: sortedSaints
@@ -109,14 +110,18 @@ const getCharacterAndGod = (saint: any) => {
 
 export const loadSaintData = (saint: any) => {
   const history = historyJson.find(item => item.id === saint?.history)
+  const cloth = clothsJson.find(cloth => cloth.id === saint.cloth)
   return {
-    ...saint,
+    id: saint.id,
     ...getCharacterAndGod(saint),
-    artistSaint: artistsJson.find(artist => artist.id === saint.artistSaint),
-    artistCloth: artistsJson.find(artist => artist.id === saint.artistCloth),
-    cloth: clothsJson.find(cloth => cloth.id === saint.cloth),
+    cloth: {
+      ...cloth,
+      history: loadHistoryData(historyJson.find(item => item.id === cloth?.history)),
+      artist: artistsJson.find(artist => artist.id === saint.artistCloth)
+    },
     group: groupsJson.find(group => group.id === saint.group),
     rank: ranksJson.find(rank => rank.id === saint.rank)?.name,
+    artist: artistsJson.find(artist => artist.id === saint.artistSaint),
     image: !saint.image ? '/cloth-schemes/others/no-scheme.jpg' : saint.image,
     history: loadHistoryData(history),
   }

@@ -37,10 +37,20 @@ export default function Content({ data, error, url, isBrazil }: ContentProps) {
           <div className="flex flex-col w-full">
             <span className="font-bold text-lg block my-5">{data.date}</span>
             
-            <div>
-              <span className="font-bold text-xl text-white uppercase bg-black px-10 py-0.5">
-                {t(data.saint.history.midia.name)}
-              </span>
+            <div className="flex flex-wrap gap-4 items-end">
+              <div className="flex flex-col">
+                <span className="font-bold text-xl text-white uppercase bg-black px-10 py-0.5">
+                  {t(data.saint.history.midia.name)}
+                </span>
+              </div>
+              {data.saint.history.midia.name !== data.saint.cloth.history.midia?.name && (
+                <div className="flex flex-col md:items-center">
+                  <h2 className="text-3xl font-extrabold uppercase">{t('cloth')}</h2>
+                  <span className="font-bold text-xl text-white uppercase bg-black px-10 py-0.5">
+                    {t(data.saint.cloth.history.midia?.name)}
+                  </span>
+                </div>
+              )}
             </div>
             
             <h2 className="mt-5 text-3xl font-extrabold">{data.saint.character.name}</h2>
@@ -63,20 +73,20 @@ export default function Content({ data, error, url, isBrazil }: ContentProps) {
               {renderListItem('god', data.saint.god?.name)}
               {renderListItem('class', t(data.saint.group.class))}
               {renderListItem('rank', t(data.saint.rank || 'unknownRank'))}
-              {data.saint.artistSaint && data.saint.artistCloth ? (
-                data.saint.artistSaint.id === data.saint.artistCloth.id ? 
-                  renderListItem('schemeBy', data.saint.artistSaint)
+              {data.saint.artist && data.saint.cloth.artist ? (
+                data.saint.artist.id === data.saint.cloth.artist.id ? 
+                  renderListItem('schemeBy', data.saint.artist)
                 : (
                   <>
-                    {data.saint.artistSaint && renderListItem('characterBy', data.saint.artistSaint)}
-                    {data.saint.artistCloth && renderListItem('clothBy', data.saint.artistCloth)}
+                    {data.saint.artist && renderListItem('characterBy', data.saint.artist)}
+                    {data.saint.cloth.artist && renderListItem('clothBy', data.saint.cloth.artist)}
                   </>
                 )
               ) : (
                 <>  
-                  {data.saint.artistSaint && renderListItem('characterBy', data.saint.artistSaint)}
-                  {data.saint.artistCloth && renderListItem('clothBy', data.saint.artistCloth)}
-                  {!data.saint.artistSaint && !data.saint.artistCloth && renderListItem('schemeBy', t('unknownArtist'))}
+                  {data.saint.artist && renderListItem('characterBy', data.saint.artist)}
+                  {data.saint.cloth.artist && renderListItem('clothBy', data.saint.cloth.artist)}
+                  {!data.saint.artist && !data.saint.cloth.artist && renderListItem('schemeBy', t('unknownArtist'))}
                 </>
               )}
             </ul>
