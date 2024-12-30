@@ -17,7 +17,7 @@ export default function Saints({ data }: SaintsProps) {
           <h4 className="uppercase text-center">{t(item.name)}</h4>
           <ul className="flex flex-wrap gap-4 justify-center">
             {item.saints.length > 0 ? item.saints.map((saint: SaintProps) => (
-              <ListItem key={saint.id} image={saint.image} cloth={getClothName(t, saint?.cloth?.name)} name={saint?.character?.name} />
+              <ListItem key={saint.id} id={saint.id} image={saint.image} cloth={getClothName(t, saint?.cloth?.name)} name={saint?.character?.name} />
             )) : (
               <ListItem />
             )}

@@ -11,7 +11,7 @@ export default function handler(
   const saint = saintsJson.find(saint => saint.id === id)
   const data = newsJson.find(item => item.saint === saint?.id)
   
-  if (data) {
+  if (data?.date) {
     res.status(200).json({ ...data, date: new Date(data.date).toLocaleDateString(), saint: loadSaintData(saint) })
   } else {
     res.status(400).json({ message: `Error: news not found!` })

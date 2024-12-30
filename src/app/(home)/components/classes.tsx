@@ -20,21 +20,23 @@ export default function Classes({ saints }: ClassesProps) {
         <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {saints.map(saint => (
             <li className="w-full h-full flex flex-col items-center border-2 border-black" key={saint.id}>
-              <b className="capitalize text-xs md:text-base">
-                {getClothName(t, saint?.cloth?.name)}
-              </b>
-              <figure className="w-28 h-28 md:w-56 md:h-56">
-                <Image
-                  className="w-full h-full object-contain"
-                  src={saint.image}
-                  alt={t('saintClothScheme')}
-                  width={542}
-                  height={400}
-                />
-              </figure>
-              <h4 className="font-semibold text-xs md:text-sm">
-                {saint?.character?.name ?? `${t('unknown')} ${t('saint')}`}
-              </h4>
+              <Link className="w-full group flex flex-col items-center" href={`/news/${saint.id}`}>
+                <b className="capitalize text-xs md:text-base">
+                  {getClothName(t, saint?.cloth?.name)}
+                </b>
+                <figure className="w-28 h-28 md:w-56 md:h-56 overflow-hidden">
+                  <Image
+                    className="w-full h-full object-contain group-hover:scale-110 duration-300"
+                    src={saint.image}
+                    alt={t('saintClothScheme')}
+                    width={542}
+                    height={400}
+                  />
+                </figure>
+                <h4 className="font-semibold text-xs md:text-sm">
+                  {saint?.character?.name ?? `${t('unknown')} ${t('saint')}`}
+                </h4>
+              </Link>
             </li>
           ))}
         </ul>
