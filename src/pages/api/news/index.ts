@@ -10,13 +10,13 @@ export interface NewsProps {
   amazon?: string
 }
 
-function filterNewsBySearchValueAndMidia(news: NewsProps[], searchValue: string, midia: any) {
+function filterNewsBySearchValueAndMidia(news: any[], searchValue: string, midia: any) {
   return news.filter(item => {
     if (midia && midia.id !== item.saint?.history?.midia?.id) return false
     return (
       item.date.includes(searchValue) ||
       item.saint?.character?.name?.toLowerCase().includes(searchValue) ||
-      item.saint?.cloth?.name?.toLowerCase().includes(searchValue) ||
+      item.saint?.cloth?.name?.some((name: string) => name.toLowerCase().includes(searchValue)) ||
       item.saint?.history?.midia?.name?.includes(searchValue)
     )
   })
