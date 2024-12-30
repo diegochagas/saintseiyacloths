@@ -7,12 +7,12 @@ interface ListItemProps {
   name?: string
 }
 
-export default function ListItem({ image = '/cloth-schemes/others/no-scheme.jpg', cloth = 'unknownCloth', name }: ListItemProps) {
+export default function ListItem({ image = '/cloth-schemes/others/no-scheme.jpg', cloth, name }: ListItemProps) {
   const t = useTranslations()
 
   return (
     <li className="group flex flex-col items-center">
-      <small className="capitalize font-bold">{t(cloth)}</small>
+      <small className="capitalize font-bold">{cloth ?? `${t('unknown')} ${t('cloth')}`}</small>
       <figure className="h-28 overflow-hidden">
         <Image
           className="w-full h-full"
@@ -22,7 +22,7 @@ export default function ListItem({ image = '/cloth-schemes/others/no-scheme.jpg'
           height={400}
         />
       </figure>
-      <small className="font-semibold">{name ?? t('unknownCharacter')}</small>
+      <small className="font-semibold">{name ?? `${t('unknown')} ${t('character')}`}</small>
     </li>
   )
 }

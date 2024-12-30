@@ -1,3 +1,4 @@
+import { getClothName } from '@/helpers'
 import { NewsProps } from '@/pages/api/news'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -17,7 +18,7 @@ export default function NewsList({ news }: NewsListProps) {
           <Link className="w-full group" href={`/news/${item.saint.id}`}>
             <div className="my-2.5">
               <h4 className="text-xl font-semibold text-center">
-                {t(item.saint.cloth?.name || 'unknownCloth')}
+                {getClothName(t, item.saint.cloth?.name)}
               </h4>
             </div>
             <figure className="m-3 bg-white overflow-hidden">
@@ -38,7 +39,7 @@ export default function NewsList({ news }: NewsListProps) {
             </div>
             <div className="my-2.5">
               <h4 className="text-xl font-semibold text-center">
-                {item.saint.character?.name || t('unknownCharacter')}
+                {item.saint.character?.name || `${t('unknown')} ${t('character')}`}
               </h4>
             </div>
           </Link>

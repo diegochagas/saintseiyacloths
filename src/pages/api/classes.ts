@@ -22,7 +22,7 @@ export interface ClassProps {
 
 interface ClothProps {
   id: string
-  name: string
+  name: string[]
   image: string
   artist: ArtistProps
   history: HistoryProps
@@ -115,7 +115,8 @@ export const loadSaintData = (saint: any) => {
     id: saint.id,
     ...getCharacterAndGod(saint),
     cloth: {
-      ...cloth,
+      id: cloth?.id,
+      name: cloth?.name.split('_'),
       history: loadHistoryData(historyJson.find(item => item.id === cloth?.history)),
       artist: artistsJson.find(artist => artist.id === saint.artistCloth)
     },

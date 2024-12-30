@@ -65,14 +65,14 @@ export default function Content({ data, error, url, isBrazil }: ContentProps) {
               <Image className="border-2 border-black" src={data.saint.image} width={536} height={400} alt={t('saintClothScheme')} />
             
               <figcaption>
-                <small className="font-semibold capitalize">{t(data.saint.cloth?.name || 'unknownCloth')}</small>
+                <small className="font-semibold capitalize">{t(data.saint.cloth?.name || `${t('unknown')} ${t('cloth')}`)}</small>
               </figcaption>
             </figure>
               
             <ul className="flex flex-col gap-2 ml-4 mt-10">
               {renderListItem('god', data.saint.god?.name)}
               {renderListItem('class', t(data.saint.group.class))}
-              {renderListItem('rank', t(data.saint.rank || 'unknownRank'))}
+              {renderListItem('rank', t(data.saint.rank) || `${t('unknown')} ${t('rank')}`)}
               {data.saint.artist && data.saint.cloth.artist ? (
                 data.saint.artist.id === data.saint.cloth.artist.id ? 
                   renderListItem('schemeBy', data.saint.artist)
@@ -86,7 +86,7 @@ export default function Content({ data, error, url, isBrazil }: ContentProps) {
                 <>  
                   {data.saint.artist && renderListItem('characterBy', data.saint.artist)}
                   {data.saint.cloth.artist && renderListItem('clothBy', data.saint.cloth.artist)}
-                  {!data.saint.artist && !data.saint.cloth.artist && renderListItem('schemeBy', t('unknownArtist'))}
+                  {!data.saint.artist && !data.saint.cloth.artist && renderListItem('schemeBy', `${t('unknown')} (${t('artist')})`)}
                 </>
               )}
             </ul>
