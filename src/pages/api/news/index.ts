@@ -28,8 +28,11 @@ export default function handler(
 ) {
   const { p, m, s } = req.query
   const midia = midiasJson.find(midia => midia.id === m)
+  
   // TODO: REMOVE THIS FILTER WHEN THE NEWS OF THE SAINT 680 IS RELEASED
   const newsDraft = newsJson.filter(item => !!item.date)
+  // TODO: REMOVE THIS FILTER WHEN THE NEWS OF THE SAINT 680 IS RELEASED
+
   const news = newsDraft.map(item => {
     const saint = saintsJson.find(saint => saint.id === item.saint)
     return { ...item, date: new Date(item.date).toLocaleDateString(), saint: loadSaintData(saint) }
