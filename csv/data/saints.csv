@@ -1115,9 +1115,9 @@
 1114,,,hades-skeleton,1,168,6,6,/cloth-schemes/hades-specters/soldier-sso-3.jpg,29
 1115,,,hades-skeleton,1,168,6,6,/cloth-schemes/hades-specters/soldier-sso-4.jpg,29
 1116,,,hades-skeleton,1,168,6,6,/cloth-schemes/hades-specters/soldier-sso-5.jpg,29
-1117,,,hades-skeleton,1,168,6,6,/cloth-schemes/hades-specters/soldier-sso-6.jpg,29
+1117,,,hades-other-specters,1,168,6,6,/cloth-schemes/hades-specters/star-three-shames.jpg,29
 1118,,,hades-skeleton,1,168,6,6,/cloth-schemes/hades-specters/soldier-sso-7.jpg,29
-1119,,,hades-skeleton,1,168,6,6,/cloth-schemes/hades-specters/soldier-sso-8.jpg,29
+1119,315,248,hades-other-specters,1,168,6,6,/cloth-schemes/hades-specters/star-pliny-oneiros.jpg,29
 1120,11,751,athena-saints-72,7,582,,,/cloth-schemes/athena-saints/sagittarius-aiolos-kotz.jpg,20
 1121,379,268,athena-gods,9,582,39,,/cloth-schemes/athena-saints/supreme-synapse-gold-cloth-seiya.jpg,36
 1122,,,hades-terrestrial-star-63,14,168,,,/cloth-schemes/hades-specters/star-crazy-next-dimension.jpg,4
@@ -1136,3 +1136,4 @@
 1135,192,643,athena-saints-42,5,582,,,,12
 1136,370,796,eris-gods,9,308,5,5,/cloth-schemes/eris-dryads/ares-saga-anime.jpg,17
 1137,565,215,poseidon-mariner-soldiers,1,494,,,,1
+1138,,,hades-other-specters,1,168,,,/cloth-schemes/hades-specters/star-owes.jpg,29
