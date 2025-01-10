@@ -1,19 +1,19 @@
-import { getClothName } from '@/helpers'
-import { NewsProps } from '@/pages/api/news'
-import Image from 'next/image'
-import Link from 'next/link'
-import { useTranslations } from 'use-intl'
+import { getClothName } from "@/helpers";
+import { NewsProps } from "@/pages/api/news";
+import Image from "next/image";
+import Link from "next/link";
+import { useTranslations } from "use-intl";
 
 interface NewsListProps {
-  news: NewsProps[]
+  news: NewsProps[];
 }
 
 export default function NewsList({ news }: NewsListProps) {
-  const t = useTranslations()
+  const t = useTranslations();
 
   return (
     <ul className="p-5 w-full grid md:grid-cols-2 xl:grid-cols-4 gap-4 max-w-7xl">
-      {news.map(item => (
+      {news.map((item) => (
         <li key={item.date} className="m-2">
           <Link className="w-full group" href={`/news/${item.saint.id}`}>
             <div className="my-2.5">
@@ -27,24 +27,24 @@ export default function NewsList({ news }: NewsListProps) {
                 src={item.saint.image}
                 width={547}
                 height={400}
-                alt={t('saintClothScheme')}
+                alt={t("saintClothScheme")}
               />
             </figure>
             <div className="flex justify-between">
               <span className="uppercase block bg-black text-white text-sm font-bold px-2 py-0.5">
                 {t(item.saint.history?.midia?.name)}
               </span>
-      
+
               <span className="font-semibold text-sm">{item.date}</span>
             </div>
             <div className="my-2.5">
               <h4 className="text-xl font-semibold text-center">
-                {item.saint.character?.name || `${t('unknown')} ${t('character')}`}
+                {item.saint.character?.name || t("unknown")}
               </h4>
             </div>
           </Link>
         </li>
       ))}
     </ul>
-  )
+  );
 }
