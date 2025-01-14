@@ -180,7 +180,7 @@ export default function Content({ data, error, url, isBrazil }: ContentProps) {
                       `${data.saint.character.name} - ${t(
                         data.saint.history.midia.name
                       )}: ${t(data.saint.history.name)}`
-                    )}+%23saintseiya %23clothmyth %23clothmythex %23actionfigures %23cavaleirosdozodiaco %23caballerosdelzodiaco %23leschevaliersduzodiaque %23icavalieridellozodiaco %23bandai %23tamashii %23cdz&url=${url}`}
+                    )}+%23saintseiya %23clothmyth %23actionfigures %23cavaleirosdozodiaco %23caballerosdelzodiaco %23leschevaliersduzodiaque %23icavalieridellozodiaco %23bandai %23cdz&url=${url}`}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
