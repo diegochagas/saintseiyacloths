@@ -61,21 +61,22 @@ export default function Content({ data, error, url, isBrazil }: ContentProps) {
                       {t(data.saint.history.midia.name)}
                     </span>
                   </div>
-                  {data.saint.history.midia.name !==
-                    data.saint.cloth.history.midia?.name && (
-                    <div className="flex flex-col md:items-center">
-                      <h2 className="text-3xl font-extrabold uppercase">
-                        {t("cloth")}
-                      </h2>
-                      <span className="font-bold text-xl text-white uppercase bg-black px-10 py-0.5">
-                        {t(data.saint.cloth.history.midia?.name)}
-                      </span>
-                    </div>
-                  )}
+                  {data.saint?.cloth?.history?.midia?.name &&
+                    data.saint?.history?.midia?.name !==
+                      data.saint?.cloth?.history?.midia?.name && (
+                      <div className="flex flex-col md:items-center">
+                        <h2 className="text-3xl font-extrabold uppercase">
+                          {t("cloth")}
+                        </h2>
+                        <span className="font-bold text-xl text-white uppercase bg-black px-10 py-0.5">
+                          {t(data.saint?.cloth?.history?.midia?.name)}
+                        </span>
+                      </div>
+                    )}
                 </div>
 
                 <h2 className="mt-5 text-3xl font-extrabold">
-                  {data.saint?.character?.name}
+                  {data.saint?.character?.name ?? t("unknown")}
                 </h2>
 
                 <div className="bg-neutral-400 my-5 md:my-10 p-4 md:p-8">
@@ -104,7 +105,11 @@ export default function Content({ data, error, url, isBrazil }: ContentProps) {
 
                 <ul className="flex flex-col gap-2 ml-4 mt-10">
                   {renderListItem("god", data.saint.god?.name)}
-                  {renderListItem("class", t(data.saint.group.class))}
+                  {renderListItem("class", {
+                    id: data.saint.group.id,
+                    name: t(data.saint.group.class),
+                    site: `/classes?q=${data.saint.group.class}&p=1`,
+                  })}
                   {renderListItem("rank", t(data.saint.rank || "unknown"))}
                   {data.saint.artist && data.saint.cloth.artist ? (
                     data.saint.artist.id === data.saint.cloth.artist.id ? (
@@ -177,7 +182,7 @@ export default function Content({ data, error, url, isBrazil }: ContentProps) {
                   <a
                     className="absolute -bottom-2 left-32 md:left-60 w-12 h-12 md:w-20 md:h-20 rounded-full border-4 border-black flex items-center justify-center bg-white group"
                     href={`http://twitter.com/share?text=${encodeURI(
-                      `${data.saint.character.name} - ${t(
+                      `${data.saint?.character?.name ?? "unknown"} - ${t(
                         data.saint.history.midia.name
                       )}: ${t(data.saint.history.name)}`
                     )}+%23saintseiya %23clothmyth %23actionfigures %23cavaleirosdozodiaco %23caballerosdelzodiaco %23leschevaliersduzodiaque %23icavalieridellozodiaco %23bandai %23cdz&url=${url}`}
