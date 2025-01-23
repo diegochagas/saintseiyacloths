@@ -60,9 +60,7 @@ export default function handler(
       (item) => item.saint.history?.midia?.id === midia.id
     );
     res.status(200).json({ ...getContentByPage(filteredNews, p) });
-  } else if (p) {
-    res.status(200).json({ ...getContentByPage(news, p) });
   } else {
-    res.status(200).json({ ...getContentByPage(news.slice(0, 10), p) });
+    res.status(200).json({ ...getContentByPage(news, p) });
   }
 }
