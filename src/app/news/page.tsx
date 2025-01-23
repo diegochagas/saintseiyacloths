@@ -1,111 +1,106 @@
-'use client'
+"use client";
 
-import { useCallback, useEffect, useState } from 'react'
-import { useRouter, useSearchParams } from 'next/navigation'
-import { useLoading } from '../context/loading-content'
-import Content from './content'
-import { TabProps } from '../components/tabs'
-import { useTranslations } from 'next-intl'
+import { useCallback, useEffect, useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useLoading } from "../context/loading-content";
+import Content from "./content";
+import { TabProps } from "../components/tabs";
+import { useTranslations } from "next-intl";
 
 export default function News() {
-  const t = useTranslations()
-  const router = useRouter()
-  const searchParams = useSearchParams()
-  const [tabs, setTabs] = useState<TabProps[]>([])
-  const [activeTab, setActiveTab] = useState(searchParams?.get('m') || '')
-  const [currentPage, setCurrentPage] = useState<number>(parseInt(searchParams?.get('p') || '1'))
-  const [data, setData] = useState<any[]>([])
-  const [totalPages, setTotalPages] = useState<number>(1)
-  const [searchValue, setSearchValue] = useState(searchParams?.get('s') || '')
-  const [pageParam, setPageParam] = useState('')
-  const [midiaParam, setMidiaParam] = useState('')
-  const [searchParam, setSearchParam] = useState('')
-  const [errorMessage, setErrorMessage] = useState<string>('')
-  const { setIsLoading } = useLoading()
-  
+  const t = useTranslations();
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const [tabs, setTabs] = useState<TabProps[]>([]);
+  const [activeTab, setActiveTab] = useState("");
+  const [currentPage, setCurrentPage] = useState<string>("");
+  const [data, setData] = useState<any[]>([]);
+  const [totalPages, setTotalPages] = useState<number>(1);
+  const [searchValue, setSearchValue] = useState<string>("");
+  const [errorMessage, setErrorMessage] = useState<string>("");
+  const { setIsLoading } = useLoading();
+
+  const handlePageParam = (page?: string) =>
+    setCurrentPage(page ? `?p=${page}` : "");
+
+  const handleSearchParam = (search?: string) =>
+    setSearchValue(search ? `&s=${search}` : "");
+
+  const handleMidiaParam = (midia?: string) =>
+    setActiveTab(midia ? `&m=${midia}` : "");
+
+  useEffect(() => {
+    const midia = searchParams?.get("m");
+    const page = searchParams?.get("p");
+    const search = searchParams?.get("s");
+
+    if (midia) handleMidiaParam(midia);
+    if (page) handlePageParam(page);
+    if (search) handleSearchParam(search);
+  }, [searchParams]);
+
   useEffect(() => {
     async function getTabs() {
       try {
-        const midiasResponse = await fetch('/api/midias')
-        const midias = await midiasResponse.json()
-        setTabs(midias)
-        setIsLoading(false)
+        const midiasResponse = await fetch("/api/midias");
+        const midias = await midiasResponse.json();
+        setTabs(midias);
+        setIsLoading(false);
       } catch (error) {
-        setErrorMessage(`${t('errorFetchingData')} ${error}`)
+        setErrorMessage(`${t("errorFetchingData")} ${error}`);
       } finally {
-        setIsLoading(false)
+        setIsLoading(false);
       }
     }
 
-    getTabs()
-  }, [setIsLoading, t])
+    getTabs();
+  }, [setIsLoading, t]);
 
-  const handlePageChange = useCallback((page: number) => {
-    setCurrentPage(page)
-  }, [])
+  useEffect(() => {
+    router.push(`news${currentPage}${searchValue}${activeTab}`);
+  }, [activeTab, currentPage, router, searchValue]);
+
+  const loadData = useCallback(async () => {
+    const response = await fetch(
+      `/api/news${currentPage}${activeTab}${searchValue}`
+    );
+    const result = await response.json();
+    if (!result.data?.length) handlePageParam("1");
+    setData(result.data);
+    setTotalPages(result.totalPages);
+    setIsLoading(false);
+    setIsLoading(false);
+  }, [activeTab, currentPage, searchValue, setIsLoading]);
 
   useEffect(() => {
     const fetchData = async () => {
-      setIsLoading(true)
+      setIsLoading(true);
       try {
-        const response = await fetch(`/api/news${pageParam}${midiaParam}${searchParam}`)
-        const result = await response.json()
-        if (!result.data?.length) handlePageChange(1)
-        setData(result.data)
-        setTotalPages(result.totalPages)
-        setIsLoading(false)
-        setIsLoading(false)
+        loadData();
       } catch (error) {
-        setErrorMessage(`${t('errorFetchingData')} ${error}`)
+        setErrorMessage(`${t("errorFetchingData")} ${error}`);
       } finally {
-        setIsLoading(false)
+        setIsLoading(false);
       }
-    }
+    };
 
-    fetchData()
-  }, [handlePageChange, midiaParam, pageParam, searchParam, setIsLoading, t])
-
-  useEffect(() => {
-    if (currentPage) {
-      const newPageParam = currentPage ? `?p=${currentPage}` : ''
-      router.push(`news?${newPageParam}${midiaParam}${searchParam}`)
-      setPageParam(newPageParam)
-    }
-  }, [currentPage, midiaParam, router, searchParam])
-
-  useEffect(() => {
-    const newMidiaParam = activeTab ? `&m=${activeTab}` : ''
-    router.push(`news?p=${1}${newMidiaParam}${searchParam}`)
-    setCurrentPage(1)
-    setMidiaParam(newMidiaParam)
-  }, [activeTab, router, searchParam])
-
-  useEffect(() => {
-    router.push(`news?p=${1}${searchParam}${midiaParam}`)
-    setCurrentPage(1)
-  }, [midiaParam, router, searchParam])
-
-  const handleSearchClear = () => {
-    setSearchParam(() => {
-      setSearchValue('')
-      return ''
-    })
-  }
+    fetchData();
+  }, [loadData, setIsLoading, t]);
 
   return (
     <Content
       news={data}
-      currentPage={currentPage}
+      currentPage={Number(currentPage?.match(/\d+/g)?.[0] || 1)}
       totalPages={totalPages}
-      onPageChange={handlePageChange}
+      onPageChange={(page) => handlePageParam(String(page))}
       tabs={tabs}
-      activeTab={activeTab}
-      onTabChange={setActiveTab}
-      searchValue={searchValue}
-      onSearchValue={setSearchValue}
-      onSearchSubmit={() => setSearchParam(searchValue ? `&s=${searchValue}` : '')}
-      onSearchClear={handleSearchClear}
+      activeTab={activeTab?.match(/&m=([^&]*)/)?.[1] || ""}
+      onTabChange={(tab) => handleMidiaParam(tab)}
+      searchValue={searchValue?.match(/&s=([^&]*)/)?.[1] || ""}
+      onSearchValue={(value) => handleSearchParam(value)}
+      onSearchSubmit={loadData}
+      onSearchClear={handleSearchParam}
       errorMessage={errorMessage}
     />
-  )
+  );
 }
