@@ -85,9 +85,15 @@ export default function Content({ data, error, url, isBrazil }: ContentProps) {
                   </h1>
                 </div>
 
-                <p>{t(`newsDescription.${data.saint.id}`)}</p>
+                {t(`newsDescription.${data.saint.id}`)
+                  .split("\n")
+                  .map((text) => (
+                    <p className="my-2" key={text}>
+                      {text}
+                    </p>
+                  ))}
 
-                <figure className="flex flex-col items-center my-5">
+                <figure className="flex flex-col items-center my-5 w-full">
                   <Image
                     className="border-2 border-black"
                     src={data.saint.image}
