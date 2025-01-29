@@ -1,10 +1,11 @@
 "use client";
 
-import { useCallback, useEffect, useState, useMemo } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Table from "../components/table";
 import { useLoading } from "../context/loading-content";
 import { TabProps } from "../components/tabs";
 import { useRouter, useSearchParams } from "next/navigation";
+import official from "../../pages/api/data/official.json";
 import { useTranslations } from "next-intl";
 
 export default function Artists() {
@@ -23,27 +24,14 @@ export default function Artists() {
   const [totalPages, setTotalPages] = useState<number>(1);
   const [leftDescription, setLeftDescription] = useState("");
   const [errorMessage, setErrorMessage] = useState<string>("");
-  const tabs: TabProps[] = useMemo(
-    () => [
-      { id: "1", name: "official" },
-      { id: "2", name: "fanart" },
-      { id: "0", name: "unknown" },
-    ],
-    []
-  );
   const { setIsLoading, setLoadingBg } = useLoading();
 
   useEffect(() => {
-    async function getSubTabs() {
+    async function getTabs() {
       try {
-        const response = await fetch(`/api/artists`);
+        const response = await fetch(`/api/artists?q=filtered`);
         const items = await response.json();
-        setSubTabs(
-          items.map((item: any) => ({
-            ...item,
-            official: tabs.find((tab) => tab.id === item.official),
-          }))
-        );
+        setSubTabs(items);
         setIsLoading(false);
       } catch (error) {
         setErrorMessage(`${t("errorFetchingData")} ${error}`);
@@ -52,8 +40,8 @@ export default function Artists() {
       }
     }
 
-    getSubTabs();
-  }, [setIsLoading, t, tabs]);
+    getTabs();
+  }, [setIsLoading, t]);
 
   const handlePageChange = useCallback(
     (page: number) => {
@@ -103,7 +91,7 @@ export default function Artists() {
     <Table
       title={t("artists")}
       tabsTitle={t("artist")}
-      tabs={tabs}
+      tabs={official}
       subTabs={subTabs}
       subTabId="official"
       activeTab={activeTab}
