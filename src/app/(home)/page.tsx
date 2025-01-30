@@ -9,7 +9,6 @@ import Store from "./components/store";
 import Classes from "./components/classes";
 import { useLoading } from "../context/loading-content";
 import { useTranslations } from "next-intl";
-import AdBanner from "../components/adbanner";
 
 export default function Home() {
   const t = useTranslations();
@@ -67,17 +66,9 @@ export default function Home() {
 
       {news && <News news={news.slice(0, 4)} />}
 
-      {language.includes("pt") && <Store />}
+      <Store isBrazil={language.includes("pt")} />
 
       {saints && <Classes saints={saints.slice(-8)} />}
-
-      <section className="max-w-7xl mb-20 bg-white w-full min-h-60">
-        <AdBanner
-          dataAdFormat="auto"
-          dataFullWidthResponsive={true}
-          dataAdSlot="4587579900"
-        />
-      </section>
     </>
   );
 }
