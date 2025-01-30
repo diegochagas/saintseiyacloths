@@ -94,13 +94,13 @@ export default function Content({ data, error, url, isBrazil }: ContentProps) {
                     </p>
                   ))}
 
-                {/* <div className="my-5 bg-white">
+                <div className="my-5 bg-white">
                   <AdBanner
                     dataAdFormat="auto"
                     dataFullWidthResponsive={true}
                     dataAdSlot="1835086184"
                   />
-                </div> */}
+                </div>
 
                 <figure className="flex flex-col items-center my-5 w-full">
                   <Image
