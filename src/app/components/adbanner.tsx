@@ -15,9 +15,10 @@ export default function AdBanner({
 }: AdBannerTypes) {
   useEffect(() => {
     try {
-      ((window as any).adsbygoogle = (window as any).adsbygoogle || []).push(
-        {}
-      );
+      if ((window as any).adsbygoogle && !(window as any).adsbygoogle.loaded)
+        ((window as any).adsbygoogle = (window as any).adsbygoogle || []).push(
+          {}
+        );
     } catch (error: any) {
       console.error(error.message);
     }

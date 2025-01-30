@@ -71,13 +71,13 @@ export default function Home() {
 
       {saints && <Classes saints={saints.slice(-8)} />}
 
-      <div className="my-5 bg-white">
+      <section className="max-w-7xl mb-20 bg-white w-full min-h-60">
         <AdBanner
           dataAdFormat="auto"
           dataFullWidthResponsive={true}
           dataAdSlot="1835086184"
         />
-      </div>
+      </section>
     </>
   );
 }
