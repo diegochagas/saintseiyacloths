@@ -5,6 +5,7 @@ import Tabs, { TabProps } from "../components/tabs";
 import Icon from "../components/icons";
 import Error from "../components/error";
 import { useTranslations } from "next-intl";
+import AdBanner from "../components/adbanner";
 
 interface ContentProps {
   news: NewsProps[];
@@ -53,6 +54,14 @@ export default function Content({
       )}
 
       <div className="flex flex-col justify-center relative bg-zinc-100 w-full items-center">
+        <section className="max-w-7xl my-20 bg-white w-full">
+          <AdBanner
+            dataAdFormat="auto"
+            dataFullWidthResponsive={true}
+            dataAdSlot="1204536968"
+          />
+        </section>
+
         <div className="flex items-center w-full max-w-7xl gap-4 p-5">
           <form className="w-full max-w-md h-10 flex items-center bg-zinc-300">
             <input
@@ -74,13 +83,10 @@ export default function Content({
             {t("clear")}
           </button>
         </div>
-
         <NewsList news={news} />
-
         {(news.length === 0 || errorMessage) && (
           <Error>{errorMessage || t("errorNewsNotFound")}</Error>
         )}
-
         <div className="mb-20 w-full max-w-7xl">
           <Pagination
             currentPage={currentPage}
@@ -88,6 +94,14 @@ export default function Content({
             onPageChange={onPageChange}
           />
         </div>
+
+        <section className="max-w-7xl mb-20 bg-white w-full">
+          <AdBanner
+            dataAdFormat="auto"
+            dataFullWidthResponsive={true}
+            dataAdSlot="2990054059"
+          />
+        </section>
       </div>
     </div>
   );
