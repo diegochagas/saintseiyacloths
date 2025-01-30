@@ -5,6 +5,7 @@ import Error from "@/app/components/error";
 import Icon from "@/app/components/icons";
 import { NewsProps } from "@/pages/api/news";
 import { getClothName } from "@/helpers";
+import AdBanner from "@/app/components/adbanner";
 
 interface ContentProps {
   data: NewsProps;
@@ -92,6 +93,14 @@ export default function Content({ data, error, url, isBrazil }: ContentProps) {
                       {text}
                     </p>
                   ))}
+
+                <div className="my-5 bg-black">
+                  <AdBanner
+                    dataAdFormat="auto"
+                    dataFullWidthResponsive={true}
+                    dataAdSlot="1835086184"
+                  />
+                </div>
 
                 <figure className="flex flex-col items-center my-5 w-full">
                   <Image
