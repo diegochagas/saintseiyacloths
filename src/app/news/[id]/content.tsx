@@ -94,7 +94,7 @@ export default function Content({ data, error, url, isBrazil }: ContentProps) {
                     </p>
                   ))}
 
-                <div className="my-5 bg-black">
+                <div className="my-5 bg-white">
                   <AdBanner
                     dataAdFormat="auto"
                     dataFullWidthResponsive={true}
