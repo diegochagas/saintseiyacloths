@@ -65,9 +65,17 @@ export default function Home() {
     <>
       <Banner />
 
+      <Store isBrazil={language.includes("pt")} />
+
       {news && <News news={news.slice(0, 4)} />}
 
-      <Store isBrazil={language.includes("pt")} />
+      <section className="max-w-7xl bg-white w-full">
+        <AdBanner
+          dataAdFormat="auto"
+          dataFullWidthResponsive={true}
+          dataAdSlot="9278763250"
+        />
+      </section>
 
       {saints && <Classes saints={saints.slice(-8)} />}
 

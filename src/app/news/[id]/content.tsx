@@ -150,7 +150,7 @@ export default function Content({ data, error, url, isBrazil }: ContentProps) {
                   )}
                 </ul>
 
-                {isBrazil && data.amazon && (
+                {isBrazil && data.amazon ? (
                   <div className="my-16">
                     <a
                       className="hover:font-bold cursor-pointer text-lg flex flex-col"
@@ -166,6 +166,14 @@ export default function Content({ data, error, url, isBrazil }: ContentProps) {
                         E compre a história onde esse personagem apareceu!
                       </span>
                     </a>
+                  </div>
+                ) : (
+                  <div className="my-16 bg-white">
+                    <AdBanner
+                      dataAdFormat="auto"
+                      dataFullWidthResponsive={true}
+                      dataAdSlot="7861476475"
+                    />
                   </div>
                 )}
 
@@ -238,6 +246,14 @@ export default function Content({ data, error, url, isBrazil }: ContentProps) {
             </div>
           </div>
         </div>
+      </div>
+
+      <div className="max-w-7xl mt-20 bg-white w-full">
+        <AdBanner
+          dataAdFormat="auto"
+          dataFullWidthResponsive={true}
+          dataAdSlot="9118717820"
+        />
       </div>
     </div>
   );

@@ -107,12 +107,11 @@
 249,Chloto
 82,Chris Walden
 83,Christ
-524,Chronos / Saturn
 516,Clymene
 85,Coeus
 86,Cor Tauri
 87,Crius
-84,Cronus
+524,Cronus / Chronos / Saturn / Subaru
 88,Cruaich
 89,Crystal Saint
 90,Cube
@@ -220,7 +219,6 @@
 168,Hades / Pluto
 169,Hagen
 170,Hakurei
-496,Hakuryu
 171,Halimede
 172,Harbinger
 505,Harmonia
@@ -311,7 +309,7 @@
 247,Leda
 250,Lemargos
 251,Leybold
-252,Liu-Xing
+252,Liu-Xing / Hakuryu
 538,Lodi'N
 254,Loki
 619,Loki
@@ -359,6 +357,7 @@
 292,Moa
 293,Moe
 489,Mordred
+559,Moros
 294,Morpheus
 295,Moses
 296,Mu
@@ -506,7 +505,6 @@
 498,Steropes
 412,Steven
 607,Stone
-413,Subaru
 64,Sui
 414,Suikyo
 480,Suisho
@@ -565,12 +563,14 @@
 458,Wimber
 459,Xiaoling
 571,Yakov
+557,Yambow
 460,Yato
 462,Ymir
 463,Yoma
 522,Yoruhime Tsukishima
 465,Yoshino Hino
 466,Yoshitomi
+481,Youssef
 467,Yufa / Limos
 574,Yugo
 474,Yuki-Onna
@@ -581,9 +581,9 @@
 472,Zelos
 306,Zeus
 473,Zugylos
-481,Youssef
-557,Yambow
-559,Moros
+496,
+84,
+413,
 560,
 561,
 562,

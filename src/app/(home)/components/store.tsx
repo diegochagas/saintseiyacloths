@@ -8,7 +8,7 @@ interface StoreProps {
 export default function Store({ isBrazil }: StoreProps) {
   return isBrazil ? (
     <a
-      className="max-w-7xl bg-yellow-400 w-full p-4 flex justify-center flex-col md:flex-row items-center gap-9 md:gap-14"
+      className="max-w-7xl bg-yellow-400 w-full p-4 flex justify-center flex-col md:flex-row items-center gap-9 md:gap-14 mt-20"
       href="https://lista.mercadolivre.com.br/_CustId_26475573_PrCategId_AD"
       target="_blank"
       rel="noopener noreferrer"
@@ -30,7 +30,7 @@ export default function Store({ isBrazil }: StoreProps) {
       </button>
     </a>
   ) : (
-    <section className="max-w-7xl bg-white w-full">
+    <section className="max-w-7xl bg-white w-full mt-20">
       <AdBanner
         dataAdFormat="auto"
         dataFullWidthResponsive={true}

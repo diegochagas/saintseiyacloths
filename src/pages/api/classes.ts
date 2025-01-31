@@ -189,10 +189,12 @@ export default function handler(
     res.status(200).json({ data });
   } else if (classData) {
     const classes = classesJson.filter((cls) => cls.god === classData.god);
-    const filteredGroups = groupsJson.filter(
-      (group) =>
-        group.class === classes.find((cls) => cls.id === group.class)?.id
-    );
+    // If groups stay split by class for an year, delete the following lines
+    // const filteredGroups = groupsJson.filter(
+    //   (group) =>
+    //     group.class === classes.find((cls) => cls.id === group.class)?.id
+    // );
+    const filteredGroups = groupsJson.filter((group) => group.class === q);
     const filteredSaints = saintsJson.filter(
       (saint) => saint.god === classData.god
     );
@@ -203,13 +205,11 @@ export default function handler(
     const groups = filterIfSaints(groupedSaints, classData.name);
     const totalRevealed = getTotalRevealedOnlyBy(classData.name, groups);
     const totalSaints = getTotalOnlyBy(classData.name);
-    res
-      .status(200)
-      .json({
-        ...getContentByPage(groups, `${p || 1}`),
-        totalRevealed,
-        totalSaints,
-      });
+    res.status(200).json({
+      ...getContentByPage(groups, `${p || 1}`),
+      totalRevealed,
+      totalSaints,
+    });
   } else if (!q) {
     res.status(200).json(
       classesJson.map((cls) => ({

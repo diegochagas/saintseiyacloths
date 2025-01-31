@@ -1,15 +1,15 @@
 ﻿id,class,name
 apollo-gods,angels,gods
 apollo-angels,angels,angels
-apollo-fallen-angels-fallen,fallen-angels,fallenAngel
+apollo-fallen-angels,fallen-angels,fallenAngels
 apollo-fallen-angels-fire,fallen-angels,fireAngel
 apollo-fallen-angels-wisdom,fallen-angels,wisdomAngel
 apollo-fallen-angels-thrones,fallen-angels,thronesAngel
 apollo-fallen-angels-power,fallen-angels,powerAngel
-apollo-fallen-angels,fallen-angels,fallenAngels
 apollo-abel-gods,corona-saints,gods
 apollo-abel-corona-saints,corona-saints,coronaSaints
 apollo-abel-revived-saints,corona-saints,ressurectedSaints
+apollo-golden-warriors-gods,golden-warriors,gods
 apollo-golden-warriors,golden-warriors,goldenWarriors
 apsu-anunnakis,anunnakis,anunnakis
 apsu-weapons,anunnakis,weapons
@@ -427,6 +427,7 @@ hades-other-specters,specters,unknownEvilStars
 hades-skeleton,specters,soldiers
 hades-ressurected-saints,specters,ressurectedSaints
 hades-ressurected-mariners,specters,ressurectedMariners
+hades-pluton-facelessgods,faceless,gods
 hades-pluton-faceless,faceless,faceless
 hakuryu-gods,taonias,gods
 hakuryu-taonias,taonias,taonias
@@ -491,7 +492,7 @@ poseidon-mariners-generals,mariners,generals
 poseidon-mariners,mariners,mariners
 poseidon-mariner-soldiers,mariners,soldiers
 ra-egyptian-gods,legionaries,gods
-ra-legionaries,legionaries,raLegionaries
+ra-legionaries,legionaries,legionaries
 tezcatlipoca-gods,jaguars,gods
 tezcatlipoca-jaguars,jaguars,jaguars
 tezcatlipoca-jaguar-soldiers,jaguars,soldiers
