@@ -62,7 +62,6 @@
 585,Athena (XV)
 46,Atla
 47,Atlas
-48,Atlas
 535,Atropos
 49,Avenir
 50,Babel
@@ -99,7 +98,6 @@
 541,Cattleya Mikagami
 77,Celeris
 78,Chalcedony
-515,Chaos
 550,Charlotte Kazahana
 79,Charon
 80,Cheshire
@@ -107,9 +105,7 @@
 249,Chloto
 82,Chris Walden
 83,Christ
-516,Clymene
 85,Coeus
-86,Cor Tauri
 87,Crius
 524,Cronus / Chronos / Saturn / Subaru
 88,Cruaich
@@ -170,8 +166,6 @@
 62,Ethlinn
 128,Europa
 483,Europe
-606,Euryale (Gorgon)
-129,Eurybia
 485,Ex
 596,Fabio
 130,Fafner
@@ -207,7 +201,6 @@
 157,Gestalt
 158,Gigant
 159,Gigas
-475,Gigas
 160,Gioca
 161,Gordon
 162,Gray
@@ -233,6 +226,7 @@
 455,Hephaestus / Vulcanus
 520,Hera
 180,Heracles
+48,Heracles / Hercules
 518,Hestia
 181,Hilda
 182,Hooke
@@ -337,7 +331,6 @@
 272,Mei
 273,Menkar
 274,Methone
-517,Metis
 275,Michelangelo
 276,Miguel
 277,Miller
@@ -420,7 +413,6 @@
 341,Poena
 342,Pontus
 494,Poseidon
-343,Prometheus
 506,Pseudos
 344,Ptolemy
 345,Pyrokus
@@ -581,6 +573,14 @@
 472,Zelos
 306,Zeus
 473,Zugylos
+515,
+516,
+86,
+606,
+129,
+475,
+517,
+343,
 496,
 84,
 413,

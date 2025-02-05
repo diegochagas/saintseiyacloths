@@ -260,6 +260,7 @@ athena-unknown-saints,saints,saintsWithoutConstellation
 athena-soldiers,saints,soldiers
 balor-gods,fairies,gods
 balor-fairies,fairies,fairies
+balor-soldiers,fairies,warriors
 bellatrix-gods,guardians,gods
 bellatrix-guardians,guardians,guardians
 bellatrix-soldiers,guardians,imperialGuards
@@ -300,7 +301,6 @@ cronus-titans-9,titans,current
 cronus-titans-10,titans,ocean
 cronus-titans-11,titans,galaxy
 cronus-titans-12,titans,memory
-cronus-other-titans,titans,otherTitans
 cronus-titan-soldiers,titans,soldiers
 eris-gods,dryads,gods
 eris-phantoms,dryads,phantoms
