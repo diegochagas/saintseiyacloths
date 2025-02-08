@@ -39,7 +39,7 @@
 38,33,459,zeus-gods,9,306,5,5,/cloth-schemes/zeus-gods/ares.jpg,29
 39,34,786,athena-saints-87,5,582,5,6,/cloth-schemes/athena-saints/volans-argo.jpg,16
 40,35,412,athena-gods,9,582,6,6,/cloth-schemes/athena-saints/athena-aria.jpg,16
-41,370,468,hades-ressurected-saints,45,168,,,,1
+41,370,468,hades-ressurected-saints,45,168,,,/cloth-schemes/hades-specters/gemini-saga-specter.jpg,1
 42,37,658,athena-saints-48,5,582,6,6,/cloth-schemes/athena-saints/lepus-arne.jpg,16
 43,214,193,poseidon-gods,9,494,18,18,/cloth-schemes/poseidon-mariners/poseidon-julian-solo-odyssey.jpg,38
 44,39,71,apollo-fallen-angels-wisdom,17,28,5,5,/cloth-schemes/apollo-angels/cherub-ashtaroth.jpg,24
@@ -929,7 +929,7 @@
 928,96,791,athena-former-saints-13,6,582,5,5,/cloth-schemes/athena-saints/cerberus-dante-anime.jpg,12
 929,295,564,athena-saints-21,6,582,5,5,/cloth-schemes/athena-saints/cetus-moses-anime.jpg,12
 930,205,578,athena-saints-28,6,582,5,5,/cloth-schemes/athena-saints/corvus-jamian-anime.jpg,12
-931,17,639,athena-saints-40,6,582,17,17,/cloth-schemes/athena-saints/heracles-algethi-anime.jpg,12
+931,17,639,athena-saints-40,6,582,5,5,/cloth-schemes/athena-saints/heracles-algethi-anime.jpg,12
 932,287,646,athena-saints-45,6,582,5,5,/cloth-schemes/athena-saints/lacerta-misty-anime.jpg,12
 933,317,674,athena-saints-52,6,582,5,5,/cloth-schemes/athena-saints/lyra-orphee-anime.jpg,12
 934,103,681,athena-saints-56,6,582,5,5,/cloth-schemes/athena-saints/musca-dio-anime.jpg,12
@@ -962,7 +962,7 @@
 961,27,472,hades-ressurected-saints,45,168,17,17,/cloth-schemes/hades-specters/pisces-aphrodite-specter-anime.jpg,13
 962,27,471,hades-ressurected-saints,45,168,,,,1
 963,71,456,hades-ressurected-saints,45,168,17,17,/cloth-schemes/hades-specters/aquarius-camus-specter-anime.jpg,13
-964,71,447,hades-ressurected-saints,45,168,,,,1
+964,71,447,hades-ressurected-saints,45,168,,,/cloth-schemes/hades-specters/aquarius-camus-specter.jpg,1
 965,50,506,hades-ressurected-saints,45,168,36,26,/cloth-schemes/hades-specters/centaurus-babel-specter.jpg,13
 966,96,507,hades-ressurected-saints,45,168,36,26,/cloth-schemes/hades-specters/cerberus-dante-specter.jpg,13
 967,295,508,hades-ressurected-saints,45,168,36,26,/cloth-schemes/hades-specters/cetus-moses-specter.jpg,13
