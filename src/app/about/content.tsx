@@ -26,9 +26,25 @@ export default function Content() {
             </figure>
 
             <div className="flex flex-wrap gap-4 justify-center max-w-2xl">
-              {Array.from({ length: 4 }).map((_, i) => (
+              {Array.from({ length: 2 }).map((_, i) => (
                 <p key={`paragraph-${i}`} className="flex justify-between">
-                  {t(`aboutParagraph.${i}`)}
+                  {t(`aboutSaintSeiya.${i}`)}
+                </p>
+              ))}
+
+              <h2 className="font-bold w-full text-2xl uppercase">
+                {t("about")} Saint Seiya Cloths
+              </h2>
+
+              <p>{t("aboutSaintSeiyaCloths.description")}</p>
+
+              <h3 className="font-bold w-full text-xl capitalize">
+                {t("aboutSaintSeiyaCloths.sections.title")}
+              </h3>
+
+              {Array.from({ length: 6 }).map((_, i) => (
+                <p key={`about-${i}`} className="flex justify-between">
+                  {t(`aboutSaintSeiyaCloths.sections.${i}`)}
                 </p>
               ))}
             </div>

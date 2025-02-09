@@ -15,7 +15,7 @@
 14,11,303,athena-saints-72,9,582,5,5,/cloth-schemes/athena-saints/sagittarius-aiolos-god.jpg,14
 15,12,732,athena-saints-66,7,582,21,21,/cloth-schemes/athena-saints/pisces-albafica-lost-canvas-anime.jpg,15
 16,13,218,odin-ursa-major-star-3,,495,33,32,/cloth-schemes/odin-god-warriors/megrez-alberich.jpg,12
-17,14,218,odin-ursa-major-star-3,1,495,41,0,/cloth-schemes/odin-god-warriors/alberich-xiii-manga.jpg,12
+17,14,218,odin-ursa-major-star-3,1,495,22,0,/cloth-schemes/odin-god-warriors/alberich-xiii-manga.jpg,12
 18,15,336,athena-saints-78,7,582,1,1,/cloth-schemes/athena-saints/taurus-aldebaran.jpg,1
 19,15,337,athena-saints-78,9,582,5,5,/cloth-schemes/athena-saints/taurus-aldebaran-god.jpg,14
 20,16,562,athena-saints-21,4,582,6,6,/cloth-schemes/athena-saints/cetus-allegre.jpg,7
@@ -242,7 +242,7 @@
 241,218,,hades-terrestrial-star-80,14,168,6,6,/cloth-schemes/hades-specters/kageboshi.jpg,7
 242,219,,chronos-gods,9,524,6,6,/cloth-schemes/chronos-hours/kairos.jpg,6
 243,220,648,athena-saints-46,7,582,5,5,/cloth-schemes/athena-saints/leo-kaiser.jpg,4
-244,221,148,athena-saints-38,7,582,22,22,/cloth-schemes/athena-saints/gemini-kanon.jpg,1
+244,221,148,athena-saints-38,7,582,,,/cloth-schemes/athena-saints/gemini-kanon.jpg,1
 245,221,309,poseidon-mariners-generals,18,494,1,1,/cloth-schemes/poseidon-mariners/sea-dragon-kanon.jpg,1
 246,223,755,athena-saints-73,7,582,20,20,/cloth-schemes/athena-saints/scorpio-kardia.png,6
 247,224,208,poseidon-mariners-generals,18,494,1,1,/cloth-schemes/poseidon-mariners/lyumnades-kasa.jpg,1
@@ -303,7 +303,7 @@
 302,276,543,athena-saints-13,6,582,6,6,/cloth-schemes/athena-saints/canes-venatici-miguel.png,16
 303,277,2,pallas-unknown-unknownclass,32,323,31,8,/cloth-schemes/pallas-pallasites/alchemy-glove-miller-1.png,16
 304,277,372,pallas-unknown-unknownclass,,323,5,5,/cloth-schemes/pallas-pallasites/alchemy-glove-miller-2.jpg,16
-305,278,131,hades-terrestrial-star-104,14,168,42,42,/cloth-schemes/hades-specters/elf-mills.jpg,1
+305,278,131,hades-terrestrial-star-104,14,168,14,14,/cloth-schemes/hades-specters/elf-mills.jpg,1
 306,279,305,athena-saints-73,7,582,1,1,/cloth-schemes/athena-saints/scorpio-milo.jpg,1
 307,279,306,athena-saints-73,9,582,5,5,/cloth-schemes/athena-saints/scorpio-milo-god.jpg,14
 308,280,45,odin-ursa-major-star-5,,495,33,32,/cloth-schemes/odin-god-warriors/benetnasch-mime.jpg,12
@@ -413,7 +413,7 @@
 412,379,699,athena-saints-62,5,582,7,7,/cloth-schemes/athena-saints/pegasus-seiya-1-anime.jpg,12
 413,379,747,athena-saints-72,7,582,5,5,/cloth-schemes/athena-saints/sagittarius-seiya-1.png,16
 414,379,370,athena-saints-72,7,582,5,5,/cloth-schemes/athena-saints/sagittarius-seiya-2.png,16
-415,379,246,odin-gods,9,495,41,41,/cloth-schemes/odin-god-warriors/odin-seiya-manga.jpg,12
+415,379,246,odin-gods,9,495,22,22,/cloth-schemes/odin-god-warriors/odin-seiya-manga.jpg,12
 416,379,368,arthur-gladiators,,488,7,7,/cloth-schemes/arthur-gladiators/kusanagi-seiya.jpg,10
 417,380,868,poseidon-gods,9,494,12,1,/cloth-schemes/poseidon-mariners/poseidon-seraphina.jpg,6
 418,381,356,athena-saints-86,7,582,1,1,/cloth-schemes/athena-saints/virgo-shaka.jpg,1
@@ -535,7 +535,7 @@
 534,238,623,athena-saints-35,5,582,5,5,/cloth-schemes/athena-saints/equuleus-kyoko-anime.jpg,17
 535,476,65,athena-saints-20,6,582,1,1,/cloth-schemes/athena-saints/cepheus-daedalus.jpg,1
 536,476,559,athena-saints-20,6,582,5,26,/cloth-schemes/athena-saints/cepheus-albior.jpg,12
-537,479,98,hades-terrestrial-star-48,14,168,42,42,/cloth-schemes/hades-specters/deadly-harlequin-kafka.jpg,19
+537,479,98,hades-terrestrial-star-48,14,168,14,14,/cloth-schemes/hades-specters/deadly-harlequin-kafka.jpg,19
 538,,398,pallas-pallasite-soldiers,1,323,31,,/cloth-schemes/pallas-pallasites/pallasites-soldiers.png,16
 539,,,ra-legionaries,1,348,6,6,/cloth-schemes/ra-legionaries/legionaries.jpg,8
 540,,322,ares-mars-soldiers,1,33,11,11,/cloth-schemes/ares-martians/martian-soldiers.png,16
@@ -648,12 +648,12 @@
 647,208,110,apollo-abel-corona-saints,5,28,5,5,/cloth-schemes/athena-saints/lynx-jao.jpg,23
 648,524,438,pallas-gods,9,323,5,5,/cloth-schemes/pallas-pallasites/saturn-subaru-v2.jpg,16
 649,315,439,hades-dream-gods,9,168,6,6,/cloth-schemes/hades-specters/dream-oneiros-fusion.jpg,6
-650,,,hades-terrestrial-star-102,14,168,42,42,/cloth-schemes/hades-specters/star-execute.jpg,19
+650,,,hades-terrestrial-star-102,14,168,14,14,/cloth-schemes/hades-specters/star-execute.jpg,19
 651,,,hades-terrestrial-star-77,14,168,6,6,/cloth-schemes/hades-specters/star-of-music.jpg,19
-652,,,hades-terrestrial-star-79,14,168,42,42,/cloth-schemes/hades-specters/star-speed.jpg,19
-653,,,hades-terrestrial-star-63,14,168,42,42,/cloth-schemes/hades-specters/star-crazy.jpg,19
+652,,,hades-terrestrial-star-79,14,168,14,14,/cloth-schemes/hades-specters/star-speed.jpg,19
+653,,,hades-terrestrial-star-63,14,168,14,14,/cloth-schemes/hades-specters/star-crazy.jpg,19
 654,,,hades-terrestrial-star-93,14,168,6,6,/cloth-schemes/hades-specters/star-hidden.jpg,19
-655,,,hades-terrestrial-star-96,14,168,42,42,/cloth-schemes/hades-specters/star-slave.jpg,19
+655,,,hades-terrestrial-star-96,14,168,14,14,/cloth-schemes/hades-specters/star-slave.jpg,19
 656,,,hades-terrestrial-star-56,14,168,6,6,/cloth-schemes/hades-specters/star-spirit.jpg,19
 657,,,hades-terrestrial-star-67,14,168,6,6,/cloth-schemes/hades-specters/star-bright.jpg,19
 658,,,hades-terrestrial-star-69,14,168,6,6,/cloth-schemes/hades-specters/star-retreating.jpg,19

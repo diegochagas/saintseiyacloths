@@ -1,10 +1,20 @@
 {
-  "aboutParagraph": {
+  "aboutSaintSeiya": {
     "0": "Saint Seiya (Japanese: 聖闘士星矢 セイントセイヤ, Hepburn: Seinto Seiya), also known as Saint Seiya: Knights of the Zodiac or simply Knights of the Zodiac (translated from the French title Les Chevaliers du Zodiaque), is a Japanese manga series written and illustrated by Masami Kurumada. It was serialized in Shueisha's shōnen manga magazine Weekly Shōnen Jump from 1985 to 1990, with its chapters collected in 28 tankōbon volumes. In North America, the manga was licensed for English release by Viz Media.",
     "1": "The story follows five mystical warriors called the Saints who fight wearing sacred sets of armor named 'Cloths', the designs of which derive from the various constellations the characters have adopted as their destined guardian symbols. The Saints have sworn to defend the reincarnation of the Olympian goddess Athena in her battle against other gods who want to dominate Earth.",
-    "2": "The manga was adapted by Toei Animation into a 114-episode anime television series broadcast on TV Asahi from 1986 to 1989. The anime series was followed by a 31-episode original video animation (OVA) series, subtitled The Hades Chapter, released from 2002 to 2008. Four animated feature films premiered in Japanese theaters from 1987 to 1989, with a fifth in 2004 and a sixth in 2014. A live-action film adaptation premiered in 2023.",
-    "3": "The Saint Seiya manga had over 50 million copies in circulation by 2022, making it one of the best-selling manga series of all time. Both the original manga and the anime adaptation were successful internationally across Asia, Europe, and Latin America.",
-    "4": "A manga sequel by Kurumada, titled Saint Seiya: Next Dimension, was serialized from 2006 to 2024. Several spin-off manga by different authors have also been created."
+    "2": "The manga was adapted by Toei Animation into a 114-episode anime television series broadcast on TV Asahi from 1986 to 1989. The anime series was followed by a 31-episode original video animation (OVA) series, subtitled The Hades Chapter, released from 2002 to 2008. Four animated feature films premiered in Japanese theaters from 1987 to 1989, with a fifth in 2004 and a sixth in 2014. A live-action film adaptation premiered in 2023."
+  },
+  "aboutSaintSeiyaCloths": {
+    "description": "Saint Seiya Cloths is the ultimate destination for fans of the legendary Saint Seiya universe, showcasing the intricate Cloth Schemes of every character across various media. Whether you're a longtime fan or a newcomer, our platform provides an extensive catalog of armor designs, their origins, and the artists who brought them to life.",
+    "sections": {
+      "title": "Explore our sections",
+      "0": "News – Constantly updated, this section dives deep into the details of each Cloth Scheme. Learn about the media where it appeared, the god it serves, its rank, and more.",
+      "1": "Classes – Organizing characters by their affiliations, this section categorizes Cloths by groups such as Saints, Mariners, Specters, and more, helping you navigate the vast Saint Seiya lore.",
+      "2": "Artists – A tribute to the talented creators behind the designs, whether official artists or fan creators, this section highlights their unique contributions to the series.",
+      "3": "History – Discover characters sorted by their appearances in different stories, from classic anime and manga to spin-offs, games, and beyond.",
+      "4": "At Saint Seiya Cloths, we aim to preserve and celebrate the rich artistic legacy of Saint Seiya, making it easier for fans to explore and appreciate the legendary armors that define this iconic series.",
+      "5": "Stay tuned as we continue expanding our database and refining our content to bring you the most detailed, organized, and visually stunning collection of Cloth Schemes available online!"
+    }
   },
   "newsDescription": {
     "1": "Gemini Abel, a prominent character in Saint Seiya: Next Dimension, served as the younger Gemini Gold Saint during the 18th century, guarding the third temple. A complex and enigmatic figure, Abel is revealed to be the malevolent shadow of his twin brother, Gemini Cain, embodying the darker half of Cain's soul—a duality that has plagued the pair since childhood. Trained at the Sanctuary in Greece, Abel mastered powerful techniques such as Another Dimension, Genro Mao Ken, and Galaxian Explosion, wielding the formidable Gemini Cloth with devastating precision. His decision to oppose Athena underscores the intricate themes of inner conflict and sibling rivalry that define the saga.",
