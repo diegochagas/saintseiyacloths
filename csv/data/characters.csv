@@ -1,5 +1,5 @@
 ﻿id,name
-1,Abel
+1,Abel / Defteros
 4,Aegaeon
 5,Aegir
 576,Aeras
@@ -9,7 +9,7 @@
 9,Aiacos
 10,Aiolia
 11,Aiolos
-12,Albafica
+12,Cardinale / Albafica
 13,Alberich
 14,Alberich XIII
 32,Alcon Huye
@@ -52,8 +52,8 @@
 307,Asclepius
 569,Asgard Soldier
 39,Ashtaroth
-40,Asmita
-41,Aspros
+40,Shijima / Asmita
+41,Cain / Aspros
 42,Asterion
 484,Astraea
 44,Atavaka
@@ -86,13 +86,13 @@
 67,Bud
 68,Byaku
 546,Cadmus
-69,Cain
+69,
 70,Callisto
 504,Camelopardalis Saint
 71,Camus
 72,Capella
 73,Carbella
-74,Cardinale
+74,
 75,Carnelian
 76,Cassios
 541,Cattleya Mikagami
@@ -120,9 +120,9 @@
 95,Dali
 96,Dante
 97,Deathmask / Claw
-98,Deathtoll
-99,Defteros
-100,Degel
+98,Deathtoll / Manigold
+99,
+100,Mystoria / Degel
 101,Deimos
 528,Demeter
 539,Demiurgo
@@ -149,7 +149,7 @@
 490,Edward / Horcos
 525,Eileithyia
 118,Eiri Aizawa
-119,El Cid
+119,Izo / El Cid
 120,Elda
 121,Eligor
 558,Ellan
@@ -162,7 +162,7 @@
 482,Erik
 308,Eris
 497,Erythro
-127,Escarlate
+127,Escarlate / Kardia
 62,Ethlinn
 128,Europa
 483,Europe
@@ -198,7 +198,7 @@
 154,Georg
 155,Georges
 156,Gerald
-157,Gestalt
+157,Gestalt / Sisyphus
 158,Gigant
 159,Gigas
 160,Gioca
@@ -216,7 +216,7 @@
 172,Harbinger
 505,Harmonia
 173,Haruto
-174,Hasgard
+174,Ox / Hasgard
 175,Hati
 526,Hebe
 176,Hecate
@@ -250,7 +250,7 @@
 198,Isolde
 199,Itia
 200,Ivan
-201,Izo
+201,
 202,Jabu
 203,Jager
 204,Jaki
@@ -271,9 +271,9 @@
 217,Kagaho
 218,Kageboshi
 219,Kairos
-220,Kaiser
+220,Kaiser / Regulus
 221,Kanon
-223,Kardia
+223,
 224,Kasa
 225,Katya
 226,Kazuma
@@ -319,7 +319,7 @@
 486,Machina
 268,Malkino
 262,Mania
-263,Manigold
+263,
 265,Maria / Lethe
 266,Marin
 565,Mariner Soldier
@@ -356,7 +356,7 @@
 296,Mu
 297,Mudan
 298,Mycenae
-299,Mystoria
+299,
 300,Myu
 301,Nachi
 302,Nahualpilli
@@ -385,7 +385,7 @@
 317,Orphée
 318,Orpheus
 319,Orthros
-320,Ox
+320,
 321,Pakia
 322,Pallas
 323,Pallas
@@ -423,7 +423,7 @@
 349,Radzinsky
 350,Ragno
 499,Rebecca
-353,Regulus
+353,
 354,Retsu
 355,Rhadamanthys
 356,Rhea
@@ -462,7 +462,7 @@
 382,Sham
 383,Shelley
 384,Sher-Khan
-385,Shijima
+385,
 387,Shinadekuro
 388,Shinato
 389,Shion
@@ -482,7 +482,7 @@
 400,Sillas
 478,Sinmore
 401,Sirius
-402,Sisyphus
+402,
 542,Sojiro Tokito
 403,Sonia
 404,Sorento
