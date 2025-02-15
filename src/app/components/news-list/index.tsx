@@ -3,15 +3,17 @@ import { NewsProps } from "@/pages/api/news";
 import Image from "next/image";
 import Link from "next/link";
 import { useTranslations } from "use-intl";
+import Error from "../error";
 
 interface NewsListProps {
   news: NewsProps[];
+  errorMessage?: string;
 }
 
-export default function NewsList({ news }: NewsListProps) {
+export default function NewsList({ news, errorMessage }: NewsListProps) {
   const t = useTranslations();
 
-  return (
+  return news.length > 0 ? (
     <ul className="p-5 w-full grid md:grid-cols-2 xl:grid-cols-4 gap-4 max-w-7xl">
       {news.map((item) => (
         <li key={item.date} className="m-2">
@@ -46,5 +48,7 @@ export default function NewsList({ news }: NewsListProps) {
         </li>
       ))}
     </ul>
+  ) : (
+    <Error>{errorMessage || t("errorNewsNotFound")}</Error>
   );
 }

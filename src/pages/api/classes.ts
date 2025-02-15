@@ -23,7 +23,6 @@ export interface ClassProps {
 interface ClothProps {
   id: string;
   name: string[];
-  image: string;
   artist: ArtistProps;
   history: HistoryProps;
 }
@@ -32,7 +31,7 @@ export interface GroupProps {
   id: string;
   class: string;
   name: string;
-  saints: SaintProps[];
+  saints?: SaintProps[];
 }
 
 export interface SaintProps {
@@ -85,7 +84,7 @@ function filterIfSaints(groups: GroupProps[], className: string) {
       (item) =>
         !(
           !isOfficialConstellation(item.name.toLocaleLowerCase()) &&
-          !item.saints.length
+          !item.saints?.length
         )
     );
   return groups;
@@ -97,7 +96,7 @@ function getTotalRevealedOnlyBy(className: string, groups: GroupProps[]) {
       const currentValue =
         (isOfficialConstellation(currentGroup.name.toLocaleLowerCase()) ||
           isOfficialEvilStar(currentGroup.id)) &&
-        currentGroup.saints.length
+        currentGroup.saints?.length
           ? 1
           : 0;
       return accumulator + currentValue;
@@ -188,8 +187,8 @@ export default function handler(
     const data = saintsJson.slice(-10).map((saint) => loadSaintData(saint));
     res.status(200).json({ data });
   } else if (classData) {
-    const classes = classesJson.filter((cls) => cls.god === classData.god);
     // If groups stay split by class for an year, delete the following lines
+    // const classes = classesJson.filter((cls) => cls.god === classData.god);
     // const filteredGroups = groupsJson.filter(
     //   (group) =>
     //     group.class === classes.find((cls) => cls.id === group.class)?.id

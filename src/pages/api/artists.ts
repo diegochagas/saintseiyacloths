@@ -8,7 +8,7 @@ import { getContentByPage, GroupProps, groupSaints } from "./classes";
 export interface ArtistProps {
   id: string;
   name: string;
-  official: boolean;
+  official: string;
   site: string;
 }
 

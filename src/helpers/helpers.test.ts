@@ -1,5 +1,4 @@
-import { useTranslations } from "use-intl";
-import { getClothName } from "./helpers";
+import { getClothName } from "../helpers";
 
 describe("News", () => {
   const t = (key: string) => key;

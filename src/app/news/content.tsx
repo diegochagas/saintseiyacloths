@@ -3,7 +3,6 @@ import Pagination from "../components/pagination";
 import NewsList from "../components/news-list";
 import Tabs, { TabProps } from "../components/tabs";
 import Icon from "../components/icons";
-import Error from "../components/error";
 import { useTranslations } from "next-intl";
 import AdBanner from "../components/adbanner";
 
@@ -18,7 +17,7 @@ interface ContentProps {
   searchValue: string;
   onSearchValue: (text: string) => void;
   onSearchClear: () => void;
-  errorMessage: string;
+  errorMessage?: string;
 }
 
 export default function Content({
@@ -83,10 +82,9 @@ export default function Content({
             {t("clear")}
           </button>
         </div>
+
         <NewsList news={news} />
-        {(news.length === 0 || errorMessage) && (
-          <Error>{errorMessage || t("errorNewsNotFound")}</Error>
-        )}
+
         <div className="mb-20 w-full max-w-7xl">
           <Pagination
             currentPage={currentPage}

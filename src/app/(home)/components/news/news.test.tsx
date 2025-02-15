@@ -1,8 +1,8 @@
 import { describe } from "node:test";
 import { render } from "@testing-library/react";
 import { NextIntlClientProvider } from "next-intl";
-import News from "./news";
-import english from "../../../../messages/en.json";
+import News from "../news";
+import english from "../../../../../messages/en.json";
 
 describe("News", () => {
   it("should render correctly", () => {
