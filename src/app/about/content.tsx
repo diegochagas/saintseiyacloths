@@ -18,7 +18,7 @@ export default function Content() {
           <div className="bg-white p-5 flex flex-wrap justify-center gap-10">
             <figure className="lg:order-2">
               <Image
-                src="/history/manga-classic.jpg"
+                src="/manga-classic.jpg"
                 width={234}
                 height={370}
                 alt={t("aboutImageDescription")}
