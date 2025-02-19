@@ -11,7 +11,7 @@ export default function Saints({ data }: SaintsProps) {
   const t = useTranslations();
 
   return (
-    <div className="flex flex-wrap gap-4 justify-center">
+    <div className="flex flex-wrap gap-4 justify-center" data-testid="saints">
       {data.map((item) => (
         <div key={item.id} className="border-2 border-black p-1">
           <h4 className="uppercase text-center">{t(item.name)}</h4>

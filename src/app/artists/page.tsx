@@ -29,9 +29,10 @@ export default function Artists() {
   useEffect(() => {
     async function getTabs() {
       try {
-        const response = await fetch(`/api/artists?q=filtered`);
+        const response = await fetch("/api/artists?q=filtered");
         const items = await response.json();
-        setSubTabs(items);
+
+        if (items && items.length > 0) setSubTabs(items);
         setIsLoading(false);
       } catch (error) {
         setErrorMessage(`${t("errorFetchingData")} ${error}`);
