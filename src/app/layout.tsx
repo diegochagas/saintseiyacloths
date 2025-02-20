@@ -33,7 +33,9 @@ export default async function RootLayout({
   return (
     <html lang={locale}>
       <head>
-        <Adsense pId="7593159682938893" />
+        {process.env.NODE_ENV === "production" && (
+          <Adsense pId="7593159682938893" />
+        )}
       </head>
       <body className={inter.className}>
         <NextIntlClientProvider messages={messages}>

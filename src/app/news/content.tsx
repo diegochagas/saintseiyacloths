@@ -53,13 +53,7 @@ export default function Content({
       )}
 
       <div className="flex flex-col justify-center relative bg-zinc-100 w-full items-center">
-        <section className="max-w-7xl my-20 bg-white w-full">
-          <AdBanner
-            dataAdFormat="auto"
-            dataFullWidthResponsive={true}
-            dataAdSlot="1204536968"
-          />
-        </section>
+        <AdBanner dataAdSlot="1204536968" className="my-20" />
 
         <div className="flex items-center w-full max-w-7xl gap-4 p-5">
           <form className="w-full max-w-md h-10 flex items-center bg-zinc-300">
@@ -93,13 +87,7 @@ export default function Content({
           />
         </div>
 
-        <section className="max-w-7xl mb-20 bg-white w-full">
-          <AdBanner
-            dataAdFormat="auto"
-            dataFullWidthResponsive={true}
-            dataAdSlot="2990054059"
-          />
-        </section>
+        <AdBanner dataAdSlot="2990054059" className="mb-20" />
       </div>
     </div>
   );

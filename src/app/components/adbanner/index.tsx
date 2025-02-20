@@ -1,37 +1,25 @@
-"use client";
+import AdBannerContent from "./content";
 
-import { useEffect } from "react";
-
-interface AdBannerTypes {
+interface AdBannerProps {
   dataAdSlot: string;
-  dataAdFormat: string;
-  dataFullWidthResponsive: boolean;
+  className?: string;
 }
 
 export default function AdBanner({
   dataAdSlot,
-  dataAdFormat,
-  dataFullWidthResponsive,
-}: AdBannerTypes) {
-  useEffect(() => {
-    try {
-      ((window as any).adsbygoogle = (window as any).adsbygoogle || []).push(
-        {}
-      );
-    } catch (error: any) {
-      console.error(error.message);
-    }
-  }, []);
-
+  className = "",
+}: AdBannerProps) {
   return (
-    <ins
-      className="adsbygoogle"
-      style={{ display: "block" }}
-      data-ad-client="ca-pub-7593159682938893"
-      data-ad-slot={dataAdSlot}
-      data-ad-format={dataAdFormat}
-      data-full-width-responsive={dataFullWidthResponsive.toString()}
-      data-testid="ad-banner"
-    ></ins>
+    <section className={`max-w-7xl bg-white w-full ${className}`}>
+      {process.env.NODE_ENV === "production" ? (
+        <AdBannerContent
+          dataAdFormat="auto"
+          dataFullWidthResponsive={true}
+          dataAdSlot={dataAdSlot}
+        />
+      ) : (
+        <div className={`h-44 ${className}`} data-testid="ad-banner" />
+      )}
+    </section>
   );
 }

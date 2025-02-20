@@ -69,23 +69,11 @@ export default function Home() {
 
       {news && <News news={news.slice(0, 4)} />}
 
-      <section className="max-w-7xl bg-white w-full">
-        <AdBanner
-          dataAdFormat="auto"
-          dataFullWidthResponsive={true}
-          dataAdSlot="9278763250"
-        />
-      </section>
+      <AdBanner dataAdSlot="9278763250" />
 
       {saints && <Classes saints={saints.slice(-8)} />}
 
-      <section className="max-w-7xl mb-20 bg-white w-full">
-        <AdBanner
-          dataAdFormat="auto"
-          dataFullWidthResponsive={true}
-          dataAdSlot="1132384777"
-        />
-      </section>
+      <AdBanner dataAdSlot="1132384777" className="mb-20" />
     </>
   );
 }

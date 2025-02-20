@@ -94,13 +94,7 @@ export default function Content({ data, error, url, isBrazil }: ContentProps) {
                     </p>
                   ))}
 
-                <div className="my-5 bg-white">
-                  <AdBanner
-                    dataAdFormat="auto"
-                    dataFullWidthResponsive={true}
-                    dataAdSlot="1835086184"
-                  />
-                </div>
+                <AdBanner dataAdSlot="1835086184" className="my-5" />
 
                 <figure className="flex flex-col items-center my-5 w-full">
                   <Image
@@ -168,13 +162,7 @@ export default function Content({ data, error, url, isBrazil }: ContentProps) {
                     </a>
                   </div>
                 ) : (
-                  <div className="my-16 bg-white">
-                    <AdBanner
-                      dataAdFormat="auto"
-                      dataFullWidthResponsive={true}
-                      dataAdSlot="7861476475"
-                    />
-                  </div>
+                  <AdBanner dataAdSlot="7861476475" className="my-16" />
                 )}
 
                 <div className="relative self-end">
@@ -248,13 +236,7 @@ export default function Content({ data, error, url, isBrazil }: ContentProps) {
         </div>
       </div>
 
-      <div className="max-w-7xl mt-20 bg-white w-full">
-        <AdBanner
-          dataAdFormat="auto"
-          dataFullWidthResponsive={true}
-          dataAdSlot="9118717820"
-        />
-      </div>
+      <AdBanner dataAdSlot="9118717820" className="mt-20" />
     </div>
   );
 }

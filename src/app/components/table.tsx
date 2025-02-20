@@ -59,13 +59,7 @@ export default function Table({
 
       {data?.length > 0 ? (
         <div className="flex flex-col justify-center relative">
-          <section className="max-w-7xl mt-5 mb-10 bg-white w-full">
-            <AdBanner
-              dataAdFormat="auto"
-              dataFullWidthResponsive={true}
-              dataAdSlot="4211636385"
-            />
-          </section>
+          <AdBanner dataAdSlot="4211636385" className="mt-5 mb-10" />
 
           <div className="bg-white p-5">
             <div className="border-2 border-black p-5 max-w-7xl mb-5">
@@ -95,13 +89,7 @@ export default function Table({
         <Error title={title}>{errorMessage}</Error>
       )}
 
-      <section className="max-w-7xl mt-10 bg-white w-full">
-        <AdBanner
-          dataAdFormat="auto"
-          dataFullWidthResponsive={true}
-          dataAdSlot="8270037567"
-        />
-      </section>
+      <AdBanner dataAdSlot="8270037567" className="mt-10" />
     </div>
   );
 }

@@ -43,7 +43,14 @@ export default function handler(
       }));
     res.status(200).json(filteredArtists);
   } else if (!q) {
-    res.status(200).json(artistsJson);
+    res.status(200).json(
+      artistsJson.map((item: any) => ({
+        ...item,
+        official: officialJson.find(
+          (official) => official.id === item.official
+        ),
+      }))
+    );
   } else {
     res.status(400).json({ message: `Error: Artist with id ${q} not found!` });
   }

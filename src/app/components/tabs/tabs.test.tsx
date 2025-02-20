@@ -1,18 +1,14 @@
 import { IntlProvider } from "next-intl";
 import messages from "../../../../messages/en.json";
 import { render } from "@testing-library/react";
-import { act } from "react";
 import Tabs from ".";
+import official from "../../../pages/api/data/official.json";
 
 describe("Tabs", () => {
   it("should render correctly", async () => {
     const wrapper = render(
       <IntlProvider messages={messages} locale="en">
-        <Tabs
-          tabs={[{ id: "1", name: "official" }]}
-          activeTab="1"
-          onTabChange={() => {}}
-        />
+        <Tabs tabs={official} activeTab="1" onTabChange={() => {}} />
       </IntlProvider>
     );
 

@@ -30,12 +30,6 @@ export default function Store({ isBrazil }: StoreProps) {
       </button>
     </a>
   ) : (
-    <section className="max-w-7xl bg-white w-full mt-20">
-      <AdBanner
-        dataAdFormat="auto"
-        dataFullWidthResponsive={true}
-        dataAdSlot="4587579900"
-      />
-    </section>
+    <AdBanner dataAdSlot="4587579900" className="mt-20" />
   );
 }

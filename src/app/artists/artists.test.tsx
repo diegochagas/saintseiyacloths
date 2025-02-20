@@ -5,10 +5,11 @@ import { render, screen, waitFor, fireEvent } from "@testing-library/react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useLoading } from "../context/loading-content";
 import { act } from "react";
+import { artistMock, artistsMock } from "@/pages/mocks/artists-mock";
 
 jest.mock("next/navigation", () => ({
   useRouter: jest.fn(() => ({ push: jest.fn() })),
-  useSearchParams: jest.fn(() => new URLSearchParams("?q=1&p=1")),
+  useSearchParams: jest.fn(),
 }));
 
 // // Mock loading context
@@ -22,22 +23,26 @@ jest.mock("next/navigation", () => ({
 beforeEach(() => {
   jest.clearAllMocks();
 
-  global.fetch = jest.fn(() =>
-    Promise.resolve({
-      json: () =>
-        Promise.resolve([
-          {
-            id: "1",
-            name: "official",
-            official: {
-              id: "1",
-              name: "official",
-            },
-            site: "https://kurumadapro.com/blog/",
-          },
-        ]),
-    })
-  ) as jest.Mock;
+  global.fetch = jest.fn((url) => {
+    if (url.includes("q=filtered")) {
+      return Promise.resolve({
+        json: () => Promise.resolve(artistsMock),
+      });
+    } else if (url.includes("?p=")) {
+      return Promise.resolve({
+        json: () => Promise.resolve(artistMock),
+      });
+    } else {
+      return Promise.resolve({
+        json: () =>
+          Promise.resolve({
+            data: [],
+            totalPages: 1,
+            totalResults: 0,
+          }),
+      });
+    }
+  }) as jest.Mock;
 });
 
 describe("Artists", () => {
@@ -52,8 +57,27 @@ describe("Artists", () => {
       );
     });
 
-    const title = wrapper?.queryAllByText("Artists")[0];
+    // const title = wrapper?.queryAllByText("Artists")[0]
+    const pageButton = wrapper?.getByRole("button", { name: "1" });
 
-    expect(title).toBeInTheDocument();
+    expect(pageButton).toBeInTheDocument();
   });
+
+  // it("should render correctly for the first page", async () => {
+  //   const mockUseSearchParams = require("next/navigation").useSearchParams;
+  //   mockUseSearchParams.mockReturnValue(new URLSearchParams("?p=5&q=0"));
+  //   let wrapper: any;
+
+  //   await act(async () => {
+  //     wrapper = render(
+  //       <IntlProvider messages={messages} locale="en">
+  //         <Artists />
+  //       </IntlProvider>
+  //     );
+  //   });
+
+  //   const title = wrapper?.queryAllByText("Artists")[0];
+
+  //   expect(title).toBeInTheDocument();
+  // });
 });

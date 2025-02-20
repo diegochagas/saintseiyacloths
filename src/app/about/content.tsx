@@ -51,13 +51,7 @@ export default function Content() {
           </div>
         </div>
 
-        <section className="max-w-7xl mt-10 bg-white w-full">
-          <AdBanner
-            dataAdFormat="auto"
-            dataFullWidthResponsive={true}
-            dataAdSlot="5939387690"
-          />
-        </section>
+        <AdBanner dataAdSlot="5939387690" className="mt-10" />
       </div>
     </div>
   );

@@ -36,7 +36,7 @@ export interface GroupProps {
 
 export interface SaintProps {
   id: string;
-  character: CharacterProps;
+  character: CharacterProps | undefined;
   cloth: ClothProps;
   group: GroupProps;
   rank: string;
