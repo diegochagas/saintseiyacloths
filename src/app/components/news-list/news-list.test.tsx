@@ -2,7 +2,7 @@ import { render } from "@testing-library/react";
 import NewsList from ".";
 import { IntlProvider } from "next-intl";
 import messages from "../../../../messages/en.json";
-import { newsMock } from "@/pages/mocks/news-mock";
+import { newsMock } from "@/mocks/news-mock";
 
 describe("NewsList", () => {
   it("should render correctly with no news", () => {
