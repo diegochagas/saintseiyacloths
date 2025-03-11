@@ -5,7 +5,7 @@ import { render, screen, waitFor, fireEvent } from "@testing-library/react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useLoading } from "../context/loading-content";
 import { act } from "react";
-import { artistMock, artistsMock } from "@/mocks/artists-mock";
+// import { artistMock, artistsMock } from "@/mocks/artists-mock";
 
 jest.mock("next/navigation", () => ({
   useRouter: jest.fn(() => ({ push: jest.fn() })),
@@ -26,11 +26,11 @@ beforeEach(() => {
   global.fetch = jest.fn((url) => {
     if (url.includes("q=filtered")) {
       return Promise.resolve({
-        json: () => Promise.resolve(artistsMock),
+        // json: () => Promise.resolve(artistsMock),
       });
     } else if (url.includes("?p=")) {
       return Promise.resolve({
-        json: () => Promise.resolve(artistMock),
+        // json: () => Promise.resolve(artistMock),
       });
     } else {
       return Promise.resolve({
