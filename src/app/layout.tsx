@@ -19,6 +19,10 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://www.saintseiyacloths.com/"),
 };
 
+if (process.env.NEXT_PUBLIC_API_MOCKING === "enabled") {
+  require("../mocks");
+}
+
 export default async function RootLayout({
   children,
 }: Readonly<{

@@ -47,18 +47,16 @@ beforeEach(() => {
 
 describe("Artists", () => {
   it("should render correctly", async () => {
-    let wrapper: any;
-
     await act(async () => {
-      wrapper = render(
+      render(
         <IntlProvider messages={messages} locale="en">
           <Artists />
         </IntlProvider>
       );
     });
 
-    // const title = wrapper?.queryAllByText("Artists")[0]
-    const pageButton = wrapper?.getByRole("button", { name: "1" });
+    // const title = screen?.queryAllByText("Artists")[0]
+    const pageButton = screen?.getByRole("button", { name: "1" });
 
     expect(pageButton).toBeInTheDocument();
   });
@@ -66,17 +64,16 @@ describe("Artists", () => {
   // it("should render correctly for the first page", async () => {
   //   const mockUseSearchParams = require("next/navigation").useSearchParams;
   //   mockUseSearchParams.mockReturnValue(new URLSearchParams("?p=5&q=0"));
-  //   let wrapper: any;
 
   //   await act(async () => {
-  //     wrapper = render(
+  //     render(
   //       <IntlProvider messages={messages} locale="en">
   //         <Artists />
   //       </IntlProvider>
   //     );
   //   });
 
-  //   const title = wrapper?.queryAllByText("Artists")[0];
+  //   const title = screen?.queryAllByText("Artists")[0];
 
   //   expect(title).toBeInTheDocument();
   // });
