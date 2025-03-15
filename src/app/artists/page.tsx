@@ -5,44 +5,79 @@ import Table from "../components/table";
 import { useLoading } from "../context/loading-content";
 import { TabProps } from "../components/tabs";
 import { useRouter, useSearchParams } from "next/navigation";
-import official from "../../pages/api/data/official.json";
+import officialTabs from "../../pages/api/data/official.json";
 import { useTranslations } from "next-intl";
 
 export default function Artists() {
   const t = useTranslations();
   const router = useRouter();
   const searchParams = useSearchParams();
-  const [subTabs, setSubTabs] = useState<TabProps[]>([]);
-  const [activeTab, setActiveTab] = useState<string>(
-    searchParams?.get("q") || "1"
-  );
-  const initialPage = parseInt(searchParams?.get("p") || "1");
-  const [currentPage, setCurrentPage] = useState<number>(
-    initialPage >= 1 ? initialPage : 1
-  );
-  const [data, setData] = useState<any[]>([]);
-  const [totalPages, setTotalPages] = useState<number>(1);
-  const [leftDescription, setLeftDescription] = useState("");
-  const [errorMessage, setErrorMessage] = useState<string>("");
   const { setIsLoading, setLoadingBg } = useLoading();
 
-  useEffect(() => {
-    async function getTabs() {
-      try {
-        const response = await fetch("/api/artists?q=filtered");
-        const items = await response.json();
+  const initialTab = searchParams?.get("q") || "1";
+  const initialPage = Math.max(parseInt(searchParams?.get("p") || "1", 10), 1);
 
-        if (items && items.length > 0) setSubTabs(items);
-        setIsLoading(false);
-      } catch (error) {
-        setErrorMessage(`${t("errorFetchingData")} ${error}`);
-      } finally {
-        setIsLoading(false);
-      }
+  const [subTabs, setSubTabs] = useState<TabProps[]>([]);
+  const [activeTab, setActiveTab] = useState<string>(initialTab);
+  const [currentPage, setCurrentPage] = useState<number>(initialPage);
+  const [data, setData] = useState<any[]>([]);
+  const [totalPages, setTotalPages] = useState<number>(1);
+  const [leftDescription, setLeftDescription] = useState<string>("");
+  const [errorMessage, setErrorMessage] = useState<string>("");
+
+  const fetchSubTabs = async () => {
+    try {
+      setIsLoading(true);
+      const response = await fetch("/api/artists?q=filtered");
+      const items = await response.json();
+
+      if (Array.isArray(items) && items.length > 0) setSubTabs(items);
+    } catch (error) {
+      setErrorMessage(`${t("errorFetchingData")} ${error}`);
+    } finally {
+      setIsLoading(false);
     }
+  };
 
-    getTabs();
-  }, [setIsLoading, t]);
+  useEffect(() => {
+    fetchSubTabs();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const fetchArtists = useCallback(async () => {
+    setLoadingBg("bg-white/75");
+    setIsLoading(true);
+
+    try {
+      const queryParams = new URLSearchParams({
+        p: currentPage.toString(),
+        q: activeTab,
+      }).toString();
+      const response = await fetch(`/api/artists?${queryParams}`);
+      const result = await response.json();
+
+      if (result.data?.length) {
+        setData(result.data);
+        setTotalPages(result.totalPages);
+        setLeftDescription(
+          `${result.totalResults} ${t("results")} ${result.resultInitial} - ${
+            result.resultLast
+          }`
+        );
+      }
+    } catch (error) {
+      setErrorMessage(`${t("errorFetchingData")} ${error}`);
+    } finally {
+      setIsLoading(false);
+    }
+    setIsLoading(false);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [activeTab, currentPage]);
+
+  useEffect(() => {
+    fetchArtists();
+  }, [fetchArtists]);
 
   const handlePageChange = useCallback(
     (page: number) => {
@@ -52,47 +87,17 @@ export default function Artists() {
     [activeTab, router]
   );
 
-  const loadData = useCallback(async () => {
-    const pageParam = currentPage ? `?p=${currentPage}` : "";
-    const midiaParam = activeTab ? `&q=${activeTab}` : "";
-    const response = await fetch(`/api/artists${pageParam}${midiaParam}`);
-    const result = await response.json();
-    if (!result.data?.length) handlePageChange(1);
-    setData(result.data);
-    setTotalPages(result.totalPages);
-    setLeftDescription(
-      `${result.totalResults} ${t("results")} ${result.resultInitial} - ${
-        result.resultLast
-      }`
-    );
-    router.push(`artists${pageParam}${midiaParam}`);
-  }, [activeTab, currentPage, handlePageChange, router, t]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      setLoadingBg("bg-white/75");
-      setIsLoading(true);
-      try {
-        loadData();
-      } catch (error) {
-        setErrorMessage(`${t("errorFetchingData")} ${error}`);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-    fetchData();
-  }, [loadData, setIsLoading, setLoadingBg, t]);
-
   const handleTabChange = (tab: string) => {
-    setCurrentPage(1);
     setActiveTab(tab);
+    setCurrentPage(1);
+    router.push(`artists?q=${tab}&p=${1}`);
   };
 
   return (
     <Table
       title={t("artists")}
       tabsTitle={t("artist")}
-      tabs={official}
+      tabs={officialTabs}
       subTabs={subTabs}
       subTabId="official"
       activeTab={activeTab}

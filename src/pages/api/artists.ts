@@ -12,18 +12,25 @@ export interface ArtistProps {
   site: string;
 }
 
-export default function handler(
-  req: NextApiRequest,
-  res: NextApiResponse<any>
-) {
-  const { q, p } = req.query;
-  const artistData = artistsJson.find((artist) => artist.id === q);
+export function getArtists() {
+  try {
+    return artistsJson.map((item: any) => ({
+      ...item,
+      official: officialJson.find((official) => official.id === item.official),
+    }));
+  } catch (err) {
+    console.log("Error", err);
+  }
+}
 
-  if (artistData) {
+export function getArtist(q: string | string[], p?: string | string[]) {
+  try {
+    const artistData = artistsJson.find((artist) => artist.id === q);
+
     const filteredSaints = saintsJson.filter(
       (saint) =>
-        (saint.artistSaint || "0") === artistData.id ||
-        (saint.artistCloth || "0") === artistData.id
+        (saint.artistSaint || "0") === artistData?.id ||
+        (saint.artistCloth || "0") === artistData?.id
     );
     const filteredGroups = groupsJson.filter(
       (group) =>
@@ -31,9 +38,15 @@ export default function handler(
         filteredSaints.find((saint) => saint.group === group.id)?.group
     );
     const groups: GroupProps[] = groupSaints(filteredSaints, filteredGroups);
-    res.status(200).json({ ...artistData, ...getContentByPage(groups, p) });
-  } else if (q === "filtered") {
-    const filteredArtists = artistsJson
+    return { ...artistData, ...getContentByPage(groups, p) };
+  } catch (err) {
+    console.log("Error", err);
+  }
+}
+
+export function getFilteredArtists() {
+  try {
+    return artistsJson
       .sort((a, b) => a.name.localeCompare(b.name))
       .map((item: any) => ({
         ...item,
@@ -41,16 +54,22 @@ export default function handler(
           (official) => official.id === item.official
         ),
       }));
-    res.status(200).json(filteredArtists);
+  } catch (err) {
+    console.log("Error", err);
+  }
+}
+
+export default function handler(
+  req: NextApiRequest,
+  res: NextApiResponse<any>
+) {
+  const { q, p } = req.query;
+
+  if (q) {
+    const data = q === "filtered" ? getFilteredArtists() : getArtist(q, p);
+    res.status(200).json(data);
   } else if (!q) {
-    res.status(200).json(
-      artistsJson.map((item: any) => ({
-        ...item,
-        official: officialJson.find(
-          (official) => official.id === item.official
-        ),
-      }))
-    );
+    res.status(200).json(getArtists());
   } else {
     res.status(400).json({ message: `Error: Artist with id ${q} not found!` });
   }

@@ -9,11 +9,12 @@ import ScrollTop from "../scroll-top";
 import menu from "../../../pages/api/data/menu.json";
 import socials from "../../../pages/api/data/socials.json";
 import { usePathname } from "next/navigation";
+import { useMenu } from "@/app/context/menu-context";
 
 export default function Header() {
   const t = useTranslations();
   const pathname = usePathname();
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { isMenuOpen, setIsMenuOpen } = useMenu();
   const [isMobile, setIsMobile] = useState(false);
   const x = socials.find((social) => social.text === "X");
 

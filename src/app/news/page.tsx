@@ -69,6 +69,12 @@ export default function News() {
     fetchData();
   }, [loadData, setIsLoading, t]);
 
+  const handleTabChange = (tab: string) => {
+    setCurrentPage(1);
+    router.push(`news?p=${1}&m=${tab}`);
+    setActiveTab(tab);
+  };
+
   return (
     <Content
       news={data}
@@ -77,7 +83,7 @@ export default function News() {
       onPageChange={setCurrentPage}
       tabs={tabs}
       activeTab={activeTab}
-      onTabChange={setActiveTab}
+      onTabChange={handleTabChange}
       searchValue={searchValue}
       onSearchValue={setSearchValue}
       onSearchClear={() => setSearchValue("")}

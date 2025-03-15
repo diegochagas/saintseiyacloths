@@ -2,9 +2,11 @@ import { render } from "@testing-library/react";
 import NewsList from ".";
 import { IntlProvider } from "next-intl";
 import messages from "../../../../messages/en.json";
-import { newsMock } from "@/mocks/news-mock";
+import { getNews } from "@/pages/api/news";
 
 describe("NewsList", () => {
+  const news = getNews().data;
+
   it("should render correctly with no news", () => {
     const wrapper = render(
       <IntlProvider locale="en" messages={messages}>
@@ -19,29 +21,27 @@ describe("NewsList", () => {
   it("should render correctly with news", () => {
     const wrapper = render(
       <IntlProvider locale="en" messages={messages}>
-        <NewsList news={newsMock} />
+        <NewsList news={news} />
       </IntlProvider>
     );
 
-    const news = wrapper.getByText("Shijima / Asmita");
+    const character = wrapper.getByText("Shijima / Asmita");
 
-    expect(news).toBeInTheDocument();
+    expect(character).toBeInTheDocument();
   });
 
   it("should render correctly with unknown character", () => {
+    const unknownCharacter = news[0];
+    unknownCharacter.saint.character = undefined;
+
     const wrapper = render(
       <IntlProvider locale="en" messages={messages}>
-        <NewsList
-          news={newsMock.map((item) => ({
-            ...item,
-            saint: { ...item.saint, character: undefined },
-          }))}
-        />
+        <NewsList news={[unknownCharacter]} />
       </IntlProvider>
     );
 
-    const news = wrapper.getByText("Unknown");
+    const character = wrapper.getByText("Unknown");
 
-    expect(news).toBeInTheDocument();
+    expect(character).toBeInTheDocument();
   });
 });

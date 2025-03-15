@@ -2,8 +2,8 @@
 
 import { MouseEvent, useEffect, useState } from "react";
 import { animateScroll } from "react-scroll";
-import Icon from "./icons";
-import { useMenu } from "../context/menu-context";
+import Icon from "../icons";
+import { useMenu } from "../../context/menu-context";
 import { useTranslations } from "next-intl";
 
 export default function ScrollTop() {

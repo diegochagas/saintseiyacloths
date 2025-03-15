@@ -35,6 +35,8 @@ export default function Content({
 }: ContentProps) {
   const t = useTranslations();
 
+  if (errorMessage) console.error(errorMessage);
+
   return (
     <div className="my-28 md:my-48 w-full flex justify-center flex-col items-center">
       <div className="flex w-full max-w-7xl">

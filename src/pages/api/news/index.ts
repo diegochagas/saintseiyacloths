@@ -28,11 +28,11 @@ function filterNewsBySearchValueAndMidia(
   });
 }
 
-export default function handler(
-  req: NextApiRequest,
-  res: NextApiResponse<any>
+export function getNews(
+  p?: string | string[],
+  m?: string | string[],
+  s?: string | string[]
 ) {
-  const { p, m, s } = req.query;
   const midia = midiasJson.find((midia) => midia.id === m);
 
   // TODO: REMOVE THIS FILTER WHEN THE NEWS OF THE SAINT 680 IS RELEASED
@@ -54,13 +54,22 @@ export default function handler(
       searchValue,
       midia
     );
-    res.status(200).json({ ...getContentByPage(filteredNews, p) });
+    return { ...getContentByPage(filteredNews, p) };
   } else if (midia) {
     const filteredNews = news.filter(
       (item) => item.saint.history?.midia?.id === midia.id
     );
-    res.status(200).json({ ...getContentByPage(filteredNews, p) });
+    return { ...getContentByPage(filteredNews, p) };
   } else {
-    res.status(200).json({ ...getContentByPage(news, p) });
+    return { ...getContentByPage(news, p) };
   }
+}
+
+export default function handler(
+  req: NextApiRequest,
+  res: NextApiResponse<any>
+) {
+  const { p, m, s } = req.query;
+
+  res.status(200).json(getNews(p, m, s));
 }

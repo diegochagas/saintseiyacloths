@@ -401,7 +401,5 @@ export default function Icon({
           height={140}
         />
       );
-    default:
-      return <span />;
   }
 }
