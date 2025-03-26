@@ -176,6 +176,50 @@ export function getContentByPage(items: any[], p: any) {
   };
 }
 
+export function getLatestSaints() {
+  return saintsJson.slice(-10).map((saint) => loadSaintData(saint));
+}
+
+export function getSaintsByClass(
+  classData: any,
+  q: string | string[],
+  p?: string | string[]
+) {
+  // If groups stay split by class for an year, delete the following lines
+  // const classes = classesJson.filter((cls) => cls.god === classData.god);
+  // const filteredGroups = groupsJson.filter(
+  //   (group) =>
+  //     group.class === classes.find((cls) => cls.id === group.class)?.id
+  // );
+  const filteredGroups = groupsJson.filter((group) => group.class === q);
+  const filteredSaints = saintsJson.filter(
+    (saint) => saint.god === classData.god
+  );
+  const groupedSaints: GroupProps[] = groupSaints(
+    filteredSaints,
+    filteredGroups
+  );
+
+  const groups = filterIfSaints(groupedSaints, classData.name);
+  const totalRevealed = getTotalRevealedOnlyBy(classData.name, groups);
+  const totalSaints = getTotalOnlyBy(classData.name);
+
+  return {
+    ...getContentByPage(groups, `${p || 1}`),
+    totalRevealed,
+    totalSaints,
+  };
+}
+
+export function getClasses() {
+  return classesJson.map((cls) => ({
+    ...cls,
+    god: cls.god
+      ? charactersJson.find((character) => character.id === cls.god)
+      : cls.god,
+  }));
+}
+
 export default function handler(
   req: NextApiRequest,
   res: NextApiResponse<any>
@@ -184,40 +228,11 @@ export default function handler(
   const classData = classesJson.find((cls) => cls.id === q);
 
   if (q === "latest") {
-    const data = saintsJson.slice(-10).map((saint) => loadSaintData(saint));
-    res.status(200).json({ data });
-  } else if (classData) {
-    // If groups stay split by class for an year, delete the following lines
-    // const classes = classesJson.filter((cls) => cls.god === classData.god);
-    // const filteredGroups = groupsJson.filter(
-    //   (group) =>
-    //     group.class === classes.find((cls) => cls.id === group.class)?.id
-    // );
-    const filteredGroups = groupsJson.filter((group) => group.class === q);
-    const filteredSaints = saintsJson.filter(
-      (saint) => saint.god === classData.god
-    );
-    const groupedSaints: GroupProps[] = groupSaints(
-      filteredSaints,
-      filteredGroups
-    );
-    const groups = filterIfSaints(groupedSaints, classData.name);
-    const totalRevealed = getTotalRevealedOnlyBy(classData.name, groups);
-    const totalSaints = getTotalOnlyBy(classData.name);
-    res.status(200).json({
-      ...getContentByPage(groups, `${p || 1}`),
-      totalRevealed,
-      totalSaints,
-    });
+    res.status(200).json({ data: getLatestSaints() });
+  } else if (q && classData) {
+    res.status(200).json({ ...getSaintsByClass(classData, q, p) });
   } else if (!q) {
-    res.status(200).json(
-      classesJson.map((cls) => ({
-        ...cls,
-        god: cls.god
-          ? charactersJson.find((character) => character.id === cls.god)
-          : cls.god,
-      }))
-    );
+    res.status(200).json(getClasses());
   } else {
     res.status(400).json({ message: `Error: Class name ${q} not found!` });
   }

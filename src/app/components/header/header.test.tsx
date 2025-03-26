@@ -1,20 +1,34 @@
 import { IntlProvider } from "next-intl";
 import messages from "../../../../messages/en.json";
-import { render } from "@testing-library/react";
+import { fireEvent, render } from "@testing-library/react";
 import Header from ".";
+import { MenuProvider, useMenu } from "@/app/context/menu-context";
 
 const homePath = "/";
+
+jest.mock("../../context/menu-context", () => ({
+  useMenu: jest.fn(),
+}));
 
 jest.mock("next/navigation", () => ({
   usePathname: jest.fn(() => homePath),
 }));
 
+const resizeWindow = (width: number) => {
+  window.innerWidth = width;
+  window.dispatchEvent(new Event("resize"));
+};
+
 describe("Header", () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   it("should render correctly", () => {
     const wrapper = render(<Header />, {
       wrapper: ({ children }) => (
         <IntlProvider locale="en" messages={messages}>
-          {children}
+          <MenuProvider>{children}</MenuProvider>
         </IntlProvider>
       ),
     });
@@ -47,12 +61,73 @@ describe("Header", () => {
       ),
     });
 
-    const homeLink = wrapper.getByTestId("home");
-    const newsLink = wrapper.getByTestId("news");
-
-    // newsLink.classList.forEach((item) => console.log(item));
+    const homeLink = wrapper.getByTestId("menu-home");
+    const newsLink = wrapper.getByTestId("menu-news");
 
     expect(homeLink).toHaveClass("text-yellow-500");
     expect(newsLink).not.toHaveClass("text-yellow-500");
+  });
+
+  it('should open menu when clicked on the "Menu" button', () => {
+    const wrapper = render(<Header />, {
+      wrapper: ({ children }) => (
+        <IntlProvider locale="en" messages={messages}>
+          <MenuProvider>{children}</MenuProvider>
+        </IntlProvider>
+      ),
+    });
+
+    const menuButton = wrapper.getByTestId("menu");
+
+    expect(wrapper.getByTestId("icon-menu")).toBeInTheDocument();
+
+    fireEvent.click(menuButton);
+
+    expect(wrapper.getByTestId("icon-close")).toBeInTheDocument();
+  });
+
+  it('should click on the "Home" link and close the menu', () => {
+    resizeWindow(500);
+
+    const wrapper = render(<Header />, {
+      wrapper: ({ children }) => (
+        <IntlProvider locale="en" messages={messages}>
+          <MenuProvider>{children}</MenuProvider>
+        </IntlProvider>
+      ),
+    });
+
+    const menuButton = wrapper.getByTestId("menu");
+    const navBar = wrapper.getByRole("list");
+    fireEvent.click(menuButton);
+    expect(navBar).not.toHaveClass("hidden");
+
+    const homeLink = wrapper.getByTestId("menu-home");
+    fireEvent.click(homeLink);
+    expect(wrapper.getByTestId("icon-menu")).toBeInTheDocument();
+    expect(navBar).toHaveClass("hidden");
+  });
+
+  it("should call setIsMenuOpen when clicking the menu button", () => {
+    const mockSetIsMenuOpen = jest.fn();
+
+    (useMenu as jest.Mock).mockReturnValue({
+      isMenuOpen: false,
+      setIsMenuOpen: mockSetIsMenuOpen,
+    });
+
+    const wrapper = render(<Header />, {
+      wrapper: ({ children }) => (
+        <IntlProvider locale="en" messages={messages}>
+          <MenuProvider>{children}</MenuProvider>
+        </IntlProvider>
+      ),
+    });
+
+    const menuButton = wrapper.getByTestId("menu");
+
+    fireEvent.click(menuButton);
+
+    // expect(useMenu).toHaveBeenCalledWith(true);
   });
 });

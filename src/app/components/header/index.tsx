@@ -45,6 +45,7 @@ export default function Header() {
           type="button"
           className="md:hidden"
           onClick={() => setIsMenuOpen((prev) => !prev)}
+          data-testid="menu"
         >
           <b className="relative block w-9 h-9">
             <Icon name={isMenuOpen ? "close" : "menu"} />
@@ -79,7 +80,7 @@ export default function Header() {
                   : "hover:text-yellow-500 text-white"
               } group`}
               onClick={() => setIsMenuOpen(false)}
-              data-testid={item.text}
+              data-testid={`menu-${item.text}`}
             >
               <Link
                 className="flex items-center gap-4 md:gap-2 lg:gap-4"

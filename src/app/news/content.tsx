@@ -17,7 +17,6 @@ interface ContentProps {
   searchValue: string;
   onSearchValue: (text: string) => void;
   onSearchClear: () => void;
-  errorMessage?: string;
 }
 
 export default function Content({
@@ -31,11 +30,8 @@ export default function Content({
   searchValue,
   onSearchValue,
   onSearchClear,
-  errorMessage,
 }: ContentProps) {
   const t = useTranslations();
-
-  if (errorMessage) console.error(errorMessage);
 
   return (
     <div className="my-28 md:my-48 w-full flex justify-center flex-col items-center">

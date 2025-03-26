@@ -20,6 +20,29 @@ export const loadHistoryData = (history: any) => {
   return { ...history, midia };
 };
 
+export const getHistory = () => {
+  return historyJson.map((item) => loadHistoryData(item));
+};
+
+export const getHistoryWithSaints = (
+  historyData: any,
+  p?: string | string[]
+) => {
+  const filteredSaints = saintsJson.filter((saint) => {
+    const cloth = clothsJson.find((cloth) => cloth.id === saint.cloth);
+    return (
+      saint.history === historyData.id || cloth?.history === historyData.id
+    );
+  });
+  const filteredGroups = groupsJson.filter(
+    (group) =>
+      group.id ===
+      filteredSaints.find((saint) => saint.group === group.id)?.group
+  );
+  const groups: GroupProps[] = groupSaints(filteredSaints, filteredGroups);
+  return { ...historyData, ...getContentByPage(groups, p) };
+};
+
 export default function handler(
   req: NextApiRequest,
   res: NextApiResponse<any>
@@ -28,21 +51,9 @@ export default function handler(
   const historyData = historyJson.find((item) => item.id === q);
 
   if (historyData) {
-    const filteredSaints = saintsJson.filter((saint) => {
-      const cloth = clothsJson.find((cloth) => cloth.id === saint.cloth);
-      return (
-        saint.history === historyData.id || cloth?.history === historyData.id
-      );
-    });
-    const filteredGroups = groupsJson.filter(
-      (group) =>
-        group.id ===
-        filteredSaints.find((saint) => saint.group === group.id)?.group
-    );
-    const groups: GroupProps[] = groupSaints(filteredSaints, filteredGroups);
-    res.status(200).json({ ...historyData, ...getContentByPage(groups, p) });
+    res.status(200).json(getHistoryWithSaints(historyData, p));
   } else if (!q) {
-    res.status(200).json(historyJson.map((item) => loadHistoryData(item)));
+    res.status(200).json(getHistory());
   } else {
     res.status(400).json({ message: `Error: History with id ${q} not found!` });
   }

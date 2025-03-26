@@ -35,7 +35,14 @@ export default function Icon({
   switch (name) {
     case "arrow-up":
       return (
-        <svg x="0px" y="0px" width={size} height={size} viewBox="0 0 20 20">
+        <svg
+          x="0px"
+          y="0px"
+          width={size}
+          height={size}
+          viewBox="0 0 20 20"
+          data-testid={`icon-${name}`}
+        >
           <path
             fill={color}
             d="M18.008,7.667L16.606,9,11,3.627V20H9V3.627L3.392,9l-1.4-1.336L10-.012Z"
@@ -51,6 +58,7 @@ export default function Icon({
           width={size}
           height={size}
           viewBox="0 0 20 20"
+          data-testid={`icon-${name}`}
         >
           <path
             fill={color}
@@ -64,6 +72,7 @@ export default function Icon({
           <i
             className="top-0 absolute block w-9 h-1.5 transition-all duration-200 ease-linear translate3d-0"
             style={{ backgroundColor: color }}
+            data-testid={`icon-${name}`}
           />
           <i
             className="top-3.5 absolute block w-9 h-1.5 transition-all duration-200 ease-linear translate3d-0"
@@ -81,6 +90,7 @@ export default function Icon({
           <i
             className="top-0 left-1 rotate-45 origin-[0_100%] absolute block w-9 h-1.5 transition-all duration-200 ease-linear"
             style={{ backgroundColor: color }}
+            data-testid={`icon-${name}`}
           />
           <i
             className="bottom-0.5 left-1 -rotate-45 origin-[0_0] absolute block w-9 h-1.5 transition-all duration-200 ease-linear"
@@ -98,6 +108,7 @@ export default function Icon({
           height="20px"
           viewBox="0 0 20 20"
           enableBackground="new 0 0 20 20"
+          data-testid={`icon-${name}`}
         >
           <path
             fill={color}
@@ -114,6 +125,7 @@ export default function Icon({
           width={size}
           viewBox="0 0 270.125 270.125"
           xmlSpace="preserve"
+          data-testid={`icon-${name}`}
         >
           <path
             colorRendering="auto"
@@ -157,6 +169,7 @@ export default function Icon({
           width={size}
           viewBox="0 0 325 325"
           xmlSpace="preserve"
+          data-testid={`icon-${name}`}
         >
           <path
             d="M297.992,40.603c-5.42-5.42-12.962-8.168-22.416-8.168c-5.83,0-12.268,1.079-19.121,3.114V6c0-3.313-2.686-6-6-6H24.872
@@ -184,7 +197,12 @@ export default function Icon({
       );
     case "classes":
       return (
-        <svg width={size} height={size} viewBox="0 0 512 512">
+        <svg
+          width={size}
+          height={size}
+          viewBox="0 0 512 512"
+          data-testid={`icon-${name}`}
+        >
           <path
             className={className}
             fill={color}
@@ -201,6 +219,7 @@ export default function Icon({
           width={size}
           viewBox="0 0 195.92 195.92"
           xmlSpace="preserve"
+          data-testid={`icon-${name}`}
         >
           <path
             d="M137.146,195.92H58.774c-1.104,0-2-0.896-2-2c0-6.032,4.519-10.993,10.239-11.455c-3.199-2.179-7.238-5.551-11.968-10.758
@@ -234,7 +253,12 @@ export default function Icon({
       );
     case "home":
       return (
-        <svg width={size} height={size} viewBox="0 0 512 512">
+        <svg
+          width={size}
+          height={size}
+          viewBox="0 0 512 512"
+          data-testid={`icon-${name}`}
+        >
           <path
             className={className}
             fill={color}
@@ -251,6 +275,7 @@ export default function Icon({
           width={size}
           viewBox="0 0 360.996 360.996"
           xmlSpace="preserve"
+          data-testid={`icon-${name}`}
         >
           <g>
             <path
@@ -329,6 +354,7 @@ export default function Icon({
           width={222}
           height={220}
           alt="Athena Nike logo"
+          data-testid={`icon-${name}`}
         />
       );
     case "nike-stroke":
@@ -339,6 +365,7 @@ export default function Icon({
           width={222}
           height={220}
           alt="Athena Nike logo"
+          data-testid={`icon-${name}`}
         />
       );
     case "zodiac-wheel":
@@ -350,6 +377,7 @@ export default function Icon({
           height={150}
           alt="Zodiac wheel"
           unoptimized
+          data-testid={`icon-${name}`}
         />
       );
     case "search":
@@ -360,6 +388,7 @@ export default function Icon({
           height={size}
           viewBox="0 0 24 24"
           fill="none"
+          data-testid={`icon-${name}`}
         >
           <path
             d="M15.7955 15.8111L21 21M18 10.5C18 14.6421 14.6421 18 10.5 18C6.35786 18 3 14.6421 3 10.5C3 6.35786 6.35786 3 10.5 3C14.6421 3 18 6.35786 18 10.5Z"
@@ -377,6 +406,7 @@ export default function Icon({
           width={size}
           height={size}
           viewBox="-5 0 20 20"
+          data-testid={`icon-${name}`}
         >
           <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
             <g
@@ -399,6 +429,7 @@ export default function Icon({
           alt="X logo"
           width={138}
           height={140}
+          data-testid={`icon-${name}`}
         />
       );
   }

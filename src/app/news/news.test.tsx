@@ -1,6 +1,6 @@
 import { IntlProvider } from "next-intl";
 import messages from "../../../messages/en.json";
-import { render } from "@testing-library/react";
+import { fireEvent, render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import Content from "./content";
 
@@ -79,7 +79,6 @@ describe("News", () => {
           searchValue=""
           onSearchValue={() => {}}
           onSearchClear={() => {}}
-          errorMessage=""
         />
       </IntlProvider>
     );
@@ -113,5 +112,32 @@ describe("News", () => {
     tab2.click();
 
     expect(onTabChange).toHaveBeenCalledWith("");
+  });
+
+  it("should call onSearchValue when typing", () => {
+    const mockOnSearchValue = jest.fn();
+
+    const wrapper = render(
+      <IntlProvider locale="en" messages={messages}>
+        <Content
+          news={[]}
+          currentPage={0}
+          totalPages={0}
+          onPageChange={() => {}}
+          tabs={tabsMock}
+          activeTab="1"
+          onTabChange={onTabChange}
+          searchValue=""
+          onSearchValue={mockOnSearchValue}
+          onSearchClear={() => {}}
+        />
+      </IntlProvider>
+    );
+
+    const input = wrapper.getByRole("textbox");
+
+    fireEvent.change(input, { target: { value: "Saint Seiya" } });
+
+    expect(mockOnSearchValue).toHaveBeenCalledWith("Saint Seiya");
   });
 });

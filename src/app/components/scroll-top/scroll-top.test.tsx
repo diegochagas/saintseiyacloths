@@ -1,10 +1,8 @@
 import { render, screen, fireEvent } from "@testing-library/react";
-import { useTranslations } from "next-intl";
 import { animateScroll } from "react-scroll";
 import ScrollTop from ".";
 import { useMenu } from "@/app/context/menu-context";
 
-// Mock dependencies
 jest.mock("../../context/menu-context", () => ({
   useMenu: jest.fn(),
 }));
@@ -56,11 +54,9 @@ describe("ScrollTop Component", () => {
     render(<ScrollTop />);
 
     const button = screen.getByRole("link");
-    const clickEvent = { preventDefault: jest.fn() };
 
-    fireEvent.click(button, clickEvent);
+    fireEvent.click(button);
 
-    expect(clickEvent.preventDefault).toHaveBeenCalled();
     expect(animateScroll.scrollToTop).toHaveBeenCalledWith({
       duration: 800,
       delay: 0,

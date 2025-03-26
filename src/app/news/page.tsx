@@ -21,7 +21,6 @@ export default function News() {
   const [searchValue, setSearchValue] = useState<string>(
     searchParams?.get("s") || ""
   );
-  const [errorMessage, setErrorMessage] = useState<string>("");
   const { setIsLoading } = useLoading();
 
   useEffect(() => {
@@ -32,7 +31,7 @@ export default function News() {
         setTabs(midias);
         setIsLoading(false);
       } catch (error) {
-        setErrorMessage(`${t("errorFetchingData")} ${error}`);
+        console.error(error);
       } finally {
         setIsLoading(false);
       }
@@ -60,7 +59,7 @@ export default function News() {
       try {
         loadData();
       } catch (error) {
-        setErrorMessage(`${t("errorFetchingData")} ${error}`);
+        console.error(error);
       } finally {
         setIsLoading(false);
       }
@@ -87,7 +86,6 @@ export default function News() {
       searchValue={searchValue}
       onSearchValue={setSearchValue}
       onSearchClear={() => setSearchValue("")}
-      errorMessage={errorMessage}
     />
   );
 }
