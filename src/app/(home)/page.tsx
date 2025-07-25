@@ -1,10 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { NewsProps } from "@/pages/api/news";
 import { SaintProps } from "@/pages/api/classes";
 import Banner from "./components/banner";
-import News from "./components/news";
 import Store from "./components/store";
 import Classes from "./components/classes";
 import { useLoading } from "../context/loading-content";
@@ -15,7 +13,6 @@ export default function Home() {
   const t = useTranslations();
   const { setIsLoading } = useLoading();
   const [saints, setSaints] = useState<SaintProps[]>([]);
-  const [news, setNews] = useState<NewsProps[]>([]);
   const [language, setLanguage] = useState("");
 
   useEffect(() => {
@@ -38,22 +35,10 @@ export default function Home() {
       }
     }
 
-    async function getNews() {
-      try {
-        const response = await fetch("/api/news");
-        const result = await response.json();
-        setNews(result.data);
-        return response;
-      } catch (err) {
-        return { status: 500, message: `${t("errorNewsNotFound")} ${err}` };
-      }
-    }
-
     async function checkIfIsLoading() {
       const responseSaints = await getSaints();
-      const responseNews = await getNews();
 
-      if (!!responseSaints.status && !!responseNews.status) {
+      if (!!responseSaints.status) {
         setIsLoading(false);
       }
     }
@@ -66,10 +51,6 @@ export default function Home() {
       <Banner />
 
       <Store isBrazil={language.includes("pt")} />
-
-      {news && <News news={news.slice(0, 4)} />}
-
-      <AdBanner dataAdSlot="9278763250" />
 
       {saints && <Classes saints={saints.slice(-8)} />}
 

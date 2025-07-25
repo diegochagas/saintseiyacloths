@@ -1,14 +1,14 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import artistsJson from "./data/artists.json";
-import charactersJson from "./data/characters.json";
-import classesJson from "./data/classes.json";
-import clothsJson from "./data/cloths.json";
-import groupsJson from "./data/groups.json";
-import historyJson from "./data/history.json";
-import ranksJson from "./data/ranks.json";
-import saintsJson from "./data/saints.json";
-import { ArtistProps } from "./artists";
-import { HistoryProps, loadHistoryData } from "./history";
+import artistsJson from "../data/artists.json";
+import charactersJson from "../data/characters.json";
+import classesJson from "../data/classes.json";
+import clothsJson from "../data/cloths.json";
+import groupsJson from "../data/groups.json";
+import historyJson from "../data/history.json";
+import ranksJson from "../data/ranks.json";
+import saintsJson from "../data/saints.json";
+import { ArtistProps } from "../artists";
+import { HistoryProps, loadHistoryData } from "../history";
 
 interface CharacterProps {
   id: string;

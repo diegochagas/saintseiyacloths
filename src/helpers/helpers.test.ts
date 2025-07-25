@@ -1,6 +1,6 @@
 import { getClothName } from "../helpers";
 
-describe("News", () => {
+describe("Helpers test", () => {
   const t = (key: string) => key;
 
   it("should get the cloth name", () => {

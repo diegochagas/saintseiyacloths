@@ -40,7 +40,7 @@ export default function ListItem({
       {id ? (
         <Link
           className="w-full group flex flex-col items-center"
-          href={`/news/${id}`}
+          href={`/classes/${id}`}
         >
           {renderSaint()}
         </Link>

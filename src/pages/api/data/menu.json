@@ -1,6 +1,5 @@
 [
   { "href": "/", "text": "home" },
-  { "href": "/news", "text": "news" },
   { "href": "/classes", "text": "classes" },
   { "href": "/artists", "text": "artists" },
   { "href": "/history", "text": "history" },

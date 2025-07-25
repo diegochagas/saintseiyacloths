@@ -36,7 +36,6 @@ describe("Header", () => {
     const logoLink = wrapper.getByAltText("Saint Seiya Cloths logo");
     const twitterLink = wrapper.getByAltText("X logo");
     const homeLink = wrapper.getByText("Home");
-    const newsLink = wrapper.getByText("News");
     const classesLink = wrapper.getByText("Classes");
     const artistsLink = wrapper.getByText("Artists");
     const historyLink = wrapper.getByText("History");
@@ -45,7 +44,6 @@ describe("Header", () => {
     expect(logoLink).toBeInTheDocument();
     expect(twitterLink).toBeInTheDocument();
     expect(homeLink).toBeInTheDocument();
-    expect(newsLink).toBeInTheDocument();
     expect(classesLink).toBeInTheDocument();
     expect(artistsLink).toBeInTheDocument();
     expect(historyLink).toBeInTheDocument();
@@ -62,10 +60,7 @@ describe("Header", () => {
     });
 
     const homeLink = wrapper.getByTestId("menu-home");
-    const newsLink = wrapper.getByTestId("menu-news");
-
     expect(homeLink).toHaveClass("text-yellow-500");
-    expect(newsLink).not.toHaveClass("text-yellow-500");
   });
 
   it('should open menu when clicked on the "Menu" button', () => {

@@ -1,14 +1,14 @@
 import { describe } from "node:test";
 import { render } from "@testing-library/react";
 import { NextIntlClientProvider } from "next-intl";
-import News from "./components/news";
+import Classes from "./components/classes";
 import english from "../../../messages/en.json";
 
 describe("Home", () => {
-  it("should render News correctly", () => {
+  it("should render classes correctly", () => {
     const wrapper = render(
       <NextIntlClientProvider locale="en" messages={english}>
-        <News news={[]} />
+        <Classes saints={[]} />
       </NextIntlClientProvider>
     );
     const title = wrapper.getByText("Highlights");

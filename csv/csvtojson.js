@@ -1,17 +1,16 @@
-const csv = require('csvtojson');
+const csv = require("csvtojson");
 const FileSystem = require("fs");
 
 const files = [
-  'artists',
-  'characters',
-  'classes',
-  'cloths',
-  'groups',
-  'history',
-  'midias',
-  'news',
-  'ranks',
-  'saints'
+  "artists",
+  "characters",
+  "classes",
+  "cloths",
+  "groups",
+  "history",
+  "midias",
+  "ranks",
+  "saints",
 ];
 
 function writeFileOnDataRepository(file, jsonObj) {
@@ -29,13 +28,18 @@ function writeFileOnDataRepository(file, jsonObj) {
 }
 
 function writeFileOnFrontEndSide(file, jsonObj) {
-  FileSystem.writeFileSync(`../src/pages/api/data/${file}.json`, JSON.stringify(jsonObj));
+  FileSystem.writeFileSync(
+    `../src/pages/api/data/${file}.json`,
+    JSON.stringify(jsonObj)
+  );
 }
 
-files.forEach(file => {
-  csv().fromFile(`./data/${file}.csv`).then(jsonObj=>{
-    // writeFileOnDataRepository(file, jsonObj);
+files.forEach((file) => {
+  csv()
+    .fromFile(`./data/${file}.csv`)
+    .then((jsonObj) => {
+      // writeFileOnDataRepository(file, jsonObj);
 
-    writeFileOnFrontEndSide(file, jsonObj);
-  });
+      writeFileOnFrontEndSide(file, jsonObj);
+    });
 });

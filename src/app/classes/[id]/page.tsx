@@ -3,29 +3,20 @@
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { useLoading } from "@/app/context/loading-content";
-import { NewsProps } from "@/pages/api/news";
 import Content from "./content";
+import { SaintProps } from "@/pages/api/classes";
 
 export default function Details() {
   const pathname = usePathname();
   const id = pathname?.split("/")?.pop();
   const { setIsLoading } = useLoading();
-  const [data, setData] = useState<NewsProps>();
+  const [data, setData] = useState<SaintProps>();
   const [errorMessage, setErrorMessage] = useState<any>();
-  const [language, setLanguage] = useState("");
-
-  useEffect(() => {
-    setLanguage(
-      navigator.language ||
-        navigator.languages.find((language) => language.includes("pt")) ||
-        ""
-    );
-  }, []);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`/api/news/${id}`);
+        const response = await fetch(`/api/classes/${id}`);
         const newData = await response.json();
         setData(newData);
         setIsLoading(false);
@@ -40,11 +31,6 @@ export default function Details() {
   }, [id, setIsLoading]);
 
   return data ? (
-    <Content
-      data={data}
-      error={errorMessage}
-      url={window.location.href}
-      isBrazil={language.includes("pt")}
-    />
+    <Content saint={data} error={errorMessage} url={window.location.href} />
   ) : null;
 }
