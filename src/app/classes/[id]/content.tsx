@@ -42,7 +42,7 @@ export default function Content({ saint, error, url }: ContentProps) {
     <div className="my-28 md:my-48 w-full flex justify-center flex-col items-center">
       <div className="flex w-full max-w-7xl">
         <h1 className="uppercase font-extrabold text-6xl md:text-8xl">
-          {t("Classes")}
+          {t("classes")}
         </h1>
       </div>
 
@@ -80,6 +80,14 @@ export default function Content({ saint, error, url }: ContentProps) {
                     {t(saint.history?.name)}
                   </h1>
                 </div>
+
+                {t(`newsDescription.${saint.id}`)
+                  .split("\n")
+                  .map((text) => (
+                    <p className="my-2" key={text}>
+                      Curiosity {text}
+                    </p>
+                  ))}
 
                 <AdBanner dataAdSlot="1835086184" className="my-5" />
 

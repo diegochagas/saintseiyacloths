@@ -10,7 +10,7 @@ export default function handler(
   const saint = saintsJson.find((saint) => saint.id === id);
 
   if (saint) {
-    res.status(200).json({ saint: loadSaintData(saint) });
+    res.status(200).json(loadSaintData(saint));
   } else {
     res.status(400).json({ message: `Error: class not found!` });
   }
