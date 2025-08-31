@@ -81,13 +81,14 @@ export default function Content({ saint, error, url }: ContentProps) {
                   </h1>
                 </div>
 
-                {t(`newsDescription.${saint.id}`)
-                  .split("\n")
-                  .map((text) => (
-                    <p className="my-2" key={text}>
-                      Curiosity {text}
-                    </p>
-                  ))}
+                {saint.curiosities &&
+                  t(`curiosities.${saint.id}`)
+                    .split("\n")
+                    .map((text) => (
+                      <p className="my-2" key={text}>
+                        {text}
+                      </p>
+                    ))}
 
                 <AdBanner dataAdSlot="1835086184" className="my-5" />
 

@@ -44,6 +44,7 @@ export interface SaintProps {
   artist: ArtistProps;
   image: string;
   history: HistoryProps;
+  curiosities?: number;
 }
 
 export function groupSaints(saints: any[], groups: any[]) {
@@ -149,6 +150,7 @@ export const loadSaintData = (saint: any) => {
     artist: artistsJson.find((artist) => artist.id === saint.artistSaint),
     image: !saint.image ? "/cloth-schemes/others/no-scheme.jpg" : saint.image,
     history: loadHistoryData(history),
+    curiosities: saint.curiosities,
   };
 };
 
