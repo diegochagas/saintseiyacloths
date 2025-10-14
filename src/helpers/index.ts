@@ -6,3 +6,10 @@ export function getClothName(t: (key: string) => string, strings?: string[]) {
       )
     : t("unknown");
 }
+
+export function getName(name: string, clothName: string, locale: string) {
+  if (name === clothName) return name;
+  else if ((locale === "pt" || locale === "es") && clothName)
+    return `${name} de ${clothName}`;
+  else return `${clothName} ${name}`;
+}

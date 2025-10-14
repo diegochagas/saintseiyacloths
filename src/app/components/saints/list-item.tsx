@@ -1,4 +1,5 @@
-import { useTranslations } from "next-intl";
+import { getName } from "@/helpers";
+import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -7,6 +8,7 @@ interface ListItemProps {
   image?: string;
   cloth?: string;
   name?: string;
+  history?: string;
 }
 
 export default function ListItem({
@@ -14,12 +16,20 @@ export default function ListItem({
   image = "/cloth-schemes/others/no-scheme.jpg",
   cloth,
   name,
+  history,
 }: ListItemProps) {
   const t = useTranslations();
+  const locale = useLocale();
 
   const renderSaint = () => (
     <>
-      <small className="capitalize font-bold">{cloth}</small>
+      <small className="capitalize font-bold">
+        {getName(
+          name ?? `${t("unknown")} ${t("character")}`,
+          cloth ?? "",
+          locale
+        )}
+      </small>
       <figure className="h-28 overflow-hidden">
         <Image
           className="w-full h-full object-contain group-hover:scale-110 duration-300"
@@ -30,7 +40,7 @@ export default function ListItem({
         />
       </figure>
       <small className="font-semibold">
-        {name ?? `${t("unknown")} ${t("character")}`}
+        {history ? t(history) : t("unknown")}
       </small>
     </>
   );

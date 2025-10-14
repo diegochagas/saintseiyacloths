@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { SaintProps } from "@/pages/api/classes";
-import { getClothName } from "@/helpers";
+import { getName } from "@/helpers";
 import Image from "next/image";
 
 interface ClassesProps {
@@ -10,6 +10,7 @@ interface ClassesProps {
 
 export default function Classes({ saints }: ClassesProps) {
   const t = useTranslations();
+  const locale = useLocale();
 
   return (
     <section className="max-w-7xl mt-20">
@@ -23,7 +24,11 @@ export default function Classes({ saints }: ClassesProps) {
             <Link className="w-full group" href={`/classes/${saint.id}`}>
               <div className="my-2.5">
                 <h4 className="text-xl font-semibold text-center">
-                  {getClothName(t, saint.cloth?.name)}
+                  {getName(
+                    saint.character?.name || "",
+                    saint.cloth?.name ? t(saint.cloth?.name) : "",
+                    locale
+                  )}
                 </h4>
               </div>
               <figure className="m-3 bg-white overflow-hidden">
@@ -44,7 +49,8 @@ export default function Classes({ saints }: ClassesProps) {
               </div>
               <div className="my-2.5">
                 <h4 className="text-xl font-semibold text-center">
-                  {saint.character?.name || t("unknown")}
+                  {t(saint.history?.name) || t("unknown")}
+                  {/* {saint.character?.name || t("unknown")} */}
                 </h4>
               </div>
             </Link>

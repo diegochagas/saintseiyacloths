@@ -24,6 +24,7 @@ export default function Saints({ data }: SaintsProps) {
                   image={saint.image}
                   cloth={getClothName(t, saint?.cloth?.name)}
                   name={saint?.character?.name}
+                  history={saint?.history?.name}
                 />
               ))
             ) : (
