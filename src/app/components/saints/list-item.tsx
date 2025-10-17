@@ -1,4 +1,5 @@
-import { getName } from "@/helpers";
+import { getHistory, getName } from "@/helpers";
+import { HistoryProps } from "@/pages/api/history";
 import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
@@ -8,7 +9,8 @@ interface ListItemProps {
   image?: string;
   cloth?: string;
   name?: string;
-  history?: string;
+  history?: HistoryProps;
+  saintClass?: string;
 }
 
 export default function ListItem({
@@ -17,17 +19,19 @@ export default function ListItem({
   cloth,
   name,
   history,
+  saintClass,
 }: ListItemProps) {
   const t = useTranslations();
   const locale = useLocale();
 
   const renderSaint = () => (
     <>
-      <small className="capitalize font-bold">
+      <small className="font-bold">
         {getName(
-          name ?? `${t("unknown")} ${t("character")}`,
-          cloth ?? "",
-          locale
+          name ?? "",
+          cloth ? t(cloth) : "",
+          locale,
+          saintClass ? t(saintClass) : ""
         )}
       </small>
       <figure className="h-28 overflow-hidden">
@@ -39,14 +43,12 @@ export default function ListItem({
           height={400}
         />
       </figure>
-      <small className="font-semibold">
-        {history ? t(history) : t("unknown")}
-      </small>
+      <small className="font-semibold">{getHistory(t, history)}</small>
     </>
   );
 
   return (
-    <li>
+    <li className="flex flex-col items-center">
       {id ? (
         <Link
           className="w-full group flex flex-col items-center"

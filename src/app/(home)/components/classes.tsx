@@ -27,7 +27,8 @@ export default function Classes({ saints }: ClassesProps) {
                   {getName(
                     saint.character?.name || "",
                     saint.cloth?.name ? t(saint.cloth?.name) : "",
-                    locale
+                    locale,
+                    saint.rank ? t(saint.rank) : ""
                   )}
                 </h4>
               </div>

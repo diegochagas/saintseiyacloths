@@ -22,9 +22,10 @@ export default function Saints({ data }: SaintsProps) {
                   key={saint.id}
                   id={saint.id}
                   image={saint.image}
-                  cloth={getClothName(t, saint?.cloth?.name)}
-                  name={saint?.character?.name}
-                  history={saint?.history?.name}
+                  cloth={t(saint?.cloth?.name)}
+                  name={saint?.name}
+                  history={saint?.history}
+                  saintClass={saint?.group?.class}
                 />
               ))
             ) : (

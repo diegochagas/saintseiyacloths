@@ -9,6 +9,7 @@ const files = [
   "groups",
   "history",
   "midias",
+  "names",
   "ranks",
   "saints",
 ];

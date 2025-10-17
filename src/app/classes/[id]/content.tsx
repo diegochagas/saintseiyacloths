@@ -1,11 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import Error from "@/app/components/error";
 import Icon from "@/app/components/icons";
-import { getClothName } from "@/helpers";
+import { getClothName, getName } from "@/helpers";
 import AdBanner from "@/app/components/adbanner";
-import { SaintProps } from "@/pages/api/classes";
+import { SaintProps, VersionProps } from "@/pages/api/classes";
+import { version } from "os";
+import { useRouter } from "next/router";
+import Select from "./select";
 
 interface ContentProps {
   saint: SaintProps;
@@ -15,12 +18,13 @@ interface ContentProps {
 
 export default function Content({ saint, error, url }: ContentProps) {
   const t = useTranslations();
+  const locale = useLocale();
 
   const renderListItem = (title: string, description: any) => (
     <li className="list-disc">
       <h6 className="font-bold text-lg">{t(title)}</h6>
-      {description?.id ? (
-        description?.site ? (
+      {description?.id &&
+        (description?.site ? (
           <a
             className="hover:font-bold"
             href={description.site}
@@ -31,10 +35,13 @@ export default function Content({ saint, error, url }: ContentProps) {
           </a>
         ) : (
           description.name
-        )
-      ) : (
-        description
+        ))}
+
+      {Array.isArray(description) && (
+        <Select options={description} defaultOption={saint.id} />
       )}
+
+      {typeof description === "string" && description}
     </li>
   );
 
@@ -72,7 +79,12 @@ export default function Content({ saint, error, url }: ContentProps) {
                 </div>
 
                 <h2 className="mt-5 text-3xl font-extrabold">
-                  {saint?.character?.name ?? t("unknown")}
+                  {getName(
+                    saint?.name || "",
+                    saint.cloth?.name ? t(saint.cloth?.name) : "",
+                    locale,
+                    saint.rank ? t(saint.rank) : ""
+                  )}
                 </h2>
 
                 <div className="bg-neutral-400 my-5 md:my-10 p-4 md:p-8">
@@ -102,8 +114,13 @@ export default function Content({ saint, error, url }: ContentProps) {
                   />
 
                   <figcaption>
-                    <small className="font-semibold capitalize">
-                      {getClothName(t, saint.cloth?.name)}
+                    <small className="font-semibold">
+                      {getClothName(
+                        saint.cloth?.name ? t(saint.cloth.name) : "",
+                        locale,
+                        saint.group?.cloth ? t(saint.group.cloth) : "",
+                        saint.rank ? t(saint.rank) : ""
+                      )}
                     </small>
                   </figcaption>
                 </figure>
@@ -138,6 +155,10 @@ export default function Content({ saint, error, url }: ContentProps) {
                         renderListItem("schemeBy", t("unknown"))}
                     </>
                   )}
+
+                  {saint.versions &&
+                    saint.versions?.length > 1 &&
+                    renderListItem("otherVersions", saint.versions)}
                 </ul>
 
                 <AdBanner dataAdSlot="7861476475" className="my-16" />

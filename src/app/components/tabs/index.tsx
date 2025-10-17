@@ -38,7 +38,7 @@ export default function Tabs({
   function tabClassName(isSelected: boolean) {
     return `${
       isSelected ? "bg-black text-white" : "bg-white text-black"
-    } hover:bg-black hover:text-white border-2 md:border-4 border-black px-1 md:px-8 rounded-3xl font-black text-xs md:text-sm capitalize`;
+    } hover:bg-black hover:text-white border-2 md:border-4 border-black px-1 md:px-8 rounded-3xl font-black text-xs md:text-sm capitalize cursor-pointer`;
   }
 
   function handleTabChange(tabId: string) {

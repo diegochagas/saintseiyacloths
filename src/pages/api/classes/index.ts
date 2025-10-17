@@ -5,10 +5,12 @@ import classesJson from "../data/classes.json";
 import clothsJson from "../data/cloths.json";
 import groupsJson from "../data/groups.json";
 import historyJson from "../data/history.json";
+import namesJson from "../data/names.json";
 import ranksJson from "../data/ranks.json";
 import saintsJson from "../data/saints.json";
 import { ArtistProps } from "../artists";
 import { HistoryProps, loadHistoryData } from "../history";
+import { versions } from "process";
 
 interface CharacterProps {
   id: string;
@@ -31,12 +33,14 @@ export interface GroupProps {
   id: string;
   class: string;
   name: string;
+  cloth?: string;
   saints?: SaintProps[];
 }
 
 export interface SaintProps {
   id: string;
   character: CharacterProps | undefined;
+  name?: string;
   cloth: ClothProps;
   group: GroupProps;
   rank: string;
@@ -45,6 +49,11 @@ export interface SaintProps {
   image: string;
   history: HistoryProps;
   curiosities?: number;
+  versions?: SaintProps[];
+}
+
+export interface VersionProps {
+  name: string;
 }
 
 export function groupSaints(saints: any[], groups: any[]) {
@@ -137,9 +146,11 @@ export const loadSaintData = (saint: any) => {
   return {
     id: saint.id,
     ...getCharacterAndGod(saint),
+    name: namesJson.find((name) => name.id === saint.name)?.name,
     cloth: {
       id: cloth?.id,
-      name: cloth?.name.split("_"),
+      // name: cloth?.name.split("_"),
+      name: cloth?.name,
       history: loadHistoryData(
         historyJson.find((item) => item.id === cloth?.history)
       ),
@@ -151,6 +162,7 @@ export const loadSaintData = (saint: any) => {
     image: !saint.image ? "/cloth-schemes/others/no-scheme.jpg" : saint.image,
     history: loadHistoryData(history),
     curiosities: saint.curiosities,
+    versions: saintsJson.filter((s) => s.character === saint.character),
   };
 };
 
