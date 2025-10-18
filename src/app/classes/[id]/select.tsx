@@ -16,12 +16,13 @@ export default function Select({ options, defaultOption }: SelectProps) {
 
   return (
     <select
-      className="text-center bg-white text-black hover:bg-black hover:text-white border-4 border-black px-8 rounded-3xl font-black text-sm capitalize cursor-pointer"
+      className="text-center bg-white text-black hover:bg-black hover:text-white border-4 border-black px-8 rounded-3xl font-black text-xs md:text-sm capitalize cursor-pointer"
       defaultValue={defaultOption}
       onChange={(e) => route.push(`/classes/${e.target.value}`)}
     >
       {options.map((option) => (
         <option key={option.id} value={option.id}>
+          {option.version ? `(${t(option.version)}) ` : ""}
           {getHistory(t, option.history)}
         </option>
       ))}

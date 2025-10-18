@@ -37,8 +37,8 @@ export default function Tabs({
 
   function tabClassName(isSelected: boolean) {
     return `${
-      isSelected ? "bg-black text-white" : "bg-white text-black"
-    } hover:bg-black hover:text-white border-2 md:border-4 border-black px-1 md:px-8 rounded-3xl font-black text-xs md:text-sm capitalize cursor-pointer`;
+      isSelected ? "bg-black text-white" : "bg-white text-black cursor-pointer"
+    } hover:bg-black hover:text-white border-2 md:border-4 border-black px-1 md:px-8 rounded-3xl font-black text-xs md:text-sm capitalize`;
   }
 
   function handleTabChange(tabId: string) {
@@ -62,7 +62,7 @@ export default function Tabs({
       disabled={isAlwaysActive && activeTab === item.id}
     >
       {item.midia?.name ? `${t(item.midia?.name)}: ` : ""}
-      {t(item.name)}
+      {t(item.name, { count: 2 })}
     </button>
   );
 

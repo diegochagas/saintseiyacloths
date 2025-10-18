@@ -5,9 +5,7 @@ import Error from "@/app/components/error";
 import Icon from "@/app/components/icons";
 import { getClothName, getName } from "@/helpers";
 import AdBanner from "@/app/components/adbanner";
-import { SaintProps, VersionProps } from "@/pages/api/classes";
-import { version } from "os";
-import { useRouter } from "next/router";
+import { SaintProps } from "@/pages/api/classes";
 import Select from "./select";
 
 interface ContentProps {
@@ -25,14 +23,20 @@ export default function Content({ saint, error, url }: ContentProps) {
       <h6 className="font-bold text-lg">{t(title)}</h6>
       {description?.id &&
         (description?.site ? (
-          <a
-            className="hover:font-bold"
-            href={description.site}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {description.name}
-          </a>
+          description?.official ? (
+            <a
+              className="hover:font-bold"
+              href={description.site}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {description.name}
+            </a>
+          ) : (
+            <Link className="hover:font-bold" href={description.site}>
+              {description.name}
+            </Link>
+          )
         ) : (
           description.name
         ))}
@@ -59,11 +63,13 @@ export default function Content({ saint, error, url }: ContentProps) {
             {!error && saint ? (
               <>
                 <div className="flex flex-wrap gap-4 items-end">
-                  <div className="flex flex-col">
-                    <span className="font-bold text-xl text-white uppercase bg-black px-10 py-0.5">
-                      {t(saint.history?.midia?.name)}
-                    </span>
-                  </div>
+                  {saint.history?.midia?.name && (
+                    <div className="flex flex-col">
+                      <span className="font-bold text-xl text-white uppercase bg-black px-10 py-0.5">
+                        {t(saint.history.midia.name)}
+                      </span>
+                    </div>
+                  )}
                   {saint?.cloth?.history?.midia?.name &&
                     saint?.history?.midia?.name !==
                       saint?.cloth?.history?.midia?.name && (
@@ -81,17 +87,25 @@ export default function Content({ saint, error, url }: ContentProps) {
                 <h2 className="mt-5 text-3xl font-extrabold">
                   {getName(
                     saint?.name || "",
-                    saint.cloth?.name ? t(saint.cloth?.name) : "",
+                    saint.cloth?.name && saint.cloth.name !== "basic"
+                      ? t(saint.cloth?.name)
+                      : "",
                     locale,
+                    saint.group?.class
+                      ? t(saint.group.class, { count: 1 })
+                      : "",
+                    saint.version ? t(saint.version) : "",
                     saint.rank ? t(saint.rank) : ""
                   )}
                 </h2>
 
-                <div className="bg-neutral-400 my-5 md:my-10 p-4 md:p-8">
-                  <h1 className="text-2xl font-bold">
-                    {t(saint.history?.name)}
-                  </h1>
-                </div>
+                {saint.history?.name && (
+                  <div className="bg-neutral-400 my-5 md:my-10 p-4 md:p-8">
+                    <h1 className="text-2xl font-bold">
+                      {t(saint.history.name)}
+                    </h1>
+                  </div>
+                )}
 
                 {saint.curiosities &&
                   t(`curiosities.${saint.id}`)
@@ -118,8 +132,11 @@ export default function Content({ saint, error, url }: ContentProps) {
                       {getClothName(
                         saint.cloth?.name ? t(saint.cloth.name) : "",
                         locale,
-                        saint.group?.cloth ? t(saint.group.cloth) : "",
-                        saint.rank ? t(saint.rank) : ""
+                        saint.group?.cloth
+                          ? t(saint.group.cloth, { count: 1 })
+                          : "",
+                        saint.rank ? t(saint.rank) : "",
+                        saint.version ? t(saint.version) : ""
                       )}
                     </small>
                   </figcaption>
@@ -129,10 +146,11 @@ export default function Content({ saint, error, url }: ContentProps) {
                   {renderListItem("god", saint.god?.name)}
                   {renderListItem("class", {
                     id: saint.group?.id,
-                    name: t(saint.group?.class),
+                    name: t(saint.group?.class, { count: 1 }),
                     site: `/classes?q=${saint.group?.class}&p=1`,
                   })}
-                  {renderListItem("rank", t(saint.rank || "unknown"))}
+                  {saint.rank &&
+                    renderListItem("rank", t(saint.rank || "unknown"))}
                   {saint.artist && saint.cloth.artist ? (
                     saint.artist.id === saint.cloth.artist.id ? (
                       renderListItem("schemeBy", saint.artist)
@@ -156,9 +174,9 @@ export default function Content({ saint, error, url }: ContentProps) {
                     </>
                   )}
 
-                  {saint.versions &&
-                    saint.versions?.length > 1 &&
-                    renderListItem("otherVersions", saint.versions)}
+                  {saint.others &&
+                    saint.others?.length > 1 &&
+                    renderListItem("otherVersions", saint.others)}
                 </ul>
 
                 <AdBanner dataAdSlot="7861476475" className="my-16" />

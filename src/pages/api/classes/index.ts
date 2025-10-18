@@ -10,7 +10,6 @@ import ranksJson from "../data/ranks.json";
 import saintsJson from "../data/saints.json";
 import { ArtistProps } from "../artists";
 import { HistoryProps, loadHistoryData } from "../history";
-import { versions } from "process";
 
 interface CharacterProps {
   id: string;
@@ -24,7 +23,7 @@ export interface ClassProps {
 
 interface ClothProps {
   id: string;
-  name: string[];
+  name: string;
   artist: ArtistProps;
   history: HistoryProps;
 }
@@ -42,6 +41,7 @@ export interface SaintProps {
   character: CharacterProps | undefined;
   name?: string;
   cloth: ClothProps;
+  version?: string;
   group: GroupProps;
   rank: string;
   god: CharacterProps;
@@ -49,11 +49,7 @@ export interface SaintProps {
   image: string;
   history: HistoryProps;
   curiosities?: number;
-  versions?: SaintProps[];
-}
-
-export interface VersionProps {
-  name: string;
+  others?: SaintProps[];
 }
 
 export function groupSaints(saints: any[], groups: any[]) {
@@ -134,7 +130,11 @@ const getCharacterAndGod = (saint: any) => {
   let god;
   for (let i = 0; i < charactersJson.length; i++) {
     if (saint.character === charactersJson[i].id) character = charactersJson[i];
-    if (saint.god === charactersJson[i].id) god = charactersJson[i];
+    if (saint.god === charactersJson[i].id)
+      god = {
+        ...charactersJson[i],
+        name: namesJson.find((name) => name.id === saint.god)?.name,
+      };
     if (!!god?.id && !!character?.id) break;
   }
   return { character, god };
@@ -149,20 +149,19 @@ export const loadSaintData = (saint: any) => {
     name: namesJson.find((name) => name.id === saint.name)?.name,
     cloth: {
       id: cloth?.id,
-      // name: cloth?.name.split("_"),
       name: cloth?.name,
       history: loadHistoryData(
         historyJson.find((item) => item.id === cloth?.history)
       ),
       artist: artistsJson.find((artist) => artist.id === saint.artistCloth),
     },
+    version: saint.version,
     group: groupsJson.find((group) => group.id === saint.group),
     rank: ranksJson.find((rank) => rank.id === saint.rank)?.name,
     artist: artistsJson.find((artist) => artist.id === saint.artistSaint),
     image: !saint.image ? "/cloth-schemes/others/no-scheme.jpg" : saint.image,
     history: loadHistoryData(history),
     curiosities: saint.curiosities,
-    versions: saintsJson.filter((s) => s.character === saint.character),
   };
 };
 

@@ -4,12 +4,6 @@
 3,steel,
 4,black,
 5,bronze,
-,bronze,v1
-,bronze,v2
-,bronze,v3
-,bronze,v4
-,bronze,v5
-,bronze,cloth_dress
 6,silver,
 7,gold,
 8,pope,
@@ -48,6 +42,6 @@
 41,pythia,
 42,witch,
 43,,
-44,heavenlyKing,
-45,ressurectedSaint,
+44,,
+45,,
 46,stigma,

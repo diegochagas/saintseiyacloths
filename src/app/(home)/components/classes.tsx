@@ -26,8 +26,12 @@ export default function Classes({ saints }: ClassesProps) {
                 <h4 className="text-xl font-semibold text-center">
                   {getName(
                     saint.character?.name || "",
-                    saint.cloth?.name ? t(saint.cloth?.name) : "",
+                    saint.cloth?.name && saint.cloth?.name !== "basic"
+                      ? t(saint.cloth?.name)
+                      : "",
                     locale,
+                    saint.group?.class ? t(saint.group?.class) : "",
+                    saint.version ? t(saint.version) : "",
                     saint.rank ? t(saint.rank) : ""
                   )}
                 </h4>

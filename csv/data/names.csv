@@ -9,11 +9,14 @@
 9,Aiacos
 10,Aiolia
 11,Aiolos
+504,Albafica
 13,Alberich
 14,Alberich XIII
+476,Albior
 32,Alcon Huye
-15,Aldebaran / Ram
-139,Alexei / Frey
+15,Aldebaran
+139,Alexei
+46,Algea
 17,Algethi
 18,Algol
 352,Algon
@@ -36,18 +39,20 @@
 31,Arachne
 537,Arctos
 548,Arcturus
-33,Ares / Mars
+33,Ares
 543,Arges
 34,Argo
 35,Aria
 267,Arles
 37,Arne
-38,Artemis / Diana
+38,Artemis
 488,Arthur Pendragon
 620,Asceta
 307,Asclepius
-569,Asgard Soldier
+569,
 39,Ashtaroth
+263,Asmita
+503,Aspros
 42,Asterion
 484,Astraea
 44,Atavaka
@@ -58,6 +63,7 @@
 535,Atropos
 49,Avenir
 50,Babel
+281,Bacchus
 52,Baian
 53,Balazo
 54,Baldr
@@ -66,35 +72,28 @@
 56,Bartsch
 57,Bayer
 58,Beelzebub
-59,Beetle 1
-60,Beetle 2
+59,
+60,
 36,Bellatrix
 545,Bellerophon
 61,Berengue
-519,Black Andromeda
-210,Black Cygnus / Jid
-387,Black Draco / Shinadekuro
-142,Black Draco Twin
-227,Black Pegasus / Kenuma
-360,Black Phoenix / Ritahoa
 63,Bleriot
-503,Bootes Saint
 512,Brasa
 66,Bronte
 67,Bud
 68,Byaku
 546,Cadmus
-41,Cain / Aspros
+41,Cain
 70,Callisto
-504,Camelopardalis Saint
 71,Camus
 72,Capella
 73,Carbella
-12,Cardinale / Albafica
+12,Cardinale
 75,Carnelian
 76,Cassios
 541,Cattleya Mikagami
 77,Celeris
+223,Centaurus
 78,Chalcedony
 550,Charlotte Kazahana
 79,Charon
@@ -103,31 +102,35 @@
 249,Chloto
 82,Chris Walden
 83,Christ
+210,Chronos
+204,Claw
+299,Clint
 85,Coeus
 87,Crius
-524,Cronus / Chronos / Saturn / Subaru
+524,Cronus
 88,Cruaich
-89,Crystal Saint
 90,Cube
 91,Curly
 92,Curtis
 93,Cyllene
-476,Daedalus / Albior
+89,Daedalus
 556,Daelos
 94,Daichi
 95,Dali
 96,Dante
-97,Deathmask / Claw
-98,Deathtoll / Manigold
+97,Deathmask
+98,Deathtoll
+614,Defteros
+500,Degel
 101,Deimos
 528,Demeter
 539,Demiurgo
+155,Diana
 103,Dio
 104,Dione
-51,Dionysus / Bacchus
+51,Dionysus
 105,Docrates
 106,Dohko
-523,Dolphin Saint
 107,Don Avido
 108,Dorer
 109,Douglas
@@ -145,7 +148,9 @@
 490,Edward / Horcos
 525,Eileithyia
 118,Eiri Aizawa
+393,El Cid
 120,Elda
+353,Electra
 121,Eligor
 558,Ellan
 126,Elna
@@ -157,7 +162,7 @@
 482,Erik
 308,Eris
 497,Erythro
-127,Escarlate / Kardia
+127,Escarlate
 62,Ethlinn
 128,Europa
 483,Europe
@@ -170,14 +175,15 @@
 132,Felser
 133,Fenrir
 604,Fire Demon
-612,Flame Saint
 134,Flint
 135,Fly
 136,Folken
 138,Francisca
+602,Frey
 137,Frodi
 283,Fross
 141,Fudou
+142,Fukuryu 
 143,Fyodor
 144,Gaia
 145,Galarian Steiner
@@ -190,7 +196,7 @@
 153,Genbu
 154,Georg
 156,Gerald
-157,Gestalt / Sisyphus
+157,Gestalt
 158,Gigant
 159,Gigas
 161,Gordon
@@ -200,20 +206,21 @@
 477,Grigori
 166,Guilty / Jorge
 167,Guney
-168,Hades / Pluto
+168,Hades
 169,Hagen
 170,Hakurei
 171,Halimede
 172,Harbinger
 505,Harmonia
 173,Haruto
+3,Hasgard
 175,Hati
 526,Hebe
 176,Hecate
 177,Hecatonchires
 178,Hector
 179,Hema
-455,Hephaestus / Vulcanus
+455,Hephaestus
 520,Hera
 180,Heracles
 48,Heracles / Hercules
@@ -222,15 +229,16 @@
 182,Hooke
 183,Hoplisma
 184,Hui
-185,Hyoga / Jake / Titan
+185,Hyoga
 186,Hyperion
 187,Hyperion
 188,Hypnos
 189,Hysmie
 190,Iapetos
+439,Icarus
 191,Icelus
 192,Ichi
-193,Ikki / Nero / Quinn / Zenith
+193,Ikki
 194,Ilias
 311,Integra
 195,Io
@@ -239,15 +247,16 @@
 198,Isolde
 199,Itia
 200,Ivan
-119,Izo / El Cid
+119,Izo
 202,Jabu
 203,Jager
+567,Jake
 205,Jamian
 206,Jan
 207,Jango / Vander Graad
 208,Jao
-554,Jellyfish Saint
 209,Jericho
+160,Jid
 211,Johan
 212,Juan
 213,Judo
@@ -258,12 +267,15 @@
 217,Kagaho
 218,Kageboshi
 219,Kairos
-220,Kaiser / Regulus
+220,Kaiser
 221,Kanon
+288,Kardia
+74,Karina
 224,Kasa
 225,Katya
 226,Kazuma
 229,Kelly
+227,Kenuma
 228,Ker
 230,Kiki
 231,Kitalpha
@@ -279,15 +291,17 @@
 534,Lachesis
 240,Ladon
 241,Laimi
-242,"Lamech, God of the Nothing"
+242,Lamech
 243,Lancelot
 245,Larry
 246,Lascoumoune
 509,Layla
 247,Leda
+501,Lei-Hu
 250,Lemargos
+516,Lethe
 251,Leybold
-252,Liu-Xing / Hakuryu
+252,Liu-Xing
 538,Lodi'N
 254,Loki
 619,Loki
@@ -303,11 +317,14 @@
 486,Machina
 268,Malkino
 262,Mania
-265,Maria / Lethe
+351,Manigold
+265,Maria
 266,Marin
 565,Mariner Soldier
+147,Mars
 264,Martian Commander
 510,Matthew
+385,Max
 269,Maya
 270,Mayura
 271,Medea
@@ -337,18 +354,19 @@
 296,Mu
 297,Mudan
 298,Mycenae
-100,Mystoria / Degel
+100,Mystoria
 300,Myu
 301,Nachi
 302,Nahualpilli
-140,Natassia / Freya
 102,Naya
 544,Nemesis
+384,Nero
 513,Nero Priest
 303,Nicole
 304,Niobe
 464,Nioidei
 305,Noesis
+69,Nova
 487,Nyan
 461,Nytea
 422,Nyuke
@@ -357,15 +375,16 @@
 495,Odin
 312,Odysseus
 313,Odysseus
-314,Ohko / Lei-Hu
+314,Ohko
 581,Olivia Tokumaru
+320,Omega
 315,Oneiros
 549,Ophialtes
 316,Ordykia
 317,Orphée
 318,Orpheus
 319,Orthros
-174,Ox / Hasgard
+174,Ox
 322,Pallas
 323,Pallas
 324,Palmer
@@ -389,6 +408,7 @@
 338,Phonos
 575,Photia
 339,Piotr
+321,Pluto
 341,Poena
 342,Pontus
 494,Poseidon
@@ -398,16 +418,20 @@
 346,Pyromaniac
 347,Queen
 491,Quetzalcoatl
+373,Quinn
 348,Ra
 349,Radzinsky
 350,Ragno
+613,Ram
 499,Rebecca
+425,Regulus
 354,Retsu
 355,Rhadamanthys
 356,Rhea
 357,Rhea
 358,Rhuax
-359,Rigel / Algea
+359,Rigel
+360,Ritahoa
 361,Rock
 362,Rodorio
 253,Rogge
@@ -422,35 +446,40 @@
 371,Sage
 551,Sanctuary Soldier
 533,Sao
-374,Saori Kido / Sienna / Nova / Karina
+374,Saori Kido
 375,Sasha
+531,Saturn
 377,Schiller
 553,Sea Serpent Saint
-379,Seiya / Zack / Centaurus
+379,Seiya
 380,Seraphina
 529,Shadow Cloth
 386,Shaina
 381,Shaka
 382,Sham
 383,Shelley
-40,Shijima / Asmita
+40,Shijima
+387,Shinadekuro
 388,Shinato
 389,Shion
 511,Shion
-390,Shiryu / Clint / Omega
+390,Shiryu
 391,Shiva
 392,Sho
 540,Shoichiro Tokito
 394,Shoko Tokumaru
-395,Shun / Max / Electra
+395,Shun
 396,Shura
 397,Siegfried
+399,Siegfried
+99,Sienna Kido
 398,Sigmund
 514,Sigmund
-399,Sigurd / Siegfried
+402,Sigurd
 400,Sillas
 478,Sinmore
 401,Sirius
+248,Sisyphus
 542,Sojiro Tokito
 403,Sonia
 404,Sorento
@@ -465,6 +494,7 @@
 498,Steropes
 412,Steven
 607,Stone
+519,Subaru
 64,Sui
 414,Suikyo
 480,Suisho
@@ -490,12 +520,13 @@
 433,Thor
 605,Thunder Clouds
 434,Titan
+568,Titan
 420,Tityus
 435,Toas
 436,Toki
 437,Tokisada
 438,Tokusa
-439,Toma / Icarus
+515,Toma
 440,Tomoe
 255,Toqu
 441,Tourmasline
@@ -514,6 +545,7 @@
 452,Veronica
 453,Violate
 454,Viviane
+566,Vulcanus
 456,Wadatsumi / Natassia
 457,Wesda
 458,Wimber
@@ -533,48 +565,16 @@
 468,Yulij
 469,Yuna
 470,Yuzuriha
+201,Zack
 471,Zaphiri
 472,Zelos
+372,Zenith
 306,Zeus
 473,Zugylos
-614,Defteros
-613,
-602,
-147,
-155,
-160,
-531,
-204,
-351,
-281,
-288,
-248,
-321,
-566,
-567,
-568,
-372,
-373,
-384,
-393,
-425,
-500,
-501,
-3,
-46,
-69,
-74,
-99,
-201,
-223,
-263,
-299,
-320,
-353,
-385,
-402,
-515,
-516,
+523,
+612,
+554,
+140,
 86,
 606,
 129,

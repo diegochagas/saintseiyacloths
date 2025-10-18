@@ -10,11 +10,10 @@ export default function handler(
   const saint = saintsJson.find((saint) => saint.id === id);
 
   if (saint) {
-    const others = saintsJson.filter((s) => s.character === saint.character);
-    res.status(200).json({
-      ...loadSaintData(saint),
-      versions: others.map((s) => loadSaintData(s)),
-    });
+    const others = saintsJson
+      .filter((s) => s.character && s.character === saint.character)
+      .map((s) => loadSaintData(s));
+    res.status(200).json({ ...loadSaintData(saint), others });
   } else {
     res.status(400).json({ message: `Error: class not found!` });
   }

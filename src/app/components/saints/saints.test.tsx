@@ -63,7 +63,7 @@ describe("Saints", () => {
         <ListItem
           id={saint.id}
           image={saint.image}
-          cloth={saint.cloth.name[0]}
+          cloth={saint.cloth.name}
           name={saint.character.name}
         />
       </IntlProvider>

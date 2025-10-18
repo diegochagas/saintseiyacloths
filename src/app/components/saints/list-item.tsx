@@ -8,18 +8,22 @@ interface ListItemProps {
   id?: string;
   image?: string;
   cloth?: string;
+  version?: string;
   name?: string;
   history?: HistoryProps;
   saintClass?: string;
+  rank?: string;
 }
 
 export default function ListItem({
   id,
   image = "/cloth-schemes/others/no-scheme.jpg",
   cloth,
+  version,
   name,
   history,
   saintClass,
+  rank,
 }: ListItemProps) {
   const t = useTranslations();
   const locale = useLocale();
@@ -29,9 +33,11 @@ export default function ListItem({
       <small className="font-bold">
         {getName(
           name ?? "",
-          cloth ? t(cloth) : "",
+          cloth && cloth !== "basic" ? t(cloth) : "",
           locale,
-          saintClass ? t(saintClass) : ""
+          saintClass ? t(saintClass, { count: 1 }) : "",
+          version ? t(version) : "",
+          rank ? t(rank) : ""
         )}
       </small>
       <figure className="h-28 overflow-hidden">
