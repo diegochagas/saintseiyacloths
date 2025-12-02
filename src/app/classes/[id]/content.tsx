@@ -120,7 +120,7 @@ export default function Content({ saint, error, url }: ContentProps) {
 
                 <figure className="flex flex-col items-center my-5 w-full">
                   <Image
-                    className="border-2 border-black"
+                    className="border-2 border-black w-auto h-full"
                     src={saint.image}
                     width={536}
                     height={400}
@@ -171,12 +171,19 @@ export default function Content({ saint, error, url }: ContentProps) {
                       {!saint.artist &&
                         !saint.cloth?.artist &&
                         renderListItem("schemeBy", t("unknown"))}
+                      {saint.artist &&
+                        !saint.cloth?.artist &&
+                        renderListItem("clothBy", t("unknown"))}
                     </>
                   )}
-
                   {saint.others &&
                     saint.others?.length > 1 &&
                     renderListItem("otherVersions", saint.others)}
+                  {saint.cloth.history.id !== saint.history.id &&
+                    renderListItem(
+                      "clothRelease",
+                      t(saint.cloth?.history?.name || "unknown")
+                    )}
                 </ul>
 
                 <AdBanner dataAdSlot="7861476475" className="my-16" />

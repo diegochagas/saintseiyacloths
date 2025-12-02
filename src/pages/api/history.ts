@@ -4,6 +4,7 @@ import historyJson from "./data/history.json";
 import midias from "./data/midias.json";
 import saintsJson from "./data/saints.json";
 import clothsJson from "./data/cloths.json";
+import clothDetailsJson from "./data/cloth-details.json";
 import { getContentByPage, GroupProps, groupSaints } from "./classes";
 import { MidiaProps } from "./midias";
 
@@ -30,8 +31,12 @@ export const getHistoryWithSaints = (
 ) => {
   const filteredSaints = saintsJson.filter((saint) => {
     const cloth = clothsJson.find((cloth) => cloth.id === saint.cloth);
+    const clothDetails = clothDetailsJson.find(
+      (details) => details.id === cloth?.id
+    );
     return (
-      saint.history === historyData.id || cloth?.history === historyData.id
+      saint.history === historyData.id ||
+      clothDetails?.history === historyData.id
     );
   });
   const filteredGroups = groupsJson.filter(
