@@ -6,7 +6,6 @@ const files = [
   "characters",
   "classes",
   "cloths",
-  "cloth-details",
   "groups",
   "history",
   "midias",

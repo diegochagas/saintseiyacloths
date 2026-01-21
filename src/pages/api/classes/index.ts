@@ -3,7 +3,6 @@ import artistsJson from "../data/artists.json";
 import charactersJson from "../data/characters.json";
 import classesJson from "../data/classes.json";
 import clothsJson from "../data/cloths.json";
-import clothDetailsJson from "../data/cloth-details.json";
 import groupsJson from "../data/groups.json";
 import historyJson from "../data/history.json";
 import namesJson from "../data/names.json";
@@ -142,11 +141,7 @@ const getCharacterAndGod = (saint: any) => {
 };
 
 export const loadSaintData = (saint: any) => {
-  const history = historyJson.find((item) => item.id === saint?.history);
   const cloth = clothsJson.find((cloth) => cloth.id === saint.cloth);
-  const clothDetails = clothDetailsJson.find(
-    (details) => details?.id === cloth?.id
-  );
   return {
     id: saint.id,
     ...getCharacterAndGod(saint),
@@ -154,9 +149,7 @@ export const loadSaintData = (saint: any) => {
     cloth: {
       id: cloth?.id,
       name: cloth?.name,
-      history: loadHistoryData(
-        historyJson.find((item) => item.id === clothDetails?.history)
-      ),
+      history: historyJson.find((item) => item.id === saint?.historyCloth),
       artist: artistsJson.find((artist) => artist.id === saint.artistCloth),
     },
     version: saint.version,
@@ -164,7 +157,9 @@ export const loadSaintData = (saint: any) => {
     rank: ranksJson.find((rank) => rank.id === saint.rank)?.name,
     artist: artistsJson.find((artist) => artist.id === saint.artistSaint),
     image: !saint.image ? "/cloth-schemes/others/no-scheme.jpg" : saint.image,
-    history: loadHistoryData(history),
+    history: loadHistoryData(
+      historyJson.find((item) => item.id === saint?.historySaint)
+    ),
     curiosities: saint.curiosities,
   };
 };
