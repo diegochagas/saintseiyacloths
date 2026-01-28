@@ -88,14 +88,14 @@ export default function Content({ saint, error, url }: ContentProps) {
                   {getName(
                     saint?.name || "",
                     saint.cloth?.name && saint.cloth.name !== "basic"
-                      ? t(saint.cloth?.name)
+                      ? saint.cloth?.name
                       : "",
                     locale,
                     saint.group?.class
                       ? t(saint.group.class, { count: 1 })
                       : "",
                     saint.version ? t(saint.version) : "",
-                    saint.rank ? t(saint.rank) : ""
+                    saint.rank ? t(saint.rank) : "",
                   )}
                 </h2>
 
@@ -130,13 +130,13 @@ export default function Content({ saint, error, url }: ContentProps) {
                   <figcaption>
                     <small className="font-semibold">
                       {getClothName(
-                        saint.cloth?.name ? t(saint.cloth.name) : "",
+                        saint.cloth?.name ?? "",
                         locale,
                         saint.group?.cloth
                           ? t(saint.group.cloth, { count: 1 })
                           : "",
                         saint.rank ? t(saint.rank) : "",
-                        saint.version ? t(saint.version) : ""
+                        saint.version ? t(saint.version) : "",
                       )}
                     </small>
                   </figcaption>
@@ -149,8 +149,10 @@ export default function Content({ saint, error, url }: ContentProps) {
                     name: t(saint.group?.class, { count: 1 }),
                     site: `/classes?q=${saint.group?.class}&p=1`,
                   })}
+
                   {saint.rank &&
                     renderListItem("rank", t(saint.rank || "unknown"))}
+
                   {saint.artist && saint.cloth.artist ? (
                     saint.artist.id === saint.cloth.artist.id ? (
                       renderListItem("schemeBy", saint.artist)
@@ -176,13 +178,15 @@ export default function Content({ saint, error, url }: ContentProps) {
                         renderListItem("clothBy", t("unknown"))}
                     </>
                   )}
+
                   {saint.others &&
                     saint.others?.length > 1 &&
                     renderListItem("otherVersions", saint.others)}
+
                   {saint.cloth.history.id !== saint.history.id &&
                     renderListItem(
                       "clothRelease",
-                      t(saint.cloth?.history?.name || "unknown")
+                      t(saint.cloth?.history?.name || "unknown"),
                     )}
                 </ul>
 
@@ -217,8 +221,8 @@ export default function Content({ saint, error, url }: ContentProps) {
                     className="absolute -bottom-2 left-32 md:left-60 w-12 h-12 md:w-20 md:h-20 rounded-full border-4 border-black flex items-center justify-center bg-white group"
                     href={`http://twitter.com/share?text=${encodeURI(
                       `${saint?.character?.name ?? "unknown"} - ${t(
-                        saint.history?.midia?.name
-                      )}: ${t(saint.history?.name)}`
+                        saint.history?.midia?.name,
+                      )}: ${t(saint.history?.name)}`,
                     )}+%23saintseiya %23clothmyth %23actionfigures %23cavaleirosdozodiaco %23caballerosdelzodiaco %23leschevaliersduzodiaque %23icavalieridellozodiaco %23bandai %23cdz&url=${url}`}
                     target="_blank"
                     rel="noopener noreferrer"

@@ -33,11 +33,11 @@ export default function ListItem({
       <small className="font-bold">
         {getName(
           name ?? "",
-          cloth && cloth !== "basic" ? t(cloth) : "",
+          cloth && cloth !== "basic" ? cloth : "",
           locale,
           saintClass ? t(saintClass, { count: 1 }) : "",
           version ? t(version) : "",
-          rank ? t(rank) : ""
+          rank ? t(rank) : "",
         )}
       </small>
       <figure className="h-28 overflow-hidden">

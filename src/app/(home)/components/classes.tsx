@@ -3,6 +3,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { SaintProps } from "@/pages/api/classes";
 import { getName } from "@/helpers";
 import Image from "next/image";
+import { count } from "console";
 
 interface ClassesProps {
   saints: SaintProps[];
@@ -25,14 +26,16 @@ export default function Classes({ saints }: ClassesProps) {
               <div className="my-2.5">
                 <h4 className="text-xl font-semibold text-center">
                   {getName(
-                    saint.character?.name || "",
+                    saint?.name || "",
                     saint.cloth?.name && saint.cloth?.name !== "basic"
-                      ? t(saint.cloth?.name)
+                      ? saint.cloth?.name
                       : "",
                     locale,
-                    saint.group?.class ? t(saint.group?.class) : "",
+                    saint.group?.class
+                      ? t(saint.group?.class, { count: 1 })
+                      : "",
                     saint.version ? t(saint.version) : "",
-                    saint.rank ? t(saint.rank) : ""
+                    saint.rank ? t(saint.rank) : "",
                   )}
                 </h4>
               </div>
