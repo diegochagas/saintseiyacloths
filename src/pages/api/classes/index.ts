@@ -60,7 +60,7 @@ export function groupSaints(saints: any[], groups: any[]) {
     const sortedSaints = filteredSaints.sort((a, b) =>
       a.cloth?.name == b.cloth?.name
         ? 0
-        : +((a.cloth?.name ?? "") > (b.cloth?.name ?? "")) || -1
+        : +((a.cloth?.name ?? "") > (b.cloth?.name ?? "")) || -1,
     );
     return {
       ...group,
@@ -91,7 +91,7 @@ function filterIfSaints(groups: GroupProps[], className: string) {
         !(
           !isOfficialConstellation(item.name.toLocaleLowerCase()) &&
           !item.saints?.length
-        )
+        ),
     );
   return groups;
 }
@@ -158,7 +158,7 @@ export const loadSaintData = (saint: any) => {
     artist: artistsJson.find((artist) => artist.id === saint.artistSaint),
     image: !saint.image ? "/cloth-schemes/others/no-scheme.jpg" : saint.image,
     history: loadHistoryData(
-      historyJson.find((item) => item.id === saint?.historySaint)
+      historyJson.find((item) => item.id === saint?.historySaint),
     ),
     curiosities: saint.curiosities,
   };
@@ -195,7 +195,7 @@ export function getLatestSaints() {
 export function getSaintsByClass(
   classData: any,
   q: string | string[],
-  p?: string | string[]
+  p?: string | string[],
 ) {
   // If groups stay split by class for an year, delete the following lines
   // const classes = classesJson.filter((cls) => cls.god === classData.god);
@@ -205,11 +205,11 @@ export function getSaintsByClass(
   // );
   const filteredGroups = groupsJson.filter((group) => group.class === q);
   const filteredSaints = saintsJson.filter(
-    (saint) => saint.god === classData.god
+    (saint) => saint.god === classData.god,
   );
   const groupedSaints: GroupProps[] = groupSaints(
     filteredSaints,
-    filteredGroups
+    filteredGroups,
   );
 
   const groups = filterIfSaints(groupedSaints, classData.name);
@@ -234,7 +234,7 @@ export function getClasses() {
 
 export default function handler(
   req: NextApiRequest,
-  res: NextApiResponse<any>
+  res: NextApiResponse<any>,
 ) {
   const { q, p } = req.query;
   const classData = classesJson.find((cls) => cls.id === q);

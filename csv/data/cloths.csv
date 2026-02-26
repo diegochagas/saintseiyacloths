@@ -1,36 +1,38 @@
 ﻿id,name
+371,Abel
 1,Acheron
 2,Alchemy Glove
 3,Alcor
 4,Alioth
 5,Alraune
-6,Athena
+130,Amber Beast
 7,Anarchy
+694,Ancestral Weapon
 8,Andromeda
-9,Wyvern
-10,Athanasia
-11,Grazia
-12,Ngalyod
+202,Angel
 13,Ant
 14,Ant Squad
-15,Ruby Iron
 16,Aparajita
+259,Aphrodite
+373,Apollo
+112,Apsu
 17,Apus
 18,Aquarius
-19,
 20,Aquila
-21,Poseidon
-22,
-23,
 24,Ara
+335,Aranea
 25,Ares
 26,Aries
-27,
+62,Arliss
 28,Arondight
 29,Arsmagna
-30,
+475,Artemis
+10,Athanasia
+6,Athena
 31,Atrium
 32,Auriga
+381,Aurora
+220,Axe
 33,Azoth
 34,Bacchus
 35,Balor
@@ -41,184 +43,166 @@
 40,Basilisk
 41,Bat
 42,Beetle
-43,
 44,Behemoth
 45,Benetnasch
 46,Bennu
 47,Bhuj
 48,Black Terror
+219,Black Thunder
+185,Blue Flame
+460,Blue God
+399,Blue Warrior
 49,Bootes
 50,Brionac
-51,Lapis Lazuli
 52,Caelum
 53,Caitsith
 54,Camelopardalis
 55,Cancer
-56,
 57,Canesvenatici
 58,Canismajor
+409,Canisminor
 59,Capricorn
-60,
 61,Carina
-62,Arliss
+348,Carnelian & Onyx
 63,Cassiopeia
 64,Centaurus
 65,Cepheus
 66,Cerberus
 67,Cetus
-68,
-69,Slash Reaper
 70,Chamaeleon
 71,Cherub
 72,Chrysaor
 73,Circinus
-74,Max Brilliants
-75,
-76,Impulse Mace
+401,Clarent
 77,Columba
 78,Coma Berenice
 79,Corona Australis
 80,Corona Borealis
-81,Dracodent
 82,Corvus
 83,Crater
-84,Flame
-85,Musica
+283,Crimson Lava
+177,Crossbow
 86,Crux
 87,Crystal
-88,Tanken
 89,Cyclops
 90,Cygnus
-91,Thatanka
-92,
-93,
-94,
 95,Daggers
-96,Rapier
+457,Dark God
+395,Dawon
 97,Deadly Beetle
 98,Deadly Harlequin
-99,Soul Killer
-100,
 101,Deathwatch
+462,Deception
 102,Deep
-103,Siren
-104,
 105,Delphinus
-106,Star Sapphire
+162,Demon Impact
+452,Desert
+329,Destruction
 107,Diana
-108,Xiphos
-109,Flamberge
-110,Lynx
+600,Dolphin
+425,Dorado
 111,Draco
-112,Apsu
-113,Enki / Ea
-114,
-115,Nemesis
-116,
-117,
-118,
-119,
+81,Dracodent
 120,Drbal
 121,Dryad
 122,Dubhe
 123,Duel
 124,Dullahan
 125,Durandal
-126,Gurthang
-127,Mariner
 128,Eikthyrnir
 129,Electricity
-130,Amber Beast
 131,Elf
-132,Lyumnades
+244,Empress
+113,Enki / Ea
 133,Equuleus
-134,
 135,Eridanus
 136,Eris
-137,Scylla
+400,Excalibur
+229,Falchion
+171,Famine
+407,Fear
+109,Flamberge
+84,Flame
 138,Flaming Fist
 139,Fornax
 140,Frey
 141,Frog
-142,Perfect Pawn
-143,Shamshir
+477,Galanthus
 144,Gargoyle
 145,Garmr
 146,Garuda
-147,Phantom Arm
 148,Gemini
-149,
 150,Genbu
+328,Genesis
 151,Ghosts Master
 152,Golem
 153,Gorgon
 154,Gram
 155,Grani
+330,Graviton
+11,Grazia
+274,Grey Blade
 156,Griffon
 157,Grus
 158,Gullinbursti
+126,Gurthang
 159,Hades
 160,Hakuryu
 161,Hakutaku
-162,Demon Impact
 163,Hanuman
+451,Harmony
 164,Harpy
 165,Heracles
-166,Noctua
 167,Hornet
 168,Horologium
 169,Hraesvelgr
-170,Opal
-171,Famine
 172,Hydra
 173,Hydrus
 174,Hypnos
-175,Sea Horse
 176,Icelus
-177,Crossbow
 178,Illusions
+76,Impulse Mace
 179,Indus
+240,Jade Armor
 180,Jamadhar
 181,Jellyfish
+247,Kalfu
+233,Katar
+479,Kelpie
 182,Ker
 183,Koh-i-Noor
 184,Kraken
-185,Blue Flame
+368,Kusanagi
 186,Lacerta
+478,Laelaps
 187,Land
-188,
+51,Lapis Lazuli
 189,Leo
-190,
 191,Leo Minor
-192,Walkyrie
-193,
-194,
 195,Lepus
-196,White Wind
 197,Libra
-198,
+463,Lies
 199,Loki
-200,
 201,Lotus
-202,Angel
-203,Valravn
+250,Loup Blanc
 204,Lupus
-205,
 206,Lycaon
+110,Lynx
 207,Lyra
-208,
+132,Lyumnades
 209,Madness
+342,Malachite
 210,Malice
 211,Mandrake
 212,Mantis
-213,Pearl Dragon
 214,Marine
-215,
+127,Mariner
 216,Mars
 217,Martian Commander
+464,Massacre
+74,Max Brilliants
+343,Megas Depranon
 218,Megrez
-219,Black Thunder
-220,Axe
 221,Mensa
 222,Mephistopheles
 223,Merak
@@ -227,151 +211,204 @@
 226,Minotaur
 227,Mizar
 228,Monoceros
-229,Falchion
-230,Wyrm
-231,Star Crusher
+810,Moros
 232,Morpheus
-233,Katar
 234,Murder
 235,Musca
+85,Musica
 236,Mystic Stone
-237,Nidhoggr
 238,Nasu
 239,Necromancer
-240,Jade Armor
+115,Nemesis
+12,Ngalyod
+237,Nidhoggr
 241,Nine-Tailed Fox
-242,Owl
+166,Noctua
 243,Norma
-244,Empress
+397,Nothing
+403,Oath
 245,Oblivion
 246,Odin
-247,Kalfu
 248,Oneiros
+327,Onyx
+170,Opal
 249,Ophiuchus
-250,Loup Blanc
-251,Silver Oriolus
 252,Orion
-253,Serket
-254,
+242,Owl
 255,Pain
 256,Pallas
+398,Pallasites
 257,Papillon
 258,Pavo
-259,Aphrodite
-260,
+213,Pearl Dragon
 261,Pegasus
-262,
-263,
-264,
-265,
-266,
-267,
-268,Synapse
-269,
-270,
-271,
+142,Perfect Pawn
 272,Persephone
 273,Perseus
-274,Grey Blade
+476,Phaeton
 275,Phantasos
+147,Phantom Arm
+449,Phantom Arm of Hyperion
 276,Phecda
 277,Phobetor
 278,Phoenix
-279,Ruin
-280,
-281,
-282,
-283,Crimson Lava
+331,Photon
 284,Pisces
-285,
 286,Piscis Austrinus
+465,Plunder
 287,Polaris
-288,
+21,Poseidon
 289,Punishment
 290,Puppis
-291,
 292,Pyxis
-293,
 294,Quetzalcoatl
 295,Rangifer
+96,Rapier
+461,Red God
 296,Reticulum
 297,Revenge
 298,Romulus
-299,
+15,Ruby Iron
+279,Ruin
 300,Rung
 301,Sagitta
 302,Sagittarius
-303,
 304,Saturn
+326,Scarlet Janus
 305,Scorpio
-306,
 307,Scutum
-308,
+137,Scylla
+606,Sea
 309,Sea Dragon
-310,
+175,Sea Horse
 311,Sea Serpent
 312,Seraph
+253,Serket
 313,Serpens
 314,Sextans
 315,Shadow
-316,
+143,Shamshir
+251,Silver Oriolus
+103,Siren
 317,Skeleton
 318,Sky
+69,Slash Reaper
 319,Sledgehammer
-320,
 321,Sliced Blood
+364,Snake Plasma
 322,Soldier
+99,Soul Killer
 323,Sparrow
 324,Sphinx
 325,Spider
-326,Scarlet Janus
-327,Onyx
-328,Genesis
-329,Destruction
-330,Graviton
-331,Photon
-332,Sylph
+231,Star Crusher
 333,Star Ruby
+106,Star Sapphire
+427,Super
+332,Sylph
+268,Synapse
+88,Tanken
 334,Tanngrisnir
-335,Aranea
 336,Taurus
-337,
+408,Terror
 338,Tezcatlipoca
 339,Thanatos
-340,
+91,Thatanka
 341,Thrones
-342,Malachite
-343,Megas Depranon
+453,Thunderstorm
+363,Topaz
+434,Tornado
 344,Triangulum
 345,Triple Rod
+435,Triton
 346,Troll
+454,Tsunami
 347,Tucana
-348,Carnelian & Onyx
 349,Ullr
 350,Upyr
 351,Ursa Major
 352,Ursa Minor
 353,Valkyrie
+203,Valravn
 354,Vampire
 355,Vela
 356,Virgo
-357,
 358,Virtues
 359,Volans
 360,Vorpal
 361,Vuivre
 362,Vulcanus
-363,Topaz
-364,Snake Plasma
+192,Walkyrie
+196,White Wind
 365,Worm
-366,
+230,Wyrm
+9,Wyvern
+108,Xiphos
 367,Youaltepuztli
-368,Kusanagi
+436,Zeus
+19,Kairos
+22,Chronos
+23,Chaos
+27,Rekka
+30,Kongo
+43,Korin
+56,Suiko
+60,Tenku
+68,Shakutnetsu
+75,Oni
+92,Yami
+93,Doku
+94,Gen
+100,Sokyu
+104,Suiren
+114,Koya
+116,Senko
+117,Dappa-Oh
+118,Hiba-Oh
+119,Karula-Oh
+134,Nahra-Oh
+149,Ryu-Oh
+188,Shura-Oh
+190,Ten-Oh
+193,Yasha-Oh
+194,Falcon
+198,Fairy
+200,Eagle
+205,Buffalo
+208,Bat
+215,Griffon
+254,Black Hawk
+260,Wild Boar
+262,Spider
+263,Lamia
+264,Tiger
+265,Peacock
+266,
+267,
+269,
+270,
+271,
+280,
+281,
+282,
+285,
+288,
+291,
+293,
+299,
+303,
+306,
+308,
+310,
+316,
+320,
+337,
+340,
+357,
+366,
 369,
 370,
-371,Abel
 372,
-373,Apollo
 374,
 375,
 376,
@@ -379,7 +416,6 @@
 378,
 379,
 380,
-381,Aurora
 382,
 383,
 384,
@@ -393,21 +429,11 @@
 392,
 393,
 394,
-395,Dawon
 396,
-397,Nothing
-398,Pallasites
-399,Blue Warrior
-400,Excalibur
-401,Clarent
 402,
-403,Oath
 404,
 405,
 406,
-407,Fear
-408,Terror
-409,Canisminor
 410,
 411,
 412,
@@ -423,18 +449,13 @@
 422,
 423,
 424,
-425,Dorado
 426,
-427,Super
 428,
 429,
 430,
 431,
 432,
 433,
-434,Tornado
-435,Triton
-436,Zeus
 437,
 438,
 439,
@@ -447,23 +468,11 @@
 446,
 447,
 448,
-449,Phantom Arm of Hyperion
 450,
-451,Harmony
-452,Desert
-453,Thunderstorm
-454,Tsunami
 455,
 456,
-457,Dark God
 458,
 459,
-460,Blue God
-461,Red God
-462,Deception
-463,Lies
-464,Massacre
-465,Plunder
 466,
 467,
 468,
@@ -473,11 +482,6 @@
 472,
 473,
 474,
-475,Artemis
-476,Phaeton
-477,Galanthus
-478,Laelaps
-479,Kelpie
 480,
 481,
 482,
@@ -598,13 +602,11 @@
 597,
 598,
 599,
-600,Dolphin
 601,
 602,
 603,
 604,
 605,
-606,Sea
 607,
 608,
 609,
@@ -692,7 +694,6 @@
 691,
 692,
 693,
-694,Ancestral Weapon
 695,
 696,
 697,
@@ -808,4 +809,3 @@
 807,
 808,
 809,
-810,Moros

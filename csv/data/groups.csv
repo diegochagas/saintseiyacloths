@@ -303,6 +303,7 @@ cronus-titans-10,titans,ocean,soma
 cronus-titans-11,titans,galaxy,soma
 cronus-titans-12,titans,memory,soma
 cronus-titan-soldiers,titans,soldiers,soma
+cronus-titan-others,titans,others,soma
 eris-gods,dryads,gods,leaf
 eris-phantoms,dryads,phantoms,leaf
 eris-dryads,dryads,dryads,leaf
@@ -461,6 +462,9 @@ odin-chamber-6,god-warriors,niflheimChamberOfMist,robe
 odin-chamber-7,god-warriors,jaheimChamberOfIce,robe
 odin-asgard-soldiers,god-warriors,soldiers,robe
 other-characters,others,otherCharacters,
+other-characters-samurai,others,samuraiTroopers,yoroigear
+other-characters-shurato,others,guardians,shakiti
+other-characters-silent-knight,others,silentKnights,shelter
 pallas-gods,pallasites,gods,chronotector
 pallas-weapon-firstclass-1,pallasites,swordOfCreation,chronotector
 pallas-weapon-firstclass-2,pallasites,swordOfDestruction,chronotector

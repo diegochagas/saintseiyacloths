@@ -128,7 +128,7 @@ export default function Content({ saint, error, url }: ContentProps) {
                   />
 
                   <figcaption>
-                    <small className="font-semibold">
+                    <small className="font-semibold capitalize">
                       {getClothName(
                         saint.cloth?.name ?? "",
                         locale,
