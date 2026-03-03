@@ -1,10 +1,12 @@
 import { getRequestConfig } from "next-intl/server";
 import { cookies, headers } from "next/headers";
 
-const getLocale = () => {
+const getLocale = async () => {
   const defaultLanguage = "en";
-  const cookieLocale = cookies().get("NEXT_LOCALE")?.value;
-  const acceptLanguage = headers().get("accept-language");
+  const cookieStore = await cookies();
+  const headerStore = await headers();
+  const cookieLocale = cookieStore.get("NEXT_LOCALE")?.value;
+  const acceptLanguage = headerStore.get("accept-language");
   const headerLocale = acceptLanguage?.split(",")[0];
   const languages = ["fr", "es", "pt", defaultLanguage];
 
@@ -14,7 +16,7 @@ const getLocale = () => {
 };
 
 export default getRequestConfig(async () => {
-  const locale = getLocale();
+  const locale = (await getLocale()) || "en";
 
   return {
     locale,

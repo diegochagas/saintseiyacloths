@@ -1,5 +1,4 @@
 import { render, screen, fireEvent } from "@testing-library/react";
-import { animateScroll } from "react-scroll";
 import ScrollTop from ".";
 import { useMenu } from "@/app/context/menu-context";
 
@@ -11,11 +10,14 @@ jest.mock("next-intl", () => ({
   useTranslations: jest.fn(() => (key: string) => key),
 }));
 
-jest.mock("react-scroll", () => ({
-  animateScroll: { scrollToTop: jest.fn() },
-}));
-
 describe("ScrollTop Component", () => {
+  beforeAll(() => {
+    Object.defineProperty(window, "scrollTo", {
+      value: jest.fn(),
+      writable: true,
+    });
+  });
+
   beforeEach(() => {
     jest.clearAllMocks();
   });
@@ -57,10 +59,9 @@ describe("ScrollTop Component", () => {
 
     fireEvent.click(button);
 
-    expect(animateScroll.scrollToTop).toHaveBeenCalledWith({
-      duration: 800,
-      delay: 0,
-      smooth: "easeInOutQuart",
+    expect(window.scrollTo).toHaveBeenCalledWith({
+      top: 0,
+      behavior: "smooth",
     });
   });
 });

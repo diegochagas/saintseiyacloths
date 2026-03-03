@@ -1,7 +1,6 @@
 "use client";
 
 import { MouseEvent, useEffect, useState } from "react";
-import { animateScroll } from "react-scroll";
 import Icon from "../icons";
 import { useMenu } from "../../context/menu-context";
 import { useTranslations } from "next-intl";
@@ -26,10 +25,10 @@ export default function ScrollTop() {
 
   function onScrollTo(event: MouseEvent<HTMLAnchorElement>) {
     event.preventDefault();
-    animateScroll.scrollToTop({
-      duration: 800,
-      delay: 0,
-      smooth: "easeInOutQuart",
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
     });
   }
 
