@@ -31,16 +31,19 @@ function writeFileOnDataRepository(file, jsonObj) {
 function writeFileOnFrontEndSide(file, jsonObj) {
   FileSystem.writeFileSync(
     `../src/pages/api/data/${file}.json`,
-    JSON.stringify(jsonObj)
+    JSON.stringify(jsonObj),
   );
 }
 
-files.forEach((file) => {
-  csv()
+const promises = files.map((file) => {
+  return csv()
     .fromFile(`./data/${file}.csv`)
     .then((jsonObj) => {
       // writeFileOnDataRepository(file, jsonObj);
-
-      writeFileOnFrontEndSide(file, jsonObj);
+      return writeFileOnFrontEndSide(file, jsonObj);
     });
+});
+
+Promise.all(promises).then(() => {
+  console.log("All files converted to JSON and saved successfully.");
 });
