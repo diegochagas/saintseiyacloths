@@ -3,7 +3,6 @@ import { useLocale, useTranslations } from "next-intl";
 import { SaintProps } from "@/pages/api/classes";
 import { getName } from "@/helpers";
 import Image from "next/image";
-import { count } from "console";
 
 interface ClassesProps {
   saints: SaintProps[];

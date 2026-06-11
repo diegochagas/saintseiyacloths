@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useSyncExternalStore } from "react";
 import { SaintProps } from "@/pages/api/classes";
 import Banner from "./components/banner";
 import Store from "./components/store";
@@ -9,19 +9,22 @@ import { useLoading } from "../context/loading-content";
 import { useTranslations } from "next-intl";
 import AdBanner from "../components/adbanner";
 
+const emptySubscribe = () => () => {};
+
+const getBrowserLanguage = () =>
+  navigator.languages?.find((language) => language.includes("pt")) ||
+  navigator.language ||
+  "";
+
 export default function Home() {
   const t = useTranslations();
   const { setIsLoading } = useLoading();
   const [saints, setSaints] = useState<SaintProps[]>([]);
-  const [language, setLanguage] = useState("");
-
-  useEffect(() => {
-    setLanguage(
-      navigator.language ||
-        navigator.languages.find((language) => language.includes("pt")) ||
-        ""
-    );
-  }, []);
+  const language = useSyncExternalStore(
+    emptySubscribe,
+    getBrowserLanguage,
+    () => ""
+  );
 
   useEffect(() => {
     async function getSaints() {

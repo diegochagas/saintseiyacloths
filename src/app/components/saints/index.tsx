@@ -1,7 +1,6 @@
 import { useTranslations } from "next-intl";
 import ListItem from "./list-item";
 import { GroupProps, SaintProps } from "@/pages/api/classes";
-import { count } from "console";
 
 interface SaintsProps {
   data: GroupProps[];

@@ -6,9 +6,13 @@ import { MenuProvider, useMenu } from "@/app/context/menu-context";
 
 const homePath = "/";
 
-jest.mock("../../context/menu-context", () => ({
-  useMenu: jest.fn(),
-}));
+jest.mock("../../context/menu-context", () => {
+  const actual = jest.requireActual("../../context/menu-context");
+  return {
+    ...actual,
+    useMenu: jest.fn(actual.useMenu),
+  };
+});
 
 jest.mock("next/navigation", () => ({
   usePathname: jest.fn(() => homePath),

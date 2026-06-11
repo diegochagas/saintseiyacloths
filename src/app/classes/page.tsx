@@ -78,7 +78,7 @@ export default function Classes() {
       setLoadingBg("bg-white/75");
       setIsLoading(true);
       try {
-        loadData();
+        await loadData();
       } catch (error) {
         setErrorMessage(`${t("errorFetchingData")} ${error}`);
       } finally {

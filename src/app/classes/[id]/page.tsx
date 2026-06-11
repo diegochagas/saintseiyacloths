@@ -1,36 +1,83 @@
-"use client";
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { getLocale, getTranslations } from "next-intl/server";
+import saintsJson from "@/pages/api/data/saints.json";
+import { loadSaintData, SaintProps } from "@/pages/api/classes";
+import { getHistory, getName } from "@/helpers";
+import Details from "./details";
 
-import { useEffect, useState } from "react";
-import { usePathname } from "next/navigation";
-import { useLoading } from "@/app/context/loading-content";
-import Content from "./content";
-import { SaintProps } from "@/pages/api/classes";
+const baseUrl = "https://www.saintseiyacloths.com";
 
-export default function Details() {
-  const pathname = usePathname();
-  const id = pathname?.split("/")?.pop();
-  const { setIsLoading } = useLoading();
-  const [data, setData] = useState<SaintProps>();
-  const [errorMessage, setErrorMessage] = useState<any>();
+function getSaint(id: string): SaintProps | undefined {
+  const saint = saintsJson.find((s) => s.id === id);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(`/api/classes/${id}`);
-        const newData = await response.json();
-        setData(newData);
-        setIsLoading(false);
-      } catch (err) {
-        setErrorMessage(err);
-      } finally {
-        setIsLoading(false);
-      }
-    };
+  if (!saint) return undefined;
 
-    fetchData();
-  }, [id, setIsLoading]);
+  const others = saintsJson
+    .filter((s) => s.character && s.character === saint.character)
+    .map((s) => loadSaintData(s));
 
-  return data ? (
-    <Content saint={data} error={errorMessage} url={window.location.href} />
-  ) : null;
+  return { ...loadSaintData(saint), others } as unknown as SaintProps;
+}
+
+export function generateStaticParams() {
+  return saintsJson.map((saint) => ({ id: saint.id }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}): Promise<Metadata> {
+  const { id } = await params;
+  const saint = getSaint(id);
+
+  if (!saint) return { title: "Saint not found" };
+
+  const t = await getTranslations();
+  const locale = await getLocale();
+
+  const name = getName(
+    saint.name || "",
+    saint.cloth?.name && saint.cloth.name !== "basic" ? saint.cloth.name : "",
+    locale,
+    saint.group?.class ? t(saint.group.class, { count: 1 }) : "",
+    saint.version ? t(saint.version) : "",
+    saint.rank ? t(saint.rank) : ""
+  ).trim();
+
+  const description = `${name} — ${t("saintClothScheme")}: ${getHistory(
+    t,
+    saint.history
+  )}`;
+
+  return {
+    title: name,
+    description,
+    alternates: { canonical: `${baseUrl}/classes/${id}` },
+    openGraph: {
+      title: name,
+      description,
+      url: `${baseUrl}/classes/${id}`,
+      type: "article",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: name,
+      description,
+    },
+  };
+}
+
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const { id } = await params;
+  const saint = getSaint(id);
+
+  if (!saint) notFound();
+
+  return <Details saint={saint} url={`${baseUrl}/classes/${id}`} />;
 }

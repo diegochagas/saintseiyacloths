@@ -1,4 +1,3 @@
-import { describe } from "node:test";
 import { render } from "@testing-library/react";
 import { NextIntlClientProvider } from "next-intl";
 import Classes from "./components/classes";
@@ -11,7 +10,7 @@ describe("Home", () => {
         <Classes saints={[]} />
       </NextIntlClientProvider>
     );
-    const title = wrapper.getByText("Highlights");
+    const title = wrapper.getByText("Latest schemes");
     const more = wrapper.getByText("More");
 
     expect(title).toBeInTheDocument();

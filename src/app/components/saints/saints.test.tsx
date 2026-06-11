@@ -3,73 +3,80 @@ import { IntlProvider } from "next-intl";
 import Saints from ".";
 import ListItem from "./list-item";
 import messages from "../../../../messages/en.json";
-import { getSaintsByClass } from "@/pages/api/classes";
-import classesJson from "../../../pages/api/data/classes.json";
+
+// Deterministic fixtures instead of the live JSON data, so the tests
+// don't break every time the database is updated
+const saint = {
+  id: "s1",
+  name: "Toma",
+  image: "/cloth-schemes/apollo-angels/angel-toma.jpg",
+  cloth: { id: "c1", name: "Glory" },
+  group: { id: "g1", class: "angels", name: "angels" },
+  version: "",
+  rank: "",
+  history: { id: "h1", name: "manga", midia: { id: "m1", name: "anime" } },
+} as any;
+
+const groupWithSaints = {
+  id: "g1",
+  class: "angels",
+  name: "angels",
+  saints: [saint],
+} as any;
+
+const emptyGroup = {
+  id: "g2",
+  class: "angels",
+  name: "angels",
+  saints: [],
+} as any;
+
+const renderWithIntl = (ui: React.ReactElement) =>
+  render(<IntlProvider messages={messages} locale="en">{ui}</IntlProvider>);
 
 describe("Saints", () => {
-  it("should render correctly wihout data", () => {
-    const wrapper = render(
-      <IntlProvider messages={messages} locale="en">
-        <Saints data={[]} />
-      </IntlProvider>
-    );
+  it("should render correctly without data", () => {
+    const wrapper = renderWithIntl(<Saints data={[]} />);
 
     expect(wrapper.getByTestId("saints")).toBeInTheDocument();
   });
 
-  it("should render correctly with data", () => {
-    const wrapper = render(
-      <IntlProvider messages={messages} locale="en">
-        <Saints
-          data={getSaintsByClass(classesJson[0], classesJson[0].id).data}
-        />
-      </IntlProvider>
-    );
+  it("should render the group title and its saints", () => {
+    const wrapper = renderWithIntl(<Saints data={[groupWithSaints]} />);
 
-    expect(wrapper.getByText("Odysseus")).toBeInTheDocument();
-    expect(wrapper.getByText("Angel Glory (Odysseus)")).toBeInTheDocument();
+    expect(wrapper.getByText("Angels")).toBeInTheDocument();
+    expect(wrapper.getByText("Glory Toma")).toBeInTheDocument();
+    expect(wrapper.getByText("Manga (Anime)")).toBeInTheDocument();
   });
 
-  it("should render correctly with data and 'Unknown Character'", () => {
-    const data = getSaintsByClass(classesJson[0], classesJson[0].id).data[0];
-    data.saints = undefined;
+  it("should render a placeholder item for groups without saints", () => {
+    const wrapper = renderWithIntl(<Saints data={[emptyGroup]} />);
 
-    const wrapper = render(
-      <IntlProvider messages={messages} locale="en">
-        <Saints data={[data]} />
-      </IntlProvider>
-    );
-
-    expect(wrapper.getByText("Unknown Character")).toBeInTheDocument();
+    expect(wrapper.getByText("Never released")).toBeInTheDocument();
+    expect(wrapper.getByAltText("Saint cloth scheme")).toBeInTheDocument();
   });
 
   it("should render ListItem correctly without data", () => {
-    const wrapper = render(
-      <IntlProvider messages={messages} locale="en">
-        <ListItem />
-      </IntlProvider>
-    );
+    const wrapper = renderWithIntl(<ListItem />);
 
-    const name = wrapper.getByText("Unknown Character");
-
-    expect(name).toBeInTheDocument();
+    expect(wrapper.getByText("Never released")).toBeInTheDocument();
   });
 
   it("should render ListItem correctly with data", () => {
-    const saint = getSaintsByClass(classesJson[0], classesJson[0].id).data[1]
-      .saints[0];
-    const wrapper = render(
-      <IntlProvider messages={messages} locale="en">
-        <ListItem
-          id={saint.id}
-          image={saint.image}
-          cloth={saint.cloth.name}
-          name={saint.character.name}
-        />
-      </IntlProvider>
+    const wrapper = renderWithIntl(
+      <ListItem
+        id={saint.id}
+        image={saint.image}
+        cloth={saint.cloth.name}
+        name={saint.name}
+        history={saint.history}
+      />
     );
 
-    expect(wrapper.getByText("Toma / Icarus")).toBeInTheDocument();
-    expect(wrapper.getByText("angelglory")).toBeInTheDocument();
+    expect(wrapper.getByText("Glory Toma")).toBeInTheDocument();
+    expect(wrapper.getByText("Manga (Anime)")).toBeInTheDocument();
+    expect(
+      wrapper.getByRole("link", { name: /Glory Toma/ })
+    ).toHaveAttribute("href", "/classes/s1");
   });
 });

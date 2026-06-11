@@ -9,7 +9,7 @@ export const size = {
   height: 400,
 };
 
-export const contentType = "image/jpg";
+export const contentType = "image/png";
 
 const baseURL = "https://www.saintseiyacloths.com";
 
@@ -25,8 +25,13 @@ async function getSaint(id: string): Promise<SaintProps> {
   return saint;
 }
 
-export default async function Image({ params }: { params: { id: string } }) {
-  const saint = await getSaint(params.id);
+export default async function Image({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const { id } = await params;
+  const saint = await getSaint(id);
 
   return new ImageResponse(
     (
@@ -41,7 +46,6 @@ export default async function Image({ params }: { params: { id: string } }) {
           justifyContent: "center",
         }}
       >
-        {/* eslint-disable-next-line @next/next/no-img-element */}
         {saint?.image && (
           <img
             src={`${baseURL}${saint.image}`}

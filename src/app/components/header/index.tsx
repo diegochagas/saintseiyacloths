@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
@@ -11,18 +11,24 @@ import socials from "../../../pages/api/data/socials.json";
 import { usePathname } from "next/navigation";
 import { useMenu } from "@/app/context/menu-context";
 
+const mobileQuery = "(max-width: 767px)";
+
+function subscribeToMediaQuery(callback: () => void) {
+  const mediaQuery = window.matchMedia(mobileQuery);
+  mediaQuery.addEventListener("change", callback);
+  return () => mediaQuery.removeEventListener("change", callback);
+}
+
 export default function Header() {
   const t = useTranslations();
   const pathname = usePathname();
   const { isMenuOpen, setIsMenuOpen } = useMenu();
-  const [isMobile, setIsMobile] = useState(false);
+  const isMobile = useSyncExternalStore(
+    subscribeToMediaQuery,
+    () => window.matchMedia(mobileQuery).matches,
+    () => false
+  );
   const x = socials.find((social) => social.text === "X");
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      setIsMobile(window.innerWidth < 768);
-    }
-  }, []);
 
   return (
     <>

@@ -34,8 +34,8 @@ export function getClothName(
     }
   } else if (locale === "fr") {
     if (name) {
-      if (name === "Super") return "Super Armadura Negra";
-      else if (name === "Synapse") return "Suprême Armadura du Or Synapse";
+      if (name === "Super") return "Super Armure Noire";
+      else if (name === "Synapse") return "Suprême Armure d'Or Synapse";
       return `${cls ? cls : ""}${
         rank ? ` du ${rank}` : ""
       } du ${name}${formattedVersion}`;
@@ -80,16 +80,15 @@ export function getName(
       }
       return `${name} de ${cloth}${formattedVersion}`;
     }
-  } else if (locale === "fr" && name) {
+  } else if (locale === "fr") {
     if (!name) {
       if (!clothName && rank) return `${cls} ${rank} ${formattedVersion}`;
       else if (cls === clothName) return cls;
       else return `${cls} de ${clothName}`;
     } else {
       let cloth = clothName;
-      if (clothName === "Super") cloth = "Super Armadura Noir";
-      else if (clothName === "Synapse")
-        cloth = "Suprême Armadura du Or Synapse";
+      if (clothName === "Super") cloth = "Super Armure Noire";
+      else if (clothName === "Synapse") cloth = "Suprême Armure d'Or Synapse";
       return `${name} du ${cloth}${formattedVersion}`;
     }
   } else if (!clothName && rank) return `${rank} ${cls}${formattedVersion}`;
@@ -101,7 +100,11 @@ export function getName(
 }
 
 export function getHistory(t: (key: string) => string, history?: HistoryProps) {
-  return history?.midia
-    ? `${t(history.name)} (${t(history.midia.name)})`
-    : t("neverReleased");
+  if (!history?.midia) return t("neverReleased");
+
+  const name = t(history.name);
+  const midia = t(history.midia.name);
+
+  // some entries repeat the same label (e.g. "Never released") in both fields
+  return name === midia ? name : `${name} (${midia})`;
 }
