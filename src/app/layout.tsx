@@ -8,7 +8,6 @@ import Header from "./components/header";
 import Footer from "./components/footer";
 import { LoadingProvider } from "./context/loading-content";
 import Loading from "./components/loading";
-import Adsense from "./components/adsense";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -65,9 +64,6 @@ export default async function RootLayout({
   return (
     <html lang={locale}>
       <head>
-        {process.env.NODE_ENV === "production" && (
-          <Adsense pId="7593159682938893" />
-        )}
       </head>
       <body className={inter.className}>
         <NextIntlClientProvider messages={messages}>
