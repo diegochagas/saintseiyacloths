@@ -16,6 +16,9 @@
 # production
 /build
 
+# generated cloth schemes staging area (create-cloth-scheme skill)
+/tmp/
+
 # misc
 .DS_Store
 *.pem

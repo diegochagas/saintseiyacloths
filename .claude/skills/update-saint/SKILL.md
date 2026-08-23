@@ -76,4 +76,17 @@ Run `node csvtojson.js` from `csv/`, then verify per the shared reference (git s
 spot-check the changed JSON entry). Confirm the diff on the row touches only `image` and the
 artist columns — if it touches more, back out and reconsider. Report: which saint row was
 touched, what changed (image + artist only) and why, files replaced/moved, and anything
-uncertain. Don't commit unless asked.
+uncertain.
+
+Then, only if verification passed (tests green, diff limited to the intended row and files):
+
+1. Commit all the changes with a short conventional message (e.g. `feat: update <cloth>
+   <character> image`), authored solely by diegochagas — never add a `Co-Authored-By: Claude`
+   trailer or any Claude attribution.
+2. Push to `origin`.
+3. Send a Telegram message per `.claude/skills/shared/telegram.md` announcing the update with the
+   saint's page URL: `https://saintseiyacloths.diegochagas.com/classes/<saint-id>` — the id of
+   the updated `saints.csv` row.
+
+If verification failed, skip all three, report the failure, and leave the working tree for Diego
+to inspect.

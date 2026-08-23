@@ -63,8 +63,21 @@ missing — most characters, cloths, groups, and artists already exist:
 7. Curiosities (optional): if the user provided trivia, set the column to `1` and add the
    translated text under `curiosities.<saintId>` in all 4 messages files.
 
-## 4. Rebuild and report
+## 4. Rebuild, commit, notify
 
 Run `node csvtojson.js` from `csv/`, then verify per the shared reference (git status, npm test,
 spot-check the JSON). Report: the identification (with the reasoning), files created/moved, CSV
-rows added, and anything left uncertain. Don't commit unless asked.
+rows added, and anything left uncertain.
+
+Then, only if verification passed (tests green, git status shows only intended files):
+
+1. Commit all the changes with a short conventional message (e.g. `feat: add <cloth> <character>`),
+   authored solely by diegochagas — never add a `Co-Authored-By: Claude` trailer or any Claude
+   attribution.
+2. Push to `origin`.
+3. Send a Telegram message per `.claude/skills/shared/telegram.md` announcing the new saint with
+   its page URL: `https://saintseiyacloths.diegochagas.com/classes/<saint-id>` — the id of the
+   row just added to `saints.csv`.
+
+If verification failed, skip all three, report the failure, and leave the working tree for Diego
+to inspect.

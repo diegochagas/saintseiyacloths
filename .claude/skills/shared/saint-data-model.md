@@ -139,4 +139,6 @@ This regenerates `src/pages/api/data/*.json`. Then verify:
 3. Spot-check the new/updated JSON entry, e.g.
    `python3 -c "import json;print([s for s in json.load(open('src/pages/api/data/saints.json')) if s['id']=='<id>'])"`.
 
-Do not commit or push unless the user asks.
+After verification passes, the add-saint and update-saint skills commit, push, and send the
+Telegram notification themselves — see each skill's final step and `telegram.md` in this folder.
+Commits are authored solely by diegochagas: never add a `Co-Authored-By: Claude` trailer.
