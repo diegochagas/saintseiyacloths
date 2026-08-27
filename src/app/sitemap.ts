@@ -8,6 +8,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages: MetadataRoute.Sitemap = [
     "",
     "/classes",
+    "/teogonia",
     "/artists",
     "/history",
     "/about",

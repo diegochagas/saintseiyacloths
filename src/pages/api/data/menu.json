@@ -1,6 +1,7 @@
 [
   { "href": "/", "text": "home" },
   { "href": "/classes", "text": "classes" },
+  { "href": "/teogonia", "text": "teogonia" },
   { "href": "/artists", "text": "artists" },
   { "href": "/history", "text": "history" },
   { "href": "/about", "text": "about" }
