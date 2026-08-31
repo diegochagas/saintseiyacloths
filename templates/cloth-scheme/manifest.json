@@ -1,0 +1,41 @@
+{
+  "backgrounds": {
+    "classic": {
+      "file": "background-classic.xcf",
+      "canvas": [4019, 3000],
+      "text": {
+        "character": "⁠P⁠E⁠G⁠A⁠S⁠U⁠S⁠ ⁠S⁠E⁠I⁠Y⁠A",
+        "group": "BRONZE SAINT"
+      },
+      "shadow": "armor-shadow"
+    },
+    "lost-canvas": {
+      "file": "background-lost-canvas.xcf",
+      "canvas": [3725, 3000],
+      "text": {
+        "cloth": "PEGASUS CLOTH"
+      }
+    },
+    "saintia-sho": {
+      "file": "background-saintia-sho.xcf",
+      "canvas": [2876, 2048],
+      "text": {
+        "cloth": "PEGASUS CLOTH",
+        "group": "BRONZE CLOTH"
+      }
+    }
+  },
+  "circle": {
+    "file": "circle.xcf",
+    "circle_diameter": 510,
+    "tail": "up"
+  },
+  "arrow": {
+    "file": "arrow.xcf",
+    "layers": {
+      "head": "arrow start",
+      "star": "arrow end",
+      "label": "CHEST"
+    }
+  }
+}
