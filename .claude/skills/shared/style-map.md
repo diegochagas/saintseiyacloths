@@ -33,3 +33,19 @@ exist, Read them, and write the style down concretely (inking, line weight, scre
 color, face rendering, typography) — the prompt must *describe* the style, attached
 references alone get diluted. `references/artist-styles.md` in `create-cloth-scheme` has
 per-artist notes.
+
+**Crop scheme references down to the wearer figure when restyling a single character.** Most
+scheme sheets are ~70% white background, B&W line-art insets and typography; attached whole,
+they teach the generator "mostly white page with line art" and dilute the painted/inked
+character rendering to a small strip. When the input is a single character (not a full
+scheme), crop the wearer figure out of 2–3 reference schemes with ImageMagick and attach the
+*crops* as the style references. Better still, when Nextcloud or the DB has standalone color
+art in that style (covers, interior illustrations), prefer it over scheme crops — for
+episode-g especially, a painted cover shows Okada's finish far better than a settei-like
+scheme.
+
+Body build, eye size/rendering, and armor detail density are part of the style too, not just
+inking/color — describe them explicitly (see the per-artist notes) and let them override the
+source image's own anatomy and detail level in the prompt's DESIGN block. Armor **design**
+fidelity (shapes, part counts, colors, layout) stays locked to the source image regardless of
+style; anatomy and surface-detail density follow the target artist instead.

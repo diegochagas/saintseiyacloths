@@ -64,9 +64,14 @@ wings). Use the full-resolution originals from `/home/diego/Nextcloud/Pictures/C
 when they exist — the 400px web copies are too small to carry the style. Read them plus the
 notes in `references/artist-styles.md` and write down the style concretely: inking (line
 weight, solid blacks vs. flat color), shading technique (screentone, cross-hatching, cel
-shading), face rendering, label typography, border decoration, title lettering. The prompt must
-*describe* the style in these terms, not just attach the images — attached references alone get
-diluted into generic manga.
+shading), face rendering, label typography, border decoration, title lettering — **and
+explicitly, body build (stocky/muscular vs. tall/lean/willowy, limb length, shoulder-to-waist
+ratio), eye size and rendering (narrow vs. large/multi-highlight/lashed), and armor detail
+density (how many panel subdivisions, trim lines, rivets, ridge layers the artist typically
+draws per plate)**. These anatomy/detail traits are as much a part of the artist's style as the
+inking, and skipping them is why generated figures default to a generic, under-detailed build.
+The prompt must *describe* the style in these terms, not just attach the images — attached
+references alone get diluted into generic manga.
 
 For `no-artist`: no style references — the base image is the style authority.
 
@@ -95,14 +100,20 @@ Prompt recipe — structure it in labeled blocks, in this order:
    typography, border, title lettering). End with: pure white background, no color (if the
    artist works in B&W), no watermark, no website text, no scanner credit — reference scans
    often carry fan-site watermarks and the model will happily copy them.
-3. **DESIGN block**: "reproduce every element of image 1 exactly — same shapes, same counts,
-   same proportions; invent nothing, omit nothing" followed by the full part-by-part inventory
-   from step 1. For a B&W target style, add an explicit **tone mapping** so colors don't
-   collapse into random values: e.g. "all pale-gold parts (wing feathers, trims, rings, buckle)
-   render as LIGHT metallic grey-white with fine line shading; all dark-purple armor renders as
-   near-black gloss with white specular highlights; the white cloth stays white". The only
-   licensed invention is the object-form assembly itself, and it should visibly reuse the
-   inventoried parts (wings as wings, boots as legs/pincers…).
+3. **DESIGN block**: "reproduce every armor element of image 1 exactly — same shapes, same
+   counts, same colors, same layout; invent nothing, omit nothing" followed by the full
+   part-by-part inventory from step 1. Then a separate **anatomy line** that overrides the base
+   image's proportions with the target artist's: "render the character's body build, face and
+   eyes in <artist>'s own style (see style description above), not the base image's proportions
+   — armor shape/count/color stays locked to the inventory, but anatomy follows the artist." And
+   a **detail-density line**: "render every armor plate with <artist>'s typical surface detail
+   (panel subdivisions, trim etching, rivets) even where the base image's rendering was simpler
+   or flatter — add surface detail, never add or remove a shape." For a B&W target style, add an
+   explicit **tone mapping** so colors don't collapse into random values: e.g. "all pale-gold
+   parts (wing feathers, trims, rings, buckle) render as LIGHT metallic grey-white with fine line
+   shading; all dark-purple armor renders as near-black gloss with white specular highlights; the
+   white cloth stays white". The only licensed invention is the object-form assembly itself, and
+   it should visibly reuse the inventoried parts (wings as wings, boots as legs/pincers…).
 4. **LAYOUT block**: left side — the cloth assembled in its object/totem form (name the motif —
    e.g. "a scorpion totem" for Serket), or its disassembled parts if this line's schemes don't
    use totems. Right side — the character (name them, describe hair/face from the base image)
@@ -121,8 +132,11 @@ whole series and compare. Then Read the image and grade it against, in order:
 
 1. **Design fidelity** — walk the inventory item by item against the generated wearer: every
    part present? counts right (rings, tiers, tassels)? tones mapped correctly? nothing invented?
-2. **Format** — totem/parts side + wearer + insets + labels + title all present.
-3. **Cleanliness** — no watermark/logo, no garbled large text, no anatomical glitches.
+2. **Style fidelity** — body build, eye size/rendering and armor detail density actually match
+   the artist's references (not a generic/flatter build or under-detailed armor defaulted from
+   the base image)?
+3. **Format** — totem/parts side + wearer + insets + labels + title all present.
+4. **Cleanliness** — no watermark/logo, no garbled large text, no anatomical glitches.
 
 Every mismatch becomes an explicit correction line in the next attempt's prompt ("the wings must
 be LIGHT grey-white feathers, not black"; "the leg band has EIGHT gold rings"). Up to **3
