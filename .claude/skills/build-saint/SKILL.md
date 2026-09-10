@@ -47,6 +47,11 @@ steps 2–4 inline as written.
 - **Full sketch given**: measure with `identify`, split armor/character halves with
   ImageMagick `-crop` (respect reverse order), Read both crops to verify the split.
 - **Separate sketches**: use them as-is (running draw-armor first if needed).
+- **Cropped knight (no full body/legs shown)**: draw-armor's "Complete a cropped reference"
+  step handles this automatically whenever draw-armor runs (armor object generation). Use its
+  completed full-body output — never the original crop — as BOTH the design blueprint for the
+  parts below AND the CHARACTER piece placed in the final composite, so the totem's legs and
+  the on-page character portrait always come from the same fully-realized design.
 - **4 part insets** — HEAD, ARM, WAIST, LEG: generate each with
   `higgsfield generate create gpt_image_2_5 --quality low` (aspect `1:1`, resolution `1k` is
   enough, ~1.5 credits each), prompt: image 1 = the armor/knight sketch as design blueprint; draw ONLY

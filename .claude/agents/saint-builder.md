@@ -21,7 +21,10 @@ if something essential is missing, return an error message saying exactly what.
   LEFT, character RIGHT unless the caller said reverse), Read both crops to verify.
 - No armor object: create one following `.claude/skills/draw-armor/SKILL.md` with
   `style = same` (read that file and execute it; skip its Telegram step — reporting is the
-  caller's).
+  caller's). If the knight sketch is cropped and doesn't show the full body/legs, that file's
+  "Complete a cropped reference" step runs first — use its completed full-body output, never
+  the original crop, as BOTH the design blueprint for the parts below AND the CHARACTER piece
+  in the final composite.
 - Part insets (HEAD, ARM, WAIST, LEG): generate each with
   `higgsfield generate create gpt_image_2_5 --aspect_ratio 1:1 --resolution 1k --quality low --wait`,
   prompt: image 1 (the sketch) is the design blueprint; draw ONLY that armor's <part> as a

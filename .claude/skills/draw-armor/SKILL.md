@@ -15,7 +15,29 @@ shown on the left side of official cloth schemes.
 2. **style** — a series style from `.claude/skills/shared/style-map.md`, or `same`
    (default): keep the sketch's own art style.
 
-## 1. Identify and inventory
+## 1. Complete a cropped reference
+
+If the knight sketch is cropped and doesn't show the character down to the feet (common with
+bust/half-body fan art — cut off at the waist, hip or knees), generate a completed full-body
+version FIRST, before doing anything else, and use it — never the original crop — as the
+design blueprint for every step below (inventory, totem generation) and, when this skill runs
+inside `build-saint`, as the CHARACTER piece in the final composite too. Never invent the
+totem's lower-body parts from imagination alone when a completed reference can be generated
+first — both must come from the same fully-realized design, or they risk not matching.
+
+`higgsfield generate create gpt_image_2_5 --quality low`, aspect `2:3` (or a closer full-body
+ratio if the crop suggests one), image 1 = the cropped sketch. Prompt: "Image 1 shows this
+exact character, in this exact costume and art style, cropped at the <waist/hip/knees>.
+Extend it into a full-body standing image by adding legs and feet that continue the shown
+armor's material, color scheme and detail density naturally — invent nothing above the crop
+line. Do NOT change anything above the crop line: same face, hair, torso, arms, colors, pose,
+proportions. Plain white background, no watermark, no text."
+
+QC: everything above the original crop line pixel-consistent with the source (face, torso,
+arms, colors); new legs/feet match the established material and palette; no extra limbs, no
+floating parts. Up to 2 attempts, keep the best.
+
+## 2. Identify and inventory
 
 Resolve cloth + character from the filename against the CSVs and pull group/rank/god if a
 `saints.csv` row exists (same recipe as `create-cloth-scheme` step 1):
@@ -30,13 +52,13 @@ shoulders, torso, arms, waist, legs, feet, wings/back) the shapes, materials, co
 **counts**. Note the totem motif — infer it from the cloth/constellation name if the sketch
 doesn't show it (Serket → scorpion, Pegasus → winged horse…).
 
-## 2. Style references
+## 3. Style references
 
 - `style = same` → no references; the sketch is the style authority.
 - A series style → resolve 3 reference schemes via `shared/style-map.md` (warn on thin
   styles), Read them, and write the style description concretely.
 
-## 3. Generate
+## 4. Generate
 
 `higgsfield generate create gpt_image_2_5 --quality low` (never `gpt_image_2`, the older
 model), aspect `1:1`, resolution `2k`, `--wait`, attaching the sketch first and style refs
@@ -64,7 +86,7 @@ accounted for in the object? counts right? no body parts or invented pieces? sty
 Each miss becomes a correction line in the next prompt. Up to **3 attempts**; keep the best.
 Warn if `higgsfield account status` shows under 100 credits before starting.
 
-## 4. Save and report
+## 5. Save and report
 
 Copy the best attempt to `tmp/armors/<cloth>-<character>-armor.png`. Send it on Telegram per
 `.claude/skills/shared/telegram.md` (caption: cloth + character, style used, attempt chosen,
