@@ -48,8 +48,8 @@ steps 2–4 inline as written.
   ImageMagick `-crop` (respect reverse order), Read both crops to verify the split.
 - **Separate sketches**: use them as-is (running draw-armor first if needed).
 - **4 part insets** — HEAD, ARM, WAIST, LEG: generate each with
-  `higgsfield generate create nano_banana_pro` (aspect `1:1`, resolution `1k` is enough,
-  ~2 credits each), prompt: image 1 = the armor/knight sketch as design blueprint; draw ONLY
+  `higgsfield generate create gpt_image_2_5 --quality low` (aspect `1:1`, resolution `1k` is
+  enough, ~1.5 credits each), prompt: image 1 = the armor/knight sketch as design blueprint; draw ONLY
   that armor's <part> as a positioning draft — the part floating slightly above where it
   attaches, with a small directional arrow, same art style as image 1, plain white
   background, no text. Read each result and QC against the sketch (right part, right

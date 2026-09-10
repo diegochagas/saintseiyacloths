@@ -23,12 +23,13 @@ traits, prompt block, mandatory checklist and reference images are in
 
 1. Check credits: `higgsfield account status`. Warn Diego under 100 credits;
    stop and ask under 40.
-2. Models & costs (Plus plan, verified 2026-08-08):
-   - **`nano_banana_pro` — 2 credits/gen — the default.** Up to 14 image
-     references, best fidelity.
+2. Models & costs (Plus plan, verified 2026-09-09):
+   - **`gpt_image_2_5` at `quality low` — 2 credits/gen (`resolution 2k`) —
+     the default.** Up to 14 image references, best fidelity. Bump
+     `--quality medium` (2.5) or `high` (5.5) only if fidelity keeps failing.
    - `nano_banana_flash` — 1.5 credits — cheap reroll when the failure was
      minor (style strength, palette), not structure.
-   - NEVER `gpt_image_2` (7 credits) or video models.
+   - NEVER `gpt_image_2` (the older model, 7 credits) or video models.
    - Batch budget: N images × ~1.5 attempts × 2 credits. If the balance
      can't cover it, tell Diego before generating.
 3. If the CLI reports auth errors, stop and ask Diego to run
@@ -66,7 +67,7 @@ traits, prompt block, mandatory checklist and reference images are in
    ```
    python3 .claude/skills/redraw-to-episode-g-style/scripts/redraw.py <source> \
      --prompt-file <tmp.txt> --out <dest> --style-ref <img> [--style-ref <img>]... \
-     [--model nano_banana_pro] [--aspect auto] [--resolution 2k]
+     [--model gpt_image_2_5] [--quality low] [--aspect auto] [--resolution 2k]
    ```
    - Pick 4–6 style refs from `refs/` per STYLE.md's table, matching subject
      and output type (color vs B&W).

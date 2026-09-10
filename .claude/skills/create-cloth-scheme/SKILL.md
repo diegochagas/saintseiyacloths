@@ -80,14 +80,15 @@ For `no-artist`: no style references — the base image is the style authority.
 Use the `higgsfield` CLI (if missing: `curl -fsSL https://raw.githubusercontent.com/higgsfield-ai/cli/main/install.sh | sh`;
 if `higgsfield account status` says not authenticated, ask Diego to run `higgsfield auth login`).
 
-Model: **`nano_banana_pro`** (reference-driven stylized image work, ~2 credits/generation —
-never `gpt_image_2`, it costs 7). Landscape sheet:
+Model: **`gpt_image_2_5`** (reference-driven stylized image work, ~2 credits/generation at
+`quality low` / `resolution 2k` — never `gpt_image_2`, the older model, it costs 7). Landscape
+sheet:
 
 ```bash
-higgsfield generate create nano_banana_pro \
+higgsfield generate create gpt_image_2_5 \
   --prompt "<prompt>" \
   --image <base-image> --image <style-ref-1> --image <style-ref-2> \
-  --aspect_ratio 4:3 --resolution 2k \
+  --aspect_ratio 4:3 --resolution 2k --quality low \
   --wait
 ```
 

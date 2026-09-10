@@ -41,8 +41,8 @@ out with the target artist's own build, eyes and surface-detail level.
 
 ## 3. Generate
 
-`higgsfield generate create nano_banana_pro`, resolution `2k`, aspect ratio matching the
-input image (check with `identify`), `--wait`. Prompt blocks:
+`higgsfield generate create gpt_image_2_5 --quality low`, resolution `2k`, aspect ratio
+matching the input image (check with `identify`), `--wait`. Prompt blocks:
 
 1. **Roles**: "Image 1 is the CONTENT AUTHORITY — its design AND composition must be
    reproduced exactly; images 2–N are STYLE-ONLY references from <series>."

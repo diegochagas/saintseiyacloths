@@ -3,7 +3,7 @@
 
 Usage:
   redraw.py <source_image> --prompt-file <txt> --out <dest.png>
-            [--style-ref <img>]... [--model nano_banana_pro]
+            [--style-ref <img>]... [--model gpt_image_2_5] [--quality low]
             [--aspect auto|<ratio>] [--resolution 2k] [--cost]
 
 The source image is always the FIRST image reference; style refs follow.
@@ -12,7 +12,7 @@ Auth comes from the higgsfield CLI itself (`higgsfield auth login`).
 """
 import argparse, json, shutil, subprocess, sys, time, urllib.request
 
-ASPECTS = ['1:1', '3:2', '2:3', '4:3', '3:4', '4:5', '5:4', '9:16', '16:9', '21:9']
+ASPECTS = ['1:1', '3:2', '2:3', '4:3', '3:4', '16:9', '9:16', '21:9', '27:16', '16:27', '9:8', '8:9']
 TRANSIENT = ('503', 'service unavailable', 'nsfw', 'timeout', 'temporarily')
 
 
@@ -47,7 +47,8 @@ def main():
     ap.add_argument('--prompt-file', required=True)
     ap.add_argument('--out')
     ap.add_argument('--style-ref', action='append', default=[])
-    ap.add_argument('--model', default='nano_banana_pro')
+    ap.add_argument('--model', default='gpt_image_2_5')
+    ap.add_argument('--quality', default='low')
     ap.add_argument('--aspect', default='auto')
     ap.add_argument('--resolution', default='2k')
     ap.add_argument('--cost', action='store_true')
@@ -64,7 +65,7 @@ def main():
 
     cmd = [hf, 'generate', ('cost' if args.cost else 'create'), args.model,
            '--prompt', prompt, '--aspect_ratio', aspect,
-           '--resolution', args.resolution, '--json',
+           '--resolution', args.resolution, '--quality', args.quality, '--json',
            '--image-references', args.source]
     for r in args.style_ref[:13]:  # source + 13 = 14-reference cap
         cmd += ['--image-references', r]

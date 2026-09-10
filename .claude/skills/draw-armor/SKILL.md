@@ -38,8 +38,9 @@ doesn't show it (Serket → scorpion, Pegasus → winged horse…).
 
 ## 3. Generate
 
-`higgsfield generate create nano_banana_pro` (never `gpt_image_2`), aspect `1:1`,
-resolution `2k`, `--wait`, attaching the sketch first and style refs after. Prompt blocks:
+`higgsfield generate create gpt_image_2_5 --quality low` (never `gpt_image_2`, the older
+model), aspect `1:1`, resolution `2k`, `--wait`, attaching the sketch first and style refs
+after. Prompt blocks:
 
 1. **Roles**: "Image 1 is the DESIGN BLUEPRINT (a knight wearing the armor); images 2–N are
    STYLE-ONLY references."

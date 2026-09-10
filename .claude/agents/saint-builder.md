@@ -23,7 +23,7 @@ if something essential is missing, return an error message saying exactly what.
   `style = same` (read that file and execute it; skip its Telegram step — reporting is the
   caller's).
 - Part insets (HEAD, ARM, WAIST, LEG): generate each with
-  `higgsfield generate create nano_banana_pro --aspect_ratio 1:1 --resolution 1k --wait`,
+  `higgsfield generate create gpt_image_2_5 --aspect_ratio 1:1 --resolution 1k --quality low --wait`,
   prompt: image 1 (the sketch) is the design blueprint; draw ONLY that armor's <part> as a
   positioning draft — part floating slightly above where it attaches, small directional
   arrow, same art style as image 1, plain white background, no text. Read each result; one
