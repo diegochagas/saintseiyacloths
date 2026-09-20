@@ -103,7 +103,7 @@ traits, prompt block, mandatory checklist and reference images are in
    - Max 3 generations per image, then flag it, show Diego the best try,
      and move on (batch) or ask (single).
 
-## Field lessons (inherited from comic-ai-tools)
+## Field lessons (inherited from comic-skills)
 
 - If a redraw.py call hits the shell timeout, DON'T resubmit blindly — run
   `higgsfield generate list --json` first: the job may still be
