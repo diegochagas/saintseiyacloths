@@ -1,6 +1,6 @@
 ---
 name: saint-builder
-description: Executes the heavy middle of the build-saint skill for the Saint Seiya Cloths site — generates missing art pieces via Higgsfield (armor object form, 4 part-inset drafts), prepares transparency, then iterates the GIMP composition until the cloth-scheme sheet is clean. Spawn it from the build-saint skill with the resolved identification (cloth, character, sheet texts), input sketch paths, background style, and a staging directory. It returns final sheet + preview paths and a QC summary. It never touches the CSV database, never runs add-saint/update-saint, and never sends Telegram messages — approval and registration stay with the caller.
+description: Executes the heavy middle of the build-saint skill for the Saint Seiya Cloths site — generates missing art pieces (armor object form via Higgsfield, 4 part-inset drafts via the free local backend by default), prepares transparency, then iterates the GIMP composition until the cloth-scheme sheet is clean. Spawn it from the build-saint skill with the resolved identification (cloth, character, sheet texts), input sketch paths, background style, and a staging directory. It returns final sheet + preview paths and a QC summary. It never touches the CSV database, never runs add-saint/update-saint, and never sends Telegram messages — approval and registration stay with the caller.
 tools: Bash, Read, Write, Edit, Glob, Grep
 ---
 
@@ -26,13 +26,18 @@ if something essential is missing, return an error message saying exactly what.
   the original crop, as BOTH the design blueprint for the parts below AND the CHARACTER piece
   in the final composite.
 - Part insets (HEAD, ARM, WAIST, LEG): generate each with
-  `higgsfield generate create gpt_image_2_5 --aspect_ratio 1:1 --resolution 1k --quality low --wait`,
-  prompt: image 1 (the sketch) is the design blueprint; draw ONLY that armor's <part> as a
-  positioning draft — part floating slightly above where it attaches, small directional
-  arrow, same art style as image 1, plain white background, no text. Read each result; one
-  reroll max per part with an explicit correction, then keep the best.
-- Check `higgsfield account status` first: warn in your final report under 100 credits,
-  stop and return immediately if under 40 or on auth errors (never work around auth).
+  `python3 .claude/skills/build-saint/scripts/draw_piece.py --sketch <knight> --part <PART>
+  --out <staging>/<part>-attempt-1.png --describe "<the piece, from the sketch you read>"
+  --colors "<its palette>"`. `--describe`/`--colors` are not optional — without them the
+  script guesses the part. Default backend is `local` (free ComfyUI/Qwen, ~110 s per piece,
+  ~12 min extra on the first call if the server was idle); use `--backend higgsfield`
+  (~1.5 credits) only when the script reports the local backend unavailable or a part keeps
+  failing QC. Read each result; QC for the right part, the right design and **no stray text
+  or letters** (the local model sometimes writes a garbled caption by the arrow); one reroll
+  max per part with a different `--seed`, then keep the best.
+- Only when a piece uses the Higgsfield backend: check `higgsfield account status` first,
+  warn in your final report under 100 credits, stop and return immediately if under 40 or on
+  auth errors (never work around auth).
 - Backgrounds are ALWAYS white: every generated piece sits on plain white — never ask the
   generator to paint or tint a background, never repaint the template's background. Knock
   the paper out of every piece so pieces overlap cleanly:
@@ -87,6 +92,6 @@ Regenerate art only for art problems, respecting the reroll caps.
 
 Your final text is data for the caller, not prose for the user. Return: final JPG path,
 the LAYERED XCF path (each piece on its own named layer, for Diego's manual fixes in GIMP)
-and preview path; per-piece generation attempts and which was kept; Higgsfield credits
-spent and remaining; compose iterations; and any remaining imperfections the caller should
-surface to Diego (or "none").
+and preview path; per-piece generation attempts, which backend drew each and which was kept;
+Higgsfield credits spent and remaining (0 spent when every piece ran locally); compose
+iterations; and any remaining imperfections the caller should surface to Diego (or "none").

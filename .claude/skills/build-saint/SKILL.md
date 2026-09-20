@@ -5,9 +5,9 @@ description: Build a complete Saint Seiya cloth-scheme sheet (聖衣分解装着
 
 # Build a cloth scheme with GIMP
 
-Deterministic assembly: Higgsfield draws only the art pieces; GIMP composes the sheet from
-the templates in `templates/cloth-scheme/`, so titles, labels, circles, stars and arrows are
-always crisp. Everything is staged under `tmp/build-saint/<cloth>-<character>/`.
+Deterministic assembly: the AI draws only the art pieces (part insets locally by default,
+armor object via Higgsfield); GIMP composes the sheet from the templates in
+`templates/cloth-scheme/`, so titles, labels, circles, stars and arrows are always crisp. Everything is staged under `tmp/build-saint/<cloth>-<character>/`.
 
 ## Inputs (ask for whatever is missing)
 
@@ -52,20 +52,66 @@ steps 2–4 inline as written.
   completed full-body output — never the original crop — as BOTH the design blueprint for the
   parts below AND the CHARACTER piece placed in the final composite, so the totem's legs and
   the on-page character portrait always come from the same fully-realized design.
-- **4 part insets** — HEAD, ARM, WAIST, LEG: generate each with
-  `higgsfield generate create gpt_image_2_5 --quality low` (aspect `1:1`, resolution `1k` is
-  enough, ~1.5 credits each), prompt: image 1 = the armor/knight sketch as design blueprint; draw ONLY
-  that armor's <part> as a positioning draft — the part floating slightly above where it
-  attaches, with a small directional arrow, same art style as image 1, plain white
-  background, no text. Read each result and QC against the sketch (right part, right
-  design); one reroll max per part, then keep the best.
+- **4 part insets** — HEAD, ARM, WAIST, LEG: generate each with `scripts/draw_piece.py`,
+  which drives either backend from the same prompt recipe (image 1 = the armor/knight sketch
+  as design blueprint; draw ONLY that armor's <part> as a positioning draft — the part
+  floating slightly above where it attaches, with a small directional arrow, same art style
+  as image 1, plain white background, no text):
+
+  ```bash
+  python3 .claude/skills/build-saint/scripts/draw_piece.py \
+    --sketch <knight.png> --part ARM --out <stage>/arm-attempt-1.png \
+    --describe "the arm armor: shoulder guard, upper arm, forearm bracer and the golden clawed gauntlet" \
+    --colors "dark navy blue, violet, magenta-pink accents, gold"
+  ```
+
+  **Always pass `--describe` and `--colors`**, written from the sketch you just read — the
+  per-part defaults are generic ("the arm armor: shoulder guard, upper arm, forearm bracer and
+  gauntlet"), and a generic description is what produces a piece that misses this design's
+  distinguishing details.
+
+  The default backend is **`local`** (free, ~110 s per piece; see "Local backend" below).
+  `--backend higgsfield` is the fallback (`gpt_image_2_5`, 1:1, 1k, quality low, ~1.5 credits
+  each) when ComfyUI is down or the local result keeps failing QC.
+
+  Read each result and QC against the sketch (right part, right design, **no stray text or
+  letters** — the local model occasionally writes a garbled caption next to the arrow);
+  one reroll max per part with a different `--seed`, then keep the best.
 - **Backgrounds are ALWAYS white**: every generated piece must sit on a plain white
   background — never ask the generator to paint or tint a background, and never repaint the
   template's background. Then knock the paper out of every piece so pieces can overlap
   cleanly: `convert piece.png -fuzz 6% -transparent white piece-t.png`.
 
-Warn if `higgsfield account status` is under 100 credits; a full build is ~8–12 credits
-plus draw-armor if needed.
+With the default local backend a build spends credits only on draw-armor (if it runs). When
+any piece uses `--backend higgsfield`, warn if `higgsfield account status` is under 100
+credits; an all-Higgsfield build is ~8–12 credits plus draw-armor.
+
+### Local backend
+
+`draw_piece.py --backend local` runs Qwen-Image-Edit-2511 on a ComfyUI server on this
+machine — free and unlimited. Measured 2026-09-19 against the Higgsfield recipe: all four
+parts usable on the first try, no reroll, copying the sketch's own colours and inking
+exactly. ~110 s per piece warm; the first call after an idle server adds ~12 min of GGUF
+loading, so expect the HEAD piece to be slow and the rest fast.
+
+It works here because **the sketch is its own style authority**. Do NOT reach for it when an
+external art style is the point (draw-armor's totem reassembly, change-saint-style,
+redraw-to-episode-g-style): the model ignores style-reference images, caps at 3 images total,
+and tops out near 1 MP. Those skills stay on Higgsfield.
+
+Needs the ComfyUI-GGUF custom node plus `unet/qwen-image-edit-2511-Q4_K_M.gguf`,
+`text_encoders/qwen_2.5_vl_7b_fp8_scaled.safetensors`, `vae/qwen_image_vae.safetensors` and
+`loras/Qwen-Image-Edit-2511-Lightning-4steps-V1.0-bf16.safetensors`. Settings live outside the repo in
+`~/.config/saintseiyacloths/comfyui.env` (same convention as `telegram.env`), or as env vars
+which win over the file:
+
+```bash
+COMFYUI_URL=http://127.0.0.1:8188
+COMFYUI_SERVICE=<systemd --user unit name>   # the script starts it when the server is down
+```
+
+If the server is unreachable the script exits and tells you to rerun with
+`--backend higgsfield` — it never silently falls back and spends credits.
 
 ## 3. Compose with GIMP
 

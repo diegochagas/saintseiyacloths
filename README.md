@@ -102,7 +102,7 @@ Telegram notes). Series style names resolve to database examples via
 ### The saint-builder agent
 
 `.claude/agents/saint-builder.md` is a project subagent that runs the heavy middle of
-`build-saint` — Higgsfield generation, transparency prep, and the GIMP compose/QC
+`build-saint` — art-piece generation, transparency prep, and the GIMP compose/QC
 iteration — in an isolated context. The `build-saint` skill spawns it automatically; you
 don't call it directly. Identification, your approval of the finished sheet, and database
 registration always happen in the main conversation.
@@ -129,6 +129,12 @@ entry, and make sure the database has a few reference schemes for that series.
   by the templates must be installed on the host.
 - **Higgsfield CLI** — image generation. Authenticate with `higgsfield auth login`
   (browser); no API keys are stored in the repo.
+- **ComfyUI** (optional) — a local Qwen-Image-Edit-2511 server used by `build-saint` to draw
+  the 4 part insets for free instead of spending credits; it is the default for that step and
+  falls back to Higgsfield with `--backend higgsfield`. Model files and settings are listed
+  under "Local backend" in `.claude/skills/build-saint/SKILL.md`. The style skills
+  (`draw-armor`, `change-saint-style`, `redraw-to-episode-g-style`, `create-cloth-scheme`)
+  always use Higgsfield — the local model ignores style references.
 
 ### Configuration & secrets
 
@@ -140,6 +146,14 @@ TELEGRAM_BOT_TOKEN=<your bot token>
 TELEGRAM_CHAT_ID=<your chat id>
 ```
 
-The skills read it to send result notifications; if the file is missing they skip
-notifications and tell you, nothing breaks. Higgsfield credentials are managed entirely by
+Optionally, `~/.config/saintseiyacloths/comfyui.env` points `build-saint`'s local backend at
+your ComfyUI server:
+
+```bash
+COMFYUI_URL=http://127.0.0.1:8188
+COMFYUI_SERVICE=<systemd --user unit name>
+```
+
+The skills read these to send result notifications and to reach the local model; if a file is
+missing they skip the notification / fall back to Higgsfield and tell you, nothing breaks. Higgsfield credentials are managed entirely by
 its CLI session (`higgsfield auth login`).
