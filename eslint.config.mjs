@@ -8,6 +8,8 @@ const eslintConfig = [
       ".swc/**",
       "node_modules/**",
       "coverage/**",
+      "playwright-report/**",
+      "test-results/**",
       "public/mockServiceWorker.js",
     ],
   },

@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# The single gate: run by the pre-push hook and by CI. Fast checks first.
+set -euo pipefail
+cd "$(dirname "$0")/.."
+npx tsc --noEmit
+npx eslint .
+npx jest --silent
+npx next build

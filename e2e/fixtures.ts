@@ -10,7 +10,7 @@ const isKnownMissingImage = (url: string) =>
   knownMissingImages.some((image) => url.includes(encodeURIComponent(image)) || url.endsWith(image));
 
 export const test = base.extend<{ errors: string[] }>({
-  errors: async ({ page }, use) => {
+  errors: async ({ page }, provide) => {
     const errors: string[] = [];
     await page.route(THIRD_PARTY, (route) => route.abort());
     page.on("pageerror", (error) => errors.push(`pageerror: ${error.message}`));
@@ -27,7 +27,7 @@ export const test = base.extend<{ errors: string[] }>({
         errors.push(`requestfailed: ${request.url()} ${request.failure()?.errorText}`);
       }
     });
-    await use(errors);
+    await provide(errors);
   },
 });
 
