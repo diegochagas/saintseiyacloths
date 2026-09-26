@@ -34,7 +34,7 @@ test("unknown route shows the 404 page", async ({ page }) => {
 test("sitemap and robots are served", async ({ request }) => {
   const sitemap = await request.get("/sitemap.xml");
   expect(sitemap.ok()).toBe(true);
-  expect(await sitemap.text()).toContain("/classes/1</loc>");
+  expect(await sitemap.text()).toContain("https://saintseiyacloths.diegochagas.com/classes/1</loc>");
 
   const robots = await request.get("/robots.txt");
   expect(robots.ok()).toBe(true);

@@ -12,7 +12,7 @@ add-saint/update-saint, and do NOT send Telegram messages.
 
 Expect from the prompt: cloth + character names, the sheet texts (character / cloth /
 group), the background style key, the input image paths (full sketch, or knight + optional
-armor object), and the staging dir `tmp/build-saint/<cloth>-<character>/`. Ask nothing —
+armor object), and the staging dir `~/Downloads/build-saint/<cloth>-<character>/` (never inside the repo — files enter the project only after Diego OKs the XCF). Ask nothing —
 if something essential is missing, return an error message saying exactly what.
 
 ## 1. Art pieces

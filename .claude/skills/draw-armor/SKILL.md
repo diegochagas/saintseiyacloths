@@ -80,7 +80,7 @@ after. Prompt blocks:
 
 ### QC loop
 
-Download every attempt to `tmp/armors/<cloth>-<character>-armor-attempt-<n>.<ext>` (create
+Download every attempt to `~/Downloads/armors/<cloth>-<character>-armor-attempt-<n>.<ext>` (create
 the folder; never overwrite). Read it and check: every inventoried part present and
 accounted for in the object? counts right? no body parts or invented pieces? style faithful?
 Each miss becomes a correction line in the next prompt. Up to **3 attempts**; keep the best.
@@ -88,7 +88,7 @@ Warn if `higgsfield account status` shows under 100 credits before starting.
 
 ## 5. Save and report
 
-Copy the best attempt to `tmp/armors/<cloth>-<character>-armor.png`. Send it on Telegram per
+Copy the best attempt to `~/Downloads/armors/<cloth>-<character>-armor.png`. Send it on Telegram per
 `.claude/skills/shared/telegram.md` (caption: cloth + character, style used, attempt chosen,
 credits left). Report the path, attempts and credits in chat. When called from `build-saint`,
 just return the path — build-saint does its own reporting.

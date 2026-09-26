@@ -1,5 +1,6 @@
 import { SaintProps } from "@/pages/api/classes";
 import { ImageResponse } from "next/og";
+import { SITE_URL } from "@/site";
 
 export const runtime = "edge";
 
@@ -11,7 +12,7 @@ export const size = {
 
 export const contentType = "image/png";
 
-const baseURL = "https://www.saintseiyacloths.com";
+const baseURL = SITE_URL;
 
 async function getSaint(id: string): Promise<SaintProps> {
   const response = await fetch(`${baseURL}/api/classes/${id}`, {

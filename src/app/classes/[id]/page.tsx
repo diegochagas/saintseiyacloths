@@ -5,8 +5,9 @@ import saintsJson from "@/pages/api/data/saints.json";
 import { loadSaintData, SaintProps } from "@/pages/api/classes";
 import { getHistory, getName } from "@/helpers";
 import Details from "./details";
+import { SITE_URL } from "@/site";
 
-const baseUrl = "https://www.saintseiyacloths.com";
+const baseUrl = SITE_URL;
 
 function getSaint(id: string): SaintProps | undefined {
   const saint = saintsJson.find((s) => s.id === id);
