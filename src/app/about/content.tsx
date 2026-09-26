@@ -42,7 +42,7 @@ export default function Content() {
                 {t("aboutSaintSeiyaCloths.sections.title")}
               </h3>
 
-              {Array.from({ length: 6 }).map((_, i) => (
+              {Array.from({ length: 5 }, (_, i) => i + 1).map((i) => (
                 <p key={`about-${i}`} className="flex justify-between">
                   {t(`aboutSaintSeiyaCloths.sections.${i}`)}
                 </p>
