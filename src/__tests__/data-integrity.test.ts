@@ -6,6 +6,7 @@
  */
 import fs from "node:fs";
 import path from "node:path";
+import knownMissingImages from "./known-missing-images.json";
 
 type Row = Record<string, string>;
 
@@ -29,13 +30,9 @@ const classes = load("classes");
 const classIds = ids(classes);
 const ranks = ids(load("ranks"));
 
-// Image files referenced by saints.csv that are not in public/cloth-schemes.
-const KNOWN_MISSING_IMAGES = new Set([
-  "/cloth-schemes/athena-saints/soldier-ohko-lei-hu.jpg",
-  "/cloth-schemes/eris-dryads/oblivion-maria.jpg",
-  "/cloth-schemes/athena-saints/soldier-ohko.jpg",
-  "/cloth-schemes/athena-saints/aries-mu-anime.jpg",
-]);
+// Image files referenced by saints.csv that are not in public/cloth-schemes
+// (shared with the e2e suite, which tolerates them as broken images).
+const KNOWN_MISSING_IMAGES = new Set<string>(knownMissingImages);
 
 const danglingRefs = (field: string, valid: Set<string>) =>
   saints
