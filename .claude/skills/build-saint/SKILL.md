@@ -7,7 +7,7 @@ description: Build a complete Saint Seiya cloth-scheme sheet (聖衣分解装着
 
 Deterministic assembly: the AI draws only the art pieces (part insets locally by default,
 armor object via Higgsfield); GIMP composes the sheet from the templates in
-`templates/cloth-scheme/`, so titles, labels, circles, stars and arrows are always crisp. Everything is staged under `tmp/build-saint/<cloth>-<character>/`.
+`templates/cloth-scheme/`, so titles, labels, circles, stars and arrows are always crisp. Everything is staged under `~/Downloads/build-saint/<cloth>-<character>/` (never inside the repo — files enter the project only after Diego OKs the XCF).
 
 ## Inputs (ask for whatever is missing)
 
@@ -37,7 +37,7 @@ group/rank/god if the saint exists. Decide the sheet texts:
 Steps 2–4 (generation, composition, QC iteration) are made to run in the **saint-builder**
 agent (`.claude/agents/saint-builder.md`): spawn it with the Agent tool, passing the
 identification, texts, sketch paths, style, and a staging dir under
-`tmp/build-saint/<cloth>-<character>/`. It returns the final sheet + preview paths and a QC
+`~/Downloads/build-saint/<cloth>-<character>/` (never inside the repo — files enter the project only after Diego OKs the XCF). It returns the final sheet + preview paths and a QC
 summary, keeping the many image reads out of this conversation. Steps 1 and 5
 (identification, approval, database) always stay here. If the agent can't be spawned, do
 steps 2–4 inline as written.
@@ -190,6 +190,6 @@ rerun as many times as needed.
    ```
 
 4. Then run **add-saint** (new character+cloth+version) or **update-saint** (existing row)
-   with `tmp/build-saint/<cloth>-<character>/<cloth>-<character>.jpg`.
+   with `~/Downloads/build-saint/<cloth>-<character>/<cloth>-<character>.jpg`.
    On rejection: apply the requested fixes (job JSON for layout/text, regeneration for art)
    and show again.

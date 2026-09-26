@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# Local CI gate: push = deploy in my setup, so this is the last check before production.
+# Enable once per clone: git config core.hooksPath .githooks
+set -euo pipefail
+root="$(git rev-parse --show-toplevel)"
+if [[ -x "$root/scripts/check" ]]; then
+    echo "pre-push: running scripts/check"
+    "$root/scripts/check"
+else
+    echo "pre-push: scripts/check not found, skipping" >&2
+fi

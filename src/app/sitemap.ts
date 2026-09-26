@@ -1,8 +1,9 @@
 import type { MetadataRoute } from "next";
 import saintsJson from "@/pages/api/data/saints.json";
 import classesJson from "@/pages/api/data/classes.json";
+import { SITE_URL } from "@/site";
 
-const baseUrl = "https://www.saintseiyacloths.com";
+const baseUrl = SITE_URL;
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages: MetadataRoute.Sitemap = [

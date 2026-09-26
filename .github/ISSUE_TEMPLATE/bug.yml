@@ -1,0 +1,21 @@
+name: Wrong or missing information
+description: A saint, cloth, image or translation is wrong or missing
+labels: [bug]
+body:
+  - type: input
+    id: page
+    attributes:
+      label: Page URL
+      placeholder: https://saintseiyacloths.diegochagas.com/classes/1
+    validations: { required: true }
+  - type: textarea
+    id: what
+    attributes:
+      label: What is wrong?
+      description: What you see, and what it should be (with a source if you have one).
+    validations: { required: true }
+  - type: dropdown
+    id: language
+    attributes:
+      label: Site language
+      options: [English, Português, Español, Français]

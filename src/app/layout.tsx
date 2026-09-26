@@ -8,6 +8,7 @@ import Header from "./components/header";
 import Footer from "./components/footer";
 import { LoadingProvider } from "./context/loading-content";
 import Loading from "./components/loading";
+import { SITE_URL } from "@/site";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -30,7 +31,7 @@ export const metadata: Metadata = {
     "Specters",
     "Gold Saints",
   ],
-  metadataBase: new URL("https://www.saintseiyacloths.com/"),
+  metadataBase: new URL(`${SITE_URL}/`),
   alternates: { canonical: "/" },
   openGraph: {
     type: "website",

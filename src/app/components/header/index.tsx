@@ -51,6 +51,8 @@ export default function Header() {
           type="button"
           className="md:hidden"
           onClick={() => setIsMenuOpen((prev) => !prev)}
+          aria-label="Menu"
+          aria-expanded={isMenuOpen}
           data-testid="menu"
         >
           <b className="relative block w-9 h-9">
