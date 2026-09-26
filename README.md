@@ -1,5 +1,7 @@
 # Saint Seiya Cloths
 
+[![ci](https://github.com/diegochagas/saintseiyacloths/actions/workflows/ci.yml/badge.svg)](https://github.com/diegochagas/saintseiyacloths/actions/workflows/ci.yml)
+
 Encyclopedia of Saint Seiya cloth schemes, live at [saintseiyacloths.diegochagas.com](https://saintseiyacloths.diegochagas.com). Covers armors of Athena's Saints, Hades' Specters, Poseidon's Marinas and more, with artists, ranks and first appearances.
 
 ## Features
@@ -42,7 +44,32 @@ npm run lint          # Run ESLint
 npm run test          # Run test suite
 npm run test:watch    # Run tests in watch mode
 npm run test:coverage # Run tests with coverage report
+npm run check         # The gate: types, lint, unit tests, build (pre-push hook + CI)
+npm run e2e           # Playwright e2e with screenshots (e2e/screenshots/)
 ```
+
+## Testing
+
+| Layer | Where | What it covers |
+|---|---|---|
+| Unit / component | `src/**/*.test.ts(x)` (Jest + RTL + MSW) | Components, helpers, API routes |
+| Data integrity | `src/__tests__/data-integrity.test.ts` | Every saint reference (character, cloth, group, rank, artist, history) exists, ids are unique, every image exists in `public/` |
+| Translations | `src/__tests__/i18n.test.ts` | Every key exists in en/pt/es/fr and none is empty |
+| E2E | `e2e/` (Playwright) | Every page renders with no console errors or failed requests, 404, sitemap/robots, SEO tags, axe accessibility, all four languages. Full-page screenshots, desktop + mobile |
+
+Known gaps that existed when the suite was added are listed in
+`src/__tests__/known-missing-images.json` and `KNOWN_MISSING` in the i18n test.
+Fix them and delete the entries; the suite fails if an entry gets fixed but stays listed.
+
+Enable the pre-push gate once per clone:
+
+```bash
+git config core.hooksPath .githooks
+```
+
+CI (`.github/workflows/ci.yml`) runs the same gate, then the e2e suite on Chromium
+(desktop and mobile), Firefox and WebKit, and uploads the screenshots as artifacts.
+Run e2e against a deployed URL with `BASE_URL=https://… npm run e2e`.
 
 ## Data
 
