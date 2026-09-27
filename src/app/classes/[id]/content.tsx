@@ -120,7 +120,7 @@ export default function Content({ saint, error, url }: ContentProps) {
 
                 <figure className="flex flex-col items-center my-5 w-full">
                   <Image
-                    className="border-2 border-black w-auto h-full"
+                    className="border-2 border-black w-full h-auto sm:w-auto sm:h-[404px] sm:max-w-full sm:object-contain"
                     src={saint.image}
                     width={536}
                     height={400}
