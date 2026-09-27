@@ -1,13 +1,13 @@
 ---
 name: build-saint
-description: Build a complete Saint Seiya cloth-scheme sheet (聖衣分解装着図) by COMPOSITING with GIMP — series background template + armor object + character + 4 AI-drafted part insets in white circles + labeled pointer arrows with stars — instead of generating the whole sheet in one AI shot. Use when the user asks to "build a saint", "monta o esquema", "build the scheme with GIMP", or provides a full sketch (armor + character) plus a background style. Shows the result for approval, then hands off to add-saint/update-saint.
+description: Build a complete Saint Seiya cloth-scheme sheet (聖衣分解装着図) by COMPOSITING with GIMP — series background template + armor object + character + 4 AI-drafted part insets in white circles + labeled pointer arrows with stars — instead of generating the whole sheet in one AI shot. Use when the user asks to "build a saint", "monta o esquema", "build the scheme with GIMP", or provides a full sketch (armor + character) plus a background style. Publishes automatically: web image, archive + editable XCF in Nextcloud, commit, push and Telegram link.
 ---
 
 # Build a cloth scheme with GIMP
 
 Deterministic assembly: the AI draws only the art pieces (part insets locally by default,
 armor object via Higgsfield); GIMP composes the sheet from the templates in
-`templates/cloth-scheme/`, so titles, labels, circles, stars and arrows are always crisp. Everything is staged under `~/Downloads/build-saint/<cloth>-<character>/` (never inside the repo — files enter the project only after Diego OKs the XCF).
+`templates/cloth-scheme/`, so titles, labels, circles, stars and arrows are always crisp. Everything is staged under `~/Downloads/build-saint/<cloth>-<character>/` (never inside the repo — only the published web image enters the repo; edit files go to Nextcloud on publish).
 
 ## Inputs (ask for whatever is missing)
 
@@ -37,9 +37,9 @@ group/rank/god if the saint exists. Decide the sheet texts:
 Steps 2–4 (generation, composition, QC iteration) are made to run in the **saint-builder**
 agent (`.claude/agents/saint-builder.md`): spawn it with the Agent tool, passing the
 identification, texts, sketch paths, style, and a staging dir under
-`~/Downloads/build-saint/<cloth>-<character>/` (never inside the repo — files enter the project only after Diego OKs the XCF). It returns the final sheet + preview paths and a QC
+`~/Downloads/build-saint/<cloth>-<character>/` (never inside the repo — only the published web image enters the repo; edit files go to Nextcloud on publish). It returns the final sheet + preview paths and a QC
 summary, keeping the many image reads out of this conversation. Steps 1 and 5
-(identification, approval, database) always stay here. If the agent can't be spawned, do
+(identification, publishing) always stay here. If the agent can't be spawned, do
 steps 2–4 inline as written.
 
 ## 2. Prepare the art pieces
@@ -172,24 +172,36 @@ circle tail aiming at the right spot on the character; every label over blank ba
 and legible. GIMP runs are free and deterministic — adjust coordinates in the job JSON and
 rerun as many times as needed.
 
-## 5. Approve, then register
+## 5. Publish automatically
 
-1. Send the final JPG on Telegram (`shared/telegram.md`) and show it in chat with the piece
-   paths, the **editable layered XCF path** (every piece is its own named layer — Diego can
-   fix mistakes by hand in GIMP before giving his OK), credits spent/left, and what to
-   double-check.
-2. **Wait for Diego's approval** — do not touch the database before it.
-3. On approval, ask/check whether he edited the XCF (compare mtimes). If he did, re-export
-   the JPG from HIS file before registering:
+Every finished sheet is published without waiting for approval (Diego's rule since
+2026-09-27 — he fixes sheets later from the archived XCF if needed).
+
+1. Publish the build (web copy, archive, edit files) — from the repo root:
 
    ```bash
-   flatpak run org.gimp.GIMP -idf --batch-interpreter=python-fu-eval \
-     -b "import gi; gi.require_version('Gimp','3.0'); from gi.repository import Gimp, Gio; \
-   i=Gimp.file_load(Gimp.RunMode.NONINTERACTIVE, Gio.File.new_for_path('<out.xcf>')); i.flatten(); \
-   Gimp.file_save(Gimp.RunMode.NONINTERACTIVE, i, Gio.File.new_for_path('<out.jpg>'), None)" --quit
+   python3 .claude/skills/build-saint/scripts/publish_build.py \
+     --staging ~/Downloads/build-saint/<dir> \
+     --builds-root "/home/diego/Nextcloud/Pictures/Saint Seiya/Cloth Scheme Builds" \
+     --originals-root "/home/diego/Nextcloud/Pictures/Saint Seiya/Cloth Schemes" \
+     --saint-id <id>
    ```
 
-4. Then run **add-saint** (new character+cloth+version) or **update-saint** (existing row)
-   with `~/Downloads/build-saint/<cloth>-<character>/<cloth>-<character>.jpg`.
-   On rejection: apply the requested fixes (job JSON for layout/text, regeneration for art)
-   and show again.
+   It replaces `public/cloth-schemes/<army>/<name>.jpg` with the 400px web copy of the sheet,
+   moves the saint's previous original out of the archive into the build folder as
+   `source-original.<ext>`, copies the full-size sheet into the archive as `<name>.jpg`, and moves
+   the whole staging folder (XCF, parts, job, preview) to
+   `Pictures/Saint Seiya/Cloth Scheme Builds/<army>/<dir>/` so Diego can edit it later. It
+   refuses when the saint has no `saints.csv` row — a brand-new saint goes through **add-saint**
+   first, then publish with the new id.
+2. Rebuild and verify: `cd csv && node csvtojson.js`, then `npm test`; `git status` must show only
+   the saint's web image (plus `saints.csv`/JSON when the image path changed).
+3. Commit (`feat: full cloth scheme for <cloth> <character>`, authored solely by diegochagas — no
+   Claude trailer) and push to `origin`.
+4. Telegram (`shared/telegram.md`): send the sheet as a photo with the saint's URL
+   `https://saintseiyacloths.diegochagas.com/classes/<saint-id>` in the caption.
+5. Report in chat as text only (no image): saint, style, credits spent, what Diego may want to fix
+   in the archived XCF, and the Telegram/commit result.
+
+If a later edit of the archived XCF should replace the published sheet, re-export the JPG from
+the XCF and run **update-saint** with it.

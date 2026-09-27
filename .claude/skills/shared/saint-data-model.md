@@ -11,7 +11,7 @@ repo root `/home/diego/Projects/saintseiyacloths` unless absolute.
 | CSV → JSON build script | `csv/csvtojson.js` (must run from inside `csv/`) |
 | Generated JSON consumed by the app | `src/pages/api/data/*.json` (never edit by hand) |
 | Web-optimized images | `public/cloth-schemes/<army-folder>/<image>.jpg` |
-| Original full-size images (archive) | `/home/diego/Nextcloud/Pictures/Cloth Schemes/<army-folder>/` |
+| Original full-size images (archive) | `/home/diego/Nextcloud/Pictures/Saint Seiya/Cloth Schemes/<army-folder>/` |
 | Translations (4 languages, all required) | `messages/en.json`, `messages/es.json`, `messages/fr.json`, `messages/pt.json` |
 
 CSV format notes: every CSV starts with a UTF-8 BOM and uses LF line endings with a trailing
@@ -107,7 +107,7 @@ background, quality ~92:
 convert "<original>" -background white -flatten -resize x400\> -quality 92 "public/cloth-schemes/<folder>/<name>.jpg"
 ```
 
-**Original** goes to `/home/diego/Nextcloud/Pictures/Cloth Schemes/<folder>/<name>.<original-ext>`
+**Original** goes to `/home/diego/Nextcloud/Pictures/Saint Seiya/Cloth Schemes/<folder>/<name>.<original-ext>`
 (same base name, original format and resolution) — move it, don't copy, so the inbox stays clean.
 
 **Before that `mv`, always check whether the destination filename already exists** (`ls` the

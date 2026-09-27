@@ -28,7 +28,7 @@ user the sample is small and confirm before spending credits.
 
 Selection and description rules are the same as `create-cloth-scheme` steps 2–3: pick 3
 references (same army/rank as the subject when possible, covering its features), use the
-full-resolution originals from `/home/diego/Nextcloud/Pictures/Cloth Schemes/` when they
+full-resolution originals from `/home/diego/Nextcloud/Pictures/Saint Seiya/Cloth Schemes/` when they
 exist, Read them, and write the style down concretely (inking, line weight, screentone vs
 color, face rendering, typography) — the prompt must *describe* the style, attached
 references alone get diluted. `references/artist-styles.md` in `create-cloth-scheme` has

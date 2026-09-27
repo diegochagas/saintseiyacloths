@@ -41,11 +41,11 @@ in the image column). If the exact character+cloth+version row exists, switch to
 1. Build the filename per the shared reference pattern
    (`<cloth>-<character>[-<version>][-<source>]`).
 2. Find the army folder on each side (`ls public/cloth-schemes/` and
-   `ls "/home/diego/Nextcloud/Pictures/Cloth Schemes/"` — names can differ between them).
+   `ls "/home/diego/Nextcloud/Pictures/Saint Seiya/Cloth Schemes/"` — names can differ between them).
 3. Create the web copy: JPEG, max height 400px, white background, quality 92 (exact `convert`
    command in the shared reference) → `public/cloth-schemes/<folder>/<name>.jpg`.
 4. Move (not copy) the original, renamed to the same base name with its original extension, to
-   `/home/diego/Nextcloud/Pictures/Cloth Schemes/<folder>/`.
+   `/home/diego/Nextcloud/Pictures/Saint Seiya/Cloth Schemes/<folder>/`.
 5. Sanity-check the result: `identify` the new JPG (height must be ≤400) and confirm the original
    is gone from its old location.
 

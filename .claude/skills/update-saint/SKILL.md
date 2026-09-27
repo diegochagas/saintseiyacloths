@@ -46,7 +46,7 @@ ask the user if it changes the outcome.
    the shared reference) into the same `public/cloth-schemes/<folder>/`.
    - If the old public file has a different extension (e.g. legacy `.png`), delete it and update
      the `image` path in `saints.csv` — the goal is `.jpg` everywhere.
-3. Move (not copy) the renamed original to `/home/diego/Nextcloud/Pictures/Cloth Schemes/<folder>/`.
+3. Move (not copy) the renamed original to `/home/diego/Nextcloud/Pictures/Saint Seiya/Cloth Schemes/<folder>/`.
    If an old original with the same name exists there, the new one replaces it — but if the old
    one might be a different artwork worth keeping, ask before overwriting.
 4. `identify` the new JPG (height ≤400) and confirm the source file left the inbox.

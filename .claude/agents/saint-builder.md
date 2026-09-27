@@ -1,6 +1,6 @@
 ---
 name: saint-builder
-description: Executes the heavy middle of the build-saint skill for the Saint Seiya Cloths site — generates missing art pieces (armor object form via Higgsfield, 4 part-inset drafts via the free local backend by default), prepares transparency, then iterates the GIMP composition until the cloth-scheme sheet is clean. Spawn it from the build-saint skill with the resolved identification (cloth, character, sheet texts), input sketch paths, background style, and a staging directory. It returns final sheet + preview paths and a QC summary. It never touches the CSV database, never runs add-saint/update-saint, and never sends Telegram messages — approval and registration stay with the caller.
+description: Executes the heavy middle of the build-saint skill for the Saint Seiya Cloths site — generates missing art pieces (armor object form via Higgsfield, 4 part-inset drafts via the free local backend by default), prepares transparency, then iterates the GIMP composition until the cloth-scheme sheet is clean. Spawn it from the build-saint skill with the resolved identification (cloth, character, sheet texts), input sketch paths, background style, and a staging directory. It returns final sheet + preview paths and a QC summary. It never touches the CSV database, never runs add-saint/update-saint, and never sends Telegram messages — publishing stays with the caller.
 tools: Bash, Read, Write, Edit, Glob, Grep
 ---
 
@@ -12,7 +12,7 @@ add-saint/update-saint, and do NOT send Telegram messages.
 
 Expect from the prompt: cloth + character names, the sheet texts (character / cloth /
 group), the background style key, the input image paths (full sketch, or knight + optional
-armor object), and the staging dir `~/Downloads/build-saint/<cloth>-<character>/` (never inside the repo — files enter the project only after Diego OKs the XCF). Ask nothing —
+armor object), and the staging dir `~/Downloads/build-saint/<cloth>-<character>/` (never inside the repo — only the published web image enters the repo; edit files go to Nextcloud on publish). Ask nothing —
 if something essential is missing, return an error message saying exactly what.
 
 ## 1. Art pieces

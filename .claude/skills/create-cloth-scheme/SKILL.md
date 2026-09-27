@@ -60,7 +60,7 @@ awk -F, -v a=<artist-id> '$10==a {print $11}' csv/data/saints.csv
 
 Pick 3 as style references, preferring the same army/rank as the subject (a Specter scheme for
 a Specter) and covering the features the subject has (e.g. a winged scheme if the subject has
-wings). Use the full-resolution originals from `/home/diego/Nextcloud/Pictures/Cloth Schemes/`
+wings). Use the full-resolution originals from `/home/diego/Nextcloud/Pictures/Saint Seiya/Cloth Schemes/`
 when they exist — the 400px web copies are too small to carry the style. Read them plus the
 notes in `references/artist-styles.md` and write down the style concretely: inking (line
 weight, solid blacks vs. flat color), shading technique (screentone, cross-hatching, cel
