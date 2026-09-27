@@ -171,7 +171,11 @@ def draw_polyline(img, points, width=3.0):
     half = width / 2.0
     for (x1, y1), (x2, y2) in zip(points, points[1:]):
         dx, dy = x2 - x1, y2 - y1
-        length = math.hypot(dx, dy) or 1.0
+        length = math.hypot(dx, dy)
+        if length < 0.5:
+            # a repeated point makes a degenerate quad; filling it with no
+            # selection floods the whole layer black
+            continue
         # perpendicular offset
         px, py = -dy / length * half, dx / length * half
         # extend the segment ends by half so joints close
