@@ -1,6 +1,6 @@
 ---
 name: change-saint-style
-description: Redraw an existing Saint Seiya image — a knight sketch, an armor object, or a full cloth scheme — in another series style (classic, episode g, lost canvas, saintia sho, time odyssey, omega…), preserving the design and composition exactly, using Higgsfield AI. Use when the user asks to "change the style", "redraw this in Lost Canvas style", "muda o estilo", "converte pro estilo clássico". Only GENERATES into tmp/restyled/ — registering results is add-saint/update-saint's job.
+description: Redraw an existing Saint Seiya image — a knight sketch, an armor object, or a full cloth scheme — in another series style (classic, episode g, lost canvas, saintia sho, time odyssey, omega…), preserving the design and composition exactly, using Higgsfield AI. Use when the user asks to "change the style", "redraw this in Lost Canvas style", "muda o estilo", "converte pro estilo clássico". Only GENERATES into ~/Downloads/restyled/ — registering results is add-saint/update-saint's job.
 ---
 
 # Change a saint image's style
@@ -70,8 +70,8 @@ matching the input image (check with `identify`), `--wait`. Prompt blocks:
 
 ### QC loop
 
-Download every attempt to `tmp/restyled/<base>-<style>-attempt-<n>.<ext>` (never
-overwrite). Read and grade: composition identical, nothing cropped, nothing invented (no
+Download every attempt to `~/Downloads/restyled/<base>-<style>-attempt-<n>.<ext>` (create
+the folder; never overwrite). Read and grade: composition identical, nothing cropped, nothing invented (no
 totem/insets/text the input lacks)? design inventory intact item by item? style actually
 matching the references — including body build, eye size/rendering and armor detail density,
 not just color/inking (not generic manga, not a flatter/under-detailed default build)?
@@ -90,7 +90,7 @@ credits.
 
 ## 4. Save and report
 
-Copy the best attempt to `tmp/restyled/<base>-<style>.png`. Telegram photo per
+Copy the best attempt to `~/Downloads/restyled/<base>-<style>.png`. Telegram photo per
 `shared/telegram.md` (caption: what was restyled, source → target style, attempt chosen,
 credits left). Report path, attempts, remaining issues and credits in chat; suggest
 `add-saint`/`update-saint` if the user wants it in the database.

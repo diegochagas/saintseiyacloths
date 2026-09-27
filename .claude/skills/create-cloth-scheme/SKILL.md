@@ -1,6 +1,6 @@
 ---
 name: create-cloth-scheme
-description: Generate a full Saint Seiya cloth-scheme sheet (聖衣分解装着図 — the official "cloth disassembly" page with the armor's object form, assembly insets, part labels, and the character wearing it) from a base image, using Higgsfield AI, in the style of an official artist (Kurumada, Okada, Teshirogi, Kuori, Alquie, Araki, Umakoshi, Suda…) or matching the base image's own style. Use whenever the user asks to "create/generate a cloth scheme", "gera o esquema", "make a disassembly sheet", "turn this art into a scheme", or provides a character/cloth image plus an artist name expecting a scheme. This skill only GENERATES the image into a temp folder — registering it in the database is add-saint/update-saint's job.
+description: Generate a full Saint Seiya cloth-scheme sheet (聖衣分解装着図 — the official "cloth disassembly" page with the armor's object form, assembly insets, part labels, and the character wearing it) from a base image, using Higgsfield AI, in the style of an official artist (Kurumada, Okada, Teshirogi, Kuori, Alquie, Araki, Umakoshi, Suda…) or matching the base image's own style. Use whenever the user asks to "create/generate a cloth scheme", "gera o esquema", "make a disassembly sheet", "turn this art into a scheme", or provides a character/cloth image plus an artist name expecting a scheme. This skill only GENERATES the image into ~/Downloads/cloth-schemes/ — registering it in the database is add-saint/update-saint's job.
 ---
 
 # Create a cloth scheme with Higgsfield
@@ -11,8 +11,8 @@ shows the disassembled cloth in its object (totem) form on one side, the charact
 full cloth on the other, circular insets illustrating assembly steps, and labeled part callouts
 (HEAD / BODY / ARM / WAIST / LEG…) connected by lines.
 
-The result is staged in `tmp/cloth-schemes/` (gitignored) — it does NOT enter the database.
-Diego reviews it and later runs `add-saint` or `update-saint` himself.
+The result is staged in `~/Downloads/cloth-schemes/` (never inside the repo) — it does NOT
+enter the database. Diego reviews it and later runs `add-saint` or `update-saint` himself.
 
 ## Inputs
 
@@ -127,7 +127,7 @@ Prompt recipe — structure it in labeled blocks, in this order:
 
 ### QC loop
 
-Download every result immediately to `tmp/cloth-schemes/<base-name>-attempt-<n>.<ext>` — **every
+Download every result immediately to `~/Downloads/cloth-schemes/<base-name>-attempt-<n>.<ext>` — **every
 attempt is kept**, never deleted or overwritten, so Diego (and later sessions) can review the
 whole series and compare. Then Read the image and grade it against, in order:
 
@@ -147,8 +147,8 @@ starting.
 
 ## 4. Save, notify, report
 
-1. Copy the chosen best attempt to `tmp/cloth-schemes/<cloth>-<character>[-<suffixes>].jpg`
-   (repo-root `tmp/` is gitignored; create the folder if needed) — same base name as the input
+1. Copy the chosen best attempt to `~/Downloads/cloth-schemes/<cloth>-<character>[-<suffixes>].jpg`
+   (never inside the repo; create the folder if needed) — same base name as the input
    so add-saint/update-saint can consume it as-is. Convert to JPG if the API returned PNG/WebP.
    Leave all the `-attempt-<n>` files in place alongside it.
 2. Get remaining credits: `higgsfield account status`.

@@ -1,6 +1,6 @@
 ---
 name: draw-armor
-description: Draw the armor OBJECT form (the assembled totem, or disassembled parts for lines that don't use totems) of the cloth a knight is wearing, from a sketch of the knight in armor, using Higgsfield AI — either in a chosen series style (classic, episode g, lost canvas, saintia sho, time odyssey, omega…) or in the sketch's own style. Use when the user asks to "draw the armor", "generate the object/totem form", "desenha a armadura/objeto", or when build-saint needs an armor object it wasn't given. Only GENERATES into tmp/armors/ — never touches the database.
+description: Draw the armor OBJECT form (the assembled totem, or disassembled parts for lines that don't use totems) of the cloth a knight is wearing, from a sketch of the knight in armor, using Higgsfield AI — either in a chosen series style (classic, episode g, lost canvas, saintia sho, time odyssey, omega…) or in the sketch's own style. Use when the user asks to "draw the armor", "generate the object/totem form", "desenha a armadura/objeto", or when build-saint needs an armor object it wasn't given. Only GENERATES into ~/Downloads/armors/ — never touches the database.
 ---
 
 # Draw the armor object form
