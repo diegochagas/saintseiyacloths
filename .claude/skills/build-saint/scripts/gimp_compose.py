@@ -362,10 +362,14 @@ def main():
         draw_polyline(img, pts, 3.0)
         if star_src is not None:
             star = import_layer(star_src, img, 'arrow-star')
-            # the template layer is star + a line stub; keep the square left
-            # end, which holds just the star
+            # the template layer is star + a line stub (105x33: star in columns
+            # 8-23, stub from 23 on); crop to the star alone - a plain left
+            # square kept the stub's first pixels as a grey dash - then pad it
+            # back to a centred square
             h = star.get_height()
-            star.resize(h, h, 0, 0)
+            x0, x1 = round(h * 8 / 33), round(h * 23 / 33)
+            star.resize(x1 - x0, h, -x0, 0)
+            star.resize(h, h, (h - (x1 - x0)) // 2, 0)
             star.scale(int(size), int(size), False)
             center_layer(star, pts[-1][0], pts[-1][1])
         if head_src is not None and spec.get('head', True):
