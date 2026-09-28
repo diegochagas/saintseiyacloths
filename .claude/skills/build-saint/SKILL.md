@@ -135,11 +135,25 @@ its native size (e.g. a 900px-wide armor filling ~35% of the sheet → canvas_wi
 art allows. The script replaces the template texts before scaling (required — scaled text
 layers can't be edited), and all job coordinates are in the scaled canvas space.
 
+**Keep the armor object and the character at the SAME relative scale they have in the source
+sketch — never size them independently to hit a fixed width percentage each.** Both crops come
+from one artist's drawing, so their native pixel sizes already encode the real proportion
+between the worn armor and its object form (a compact totem should look compact; a
+larger-than-life mecha form should look large). Measure both crops' pixel heights *before* any
+resizing, then apply ONE shared multiplier to both — the largest multiplier that keeps
+whichever piece needs the least enlargement at or under the 1.3× cap, so neither piece is
+blurrier than the other. Only after that is decided, pick `canvas_width` to fit the two scaled
+pieces into their layout zones with sensible margins (roughly 8–15% white space at the sides and
+between columns) — size the canvas to the art's shared scale, never rescale one piece to fit a
+target canvas percentage. A visibly bigger or smaller totem next to the character is very often
+correct (the artist's real design), not a bug to normalize away.
+
 Layout guidance (coordinates scale with the template's `canvas` from the manifest, times
 `canvas_width` / manifest width when you set it):
 
-- Armor object: left side, ~30–35% of canvas width, vertically centered.
-- Character: right side, ~22–25% of canvas width, full height standing.
+- Armor object: left side, vertically centered. ~30–35% of canvas width is typical, but let the
+  shared-scale rule above decide the real number — don't force it there.
+- Character: right side, full height standing. ~22–25% of canvas width is typical, same caveat.
 - 4 insets: middle column (and/or flanking the character like the official sheets), diameter
   ~20–22% of canvas height, top-to-bottom HEAD → ARM → WAIST → LEG, no overlaps. Each inset
   MUST set `point_to` to where that part sits on the CHARACTER (the knight's head for HEAD,
