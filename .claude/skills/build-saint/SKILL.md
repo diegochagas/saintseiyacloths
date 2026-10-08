@@ -118,7 +118,7 @@ If the server is unreachable the script exits and tells you to rerun with
 Write a job JSON (schema documented at the top of `scripts/gimp_compose.py`) and run:
 
 ```bash
-timeout 600 flatpak run --env=COMPOSE_JOB=/abs/job.json org.gimp.GIMP -id \
+timeout 600 flatpak run --env=COMPOSE_JOB=/abs/job.json io.github.diegochagas.GIMPhoto -id \
   --batch-interpreter=python-fu-eval \
   -b "exec(open('.claude/skills/build-saint/scripts/gimp_compose.py').read())" --quit
 ```
