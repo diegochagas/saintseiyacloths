@@ -152,7 +152,7 @@ entry, and make sure the database has a few reference schemes for that series.
 
 - **Claude Code** — runs the skills/agent.
 - **ImageMagick** (`convert`, `identify`) — resizing, cropping, transparency.
-- **GIMP 3** (Flatpak `org.gimp.GIMP`) — headless compositing for `build-saint`. Fonts used
+- **GIMP 3**: [GIMPhoto](https://github.com/diegochagas/gimphoto) (Flatpak `io.github.diegochagas.GIMPhoto`) — headless compositing for `build-saint`. Fonts used
   by the templates must be installed on the host.
 - **Higgsfield CLI** — image generation. Authenticate with `higgsfield auth login`
   (browser); no API keys are stored in the repo.

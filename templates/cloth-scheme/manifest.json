@@ -28,7 +28,8 @@
   "circle": {
     "file": "circle.xcf",
     "circle_diameter": 510,
-    "tail": "up"
+    "tail": "up",
+    "outline": {"grow": 4, "color": "#000000"}
   },
   "arrow": {
     "file": "arrow.xcf",

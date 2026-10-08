@@ -49,7 +49,7 @@ Write `<staging>/job.json` per the schema at the top of
 `.claude/skills/build-saint/scripts/gimp_compose.py`, then:
 
 ```bash
-timeout 600 flatpak run --env=COMPOSE_JOB=<staging>/job.json org.gimp.GIMP -id \
+timeout 600 flatpak run --env=COMPOSE_JOB=<staging>/job.json io.github.diegochagas.GIMPhoto -id \
   --batch-interpreter=python-fu-eval \
   -b "exec(open('.claude/skills/build-saint/scripts/gimp_compose.py').read())" --quit
 ```

@@ -2,7 +2,7 @@
 # templates in templates/cloth-scheme/ plus pre-generated art pieces.
 #
 # Runs INSIDE GIMP's python-fu-eval interpreter. Invoke as:
-#   timeout 600 flatpak run --env=COMPOSE_JOB=/abs/job.json org.gimp.GIMP -id \
+#   timeout 600 flatpak run --env=COMPOSE_JOB=/abs/job.json io.github.diegochagas.GIMPhoto -id \
 #     --batch-interpreter=python-fu-eval \
 #     -b "exec(open('<skill>/scripts/gimp_compose.py').read())" --quit
 #
@@ -190,6 +190,24 @@ def draw_polyline(img, points, width=3.0):
     return layer
 
 
+def outline_layer(img, layer, grow, color):
+    """A `grow` px outline in `color` around the layer's opaque pixels, as a
+    layer right under it. GIMP's own selection tools draw it, at the size the
+    layer ends up with, so it works in any GIMP 3 (GIMPhoto included) - the
+    circle template used to carry LinuxBeaver's lb:outline filter, which only
+    a GIMP with LinuxBeaver's GEGL plug-ins has."""
+    img.select_item(Gimp.ChannelOps.REPLACE, layer)
+    Gimp.Selection.grow(img, int(grow))
+    outline = Gimp.Layer.new(img, layer.get_name() + '-outline', img.get_width(), img.get_height(),
+                             Gimp.ImageType.RGBA_IMAGE, 100.0, Gimp.LayerMode.NORMAL)
+    img.insert_layer(outline, layer.get_parent(), img.get_item_position(layer) + 1)
+    outline.fill(Gimp.FillType.TRANSPARENT)
+    Gimp.context_set_foreground(Gegl.Color.new(color))
+    outline.edit_fill(Gimp.FillType.FOREGROUND)
+    Gimp.Selection.none(img)
+    return outline
+
+
 def main():
     with open(JOB_PATH) as f:
         job = json.load(f)
@@ -342,6 +360,9 @@ def main():
                 circle.transform_rotate(rot, False, int(cx), int(cy))
                 log('inset tail rotated %.0f deg toward (%s,%s)'
                     % (math.degrees(rot), tx, ty))
+        outline = manifest['circle'].get('outline')
+        if outline:
+            outline_layer(img, circle, outline.get('grow', 4), outline.get('color', '#000000'))
         part = place_image(img, spec['path'], 0, 0, w=int(d * 0.72), name='inset-part')
         if part.get_height() > d * 0.72:
             part.scale(max(1, int(part.get_width() * d * 0.72 / part.get_height())),
