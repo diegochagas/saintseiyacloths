@@ -6,3 +6,4 @@ npx tsc --noEmit
 npx eslint .
 npx jest --silent
 npx next build
+scripts/clean-code-audit   # report only; add --strict once the long functions in .claude/skills/*/scripts are split
