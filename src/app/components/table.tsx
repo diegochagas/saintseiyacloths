@@ -21,22 +21,55 @@ interface TableProps {
   rightDescription?: string;
 }
 
-export default function Table({
-  title,
-  tabsTitle,
-  tabs,
-  activeTab,
-  subTabs,
-  subTabId,
-  data,
-  currentPage,
-  totalPages,
-  handleTabChange,
-  handlePageChange,
-  errorMessage,
-  leftDescription,
-  rightDescription,
-}: TableProps) {
+type TableResultsProps = Pick<
+  TableProps,
+  "data" | "currentPage" | "totalPages" | "handlePageChange" | "leftDescription" | "rightDescription"
+>;
+
+// Result counters ("120 results 1 - 20" / "saints 80 of 88 revealed") above the list.
+function TableDescriptions({ leftDescription, rightDescription }: TableResultsProps) {
+  return (
+    <p className="flex justify-between">
+      {leftDescription && (
+        <small className="mb-2 md:my-4 block text-2xs sm:text-xs">
+          {leftDescription}
+        </small>
+      )}
+      {rightDescription && (
+        <small className="mb-2 md:my-4 block capitalize text-2xs sm:text-xs">
+          {rightDescription}
+        </small>
+      )}
+    </p>
+  );
+}
+
+function TableResults(props: TableResultsProps) {
+  const { data, currentPage, totalPages, handlePageChange } = props;
+
+  return (
+    <div className="flex flex-col justify-center relative">
+      <AdBanner dataAdSlot="4211636385" className="mt-5 mb-10" />
+
+      <div className="bg-white p-5">
+        <div className="border-2 border-black p-5 max-w-7xl mb-5">
+          <TableDescriptions {...props} />
+          <Saints data={data} />
+        </div>
+
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={handlePageChange}
+        />
+      </div>
+    </div>
+  );
+}
+
+export default function Table(props: TableProps) {
+  const { title, tabsTitle, tabs, activeTab, subTabs, subTabId, data, handleTabChange, errorMessage } = props;
+
   return (
     <div className="my-28 md:my-48 w-full flex justify-center flex-col items-center">
       <div className="flex w-full max-w-7xl">
@@ -57,37 +90,7 @@ export default function Table({
         />
       )}
 
-      {data?.length > 0 ? (
-        <div className="flex flex-col justify-center relative">
-          <AdBanner dataAdSlot="4211636385" className="mt-5 mb-10" />
-
-          <div className="bg-white p-5">
-            <div className="border-2 border-black p-5 max-w-7xl mb-5">
-              <p className="flex justify-between">
-                {leftDescription && (
-                  <small className="mb-2 md:my-4 block text-2xs sm:text-xs">
-                    {leftDescription}
-                  </small>
-                )}
-                {rightDescription && (
-                  <small className="mb-2 md:my-4 block capitalize text-2xs sm:text-xs">
-                    {rightDescription}
-                  </small>
-                )}
-              </p>
-              <Saints data={data} />
-            </div>
-
-            <Pagination
-              currentPage={currentPage}
-              totalPages={totalPages}
-              onPageChange={handlePageChange}
-            />
-          </div>
-        </div>
-      ) : (
-        <Error title={title}>{errorMessage}</Error>
-      )}
+      {data?.length > 0 ? <TableResults {...props} /> : <Error title={title}>{errorMessage}</Error>}
 
       <AdBanner dataAdSlot="8270037567" className="mt-10" />
     </div>

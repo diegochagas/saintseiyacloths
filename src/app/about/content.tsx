@@ -2,6 +2,36 @@ import { useTranslations } from "next-intl";
 import Image from "next/image";
 import AdBanner from "../components/adbanner";
 
+function AboutText() {
+  const t = useTranslations();
+
+  return (
+    <div className="flex flex-wrap gap-4 justify-center max-w-2xl">
+      {Array.from({ length: 2 }).map((_, i) => (
+        <p key={`paragraph-${i}`} className="flex justify-between">
+          {t(`aboutSaintSeiya.${i}`)}
+        </p>
+      ))}
+
+      <h2 className="font-bold w-full text-2xl uppercase">
+        {t("about")} Saint Seiya Cloths
+      </h2>
+
+      <p>{t("aboutSaintSeiyaCloths.description")}</p>
+
+      <h3 className="font-bold w-full text-xl capitalize">
+        {t("aboutSaintSeiyaCloths.sections.title")}
+      </h3>
+
+      {Array.from({ length: 5 }, (_, i) => i + 1).map((i) => (
+        <p key={`about-${i}`} className="flex justify-between">
+          {t(`aboutSaintSeiyaCloths.sections.${i}`)}
+        </p>
+      ))}
+    </div>
+  );
+}
+
 export default function Content() {
   const t = useTranslations();
 
@@ -25,29 +55,7 @@ export default function Content() {
               />
             </figure>
 
-            <div className="flex flex-wrap gap-4 justify-center max-w-2xl">
-              {Array.from({ length: 2 }).map((_, i) => (
-                <p key={`paragraph-${i}`} className="flex justify-between">
-                  {t(`aboutSaintSeiya.${i}`)}
-                </p>
-              ))}
-
-              <h2 className="font-bold w-full text-2xl uppercase">
-                {t("about")} Saint Seiya Cloths
-              </h2>
-
-              <p>{t("aboutSaintSeiyaCloths.description")}</p>
-
-              <h3 className="font-bold w-full text-xl capitalize">
-                {t("aboutSaintSeiyaCloths.sections.title")}
-              </h3>
-
-              {Array.from({ length: 5 }, (_, i) => i + 1).map((i) => (
-                <p key={`about-${i}`} className="flex justify-between">
-                  {t(`aboutSaintSeiyaCloths.sections.${i}`)}
-                </p>
-              ))}
-            </div>
+            <AboutText />
           </div>
         </div>
 

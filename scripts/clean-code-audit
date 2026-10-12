@@ -34,7 +34,8 @@ def tracked_source_files(roots: list[str], include_tests: bool) -> list[Path]:
 
 
 def is_source_file(path: Path, include_tests: bool) -> bool:
-    if SKIPPED_DIR_PARTS.intersection(path.parts):
+    # git ls-files still lists files deleted in the working tree but not yet staged
+    if not path.is_file() or SKIPPED_DIR_PARTS.intersection(path.parts):
         return False
     if not include_tests and any(marker in path.as_posix() for marker in TEST_MARKERS):
         return False

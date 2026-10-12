@@ -19,15 +19,82 @@ function subscribeToMediaQuery(callback: () => void) {
   return () => mediaQuery.removeEventListener("change", callback);
 }
 
-export default function Header() {
-  const t = useTranslations();
-  const pathname = usePathname();
-  const { isMenuOpen, setIsMenuOpen } = useMenu();
-  const isMobile = useSyncExternalStore(
+function useIsMobile() {
+  return useSyncExternalStore(
     subscribeToMediaQuery,
     () => window.matchMedia(mobileQuery).matches,
     () => false
   );
+}
+
+interface MenuEntry {
+  text: string;
+  href: string;
+}
+
+interface NavMenuItemProps {
+  item: MenuEntry;
+  isActive: boolean;
+  onNavigate: () => void;
+}
+
+function NavMenuItem({ item, isActive, onNavigate }: NavMenuItemProps) {
+  const t = useTranslations();
+
+  return (
+    <li
+      className={`${isActive ? "text-yellow-500" : "hover:text-yellow-500 text-white"} group`}
+      onClick={onNavigate}
+      data-testid={`menu-${item.text}`}
+    >
+      <Link className="flex items-center gap-4 md:gap-2 lg:gap-4" href={item.href}>
+        <Icon
+          className={isActive ? "fill-yellow-500" : "group-hover:fill-yellow-500"}
+          name={item.text as iconName}
+          color="white"
+        />
+        <span className="text-2xl md:text-lg lg:text-xl font-bold">{t(item.text)}</span>
+      </Link>
+    </li>
+  );
+}
+
+interface NavMenuProps {
+  isMenuOpen: boolean;
+  closeMenu: () => void;
+}
+
+// Full-screen overlay on mobile while open, a black bar under the header otherwise.
+function NavMenu({ isMenuOpen, closeMenu }: NavMenuProps) {
+  const pathname = usePathname();
+  const isMobile = useIsMobile();
+  const navClassName =
+    isMenuOpen && isMobile
+      ? 'bg-[url("/banners/bg_menu.jpg")] bg-center bg-cover h-screen'
+      : "bg-black mt-[60px] lg:mt-[92px] flex justify-center";
+  const listClassName = isMenuOpen ? "flex-col gap-4 justify-center h-full" : "justify-between";
+  const listDisplay = !isMenuOpen && isMobile ? "hidden" : "flex";
+
+  return (
+    <nav className={`${navClassName} w-full fixed uppercase z-30`}>
+      <ul
+        className={`${listClassName} ${listDisplay} w-full max-w-7xl py-2.5 px-6 transition-opacity duration-200`}
+      >
+        {menu.map((item) => (
+          <NavMenuItem
+            key={item.text}
+            item={item}
+            isActive={pathname === item.href}
+            onNavigate={closeMenu}
+          />
+        ))}
+      </ul>
+    </nav>
+  );
+}
+
+export default function Header() {
+  const { isMenuOpen, setIsMenuOpen } = useMenu();
   const x = socials.find((social) => social.text === "X");
 
   return (
@@ -63,54 +130,7 @@ export default function Header() {
         <span className="hidden md:block" />
       </header>
 
-      <nav
-        className={`${
-          isMenuOpen && isMobile
-            ? 'bg-[url("/banners/bg_menu.jpg")] bg-center bg-cover h-screen'
-            : "bg-black mt-[60px] lg:mt-[92px] flex justify-center"
-        } w-full fixed uppercase z-30`}
-      >
-        <ul
-          className={`${
-            isMenuOpen
-              ? "flex-col gap-4 justify-center h-full"
-              : "justify-between"
-          } ${
-            !isMenuOpen && isMobile ? "hidden" : "flex"
-          } w-full max-w-7xl py-2.5 px-6 transition-opacity duration-200`}
-        >
-          {menu.map((item) => (
-            <li
-              key={item.text}
-              className={`${
-                pathname === item.href
-                  ? "text-yellow-500"
-                  : "hover:text-yellow-500 text-white"
-              } group`}
-              onClick={() => setIsMenuOpen(false)}
-              data-testid={`menu-${item.text}`}
-            >
-              <Link
-                className="flex items-center gap-4 md:gap-2 lg:gap-4"
-                href={item.href}
-              >
-                <Icon
-                  className={
-                    pathname === item.href
-                      ? "fill-yellow-500"
-                      : "group-hover:fill-yellow-500"
-                  }
-                  name={item.text as iconName}
-                  color="white"
-                />
-                <span className="text-2xl md:text-lg lg:text-xl font-bold">
-                  {t(item.text)}
-                </span>
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </nav>
+      <NavMenu isMenuOpen={isMenuOpen} closeMenu={() => setIsMenuOpen(false)} />
 
       <ScrollTop />
     </>
