@@ -1,4 +1,4 @@
-import { getHistory, getName } from "@/helpers";
+import { getHistory, getSaintName } from "@/helpers";
 import { HistoryProps } from "@/pages/api/history";
 import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
@@ -15,8 +15,7 @@ interface ListItemProps {
   rank?: string;
 }
 
-export default function ListItem({
-  id,
+function SaintCard({
   image = "/cloth-schemes/others/no-scheme.jpg",
   cloth,
   version,
@@ -28,17 +27,10 @@ export default function ListItem({
   const t = useTranslations();
   const locale = useLocale();
 
-  const renderSaint = () => (
+  return (
     <>
       <small className="font-bold">
-        {getName(
-          name ?? "",
-          cloth && cloth !== "basic" ? cloth : "",
-          locale,
-          saintClass ? t(saintClass, { count: 1 }) : "",
-          version ? t(version) : "",
-          rank ? t(rank) : "",
-        )}
+        {getSaintName({ name, cloth, saintClass, version, rank }, locale, t)}
       </small>
       <figure className="h-28 overflow-hidden">
         <Image
@@ -52,19 +44,23 @@ export default function ListItem({
       <small className="font-semibold">{getHistory(t, history)}</small>
     </>
   );
+}
+
+// Linked to the saint's page when it has one; placeholder entries have no id.
+export default function ListItem(props: ListItemProps) {
+  if (!props.id) {
+    return (
+      <li className="flex flex-col items-center">
+        <SaintCard {...props} />
+      </li>
+    );
+  }
 
   return (
     <li className="flex flex-col items-center">
-      {id ? (
-        <Link
-          className="w-full group flex flex-col items-center"
-          href={`/classes/${id}`}
-        >
-          {renderSaint()}
-        </Link>
-      ) : (
-        renderSaint()
-      )}
+      <Link className="w-full group flex flex-col items-center" href={`/classes/${props.id}`}>
+        <SaintCard {...props} />
+      </Link>
     </li>
   );
 }

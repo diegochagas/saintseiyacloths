@@ -1,4 +1,4 @@
-import { getClothName, getName, getHistory } from "../helpers";
+import { getClothName, getName, getHistory, getSaintName, specialClothName } from "../helpers";
 import { HistoryProps } from "@/pages/api/history";
 
 // The helpers join optional fragments, which can produce double spaces;
@@ -8,20 +8,20 @@ const normalize = (value: string) => value.replace(/\s+/g, " ").trim();
 describe("getClothName", () => {
   describe("en", () => {
     it("composes name, rank and class", () => {
-      const name = getClothName("Pegasus", "en", "Cloth", "Bronze", "");
+      const name = getClothName({ name: "Pegasus", locale: "en", cls: "Cloth", rank: "Bronze", version: "" });
 
       expect(normalize(name)).toBe("Pegasus Bronze Cloth");
     });
 
     it("appends the version when given", () => {
-      const name = getClothName("Pegasus", "en", "Cloth", "Bronze", "V2");
+      const name = getClothName({ name: "Pegasus", locale: "en", cls: "Cloth", rank: "Bronze", version: "V2" });
 
       expect(normalize(name)).toBe("Pegasus Bronze Cloth (V2)");
     });
 
     it("handles the Super and Synapse special cases", () => {
-      expect(getClothName("Super", "en", "", "", "")).toBe("Super Black Cloth");
-      expect(getClothName("Synapse", "en", "", "", "")).toBe(
+      expect(getClothName({ name: "Super", locale: "en", cls: "", rank: "", version: "" })).toBe("Super Black Cloth");
+      expect(getClothName({ name: "Synapse", locale: "en", cls: "", rank: "", version: "" })).toBe(
         "Supreme Synapse Gold Cloth"
       );
     });
@@ -29,25 +29,25 @@ describe("getClothName", () => {
 
   describe("pt/es", () => {
     it("composes class, rank and name", () => {
-      const name = getClothName("Pégaso", "pt", "Armadura", "Bronze", "");
+      const name = getClothName({ name: "Pégaso", locale: "pt", cls: "Armadura", rank: "Bronze", version: "" });
 
       expect(normalize(name)).toBe("Armadura de Bronze de Pégaso");
     });
 
     it("converts the Deus rank to Divina", () => {
-      const name = getClothName("Pégaso", "pt", "Armadura", "Deus", "");
+      const name = getClothName({ name: "Pégaso", locale: "pt", cls: "Armadura", rank: "Deus", version: "" });
 
       expect(normalize(name)).toBe("Armadura Divina de Pégaso");
     });
 
     it("handles the Super and Synapse special cases", () => {
-      expect(getClothName("Super", "pt", "", "", "")).toBe(
+      expect(getClothName({ name: "Super", locale: "pt", cls: "", rank: "", version: "" })).toBe(
         "Super Armadura Negra"
       );
-      expect(getClothName("Synapse", "pt", "", "", "")).toBe(
+      expect(getClothName({ name: "Synapse", locale: "pt", cls: "", rank: "", version: "" })).toBe(
         "Suprema Armadura de Ouro Sinapse"
       );
-      expect(getClothName("Synapse", "es", "", "", "")).toBe(
+      expect(getClothName({ name: "Synapse", locale: "es", cls: "", rank: "", version: "" })).toBe(
         "Armadura Dorada Suprema Synapse"
       );
     });
@@ -55,22 +55,22 @@ describe("getClothName", () => {
 
   describe("fr", () => {
     it("composes class, rank and name", () => {
-      const name = getClothName("Pégase", "fr", "Armure", "Bronze", "");
+      const name = getClothName({ name: "Pégase", locale: "fr", cls: "Armure", rank: "Bronze", version: "" });
 
       expect(normalize(name)).toBe("Armure du Bronze du Pégase");
     });
 
     it("falls back to class and rank without a name", () => {
-      const name = getClothName("", "fr", "Armure", "Bronze", "V2");
+      const name = getClothName({ name: "", locale: "fr", cls: "Armure", rank: "Bronze", version: "V2" });
 
       expect(normalize(name)).toBe("Armure Bronze (V2)");
     });
 
     it("returns French text for the Super and Synapse special cases", () => {
-      expect(getClothName("Super", "fr", "", "", "")).toBe(
+      expect(getClothName({ name: "Super", locale: "fr", cls: "", rank: "", version: "" })).toBe(
         "Super Armure Noire"
       );
-      expect(getClothName("Synapse", "fr", "", "", "")).toBe(
+      expect(getClothName({ name: "Synapse", locale: "fr", cls: "", rank: "", version: "" })).toBe(
         "Suprême Armure d'Or Synapse"
       );
     });
@@ -79,26 +79,26 @@ describe("getClothName", () => {
 
 describe("getName", () => {
   it("returns the name alone when it matches the cloth name", () => {
-    expect(getName("Seiya", "seiya", "en", "", "")).toBe("Seiya");
-    expect(getName("Seiya", "seiya", "en", "", "V2")).toBe("Seiya (V2)");
+    expect(getName({ name: "Seiya", clothName: "seiya", locale: "en", cls: "", version: "" })).toBe("Seiya");
+    expect(getName({ name: "Seiya", clothName: "seiya", locale: "en", cls: "", version: "V2" })).toBe("Seiya (V2)");
   });
 
   describe("en", () => {
     it("prefixes the cloth name", () => {
-      expect(getName("Seiya", "Pegasus", "en", "Saint", "", "Bronze")).toBe(
+      expect(getName({ name: "Seiya", clothName: "Pegasus", locale: "en", cls: "Saint", version: "", rank: "Bronze" })).toBe(
         "Pegasus Seiya"
       );
     });
 
     it("uses rank and class when name and cloth are missing", () => {
-      expect(getName("", "", "en", "Saint", "", "Bronze")).toBe("Bronze Saint");
+      expect(getName({ name: "", clothName: "", locale: "en", cls: "Saint", version: "", rank: "Bronze" })).toBe("Bronze Saint");
     });
 
     it("maps the Super and Synapse cloths", () => {
-      expect(getName("Seiya", "Super", "en", "", "")).toBe(
+      expect(getName({ name: "Seiya", clothName: "Super", locale: "en", cls: "", version: "" })).toBe(
         "Super Black Cloth Seiya"
       );
-      expect(getName("Shion", "Synapse", "en", "", "")).toBe(
+      expect(getName({ name: "Shion", clothName: "Synapse", locale: "en", cls: "", version: "" })).toBe(
         "Supreme Synapse Gold Cloth Shion"
       );
     });
@@ -106,19 +106,19 @@ describe("getName", () => {
 
   describe("pt/es", () => {
     it("joins name and cloth with 'de'", () => {
-      expect(getName("Seiya", "Pegasus", "pt", "Cavaleiro", "")).toBe(
+      expect(getName({ name: "Seiya", clothName: "Pegasus", locale: "pt", cls: "Cavaleiro", version: "" })).toBe(
         "Seiya de Pegasus"
       );
     });
 
     it("joins class and cloth when there is no name", () => {
-      expect(getName("", "Pegasus", "pt", "Cavaleiro", "")).toBe(
+      expect(getName({ name: "", clothName: "Pegasus", locale: "pt", cls: "Cavaleiro", version: "" })).toBe(
         "Cavaleiro de Pegasus"
       );
     });
 
     it("maps the Synapse cloth", () => {
-      expect(getName("Shion", "Synapse", "pt", "", "")).toBe(
+      expect(getName({ name: "Shion", clothName: "Synapse", locale: "pt", cls: "", version: "" })).toBe(
         "Shion de Suprema Armadura de Ouro Sinapse"
       );
     });
@@ -126,23 +126,63 @@ describe("getName", () => {
 
   describe("fr", () => {
     it("joins name and cloth with 'du'", () => {
-      expect(getName("Seiya", "Pégase", "fr", "Chevalier", "")).toBe(
+      expect(getName({ name: "Seiya", clothName: "Pégase", locale: "fr", cls: "Chevalier", version: "" })).toBe(
         "Seiya du Pégase"
       );
     });
 
     it("joins class and cloth when there is no name", () => {
       // regression: this case used to fall through to the English format
-      expect(getName("", "Pégase", "fr", "Chevalier", "")).toBe(
+      expect(getName({ name: "", clothName: "Pégase", locale: "fr", cls: "Chevalier", version: "" })).toBe(
         "Chevalier de Pégase"
       );
     });
 
     it("maps the Super cloth to French text", () => {
-      expect(getName("Ikki", "Super", "fr", "", "")).toBe(
+      expect(getName({ name: "Ikki", clothName: "Super", locale: "fr", cls: "", version: "" })).toBe(
         "Ikki du Super Armure Noire"
       );
     });
+  });
+});
+
+describe("specialClothName", () => {
+  it("translates the Super and Synapse cloths per locale", () => {
+    expect(specialClothName("Super", "pt")).toBe("Super Armadura Negra");
+    expect(specialClothName("Synapse", "es")).toBe("Armadura Dorada Suprema Synapse");
+  });
+
+  it("falls back to English for an unknown locale", () => {
+    expect(specialClothName("Super", "de")).toBe("Super Black Cloth");
+  });
+
+  it("returns undefined for a regular cloth", () => {
+    expect(specialClothName("Pegasus", "en")).toBeUndefined();
+  });
+});
+
+describe("getSaintName", () => {
+  const t = (key: string, values?: { count: number }) =>
+    values ? `${key}#${values.count}` : `t:${key}`;
+
+  it("translates class, version and rank before composing the name", () => {
+    const name = getSaintName(
+      { name: "Seiya", cloth: "Pegasus", saintClass: "saints", version: "v2", rank: "bronze" },
+      "en",
+      t,
+    );
+
+    expect(name).toBe("Pegasus Seiya (t:v2)");
+  });
+
+  it("ignores the basic placeholder cloth", () => {
+    expect(getSaintName({ cloth: "basic", saintClass: "saints", rank: "bronze" }, "en", t)).toBe(
+      "t:bronze saints#1",
+    );
+  });
+
+  it("handles a saint with no fields at all", () => {
+    expect(getSaintName({}, "en", t)).toBe(" ");
   });
 });
 

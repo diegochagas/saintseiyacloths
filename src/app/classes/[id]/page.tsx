@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { getLocale, getTranslations } from "next-intl/server";
 import saintsJson from "@/pages/api/data/saints.json";
 import { loadSaintData, SaintProps } from "@/pages/api/classes";
-import { getHistory, getName } from "@/helpers";
+import { getHistory, getSaintRecordName } from "@/helpers";
 import Details from "./details";
 import { SITE_URL } from "@/site";
 
@@ -38,14 +38,7 @@ export async function generateMetadata({
   const t = await getTranslations();
   const locale = await getLocale();
 
-  const name = getName(
-    saint.name || "",
-    saint.cloth?.name && saint.cloth.name !== "basic" ? saint.cloth.name : "",
-    locale,
-    saint.group?.class ? t(saint.group.class, { count: 1 }) : "",
-    saint.version ? t(saint.version) : "",
-    saint.rank ? t(saint.rank) : ""
-  ).trim();
+  const name = getSaintRecordName(saint, locale, t).trim();
 
   const description = `${name} — ${t("saintClothScheme")}: ${getHistory(
     t,

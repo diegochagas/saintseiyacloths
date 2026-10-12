@@ -208,15 +208,17 @@ def outline_layer(img, layer, grow, color):
     return outline
 
 
-def main():
+def load_job():
     with open(JOB_PATH) as f:
         job = json.load(f)
 
     tdir = job['template_dir']
     with open(os.path.join(tdir, 'manifest.json')) as f:
         manifest = json.load(f)
+    return job, tdir, manifest
 
-    bg_spec = manifest['backgrounds'][job['style']]
+
+def load_template(tdir, bg_spec):
     img = load_image(os.path.join(tdir, bg_spec['file']))
     log('template %s loaded %dx%d' % (bg_spec['file'], img.get_width(), img.get_height()))
     base_type = img.get_base_type()
@@ -226,11 +228,10 @@ def main():
         # limited palette, turning the whole sheet grayscale.
         img.convert_rgb()
         log('template converted to RGB (was base_type %s)' % base_type)
-    # 0. force a WHITE page: template scans often carry a light-gray paper
-    # tone. Sample likely-blank spots on the bottom (background) layer and,
-    # if the page is not white, pull its white point up so paper -> pure
-    # white (art lines are barely affected).
-    bg_layer = img.get_layers()[-1]
+    return img
+
+
+def sample_page_tone(bg_layer):
     w, h = bg_layer.get_width(), bg_layer.get_height()
     tone = 0.0
     for fx, fy in ((0.5, 0.5), (0.25, 0.5), (0.75, 0.5), (0.5, 0.25), (0.5, 0.75)):
@@ -242,6 +243,16 @@ def main():
             tone = max(tone, r, g, b)
         except Exception as e:
             log('WARN page-tone sample failed: %s' % e)
+    return tone
+
+
+def whiten_page(img):
+    # 0. force a WHITE page: template scans often carry a light-gray paper
+    # tone. Sample likely-blank spots on the bottom (background) layer and,
+    # if the page is not white, pull its white point up so paper -> pure
+    # white (art lines are barely affected).
+    bg_layer = img.get_layers()[-1]
+    tone = sample_page_tone(bg_layer)
     if 0.5 < tone < 0.97:
         bg_layer.levels(Gimp.HistogramChannel.VALUE,
                         0.0, min(0.995, tone), False, 1.0, 0.0, 1.0, False)
@@ -249,6 +260,15 @@ def main():
     elif tone >= 0.97:
         log('page already white (tone %.3f)' % tone)
 
+
+def find_text_layer(img, layer_name):
+    for layer in img.get_layers():
+        if isinstance(layer, Gimp.TextLayer) and clean_name(layer) == layer_name.replace(WORD_JOINER, ''):
+            return layer
+    return None
+
+
+def replace_text_roles(img, bg_spec, job):
     # 1. text roles — BEFORE any canvas scaling: a scaled text layer keeps its
     # scaled raster and silently ignores set_markup/set_text
     texts = job.get('texts', {})
@@ -256,18 +276,17 @@ def main():
     for role, layer_name in bg_spec.get('text', {}).items():
         if role not in texts:
             continue
-        target = None
-        for layer in img.get_layers():
-            if isinstance(layer, Gimp.TextLayer) and clean_name(layer) == layer_name.replace(WORD_JOINER, ''):
-                target = layer
-                break
+        target = find_text_layer(img, layer_name)
         if target is None:
             log('WARN text layer for role %r (%r) not found' % (role, layer_name))
             continue
         replace_text(target, texts[role])
         log('text %s -> %r' % (role, texts[role]))
         replaced_layers.append(target)
+    return replaced_layers
 
+
+def nudge_overlapping_texts(replaced_layers):
     # Anti-collision nudge: a dynamic text layer's reported bounding box can
     # grow (usually downward, top offset unchanged) when the new string is
     # longer/shorter than the template's placeholder, even at the same font
@@ -287,89 +306,159 @@ def main():
             lower.set_offsets(lx, ly + overlap + pad)
             log('nudged %s down %dpx to clear %s' % (clean_name(lower), overlap + pad, clean_name(upper)))
 
+
+def scale_canvas(img, job):
     if job.get('canvas_width'):
         cw = int(job['canvas_width'])
         if cw != img.get_width():
             img.scale(cw, max(1, int(img.get_height() * cw / img.get_width())))
             log('canvas scaled to %dx%d' % (img.get_width(), img.get_height()))
 
+
+def find_layer(img, name):
+    for layer in img.get_layers():
+        if clean_name(layer) == name:
+            return layer
+    return None
+
+
+def fill_black(img, layer):
+    if not layer.has_alpha():
+        layer.add_alpha()
+    img.select_item(Gimp.ChannelOps.REPLACE, layer)
+    Gimp.context_set_foreground(Gegl.Color.new('#000000'))
+    layer.edit_fill(Gimp.FillType.FOREGROUND)
+    Gimp.Selection.none(img)
+
+
+def replace_armor_shadow(img, bg_spec, job):
     # 2a. armor shadow: replace the template's silhouette placeholder with an
     # all-black copy of the armor object, fitted inside the same area
     shadow_name = bg_spec.get('shadow')
-    if shadow_name and job.get('armor_shadow'):
-        ph = None
-        for layer in img.get_layers():
-            if clean_name(layer) == shadow_name:
-                ph = layer
-                break
-        if ph is None:
-            log('WARN shadow layer %r not found in template' % shadow_name)
-        else:
-            off = ph.get_offsets()
-            bx, by = off.offset_x, off.offset_y
-            bw, bh = ph.get_width(), ph.get_height()
-            img.remove_layer(ph)
-            sil = place_image(img, job['armor_shadow']['path'], 0, 0,
-                              name='armor-shadow')
-            s = min(bw / float(sil.get_width()), bh / float(sil.get_height()))
-            sil.scale(max(1, int(sil.get_width() * s)),
-                      max(1, int(sil.get_height() * s)), False)
-            center_layer(sil, bx + bw / 2.0, by + bh / 2.0)
-            if not sil.has_alpha():
-                sil.add_alpha()
-            img.select_item(Gimp.ChannelOps.REPLACE, sil)
-            Gimp.context_set_foreground(Gegl.Color.new('#000000'))
-            sil.edit_fill(Gimp.FillType.FOREGROUND)
-            Gimp.Selection.none(img)
-            log('armor shadow replaced (fit %dx%d at %d,%d)' % (bw, bh, bx, by))
+    if not (shadow_name and job.get('armor_shadow')):
+        return
+    ph = find_layer(img, shadow_name)
+    if ph is None:
+        log('WARN shadow layer %r not found in template' % shadow_name)
+        return
+    off = ph.get_offsets()
+    bx, by = off.offset_x, off.offset_y
+    bw, bh = ph.get_width(), ph.get_height()
+    img.remove_layer(ph)
+    sil = place_image(img, job['armor_shadow']['path'], 0, 0, name='armor-shadow')
+    s = min(bw / float(sil.get_width()), bh / float(sil.get_height()))
+    sil.scale(max(1, int(sil.get_width() * s)), max(1, int(sil.get_height() * s)), False)
+    center_layer(sil, bx + bw / 2.0, by + bh / 2.0)
+    fill_black(img, sil)
+    log('armor shadow replaced (fit %dx%d at %d,%d)' % (bw, bh, bx, by))
 
+
+def place_plain_images(img, job):
     # 2b. plain images (armor object, character...)
     for spec in job.get('images', []):
         place_image(img, spec['path'], spec['x'], spec['y'],
                     spec.get('w'), spec.get('h'))
         log('image %s placed' % os.path.basename(spec['path']))
 
+
+def import_inset_circle(img, circle_path):
+    csrc = load_image(circle_path)
+    if len(csrc.get_layers()) > 1:
+        csrc.merge_visible_layers(Gimp.MergeType.CLIP_TO_IMAGE)
+    else:
+        csrc.get_layers()[0].resize_to_image_size()
+    circle = import_layer(csrc.get_layers()[0], img, 'inset-circle')
+    csrc.delete()
+    return circle
+
+
+def place_inset_circle(circle, spec, circle_d0):
+    d = spec['d']
+    cx, cy = spec['cx'], spec['cy']
+    # the circle proper is the bottom square of the template, tail above it
+    d0 = circle_d0 or circle.get_width()
+    s = d / float(d0)
+    circle.scale(max(1, int(circle.get_width() * s)),
+                 max(1, int(circle.get_height() * s)), False)
+    # put the CIRCLE's center (not the layer's) on (cx, cy): the circle
+    # square sits at the bottom of the layer
+    circle.set_offsets(int(cx - d / 2),
+                       int(cy - (circle.get_height() - d / 2)))
+    if spec.get('point_to'):
+        tx, ty = spec['point_to']
+        # template tail points up (-Y); rotate it toward the target
+        rot = math.atan2(ty - cy, tx - cx) + math.pi / 2.0
+        if abs(rot) > 0.01:
+            circle.transform_rotate(rot, False, int(cx), int(cy))
+            log('inset tail rotated %.0f deg toward (%s,%s)'
+                % (math.degrees(rot), tx, ty))
+
+
+def place_inset_part(img, spec):
+    d, cx, cy = spec['d'], spec['cx'], spec['cy']
+    part = place_image(img, spec['path'], 0, 0, w=int(d * 0.72), name='inset-part')
+    if part.get_height() > d * 0.72:
+        part.scale(max(1, int(part.get_width() * d * 0.72 / part.get_height())),
+                   int(d * 0.72), False)
+    center_layer(part, cx, cy)
+    log('inset %s at (%s,%s)' % (os.path.basename(spec['path']), cx, cy))
+
+
+def place_insets(img, tdir, manifest, job):
     # 3. insets: white circle (with pointer tail) + part draft centered on
     # (cx, cy); the tail is rotated to aim at point_to
     circle_path = os.path.join(tdir, manifest['circle']['file'])
     circle_d0 = manifest['circle'].get('circle_diameter')
+    outline = manifest['circle'].get('outline')
     for spec in job.get('insets', []):
-        d = spec['d']
-        cx, cy = spec['cx'], spec['cy']
-        csrc = load_image(circle_path)
-        if len(csrc.get_layers()) > 1:
-            csrc.merge_visible_layers(Gimp.MergeType.CLIP_TO_IMAGE)
-        else:
-            csrc.get_layers()[0].resize_to_image_size()
-        circle = import_layer(csrc.get_layers()[0], img, 'inset-circle')
-        csrc.delete()
-        # the circle proper is the bottom square of the template, tail above it
-        d0 = circle_d0 or circle.get_width()
-        s = d / float(d0)
-        circle.scale(max(1, int(circle.get_width() * s)),
-                     max(1, int(circle.get_height() * s)), False)
-        # put the CIRCLE's center (not the layer's) on (cx, cy): the circle
-        # square sits at the bottom of the layer
-        circle.set_offsets(int(cx - d / 2),
-                           int(cy - (circle.get_height() - d / 2)))
-        if spec.get('point_to'):
-            tx, ty = spec['point_to']
-            # template tail points up (-Y); rotate it toward the target
-            rot = math.atan2(ty - cy, tx - cx) + math.pi / 2.0
-            if abs(rot) > 0.01:
-                circle.transform_rotate(rot, False, int(cx), int(cy))
-                log('inset tail rotated %.0f deg toward (%s,%s)'
-                    % (math.degrees(rot), tx, ty))
-        outline = manifest['circle'].get('outline')
+        circle = import_inset_circle(img, circle_path)
+        place_inset_circle(circle, spec, circle_d0)
         if outline:
             outline_layer(img, circle, outline.get('grow', 4), outline.get('color', '#000000'))
-        part = place_image(img, spec['path'], 0, 0, w=int(d * 0.72), name='inset-part')
-        if part.get_height() > d * 0.72:
-            part.scale(max(1, int(part.get_width() * d * 0.72 / part.get_height())),
-                       int(d * 0.72), False)
-        center_layer(part, cx, cy)
-        log('inset %s at (%s,%s)' % (os.path.basename(spec['path']), cx, cy))
+        place_inset_part(img, spec)
 
+
+def place_arrow_star(img, star_src, size, end_point):
+    star = import_layer(star_src, img, 'arrow-star')
+    # the template layer is star + a line stub (105x33: star in columns
+    # 8-23, stub from 23 on); crop to the star alone - a plain left
+    # square kept the stub's first pixels as a grey dash - then pad it
+    # back to a centred square
+    h = star.get_height()
+    x0, x1 = round(h * 8 / 33), round(h * 23 / 33)
+    star.resize(x1 - x0, h, -x0, 0)
+    star.resize(h, h, (h - (x1 - x0)) // 2, 0)
+    star.scale(int(size), int(size), False)
+    center_layer(star, end_point[0], end_point[1])
+
+
+def place_arrow_head(img, head_src, size, pts):
+    head = import_layer(head_src, img, 'arrow-head')
+    # square right end of the layer holds the head, pointing +X
+    h = head.get_height()
+    head.resize(h, h, -(head.get_width() - h), 0)
+    head.scale(int(size), int(size), False)
+    # point it away from the line (outward, past the label end)
+    (x1, y1), (x2, y2) = pts[0], pts[1]
+    angle = math.atan2(y1 - y2, x1 - x2)
+    center_layer(head, pts[0][0], pts[0][1])
+    if abs(angle) > 0.01:
+        head.transform_rotate(angle, True, 0, 0)
+
+
+def place_arrow_label(img, label_src, spec, size):
+    pts = spec['points']
+    label = import_layer(label_src, img, 'label-' + spec['label'])
+    # keep the template's font — only the size is adjusted, defaulting
+    # to a clearly readable size relative to the canvas
+    lsize = spec.get('label_size') or max(12.0, img.get_width() / 70.0)
+    replace_text(label, spec['label'], size_pt=lsize)
+    lx, ly = spec.get('label_pos', [pts[0][0], pts[0][1] - size])
+    center_layer(label, lx, ly)
+    log('arrow %s drawn' % spec['label'])
+
+
+def draw_arrows(img, tdir, manifest, job):
     # 4. arrows: 3px black line from label end to star end, star + head + label
     arrow_spec = manifest['arrow']
     asrc = load_image(os.path.join(tdir, arrow_spec['file']))
@@ -382,40 +471,15 @@ def main():
         size = spec.get('size', 60)
         draw_polyline(img, pts, 3.0)
         if star_src is not None:
-            star = import_layer(star_src, img, 'arrow-star')
-            # the template layer is star + a line stub (105x33: star in columns
-            # 8-23, stub from 23 on); crop to the star alone - a plain left
-            # square kept the stub's first pixels as a grey dash - then pad it
-            # back to a centred square
-            h = star.get_height()
-            x0, x1 = round(h * 8 / 33), round(h * 23 / 33)
-            star.resize(x1 - x0, h, -x0, 0)
-            star.resize(h, h, (h - (x1 - x0)) // 2, 0)
-            star.scale(int(size), int(size), False)
-            center_layer(star, pts[-1][0], pts[-1][1])
+            place_arrow_star(img, star_src, size, pts[-1])
         if head_src is not None and spec.get('head', True):
-            head = import_layer(head_src, img, 'arrow-head')
-            # square right end of the layer holds the head, pointing +X
-            h = head.get_height()
-            head.resize(h, h, -(head.get_width() - h), 0)
-            head.scale(int(size), int(size), False)
-            # point it away from the line (outward, past the label end)
-            (x1, y1), (x2, y2) = pts[0], pts[1]
-            angle = math.atan2(y1 - y2, x1 - x2)
-            center_layer(head, pts[0][0], pts[0][1])
-            if abs(angle) > 0.01:
-                head.transform_rotate(angle, True, 0, 0)
+            place_arrow_head(img, head_src, size, pts)
         if label_src is not None and spec.get('label'):
-            label = import_layer(label_src, img, 'label-' + spec['label'])
-            # keep the template's font — only the size is adjusted, defaulting
-            # to a clearly readable size relative to the canvas
-            lsize = spec.get('label_size') or max(12.0, img.get_width() / 70.0)
-            replace_text(label, spec['label'], size_pt=lsize)
-            lx, ly = spec.get('label_pos', [pts[0][0], pts[0][1] - size])
-            center_layer(label, lx, ly)
-            log('arrow %s drawn' % spec['label'])
+            place_arrow_label(img, label_src, spec, size)
     asrc.delete()
 
+
+def save_outputs(img, job):
     # 5. save — the XCF keeps every piece on its own layer so mistakes can be
     # fixed by hand in GIMP; only the JPG/preview are flattened
     if job.get('out_xcf'):
@@ -434,6 +498,19 @@ def main():
     flat.delete()
     img.delete()
 
+
+def main():
+    job, tdir, manifest = load_job()
+    bg_spec = manifest['backgrounds'][job['style']]
+    img = load_template(tdir, bg_spec)
+    whiten_page(img)
+    nudge_overlapping_texts(replace_text_roles(img, bg_spec, job))
+    scale_canvas(img, job)
+    replace_armor_shadow(img, bg_spec, job)
+    place_plain_images(img, job)
+    place_insets(img, tdir, manifest, job)
+    draw_arrows(img, tdir, manifest, job)
+    save_outputs(img, job)
 
 try:
     main()

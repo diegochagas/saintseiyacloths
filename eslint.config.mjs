@@ -1,7 +1,9 @@
 import coreWebVitals from "eslint-config-next/core-web-vitals";
+import cleanCode from "./eslint-clean-code.mjs";
 
 const eslintConfig = [
   ...coreWebVitals,
+  cleanCode,
   {
     ignores: [
       ".next/**",
